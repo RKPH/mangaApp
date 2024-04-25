@@ -12,6 +12,11 @@ export const publicRoutes = [
       
     },
     {
+        path: "/Home",
+        component: Home,
+      
+    },
+    {
         path: "/danh-sach/the-loai",
         component: Category,
         

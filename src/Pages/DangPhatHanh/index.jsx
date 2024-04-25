@@ -61,7 +61,7 @@ const DangPhatHanh = () => {
         
         {data.map((item) => (
           <div key={item._id} className='w-full h-[100px] p-1 bg-[whitesmoke] border-2  rounded-md cursor-pointer grid grid-cols-12  mb-4 items-center hover:shadow-xl hover:bg-slate-300 transition duration-300'>
-            <div className='col-span-8 gap-4 ml-1 flex '>
+            <div className='col-span-10 lg:col-span-8  gap-4 ml-1 flex '>
               <img className='w-[70px] h-[80px] rounded-md shadow-md' src={`${domain}/${item.thumb_url} `} loading='lazy' alt={item.slug} />
               <span className='overflow-hidden overflow-ellipsis whitespace-nowrap'>
                 <h4 className='text-lg lg:text-xl text-black font-semibold'>{item.name}</h4>

@@ -11,7 +11,7 @@ import NewReleasesIcon from '@mui/icons-material/NewReleases';
 import SettingsIcon from '@mui/icons-material/Settings';
 import EuroIcon from '@mui/icons-material/Euro';
 import Face6Icon from '@mui/icons-material/Face6';
-//css
+
 import "./index.css";
 import { Link ,useLocation } from "react-router-dom";
 const DefaultLayout = ({ children }) => {
