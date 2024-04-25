@@ -98,7 +98,7 @@ const Header = () => {
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className=" h-full  w-full fixed right-80   bg-cyan-800 ">
+        <div className=" h-full  w-full fixed right-80 z-10  bg-cyan-800 ">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
