@@ -37,10 +37,9 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
   return (
     <div className="w-full h-full">
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          
+        <Dialog 
           as="div"
-          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  overflow-y-auto"
+          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  "
           onClose={handleClose}
         >
           <div className="max-h-screen max-w-full m-auto px-4 text-center">
