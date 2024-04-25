@@ -7,7 +7,7 @@ import Truyen from "../Pages/Truyen";
 
 export const publicRoutes = [ 
     {
-        path: "/Home",
+        path: "/",
         component: Home,
       
     },
