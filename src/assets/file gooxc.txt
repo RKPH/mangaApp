@@ -1,0 +1,127 @@
+import './App.css';
+import React, { useEffect, useState } from 'react';
+
+function App() {
+  const [slug, setSlug] = useState("de-nhat-nguoi-o-re");
+  const [chapter, setChapter] = useState({});
+  const [domain,setDomain] = useState("");
+
+  useEffect(() => {
+    fetch("https://sv1.otruyencdn.com/v1/api/chapter/658f4e90ac52820f564aa0ca")
+      .then((res) => res.json())
+      .then((data) => {
+        setChapter(data.data.item);
+        setDomain(data.data.domain_cdn);
+      });
+  }, []);
+
+  return (
+    <>
+      <div className='h-screen overflow-y-auto w-[800px] bg-red-200'>
+        {chapter.chapter_image && chapter.chapter_image.map((image, index) => (
+          <img key={index} src={`${domain}/${chapter.chapter_path}/${image.image_file}`} alt={`Page ${image.image_page}`} />
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+
+export const publicRoutes = [ 
+    {
+        path: "/Home",
+        component: Home,
+      
+    },
+    {
+        path: "the-loai",
+        component: Category,
+        
+    },
+    {
+        path: "/danh-sach/truyen-moi",
+        component:  TruyenMoi, // Assuming Home is the component for displaying the list of new comics
+    },
+    {
+        path: "/danh-sach/truyen-moi/:page", // Define a dynamic route parameter for the page number
+        component: TruyenMoi, // Assuming Home is the component for displaying the list of new comics
+    }
+];
+
+
+import PropTypes from 'prop-types';
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useEffect, useState } from "react";
+import axios from 'axios';
+
+const Modal = ({ handleClose, isOpen, api }) => {
+  const [chapter, setChapter] = useState(null);
+  const [domain, setDomain] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(api);
+        setChapter(response.data.data.item);
+        setDomain(response.data.data.domain_cdn);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [api]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+  
+  return (
+    <div className="w-full h-full">
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={handleClose}
+        >
+          <div className="min-h-screen px-4 text-center">
+            <Dialog.Overlay className="fixed top-0 right-0 overflow-hidden inset-0 bg-black opacity-30" />
+            <div className="inline-block w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="p-4 bg-gray-100 flex justify-between items-center sticky top-0 z-10">
+                <h2 className="text-2xl font-bold">{chapter?.comic_name}</h2>
+                <h2 className="text-2xl font-bold">Chương {chapter.chapter_name}</h2>
+                <button onClick={handleClose} className="text-lg font-bold">X</button>
+              </div>
+              <div className="p-4 overflow-y-auto max-h-[700px]">
+                <h3 className="text-xl mb-4">Chapter: {chapter?.chapter_name}</h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {chapter?.chapter_image.map((image, index) => (
+                    <img
+                      key={index}
+                      className="mx-auto"
+                      src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
+                      alt={`page ${image.image_page}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </div>
+  );
+};
+
+Modal.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  api: PropTypes.string.isRequired,
+};
+
+export default Modal;
