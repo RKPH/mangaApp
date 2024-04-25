@@ -40,7 +40,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
         <Dialog
           
           as="div"
-          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10   overflow-y-auto"
+          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  overflow-y-auto"
           onClose={handleClose}
         >
           <div className="max-h-screen max-w-full m-auto px-4 text-center">
@@ -97,7 +97,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                   X
                 </button>
               </div>
-              <div className="flex">
+              <div className="flex overflow-y-auto max-h-[calc(100vh-10rem)]">
                 <div className="hidden lg:block lg:w-1/3 p-4 overflow-y-auto max-h-[700px] border-r border-gray-200">
                   {Data.item?.chapters?.map((chapters) =>
                     chapters.server_data.map((item) => (
