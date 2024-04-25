@@ -94,13 +94,13 @@ const Header = () => {
         </button>
       </div>
       <Drawer
-        className="w-full min-h-[500px]"
+        className="w-full max-h-fit fixed left-0 right-0 top-0"
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className=" h-full min-h-max w-full   z-[99999px]   bg-cyan-800 ">
+        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-cyan-800 ">
           {/* Menu for manga */}
-          <div className=" h-[250px]  w-full mt-20 px-5">
+          <div className=" h-[250px]  w-full mt-20 bg-yellow-500 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
               Menu -
             </div>
@@ -176,7 +176,7 @@ const Header = () => {
             </div>
           </div>
           {/* Menu for setting */}
-          <div className=" h-[300px]  w-full mt-10 px-5">
+          <div className=" h-[200px]  w-full bg-red-200 mt-10 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
               General -
             </div>

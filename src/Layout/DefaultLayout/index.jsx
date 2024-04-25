@@ -40,7 +40,7 @@ const DefaultLayout = ({ children }) => {
     <div className="w-full h-screen  ">
       <Header className="w-full fixed top-0 left-0 right-0 z-[9999px] bg-white" />
       <div className="w-full h-full flex flex-row">
-        <div className="hidden w-0 lg:block lg:w-1/5  left-0  lg:fixed mt-20 h-full bg-cyan-800 ">
+        <div className="hidden w-0 lg:block lg:w-1/5  lg:left-0  lg:fixed mt-20 h-full bg-cyan-800 ">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
