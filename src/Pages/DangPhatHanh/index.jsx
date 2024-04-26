@@ -55,8 +55,8 @@ const DangPhatHanh = () => {
   };
 
   return (
-    <div  className="w-full  min-h-screen px-10">
-      <div ref={scrollRef} className='h-full w-full py-2'>
+    <div ref={scrollRef} className="w-full  min-h-screen px-10 mt-20">
+      <div  className='h-full w-full py-2'>
       <h1 className='text-lg lg:text-3xl text-orange-500 text-center mb-5'>{ page === 1 ? "TRUYỆN TRANH ĐANG PHÁT HÀNH" :`TRUYỆN TRANH ĐANG PHÁT HÀNH TRANG ${page}`}</h1>
         
         {data.map((item) => (

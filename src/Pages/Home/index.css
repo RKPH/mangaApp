@@ -3,3 +3,11 @@
     margin: 0 20px;
     
 }
+.slick-dots li {
+    font-size: 15px;
+    line-height: 15px;
+    width: 215px;
+    height: 5px;
+    border-radius: 0;
+  }
+  

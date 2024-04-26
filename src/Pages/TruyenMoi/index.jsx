@@ -51,9 +51,7 @@ const TruyenMoi = () => {
     };
 
     fetchData();
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+   
   }, [currentPage, data]);
 
   const handleMangaClick = (manga) => {
@@ -72,7 +70,7 @@ const TruyenMoi = () => {
   };
 
   return (
-    <div className="w-full  min-h-screen px-10">
+    <div  ref={scrollRef} className="w-full mt-20  min-h-screen px-10">
       <div  className="h-full w-full py-2">
         <h1 className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
           {page === 1
