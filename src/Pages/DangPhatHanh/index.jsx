@@ -55,7 +55,7 @@ const DangPhatHanh = () => {
   };
 
   return (
-    <div ref={scrollRef} className="w-full  min-h-screen px-10 mt-20">
+    <div ref={scrollRef} className="w-full  min-h-screen px-10 ">
       <div  className='h-full w-full py-2'>
       <h1 className='text-lg lg:text-3xl text-orange-500 text-center mb-5'>{ page === 1 ? "TRUYỆN TRANH ĐANG PHÁT HÀNH" :`TRUYỆN TRANH ĐANG PHÁT HÀNH TRANG ${page}`}</h1>
         
@@ -66,14 +66,14 @@ const DangPhatHanh = () => {
               <span className='overflow-hidden overflow-ellipsis whitespace-nowrap'>
                 <h4 className='text-lg lg:text-xl text-black font-semibold'>{item.name}</h4>
                 <h5 className='text-sm lg:text-lg text-gray-500 font-normal'>{item.origin_name}</h5>
-                <h6 className="block lg:hidden"><span className="rounded-lg bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1"> Chapter:Chapter:{" "}
+                <h6 className="block lg:hidden"><span className="rounded-lg bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1">Chapter:{" "}
                 {item.chaptersLatest && item.chaptersLatest[0]
                   ? item.chaptersLatest[0].chapter_name
                   : "Loading..."}</span></h6>
               </span>
             </div>
             <span className='col-span-2 lg:block rounded-2xl text-right hiden'>
-              <span className='bg-blue-200 p-2  lg:inline hidden rounded-lg text-white w-40 bg-gradient-to-br from-sky-400 to-blue-700'>Chapter: Chapter:{" "}
+              <span className='bg-blue-200 p-2  lg:inline hidden rounded-lg text-white w-40 bg-gradient-to-br from-sky-400 to-blue-700'>Chapter:{" "}
                 {item.chaptersLatest && item.chaptersLatest[0]
                   ? item.chaptersLatest[0].chapter_name
                   : "Loading..."}</span>
