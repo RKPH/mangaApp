@@ -60,6 +60,7 @@ const Header = () => {
               onClick={handleDrawerOpen}
             />
           )}
+          <Link to="/" className="flex flex-row">
           <span className="text-slate-400 lg:text-[40px] text-lg font-normal m-1">
             Yuki
           </span>
@@ -67,6 +68,8 @@ const Header = () => {
           <span className="w-[27.61px]  text-black lg:text-[40px] text-lg flex items-center  font-extrabold m-1">
             雪
           </span>
+
+          </Link>
         </div>
       </div>
       <div className="w-1/2 h-full lg:pr-16   flex items-center justify-center  px-2">

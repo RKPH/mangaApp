@@ -42,7 +42,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
           className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  "
           onClose={handleClose}
         >
-          <div className="max-h-screen max-w-full m-auto px-10 text-center">
+          <div className="max-h-screen max-w-full m-auto lg:px-10 text-center">
             <Dialog.Overlay  className="fixed  right-0 overflow-hidden  inset-0 bg-black opacity-30" />
             <div className=" inline-block  w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <div className="p-4 bg-gray-100 flex justify-between items-center sticky top-0 z-10">
@@ -118,11 +118,11 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                   <h3 ref={scrollRef} className="text-xl mb-4">
                     Chapter: {chapter?.chapter_name}
                   </h3>
-                  <div className="grid grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 ">
                     {chapter?.chapter_image.map((image, index) => (
                       <img
                         key={index}
-                        className="mx-auto w-full"
+                        className="w-full"
                         src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
                         alt={`page ${image.image_page}`}
                       />
