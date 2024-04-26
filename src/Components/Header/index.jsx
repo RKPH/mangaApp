@@ -89,10 +89,10 @@ const Header = () => {
           </form>
         </div>
 
-        <button className=" w-[108px] h-12 text-center text-gray-50 text-base bg-cyan-800 font-semibold font-['Lato'] tracking-wide mr-5 rounded-md hover:opacity-35">
+        <button className=" w-16 p-1 lg:w-[108px] h-12 text-center text-gray-50 lg:text-base text-sm bg-cyan-800 font-semibold font-['Lato'] mr-5 rounded-md hover:opacity-35">
           Log in
         </button>
-        <button className="w-[108px] h-12 text-center text-stone-900 text-base  font-semibold font-['Lato'] tracking-wide mr-5 rounded-md hover:border-2 hover:border-black">
+        <button className="w-16 p-1 lg:w-[108px] border h-12 text-center text-stone-900 lg:text-base text-sm  font-semibold font-['Lato']  mr-5 rounded-md hover:border-2 hover:border-black">
           Sign up
         </button>
       </div>
