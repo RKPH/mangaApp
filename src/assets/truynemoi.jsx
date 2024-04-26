@@ -6,7 +6,7 @@ import "./index.css"
 import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { Card } from "primereact/card";
+
 const TruyenMoi = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
@@ -33,7 +33,6 @@ const TruyenMoi = () => {
     setCurrentPage(page);
 
     const fetchData = async () => {
-      
       try {
         const response = await axios.get(
           `https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=${page}`
@@ -50,10 +49,10 @@ const TruyenMoi = () => {
         console.error("Error fetching data:", error);
       }
     };
-    
+
     fetchData();
    
-  }, [page]);
+  }, [currentPage, data]);
 
   const handleMangaClick = (manga) => {
     dispatch(addManga(manga));
@@ -79,38 +78,51 @@ const TruyenMoi = () => {
             : `TRUYEN TRANH MỚI-TRANG ${page}`}
         </h1>
 
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-4">
-          {data  && data.map((item) => (
-            <Card
-              key={item.name}
-              className="rounded-2xl shadow-md hover:scale-105"
-              onClick={handleMangaClick}
-            >
-              <Link to={`/truyen-tranh/${item.slug}`}>
-                <img
-                  src={`${domain}/${item.thumb_url}`}
-                  alt={item.slug}
-                  className="h-[270px] w-full rounded-t-2xl"
-                />
-                <div className="p-2">
-                  <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap">
-                    {item.name}
-                  </h5>
-                  <i
-                    className="pi pi-tag p-mr-2"
-                    style={{ color: "var(--green-500)" }}
-                  />
-                  <span className="p-text-bold p-text-uppercase">
-                    Chương:{" "}
+        {data.map((item) => (
+          <Link
+            onClick={() => handleMangaClick(item)}
+            to={`/truyen-tranh/${item.slug}`}
+            key={item._id}
+            className="w-full h-[100px] p-1 bg-[whitesmoke] border-2  rounded-md cursor-pointer grid grid-cols-12  mb-4 items-center hover:shadow-xl hover:bg-slate-300 transition duration-300"
+          >
+            <div className="col-span-10 lg:col-span-8  gap-4 ml-1 flex ">
+              <img
+                className="w-[70px] h-[80px] rounded-md shadow-md"
+                src={`${domain}/${item.thumb_url} `}
+                loading="lazy"
+                alt={item.slug}
+              />
+              <span className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+                <h4 className="text-lg lg:text-xl text-black font-semibold">
+                  {item.name}
+                </h4>
+                <h5 className="text-sm lg:text-lg text-gray-500 font-normal">
+                  {item.origin_name}
+                </h5>
+                <h6 className="block lg:hidden">
+                  <span className="rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1">
+                    {" "}
+                    Chapter:{" "}
                     {item.chaptersLatest && item.chaptersLatest[0]
                       ? item.chaptersLatest[0].chapter_name
-                      : "Loading..."}
+                      : "Loading..."}{" "}
                   </span>
-                </div>
-              </Link>
-            </Card>
-          ))}
-        </div>
+                </h6>
+              </span>
+            </div>
+            <span className="col-span-2  rounded-2xl text-right lg:block hidden">
+              <span className="text-white bg-blue-200 p-2 rounded-lg w-40 bg-gradient-to-tr from-sky-500 to-indigo-500">
+                Chapter:{" "}
+                {item.chaptersLatest && item.chaptersLatest[0]
+                  ? item.chaptersLatest[0].chapter_name
+                  : "Loading..."}
+              </span>
+            </span>
+            <span className="col-span-2 lg:block hidden text-base font-mono text-center  false">
+              {formatUpdatedAt(item.updatedAt)}
+            </span>
+          </Link>
+        ))}
         <Pagination
           className="flex items-end justify-end"
           color="primary"
@@ -121,7 +133,6 @@ const TruyenMoi = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-             
               to={`/danh-sach/truyen-moi?page=${item.page}`}
               {...item}
             />

@@ -84,7 +84,7 @@ const DangPhatHanh = () => {
           </div>
         ))}
         <Pagination
-          className='flex items-end justify-end'
+          className='flex text-orange-400 items-end justify-end'
           color='primary'
           shape='rounded'
           onChange={handlePageChange}
@@ -92,6 +92,7 @@ const DangPhatHanh = () => {
           count={totalPages}
           renderItem={(item) => (
             <PaginationItem
+            
               component={Link}
               to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
               {...item}

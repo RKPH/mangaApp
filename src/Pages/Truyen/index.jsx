@@ -23,6 +23,7 @@ const Truyen = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  
   console.log("Tab name: ", slug);
   useEffect(() => {
     const fetchData = async () => {
@@ -47,7 +48,7 @@ const Truyen = () => {
   useEffect(() => {
     console.log(chapters);
   }, []);
-  
+
   return (
     <div className="w-full min-h-[700px] p-4">
       <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row flex-col">
