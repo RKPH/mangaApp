@@ -42,7 +42,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
           className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  "
           onClose={handleClose}
         >
-          <div className="max-h-screen max-w-full m-auto px-4 text-center">
+          <div className="max-h-screen max-w-full m-auto px-40 text-center">
             <Dialog.Overlay  className="fixed  right-0 overflow-hidden  inset-0 bg-black opacity-30" />
             <div className=" inline-block  w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <div className="p-4 bg-gray-100 flex justify-between items-center sticky top-0 z-10">
@@ -97,7 +97,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                 </button>
               </div>
               <div className="flex overflow-y-auto max-h-[calc(100vh-10rem)]">
-                <div className="hidden lg:block lg:w-1/3 p-4 overflow-y-auto max-h-[700px] border-r border-gray-200">
+                <div className="hidden lg:block lg:w-1/5 p-4 overflow-y-auto max-h-[700px] border-r border-gray-200">
                   {Data.item?.chapters?.map((chapters) =>
                     chapters.server_data.map((item) => (
                       <div
@@ -114,7 +114,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                     ))
                   )}
                 </div>
-                <div className="w-full lg:w-2/3 p-4 overflow-y-auto max-h-[700px] flex flex-col items-center">
+                <div className="w-full lg:w-4/5 p-4 overflow-y-auto max-h-[700px] flex flex-col items-center">
                   <h3 ref={scrollRef} className="text-xl mb-4">
                     Chapter: {chapter?.chapter_name}
                   </h3>
@@ -122,7 +122,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                     {chapter?.chapter_image.map((image, index) => (
                       <img
                         key={index}
-                        className="mx-auto"
+                        className="mx-auto w-full"
                         src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
                         alt={`page ${image.image_page}`}
                       />

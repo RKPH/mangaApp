@@ -100,7 +100,7 @@ const Header = () => {
       >
         <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-cyan-800 ">
           {/* Menu for manga */}
-          <div className=" h-[250px]  w-full mt-20 bg-yellow-500 px-5">
+          <div className=" h-[250px]  w-full mt-20  px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
               Menu -
             </div>
@@ -108,8 +108,8 @@ const Header = () => {
               <Link
                 to="/Home"
                 className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
-                  activeTab === "Home" ? "bg-red-200" : ""
-                }  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+                  activeTab === "Home" ? "bg-black" : ""
+                }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
                   localStorage.removeItem("currentPage");
                   handleTabClick("Home");
@@ -176,7 +176,7 @@ const Header = () => {
             </div>
           </div>
           {/* Menu for setting */}
-          <div className=" h-[200px]  w-full bg-red-200 mt-10 px-5">
+          <div className=" h-[200px]  w-full mt-10 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
               General -
             </div>

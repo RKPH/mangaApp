@@ -34,6 +34,7 @@ const Truyen = () => {
         setImage(response.data.data.seoOnPage.seoSchema.image);
         setChaptersa(response.data.data.item.chapters);
         setIsLoading(false); // Set loading state to false
+        
       } catch (error) {
         console.error("Error fetching data:", error);
         setIsLoading(false); // Set loading state to false in case of error

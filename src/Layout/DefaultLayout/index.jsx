@@ -48,7 +48,7 @@ const DefaultLayout = ({ children }) => {
             </div>
             <div className="w-full h-[280px]  ">
 
-              <Link to="/Home" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'Home' ? 'bg-red-200' : ''}  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}        
+              <Link to="/Home" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'Home' ? 'bg-black' : ''}  cursor-pointer  hover:bg-black item my-1 transition duration-300`}        
               onClick={() => {
                 localStorage.removeItem('currentPage')
                 handleTabClick('Home')
@@ -57,7 +57,7 @@ const DefaultLayout = ({ children }) => {
                 <span className="mr-2 flex items-center"><HomeIcon/></span> Home
               </Link>
 
-              <Link to='/danh-sach/the-loai' className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'the-loai' ? 'bg-red-200' : ''}  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+              <Link to='/danh-sach/the-loai' className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'the-loai' ? 'bg-black' : ''}  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
               onClick={() => {
                 localStorage.removeItem('currentPage')
                 handleTabClick('the-loai')}}
@@ -65,18 +65,18 @@ const DefaultLayout = ({ children }) => {
                 <span className="mr-2 flex items-center"><CollectionsBookmarkIcon/></span> Discover comics
               </Link>
 
-              <Link to="/danh-sach/truyen-moi" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'truyen-moi' ? 'bg-red-200' : ''}  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}     
+              <Link to="/danh-sach/truyen-moi" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'truyen-moi' ? 'bg-black' : ''}  cursor-pointer  hover:bg-black item my-1 transition duration-300`}     
               onClick={() => handleTabClick('truyen-moi')}
               >
                 <span className="mr-2 flex items-center"><MenuBookIcon/></span> Truyen moi
               </Link>
 
-              <Link to="/danh-sach/dang-phat-hanh" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'dang-phat-hanh' ? 'bg-red-200' : ''}  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}     
+              <Link to="/danh-sach/dang-phat-hanh" className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'dang-phat-hanh' ? 'bg-black' : ''}  cursor-pointer  hover:bg-black item my-1 transition duration-300`}     
               onClick={() => handleTabClick('dang-phat-hanh')}
               >
                 <span className="mr-2 flex items-center"><WhatshotIcon/></span> Đang phát hành
               </Link>
-              <div className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'Sắp ra mắt' ? 'bg-red-200' : ''}  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}     
+              <div className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${activeTab === 'Sắp ra mắt' ? 'bg-black' : ''}  cursor-pointer  hover:bg-black item my-1 transition duration-300`}     
               onClick={() => handleTabClick('Sắp ra mắt')}
               >
                 <span className="mr-2 flex items-center"><NewReleasesIcon/></span> Sắp ra mắt
@@ -90,15 +90,15 @@ const DefaultLayout = ({ children }) => {
             </div>
             <div className="w-full h-[148px]  ">
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center"><SettingsIcon/></span> Settings
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center"><EuroIcon/></span> Donate
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center"><Face6Icon/></span> Sign in
               </div>
              

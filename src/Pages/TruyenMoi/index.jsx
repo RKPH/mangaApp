@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addManga } from "../../Redux/MangaSlice"; // Import the action creator from your slice
-
+import "./index.css"
 import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
@@ -44,12 +44,16 @@ const TruyenMoi = () => {
               response.data.data.params.pagination.totalItemsPerPage
           )
         );
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [currentPage, data]);
 
   const handleMangaClick = (manga) => {
@@ -69,7 +73,7 @@ const TruyenMoi = () => {
 
   return (
     <div className="w-full  min-h-screen px-10">
-      <div ref={scrollRef} className="h-full w-full py-2">
+      <div  className="h-full w-full py-2">
         <h1 className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
           {page === 1
             ? "TRUYEN TRANH MỚI CẬP NHẬT MỖI NGÀY"
