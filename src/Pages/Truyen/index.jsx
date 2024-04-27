@@ -1,6 +1,7 @@
 import axios from "axios";
 import LazyLoad from "react-lazyload"; // Import LazyLoad component
 
+import { Skeleton } from 'primereact/skeleton';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BreadCrumb } from 'primereact/breadcrumb';
@@ -33,7 +34,7 @@ const Truyen = () => {
         setData(response.data.data); // Set data when fetched
         setImage(response.data.data.seoOnPage.seoSchema.image);
         setChaptersa(response.data.data.item.chapters);
-        setIsLoading(false); // Set loading state to false
+        setIsLoading(false)
       } catch (error) {
         console.error("Error fetching data:", error);
         setIsLoading(false); // Set loading state to false in case of error
@@ -46,12 +47,12 @@ const Truyen = () => {
  
   return (
     <div className="w-full min-h-[700px] bg-white px-4">
-      <div className="bg-[whitesmoke] px-4 py-2">
+      <div className="bg-[whitesmoke] px-4 py-4 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row flex-col">
           <div className="col-span-12 lg:col-span-2 relative">
             <LazyLoad height={200} once>
               {isLoading ? (
-                <div>Loading...</div>
+                <Skeleton width="252px" height="345px" color="red" className="w-[252rem] h-[345rem]" ></Skeleton>
               ) : (
                 <img
                   src={Image}
@@ -110,6 +111,7 @@ const Truyen = () => {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-10">
+        
             <h1 className="text-center text-lg lg:text-3xl text-orange-600 uppercase font-bold">
               {" "}
               {Data && Data.item && Data.item.name

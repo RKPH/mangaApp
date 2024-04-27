@@ -51,7 +51,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                 </h2>
                 <div>
                   <Listbox  value={apiData} onChange={setApiData}>
-                    <Listbox.Button  className="border-2 border-gray-300 rounded-md p-4">Choose a chapter: chương {chapter?.chapter_name}</Listbox.Button>
+                    <Listbox.Button  className="border-2 border-gray-300 rounded-md p-2">Choose a chapter: chương {chapter?.chapter_name}</Listbox.Button>
                     <Transition
                       as={Fragment}
                       leave="transition ease-in duration-100"
@@ -118,11 +118,11 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                   <h3 ref={scrollRef} className="text-xl mb-4">
                     Chapter: {chapter?.chapter_name}
                   </h3>
-                  <div className="w-full flex flex-col items-center">
+                  <div className="w-full">
                     {chapter?.chapter_image.map((image, index) => (
                       <img
                         key={index}
-                        className="lg:w-3/4 w-full"
+                        className="w-full"
                         src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
                         alt={`page ${image.image_page}`}
                       />
