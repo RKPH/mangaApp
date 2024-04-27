@@ -9,7 +9,11 @@ const readMangasSlice = createSlice({
   initialState,
   reducers: {
     addManga: (state, action) => {
-      state.push(action.payload);
+      const mangaExists = state.some(manga => manga._id === action.payload._id);
+      // If it doesn't exist, add it to the state
+      if (!mangaExists) {
+        state.push(action.payload);
+      }
     },
   },
 });

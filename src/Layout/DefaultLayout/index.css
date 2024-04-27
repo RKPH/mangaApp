@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 5px;
 }
 
 /* Track */
@@ -15,8 +15,6 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+  scale: 2;
 }
 
-.item:active {
-    background-color: pink;
-  }

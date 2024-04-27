@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const Modal = ({ handleClose, isOpen, Data, api }) => {
-  console.log("api: ", api);
+
   const [chapter, setChapter] = useState(null);
   const [domain, setDomain] = useState("");
   const [apiData, setApiData] = useState("");
@@ -115,7 +115,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                   )}
                 </div>
                 <div className="w-full lg:w-4/5 p-4 overflow-y-auto lg:max-h-full flex flex-col items-center">
-                  <h3 ref={scrollRef} className="text-xl mb-4">
+                  <h3 ref={scrollRef} className="text-xl font-semibold mb-4">
                     Chapter: {chapter?.chapter_name}
                   </h3>
                   <div className="w-full flex flex-col items-center">
@@ -127,6 +127,9 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                         alt={`page ${image.image_page}`}
                       />
                     ))}
+                  </div>
+                  <div className="w-full min-h-24 text-center flex items-center justify-center">
+                     <span className="text-xl font-bold">Vui lòng không thêm quảng cáo cá độ dưới mọi hình thức</span>
                   </div>
                 </div>
               </div>

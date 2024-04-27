@@ -55,8 +55,8 @@ const Header = () => {
         <div className="w-full h-full flex items-center   flex-row">
           {!isLargeScreen && (
             <MenuIcon
-              fontSize="40px"
-              className="inline-block  text-[40px] border-black p-1 border-2 m-1 rounded-full"
+              fontSize="25px"
+              className="inline-block  text-[25px] border-black   m-1"
               onClick={handleDrawerOpen}
             />
           )}
@@ -72,7 +72,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="w-1/2 h-full lg:pr-16   flex items-center justify-center  px-2">
+      <div className="w-1/2 h-full lg:pr-16   flex items-center justify-end  px-2">
         <div className="hidden lg:block w-[417px]  h-12 lg:ml-5 lg:mr-5 ">
           <form className="w-full h-full relative ">
             <input
@@ -89,10 +89,10 @@ const Header = () => {
           </form>
         </div>
 
-        <button className=" w-16 p-1 lg:w-[108px] h-12 text-center text-gray-50 lg:text-base text-sm bg-cyan-800 font-semibold font-['Lato'] mr-5 rounded-md hover:opacity-35">
+        <button className=" w-12 p-1 lg:w-[108px] lg:h-12 h-10 text-center text-gray-50 lg:text-base text-[10px] bg-cyan-800 font-semibold font-['Lato'] lg:mr-5 mr-2 rounded-md hover:opacity-35">
           Log in
         </button>
-        <button className="w-16 p-1 lg:w-[108px] border h-12 text-center text-stone-900 lg:text-base text-sm  font-semibold font-['Lato']  mr-5 rounded-md hover:border-2 hover:border-black">
+        <button className="w-12 p-1 lg:w-[108px] border lg:h-12 h-10 text-center text-stone-900 lg:text-base text-[10px]  font-semibold font-['Lato']  mr-5 rounded-md hover:border-2 hover:border-black">
           Sign up
         </button>
       </div>
@@ -101,7 +101,7 @@ const Header = () => {
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-cyan-800 ">
+        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-orange-600">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20  px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
@@ -127,8 +127,8 @@ const Header = () => {
               <Link
                 to="/danh-sach/the-loai"
                 className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
-                  activeTab === "the-loai" ? "bg-red-200" : ""
-                }  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+                  activeTab === "the-loai" ? "bg-black" : ""
+                }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
                   localStorage.removeItem("currentPage");
                   handleTabClick("the-loai");
@@ -143,8 +143,8 @@ const Header = () => {
               <Link
                 to="/danh-sach/truyen-moi"
                 className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
-                  activeTab === "truyen-moi" ? "bg-red-200" : ""
-                }  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+                  activeTab === "truyen-moi" ? "bg-black" : ""
+                }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("truyen-moi")}
               >
                 <span className="mr-2 flex items-center">
@@ -156,8 +156,8 @@ const Header = () => {
               <Link
                 to="/danh-sach/dang-phat-hanh"
                 className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
-                  activeTab === "dang-phat-hanh" ? "bg-red-200" : ""
-                }  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+                  activeTab === "dang-phat-hanh" ? "bg-black" : ""
+                }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("dang-phat-hanh")}
               >
                 <span className="mr-2 flex items-center">
@@ -167,8 +167,8 @@ const Header = () => {
               </Link>
               <div
                 className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
-                  activeTab === "Sắp ra mắt" ? "bg-red-200" : ""
-                }  cursor-pointer  hover:bg-red-200 item my-1 transition duration-300`}
+                  activeTab === "Sắp ra mắt" ? "bg-black" : ""
+                }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("Sắp ra mắt")}
               >
                 <span className="mr-2 flex items-center">
@@ -184,21 +184,21 @@ const Header = () => {
               General -
             </div>
             <div className="w-full h-[148px]  ">
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <SettingsIcon />
                 </span>{" "}
                 Settings
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <EuroIcon />
                 </span>{" "}
                 Donate
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-red-200 transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <Face6Icon />
                 </span>{" "}

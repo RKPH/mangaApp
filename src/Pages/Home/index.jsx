@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Card } from "primereact/card";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { ArrowRight } from "@mui/icons-material";
 const Home = () => {
   const [data, setData] = useState([]);
   const [data2, setData2] = useState(
@@ -97,26 +98,26 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen bg-slate-200 flex flex-col items-center overflow-hidden px-4 lg:px-10">
       <div className="h-full w-full py-2 bg-white p-4">
-        <h1 className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
         TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
           <>
-            <h2 className="text-lg lg:text-2xl text-orange-500 text-left mb-5">
+            <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left mb-5">
               Nội dung bạn đã đọc
             </h2>
             <Disclosure>
               {({ open }) => (
                 <>
                   <Disclosure.Button className="flex w-full justify-between rounded-lg bg-[whitesmoke] px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
-                    <span>Your reading list</span>
+                    <span>Danh sách tiếp tục xem ({data2.length})</span>
                     <KeyboardArrowDownIcon
                       className={`${
                         open ? "rotate-180 transform" : ""
                       } h-5 w-5 text-purple-500`}
                     />
                   </Disclosure.Button>
-                  <Disclosure.Panel className="px-2 pb-2 pt-4 text-sm text-gray-500 max-h-[700px] overflow-y-auto">
+                  <Disclosure.Panel className="px-2 pb-2 pt-4 text-sm text-gray-500 max-h-[500px] overflow-y-auto">
                     {data2.map((item) => (
                       <Link
                         to={`/truyen-tranh/${item.slug}`}
@@ -168,10 +169,10 @@ const Home = () => {
           </>
         )}
         <div className="w-full  my-10">
-          <h2 className="text-lg lg:text-2xl text-orange-500 text-left">
-            Comic
+          <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left mb-5">
+            Comic<ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0"/>
           </h2>
-          <Slider className="mt-10" {...settings}>
+          <Slider {...settings}>
             {data.map((item) => (
               <Card
                 key={item.name}
@@ -202,14 +203,14 @@ const Home = () => {
           </Slider>
         </div>
         <div className="w-full my-10">
-          <h2 className="text-lg lg:text-2xl text-orange-500 text-left ">
-            Comic
+          <h2 className="text-lg lg:text-2xl font-[helvetica] font-semibold text-orange-500 text-left mb-5 ">
+            Action
           </h2>
-          <Slider className="mt-10" {...settings}>
+          <Slider  {...settings}>
             {data.map((item) => (
               <Card
                 key={item.name}
-                className="w-[100px]  h-[400px] m-1 rounded-t-2xl shadow-md"
+                className="w-[100px]  h-[400px] m-1 rounded-2xl shadow-md"
               >
                 <img
                   src={`${domain}/${item.thumb_url}`}
@@ -224,7 +225,7 @@ const Home = () => {
                     className="pi pi-tag p-mr-2"
                     style={{ color: "var(--green-500)" }}
                   />
-                  <span className="p-text-bold p-text-uppercase">
+                  <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1">
                     Chương:{" "}
                     {item.chaptersLatest && item.chaptersLatest[0]
                       ? item.chaptersLatest[0].chapter_name
