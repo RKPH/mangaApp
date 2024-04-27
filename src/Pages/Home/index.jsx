@@ -19,6 +19,7 @@ const Home = () => {
     "https://otruyenapi.com/uploads/comics/"
   );
 
+  //fecth for histroy read
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,6 +34,7 @@ const Home = () => {
 
     fetchData();
   }, []);
+
   const formatUpdatedAt = (timestamp) => {
     const date = new Date(timestamp);
     const year = date.getFullYear();
@@ -48,9 +50,8 @@ const Home = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 3,
-    
-    
+    slidesToScroll: 5,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -64,28 +65,40 @@ const Home = () => {
       {
         breakpoint: 600,
         settings: {
+          className: "center",
+          centerMode: true,
+          infinite: true,
+          centerPadding: "40px",
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
           dots: false,
+        
         },
       },
       {
         breakpoint: 350,
         settings: {
           slidesToShow: 1,
+          className: "center",
+          centerMode: true,
+          infinite: true,
+          centerPadding: "35px",
+        
           slidesToScroll: 1,
+          initialSlide: 2,
           dots: false,
+          
         },
       },
     ],
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center px-10">
-      <div className="h-full w-full py-2">
+    <div className="w-full min-h-screen bg-slate-200 flex flex-col items-center px-10">
+      <div className="h-full w-full py-2 bg-white p-4">
         <h1 className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
-          TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY
+        TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
           <>
@@ -95,7 +108,7 @@ const Home = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-[whitesmoke] px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
                     <span>Your reading list</span>
                     <KeyboardArrowDownIcon
                       className={`${
@@ -167,7 +180,7 @@ const Home = () => {
                 <img
                   src={`${domain}/${item.thumb_url}`}
                   alt={item.slug}
-                  className="h-[300px] w-full rounded-2xl"
+                  className="h-[300px] w-full rounded-t-2xl"
                 />
                 <div className="px-2">
                   <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap ">
@@ -196,7 +209,7 @@ const Home = () => {
             {data.map((item) => (
               <Card
                 key={item.name}
-                className="w-[100px]  h-[400px] m-1 rounded-2xl shadow-md"
+                className="w-[100px]  h-[400px] m-1 rounded-t-2xl shadow-md"
               >
                 <img
                   src={`${domain}/${item.thumb_url}`}
@@ -222,7 +235,6 @@ const Home = () => {
             ))}
           </Slider>
         </div>
-        
       </div>
     </div>
   );

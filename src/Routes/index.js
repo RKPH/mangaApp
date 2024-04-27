@@ -3,8 +3,7 @@ import Category from "../Pages/Category";
 import TruyenMoi from "../Pages/TruyenMoi";
 import DangPhatHanh from "../Pages/DangPhatHanh";
 import Truyen from "../Pages/Truyen";
-
-
+import CategoryManga from "../Pages/CategoryManga";
 export const publicRoutes = [ 
     {
         path: "/",
@@ -20,6 +19,10 @@ export const publicRoutes = [
         path: "/danh-sach/the-loai",
         component: Category,
         
+    },
+    {
+        path:"/the-loai/:slug",
+        component:CategoryManga,
     },
     {
         path: "/danh-sach/truyen-moi",

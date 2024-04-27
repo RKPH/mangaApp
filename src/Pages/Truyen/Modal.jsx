@@ -42,9 +42,9 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
           className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-red-200  "
           onClose={handleClose}
         >
-          <div className="max-h-screen max-w-full m-auto lg:px-10 text-center">
+          <div className="max-h-screen max-w-full m-auto lg:px-20 text-center">
             <Dialog.Overlay  className="fixed  right-0 overflow-hidden  inset-0 bg-black opacity-30" />
-            <div className=" inline-block  w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+            <div className=" inline-block max-h-[1000px] w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
               <div className="p-4 bg-gray-100 flex justify-between items-center sticky top-0 z-10">
                 <h2 className="hidden lg:inline text-2xl font-bold">
                   {chapter?.comic_name}
@@ -114,11 +114,11 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                     ))
                   )}
                 </div>
-                <div className="w-full lg:w-4/5 p-4 overflow-y-auto max-h-[700px] flex flex-col items-center">
+                <div className="w-full lg:w-4/5 p-4 overflow-y-auto lg:max-h-full flex flex-col items-center">
                   <h3 ref={scrollRef} className="text-xl mb-4">
                     Chapter: {chapter?.chapter_name}
                   </h3>
-                  <div className="grid grid-cols-1 ">
+                  <div className="w-full">
                     {chapter?.chapter_image.map((image, index) => (
                       <img
                         key={index}

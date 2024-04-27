@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 const Category = () => {
   const [domain, setCategories] = useState([]);
@@ -136,12 +136,12 @@ const Category = () => {
    return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:px-20 py-10 px-5">
       {domain.map((category) => (
-        <div key={category._id} className="bg-gray-100 p-4 rounded-md shadow-md flex items-center justify-between hover:bg-slate-300 transition duration-300 cursor-pointer">
+        <Link to={`/the-loai/${category.slug}`} key={category._id} className="bg-gray-100 p-4 rounded-md shadow-md flex items-center justify-between hover:bg-slate-300 transition duration-300 cursor-pointer">
           <div>
             <h1 className="lg:text-lg font-semibold text-base">{category.name}</h1>
           </div>
           <div className='lg:text-[2em] text-lg'>{getCategoryEmoji(category.name)}</div> {/* Adjust the font size */}
-        </div>
+        </Link>
       ))}
     </div>
   );
