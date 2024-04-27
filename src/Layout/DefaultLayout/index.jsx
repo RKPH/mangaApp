@@ -105,8 +105,8 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div  className="lg:w-4/5 w-full overflow-y-auto mt-20 lg:ml-[20%]">
-          <div ref={scrollRef} className="w-full h-full">
+        <div  className="lg:w-4/5 w-full overflow-y-auto mt-20 z-0 lg:ml-[20%]">
+          <div ref={scrollRef} className="w-full h-full z-0">
              {children}
           </div>
         </div>
