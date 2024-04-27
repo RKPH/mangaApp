@@ -95,7 +95,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-slate-200 flex flex-col items-center px-10">
+    <div className="w-full min-h-screen bg-slate-200 flex flex-col items-center overflow-hidden px-4 lg:px-10">
       <div className="h-full w-full py-2 bg-white p-4">
         <h1 className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
         TRANG CHỦ
