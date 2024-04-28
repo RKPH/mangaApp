@@ -37,8 +37,8 @@ const DefaultLayout = ({ children }) => {
     
     <div className="w-full h-screen ">
       <Header className="w-full fixed top-0 left-0 right-0 z-[9999px] bg-white" />
-      <div className="w-full h-full flex flex-row ">
-        <div className="hidden w-0 lg:block lg:w-1/5  lg:left-0  lg:fixed mt-20 h-full bg-orange-600 ">
+      <div className="w-full h-full flex lg:flex-row flex-col">
+        <div className="hidden w-0 lg:block lg:w-1/5  lg:left-0  lg:fixed  h-full bg-orange-600 ">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20 px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
@@ -103,7 +103,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div  className="lg:w-4/5  w-full overflow-y-auto mt-20 z-0 lg:ml-[20%]">
+        <div  className="lg:w-4/5  w-full overflow-y-auto mt-20  z-0 lg:ml-[20%]">
           
              {children}
          

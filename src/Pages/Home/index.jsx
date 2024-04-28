@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./index.css";
@@ -11,11 +11,16 @@ import { Card } from "primereact/card";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
 const Home = () => {
+  const scrollRef = useRef(null);
   const [data, setData] = useState([]);
   const [data2, setData2] = useState(
     JSON.parse(localStorage.getItem("readMangas")) || []
   );
-
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
   const [domain, setDomain] = useState(
     "https://otruyenapi.com/uploads/comics/"
   );
@@ -74,7 +79,6 @@ const Home = () => {
           slidesToScroll: 1,
           initialSlide: 2,
           dots: false,
-        
         },
       },
       {
@@ -85,11 +89,10 @@ const Home = () => {
           centerMode: true,
           infinite: true,
           centerPadding: "35px",
-        
+
           slidesToScroll: 1,
           initialSlide: 2,
           dots: false,
-          
         },
       },
     ],
@@ -97,9 +100,9 @@ const Home = () => {
 
   return (
     <div className="w-full min-h-screen bg-slate-200 flex flex-col items-center overflow-hidden px-4 lg:px-10">
-      <div className="h-full w-full py-2 bg-white p-4">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
-        TRANG CHỦ
+      <div ref={scrollRef} className="h-full w-full py-2 bg-white p-4">
+        <h1  className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
+          TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
           <>
@@ -170,7 +173,8 @@ const Home = () => {
         )}
         <div className="w-full  my-10">
           <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left mb-5">
-            Comic<ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0"/>
+            Comic
+            <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
           </h2>
           <Slider {...settings}>
             {data.map((item) => (
@@ -206,7 +210,7 @@ const Home = () => {
           <h2 className="text-lg lg:text-2xl font-[helvetica] font-semibold text-orange-500 text-left mb-5 ">
             Action
           </h2>
-          <Slider  {...settings}>
+          <Slider {...settings}>
             {data.map((item) => (
               <Card
                 key={item.name}

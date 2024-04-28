@@ -60,7 +60,7 @@ const DangPhatHanh = () => {
   
 
   return (
-    <div  className="w-full  min-h-screen px-2 lg:px-10">
+    <div  className="w-full h-full px-2 z-0 lg:px-10">
       <div className="h-full w-full py-2">
         <h1 ref={scrollRef} className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
           {page === 1

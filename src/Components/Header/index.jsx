@@ -47,7 +47,7 @@ const Header = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   return (
-    <header className="w-full h-20 bg-[whitesmoke] shadow-lg border-b-2 border-black flex flex-row items-center fixed top-0 left-0 right-0 z-[9999px]">
+    <header className="w-full  h-20 bg-[whitesmoke] shadow-lg border-b-2 border-black flex flex-row items-center fixed top-0 left-0 right-0 z-[9999px]">
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full  pl-4  lg:pl-16 flex items-center">
         <div className="w-full h-full flex items-center   flex-row">
