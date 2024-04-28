@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }) => {
 
   // Khởi tạo activeTab từ URL
   const [activeTab, setActiveTab] = useState(location.pathname.split('/')[2] || 'Home');
-  const scrollRef2 = useRef(null);
+
   useEffect(() => {
     const currentTab = location.pathname.split('/')[2] || 'Home';
     if (currentTab !== activeTab) {
@@ -35,7 +35,7 @@ const DefaultLayout = ({ children }) => {
   };
   return (
     
-    <div className="w-full h-screen ">
+    <div className="w-full h-screen">
       <Header className="w-full fixed top-0 left-0 right-0 z-[9999px] bg-white" />
       <div className="w-full h-full flex lg:flex-row flex-col">
         <div className="hidden w-0 lg:block lg:w-1/5 mt-20  lg:left-0  lg:fixed  h-full bg-orange-600 ">
@@ -103,7 +103,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div  className="lg:w-4/5  w-full overflow-hidden overflow-y-auto mt-20  z-0 lg:ml-[20%]">
+        <div  className="lg:w-4/5 h-full  w-full overflow-hidden overflow-y-auto mt-20  z-0 lg:ml-[20%]">
           
              {children}
          
