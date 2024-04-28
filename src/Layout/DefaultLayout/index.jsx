@@ -30,9 +30,7 @@ const DefaultLayout = ({ children }) => {
   // Lưu trạng thái mới của activeTab vào localStorage
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    
 
   };
   return (
