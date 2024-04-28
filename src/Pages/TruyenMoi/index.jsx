@@ -60,9 +60,9 @@ const TruyenMoi = () => {
   };
 
   return (
-    <div ref={scrollRef} className="w-full  min-h-screen bg-white px-2 lg:px-14">
+    <div  className="w-full  min-h-screen bg-white px-2 lg:px-14">
       <div className="h-full w-full bg-[whitesmoke] px-4 py-2">
-        <h1 className="text-lg lg:text-3xl text-orange-500  text-center mb-4">
+        <h1 ref={scrollRef} className="text-lg lg:text-3xl text-orange-500  text-center mb-4">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
             : `TRUYỆN TRANH MỚI-TRANG ${page}`}
