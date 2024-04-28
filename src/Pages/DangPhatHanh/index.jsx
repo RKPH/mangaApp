@@ -60,8 +60,8 @@ const DangPhatHanh = () => {
   
 
   return (
-    <div ref={scrollRef} className=" px-2 z-0 lg:px-10">
-      <div className=" bg-[whitesmoke] py-2">
+    <div ref={scrollRef} className="w-full h-full px-2 z-0 lg:px-10">
+      <div className=" bg-[whitesmoke] ">
         <h1 ref={scrollRef} className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
           {page === 1
             ? "TRUYEN TRANH MỚI CẬP NHẬT MỖI NGÀY"

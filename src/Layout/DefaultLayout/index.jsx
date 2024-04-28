@@ -35,7 +35,7 @@ const DefaultLayout = ({ children }) => {
   return (
     <div className="w-full h-screen ">
       <Header className="w-full   bg-white" />
-      <div className="w-full h-full pt-20  flex lg:flex-row ">
+      <div className="w-full h-full  pt-20 flex lg:flex-row ">
         <div className="hidden lg:block lg:w-1/5  lg:left-0  lg:fixed  h-full bg-orange-600 ">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20 px-5">
@@ -142,7 +142,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div className="lg:w-4/5 w-full overflow-y-auto  z-0 lg:ml-[20%]">
+        <div className="lg:w-4/5 w-full h-full overflow-y-auto  z-0 lg:ml-[20%]">
           {children}
         </div>
       </div>

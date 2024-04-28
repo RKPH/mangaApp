@@ -80,7 +80,7 @@ const CategoryManga = () => {
       ref={scrollRef}
       className="w-full   bg-white px-2 z-0 lg:px-10"
     >
-      <div className=" w-full bg-[whitesmoke]  py-2">
+      <div className=" w-full h-full bg-[whitesmoke]  py-2">
         <BreadCrumb
           model={items}
           home={home}

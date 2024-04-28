@@ -46,7 +46,7 @@ const Truyen = () => {
   
  
   return (
-    <div  className="w-full min-h-[1000px] bg-white px-4">
+    <div  className="w-full  bg-white px-4">
       <div className="bg-[whitesmoke] px-4 py-4 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row flex-col">
           <div className="col-span-12 lg:col-span-2 relative">
