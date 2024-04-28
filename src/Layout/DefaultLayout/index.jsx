@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }) => {
 
   // Khởi tạo activeTab từ URL
   const [activeTab, setActiveTab] = useState(location.pathname.split('/')[2] || 'Home');
-  const scrollRef = useRef(null);
+  const scrollRef2 = useRef(null);
   useEffect(() => {
     const currentTab = location.pathname.split('/')[2] || 'Home';
     if (currentTab !== activeTab) {
@@ -39,7 +39,7 @@ const DefaultLayout = ({ children }) => {
     
     <div className="w-full h-screen ">
       <Header className="w-full fixed top-0 left-0 right-0 z-[9999px] bg-white" />
-      <div className="w-full h-full flex flex-row">
+      <div className="w-full h-full flex flex-row ">
         <div className="hidden w-0 lg:block lg:w-1/5  lg:left-0  lg:fixed mt-20 h-full bg-orange-600 ">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20 px-5">
@@ -105,7 +105,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div ref={scrollRef} className="lg:w-4/5  w-full overflow-y-auto mt-20 z-0 lg:ml-[20%]">
+        <div  className="lg:w-4/5  w-full overflow-y-auto mt-20 z-0 lg:ml-[20%]">
           
              {children}
          
