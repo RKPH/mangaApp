@@ -35,7 +35,7 @@ const DefaultLayout = ({ children }) => {
   };
   return (
     
-    <div className="w-full min-h-[1240px] ">
+    <div className="w-full h-screen ">
       <Header className="w-full   bg-white" />
       <div className="w-full h-full  flex lg:flex-row flex-col">
         <div className="hidden lg:block lg:w-1/5 mt-20  lg:left-0  lg:fixed  h-full bg-orange-600 ">
@@ -103,7 +103,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div  className="lg:w-4/5   w-full overflow-hidden overflow-y-auto mt-20  z-0 lg:ml-[20%]">
+        <div  className="lg:w-4/5 h  w-full overflow-y-auto mt-20  z-0 lg:ml-[20%]">
           
              {children}
          
