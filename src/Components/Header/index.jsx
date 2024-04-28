@@ -34,9 +34,7 @@ const Header = () => {
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
     setIsDrawerOpen(false);
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    
 
   };
   const handleDrawerOpen = () => {
