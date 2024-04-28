@@ -103,7 +103,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
         </div>
-        <div  className="lg:w-4/5 min-h-fit w-full overflow-y-auto mt-20  z-0 lg:ml-[20%]">
+        <div  className="lg:w-4/5  w-full overflow-hidden overflow-y-auto mt-20  z-0 lg:ml-[20%]">
           
              {children}
          
