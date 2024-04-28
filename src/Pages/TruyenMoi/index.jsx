@@ -60,8 +60,8 @@ const TruyenMoi = () => {
   };
 
   return (
-    <div  className=" bg-white  px-2 z-0 lg:px-10">
-      <div ref={scrollRef} className=" bg-[whitesmoke]  py-2">
+    <div ref={scrollRef} className=" bg-white  px-2 z-0 lg:px-10">
+      <div  className=" bg-[whitesmoke]  py-2">
         <h1  className="text-lg lg:text-3xl text-orange-500  text-center mb-4">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"

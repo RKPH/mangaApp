@@ -99,8 +99,8 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center overflow-x-hidden bg-white px-2  z-0 lg:px-10">
-      <div ref={scrollRef} className=" w-full py-2 bg-[whitesmoke] px-6">
+    <div ref={scrollRef} className="w-full flex flex-col items-center overflow-x-hidden bg-white px-2  z-0 lg:px-10">
+      <div  className=" w-full py-2 bg-[whitesmoke] px-6">
         <h1  className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
           TRANG CHỦ
         </h1>
