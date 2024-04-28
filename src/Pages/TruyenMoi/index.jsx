@@ -60,7 +60,7 @@ const TruyenMoi = () => {
   };
 
   return (
-    <div  className="w-full   min-h-screen bg-white px-2 lg:px-10">
+    <div  className="w-full  bg-white px-2 lg:px-10">
       <div ref={scrollRef} className="h-full w-full bg-[whitesmoke]  py-2">
         <h1  className="text-lg lg:text-3xl text-orange-500  text-center mb-4">
           {page === 1

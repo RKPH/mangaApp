@@ -78,7 +78,7 @@ const CategoryManga = () => {
   return (
     <div
       ref={scrollRef}
-      className="w-full  min-h-screen bg-white px-2 lg:px-14"
+      className="w-full   bg-white px-2 lg:px-14"
     >
       <div className="h-full w-full bg-[whitesmoke] px-4 py-2">
         <BreadCrumb
