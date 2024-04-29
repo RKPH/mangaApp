@@ -1,10 +1,10 @@
 import axios from "axios";
 import LazyLoad from "react-lazyload"; // Import LazyLoad component
 
-import { Skeleton } from 'primereact/skeleton';
+import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BreadCrumb } from 'primereact/breadcrumb';
+import { BreadCrumb } from "primereact/breadcrumb";
 import Modal from "./Modal";
 
 const Truyen = () => {
@@ -34,7 +34,7 @@ const Truyen = () => {
         setData(response.data.data); // Set data when fetched
         setImage(response.data.data.seoOnPage.seoSchema.image);
         setChaptersa(response.data.data.item.chapters);
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         setIsLoading(false); // Set loading state to false in case of error
@@ -43,16 +43,20 @@ const Truyen = () => {
 
     fetchData();
   }, []);
-  
- 
+
   return (
-    <div  className="w-full  bg-white px-4">
-      <div className="bg-[whitesmoke] px-4 py-4 pb-10">
+    <div className="w-full  bg-white py-4  dark:bg-[#18191A] ">
+      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row flex-col">
           <div className="col-span-12 lg:col-span-2 relative">
             <LazyLoad height={200} once>
               {isLoading ? (
-                <Skeleton width="252px" height="345px" color="red" className="w-[252rem] h-[345rem]" ></Skeleton>
+                <Skeleton
+                  width="252px"
+                  height="345px"
+                  color="red"
+                  className="w-[252rem] h-[345rem]"
+                ></Skeleton>
               ) : (
                 <img
                   src={Image}
@@ -110,22 +114,23 @@ const Truyen = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-10">
-        
+          <div className="col-span-12 lg:col-span-10 flex flex-col gap-y-2">
             <h1 className="text-center text-lg lg:text-3xl text-orange-600 uppercase font-bold">
               {" "}
               {Data && Data.item && Data.item.name
                 ? Data.item.name
                 : "Undefined"}
             </h1>
-            <h2 className="text-center text-sm lg:text-xl text-gray-400 uppercase font-semibold">
+            <h2 className="text-center text-sm lg:text-xl text-gray-400 dark:text-white uppercase font-semibold">
               {Data && Data.item && Data.item.origin_name
                 ? Data.item.origin_name
                 : "Undefined"}
             </h2>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
             <div>
-              <span className="font-bold text-black">Trạng thái: </span>
+              <span className="font-bold text-black dark:text-white mr-1">
+                Trạng thái:{" "}
+              </span>
               <span className="px-2 text-white font-semibold rounded-full bg-gradient-to-l from-orange-300 via-ophim-border to-orange-500">
                 {Data && Data.item && Data.item.status
                   ? Data.item.status
@@ -133,13 +138,19 @@ const Truyen = () => {
               </span>
             </div>
             <div>
-              <span className="font-bold text-black">Tác giả: </span>
-              {Data && Data.item && Data.item.author
-                ? Data.item.author
-                : "Undefined"}
+              <span className="font-bold text-black dark:text-white mr-1">
+                Tác giả:{" "}
+              </span>
+              <span className="text-black dark:text-white mr-1">
+                {Data && Data.item && Data.item.author
+                  ? Data.item.author
+                  : "Undefined"}
+              </span>
             </div>
             <div className="lg:flex lg:flex-row">
-              <span className="font-bold  text-black   ">Thể loại: </span>
+              <span className="font-bold  text-black dark:text-white mr-1  ">
+                Thể loại:{" "}
+              </span>
               <span className="gap-1 flex flex-wrap ">
                 {Data && Data.item && Data.item.category
                   ? Data.item.category.map((item) => (
@@ -154,9 +165,10 @@ const Truyen = () => {
               </span>
             </div>
             <div className="mt-2">
-              <div className="max-h-28 overflow-auto  bg-white p-2 border rounded-lg">
+              <div className="max-h-28 overflow-auto  bg-white dark:bg-[#242520] p-2 border rounded-lg">
                 <article>
                   <p
+                    className="dark:text-white"
                     dangerouslySetInnerHTML={{ __html: Data?.item?.content }}
                   ></p>
                 </article>
@@ -165,7 +177,7 @@ const Truyen = () => {
           </div>
         </div>
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  ">
-          <h3 className="text-center text-lg lg:text-3xl text-black uppercase font-bold">
+          <h3 className="text-center text-lg lg:text-3xl text-black dark:text-white uppercase font-bold">
             Danh sách chương
           </h3>
           <div className="p-4 min-h-[400px] max-h-[500px] overflow-y-auto w-full mt-2 border rounded-xl">
@@ -173,14 +185,14 @@ const Truyen = () => {
               {Data.item?.chapters?.map((chapter) =>
                 chapter.server_data.map((item) => (
                   <div
-                    className="border-b border-solid py-[5px] hover:grayscale cursor-pointer"
+                    className="border-b border-solid py-[5px] hover:grayscale cursor-pointer  "
                     key={item.chapter_name}
                     onClick={() => {
                       handleClickOpen();
                       setSelectedChapter(item.chapter_api_data);
                     }}
                   >
-                    <span className="text-base lg:text-base  text-black font-semibold">
+                    <span className="text-base lg:text-base  text-black font-semibold dark:text-white">
                       Chương {item.chapter_name}
                     </span>
                   </div>

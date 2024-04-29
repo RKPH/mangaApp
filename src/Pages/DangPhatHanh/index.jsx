@@ -11,7 +11,7 @@ const DangPhatHanh = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
   const [data, setData] = useState([]);
-  const domain= "https://otruyenapi.com/uploads/comics/"
+  const domain = "https://otruyenapi.com/uploads/comics/";
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
@@ -57,15 +57,13 @@ const DangPhatHanh = () => {
     dispatch(addManga(manga));
   };
 
-  
-
   return (
-    <div ref={scrollRef} className="w-full h-full px-2 z-0 lg:px-10">
-      <div className=" bg-[whitesmoke] ">
-        <h1 ref={scrollRef} className="text-lg lg:text-3xl text-orange-500 text-center mb-5">
+    <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
+      <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
           {page === 1
-            ? "TRUYEN TRANH MỚI CẬP NHẬT MỖI NGÀY"
-            : `TRUYEN TRANH MỚI-TRANG ${page}`}
+            ? "TRUYỆN ĐANG PHÁT HÀNH"
+            : `TTRUYỆN ĐANG PHÁT HÀNH-TRANG ${page}`}
         </h1>
 
         <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-10 gap-4">
@@ -73,7 +71,7 @@ const DangPhatHanh = () => {
             data.map((item) => (
               <Card
                 key={item.name}
-                className="rounded-2xl shadow-md hover:scale-105"
+                className="rounded-2xl shadow-md hover:scale-105 border"
                 onClick={handleMangaClick}
               >
                 <Link to={`/truyen-tranh/${item.slug}`}>
@@ -83,14 +81,14 @@ const DangPhatHanh = () => {
                     className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="p-text-bold p-text-uppercase">
+                    <span className="text-black dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name

@@ -6,7 +6,7 @@ import "./index.css";
 import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { Card } from "primereact/card";
+import { Card } from "primereact/card"; 
 const TruyenMoi = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
@@ -28,7 +28,19 @@ const TruyenMoi = () => {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const handleFilterChange = (event) => {
+    setSortingOrder(event.target.value);
+  };
 
+  const [sortingOrder, setSortingOrder] = useState("moi-nhat");
+  const sortedData = data.slice().sort((a, b) => {
+    // Compare updatedAt timestamps for sorting
+    if (sortingOrder === "moi-nhat") {
+      return new Date(b.updatedAt) - new Date(a.updatedAt);
+    } else {
+      return new Date(a.updatedAt) - new Date(b.updatedAt);
+    }
+  });
   useEffect(() => {
     setCurrentPage(page);
 
@@ -60,37 +72,48 @@ const TruyenMoi = () => {
   };
 
   return (
-    <div ref={scrollRef} className=" bg-white  px-2 z-0 lg:px-10">
-      <div  className=" bg-[whitesmoke]  py-2">
-        <h1  className="text-lg lg:text-3xl text-orange-500  text-center mb-4">
+    <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
+      <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-2 py-2">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
             : `TRUYỆN TRANH MỚI-TRANG ${page}`}
         </h1>
+        <div className="w-full bg-white flex items-center rounded-md p-4 gap-2 ">
+          <select
+            className="mb-4 p-2 border right-0 border-black"
+            value={sortingOrder}
+            onChange={handleFilterChange}
+          >
+            <option value="moi-nhat">Mới nhất</option>
+            <option value="cu-nhat">Cũ nhất</option>
+          </select>
+        </div>
 
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-10 gap-4">
-          {data &&
-            data.map((item) => (
+        {/* row of cards */}
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-12 gap-4">
+          {sortedData &&
+            sortedData.map((item) => (
               <Card
                 key={item.name}
-                className="rounded-2xl shadow-md hover:scale-105"
+                className="rounded-2xl shadow-md hover:scale-105 border"
                 onClick={() => handleMangaClick(item)}
               >
-                <Link  to={`/truyen-tranh/${item.slug}`}>
+                <Link to={`/truyen-tranh/${item.slug}`}>
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
                     className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="p-text-bold p-text-uppercase">
+                    <span className="text-black dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
@@ -102,7 +125,7 @@ const TruyenMoi = () => {
             ))}
         </div>
         <Pagination
-          className="flex items-end justify-end"
+          className="flex items-end lg:justify-end justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
@@ -110,6 +133,7 @@ const TruyenMoi = () => {
           count={totalPages}
           renderItem={(item) => (
             <PaginationItem
+              className="text-white"
               component={Link}
               to={`/danh-sach/truyen-moi?page=${item.page}`}
               {...item}

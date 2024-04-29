@@ -55,7 +55,7 @@ const Home = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 5,
 
     responsive: [
@@ -99,9 +99,9 @@ const Home = () => {
   };
 
   return (
-    <div ref={scrollRef} className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white px-2  z-0 lg:px-10">
-      <div  className=" w-full py-2 bg-[whitesmoke] px-6">
-        <h1  className="text-lg lg:text-3xl font-bold text-orange-500 text-center mb-5">
+    <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 ">
+      <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-10">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
@@ -112,12 +112,12 @@ const Home = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-[whitesmoke] px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+                  <Disclosure.Button className="flex w-full justify-between rounded-lg bg-slate-300 px-4 py-2 text-left text-sm font-medium text-black hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
                     <span>Danh sách tiếp tục xem ({data2.length})</span>
                     <KeyboardArrowDownIcon
                       className={`${
                         open ? "rotate-180 transform" : ""
-                      } h-5 w-5 text-purple-500`}
+                      } h-5 w-5 text-black`}
                     />
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-2 pb-2 pt-4 text-sm text-gray-500 max-h-[500px] overflow-y-auto">
@@ -171,71 +171,76 @@ const Home = () => {
             </Disclosure>
           </>
         )}
-        <div className="w-full  my-10">
-          <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left mb-5">
-            Comic
-            <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
-          </h2>
-          <Slider {...settings}>
+        <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left my-5">
+          Comic
+          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
+        </h2>
+        <div className="w-full my-10 px-4 ">
+          <Slider className="pr-3 " {...settings}>
             {data.map((item) => (
               <Card
                 key={item.name}
-                className="w-[100px]  h-[400px] m-1 rounded-2xl shadow-md"
+                className="rounded-2xl m-1 shadow-md  border"
               >
-                <img
-                  src={`${domain}/${item.thumb_url}`}
-                  alt={item.slug}
-                  className="h-[300px] w-full rounded-t-2xl"
-                />
-                <div className="px-2">
-                  <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap ">
-                    {item.name}
-                  </h5>
-                  <i
-                    className="pi pi-tag p-mr-2"
-                    style={{ color: "var(--green-500)" }}
+                <Link to={`/truyen-tranh/${item.slug}`}>
+                  <img
+                    src={`${domain}/${item.thumb_url}`}
+                    alt={item.slug}
+                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
                   />
-                  <span className="p-text-bold p-text-uppercase">
-                    Chương:{" "}
-                    {item.chaptersLatest && item.chaptersLatest[0]
-                      ? item.chaptersLatest[0].chapter_name
-                      : "Loading..."}
-                  </span>
-                </div>
+                  <div className="p-2">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                      {item.name}
+                    </h5>
+                    <i
+                      className="pi pi-tag p-mr-2"
+                      style={{ color: "var(--green-500)" }}
+                    />
+                    <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                      Chương:{" "}
+                      {item.chaptersLatest && item.chaptersLatest[0]
+                        ? item.chaptersLatest[0].chapter_name
+                        : "Loading..."}
+                    </span>
+                  </div>
+                </Link>
               </Card>
             ))}
           </Slider>
         </div>
-        <div className="w-full my-10">
-          <h2 className="text-lg lg:text-2xl font-[helvetica] font-semibold text-orange-500 text-left mb-5 ">
-            Action
-          </h2>
-          <Slider {...settings}>
+        <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left my-5">
+          Comic
+          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
+        </h2>
+        <div className="w-full my-10 px-4 ">
+          <Slider className="pr-3" {...settings}>
             {data.map((item) => (
               <Card
                 key={item.name}
-                className="w-[100px]  h-[400px] m-1 rounded-2xl shadow-md"
+                className="rounded-2xl m-1 shadow-md  border"
               >
-                <img
-                  src={`${domain}/${item.thumb_url}`}
-                  alt={item.slug}
-                  className="h-[300px] w-full rounded-2xl"
-                />
-                <div className="px-2">
-                  <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap ">
-                    {item.name}
-                  </h5>
-                  <i
-                    className="pi pi-tag p-mr-2"
-                    style={{ color: "var(--green-500)" }}
+                <Link to={`/truyen-tranh/${item.slug}`}>
+                  <img
+                    src={`${domain}/${item.thumb_url}`}
+                    alt={item.slug}
+                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
                   />
-                  <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1">
-                    Chương:{" "}
-                    {item.chaptersLatest && item.chaptersLatest[0]
-                      ? item.chaptersLatest[0].chapter_name
-                      : "Loading..."}
-                  </span>
-                </div>
+                  <div className="p-2">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                      {item.name}
+                    </h5>
+                    <i
+                      className="pi pi-tag p-mr-2"
+                      style={{ color: "var(--green-500)" }}
+                    />
+                    <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                      Chương:{" "}
+                      {item.chaptersLatest && item.chaptersLatest[0]
+                        ? item.chaptersLatest[0].chapter_name
+                        : "Loading..."}
+                    </span>
+                  </div>
+                </Link>
               </Card>
             ))}
           </Slider>

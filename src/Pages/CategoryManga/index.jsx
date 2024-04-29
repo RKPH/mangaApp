@@ -53,7 +53,7 @@ const CategoryManga = () => {
           )
         );
         setType(response.data.data.breadCrumb);
-        setIsloading(false)
+        setIsloading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -78,15 +78,15 @@ const CategoryManga = () => {
   return (
     <div
       ref={scrollRef}
-      className="w-full   bg-white px-2 z-0 lg:px-10"
+      className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0"
     >
-      <div className=" w-full h-full bg-[whitesmoke]  py-2">
+      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-2 py-2">
         <BreadCrumb
           model={items}
           home={home}
-          className="p-2 shadow-md  min-w-fit max-w-fit border  rounded-md mb-5"
+          className="p-2 shadow-md  min-w-fit max-w-fit border dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-3xl text-orange-500 uppercase text-center mb-2">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 uppercase text-center mb-2">
           {page === 1
             ? `TRUYỆN THỂ LOẠI ${slug} `
             : `TRUYỆN THỂ LOẠI ${slug}-TRANG ${page}`}
@@ -97,29 +97,24 @@ const CategoryManga = () => {
             data.map((item) => (
               <Card
                 key={item.name}
-                className="rounded-2xl shadow-md hover:scale-105"
-                onClick={handleMangaClick}
+                className="rounded-2xl shadow-md hover:scale-105 border"
+                onClick={() => handleMangaClick(item)}
               >
-                <Link api={type[0].name} to={`/truyen-tranh/${item.slug}`}>
-                  {isLoading ? (
-                    <Skeleton variant="rectangular" className="rounded-t-2xl" width={199} height={200}  />
-
-                  ) : (
-                    <img
-                      src={`${domain}/${item.thumb_url}`}
-                      alt={item.slug}
-                      className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
-                    />
-                  )}
+                <Link to={`/truyen-tranh/${item.slug}`}>
+                  <img
+                    src={`${domain}/${item.thumb_url}`}
+                    alt={item.slug}
+                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+                  />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="p-text-bold p-text-uppercase">
+                    <span className="text-black dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
