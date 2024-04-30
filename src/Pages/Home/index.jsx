@@ -161,7 +161,7 @@ const Home = () => {
         )}
         {categories.map((item) => (
           <div key={item._id} className="my-10">
-            <Link to="/the-loai/action">
+            <Link to={`/the-loai/${item.slug}`}>
               <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
                 {item.name}
                 <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ml-0" />
