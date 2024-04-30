@@ -3,7 +3,7 @@ import LazyLoad from "react-lazyload"; // Import LazyLoad component
 
 import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BreadCrumb } from "primereact/breadcrumb";
 import Modal from "./Modal";
 
@@ -150,16 +150,17 @@ const Truyen = () => {
             <div className="lg:flex lg:flex-row">
               <span className="font-bold  text-black dark:text-white mr-1  ">
                 Thể loại:{" "}
-              </span>
+              </span> 
               <span className="gap-1 flex flex-wrap ">
                 {Data && Data.item && Data.item.category
                   ? Data.item.category.map((item) => (
-                      <span
+                      <Link
+                        to={`/the-loai/${item.slug}`}
                         key={item._id}
                         className="px-2 lg:ml-1 text-white font-semibold text-sm rounded-full bg-gradient-to-l from-sky-300 via-ophim-border to-sky-500 hover:grayscale cursor-pointer whitespace-nowrap"
                       >
                         {item.name}
-                      </span>
+                      </Link>
                     ))
                   : "Undefined"}
               </span>

@@ -37,6 +37,7 @@ const DefaultLayout = ({ children }) => {
   // Lưu trạng thái mới của activeTab vào localStorage
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+    setIsDrawerOpen(false);
   };
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
@@ -52,8 +53,8 @@ const DefaultLayout = ({ children }) => {
     <div ref={scrollRef} className=" w-full h-full">
       <Header className="w-full   bg-white" />
       <div className="w-full h-12 lg:px-32 px-4 bg-orange-500 dark:bg-[#242526] lg:block flex items-center justify-start">
-        <nav className="w-full h-full lg:flex  items-center hidden   ">
-          <ul className="list-none h-12  flex   items-center font-['Lato']  text-white ">
+        <nav className="w-full h-full lg:flex  items-center hidden  ">
+          <ul className="list-none h-12  flex   items-center font-['Lato'] gap-x-2  text-white ">
             <Link
               to="/Home"
               className="hover:bg-orange-400 p-[10px] cursor-pointer text-lg  font-['Lato'] "
@@ -85,7 +86,7 @@ const DefaultLayout = ({ children }) => {
               to="/danh-sach/the-loai"
               className="hover:bg-orange-400  p-[10px]  cursor-pointer text-lg  font-['Lato'] "
             >
-              Category
+              Hoàn thành
             </Link>
             <Link
               to="/danh-sach/truyen-moi"
@@ -106,7 +107,7 @@ const DefaultLayout = ({ children }) => {
         )}
       </div>
       <div className="w-full  flex lg:flex-row ">
-        <div className=" lg:px-32 px-4 w-full   bg-white dark:bg-[#18191A] min-h-screen">
+        <div className=" lg:px-32 px-2 w-full   bg-white dark:bg-[#18191A] min-h-screen">
           {children}
         </div>
       </div>
@@ -115,7 +116,7 @@ const DefaultLayout = ({ children }) => {
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-orange-600">
+        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-orange-600 dark:bg-[#242526]">
           {/* Menu for manga */}
           <div className=" h-[250px]  w-full mt-20  px-5">
             <div className="text-gray-50 text-opacity-50 text-lg font-bold font-['Lato'] tracking-wide px-2">
@@ -124,7 +125,7 @@ const DefaultLayout = ({ children }) => {
             <div className="w-full h-[280px]  ">
               <Link
                 to="/Home"
-                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
+                className={`h-12 w-full flex items-center flex-wrap  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide ${
                   activeTab === "Home" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
@@ -140,7 +141,7 @@ const DefaultLayout = ({ children }) => {
 
               <Link
                 to="/danh-sach/the-loai"
-                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
+                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide ${
                   activeTab === "the-loai" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
@@ -156,7 +157,7 @@ const DefaultLayout = ({ children }) => {
 
               <Link
                 to="/danh-sach/truyen-moi"
-                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
+                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide ${
                   activeTab === "truyen-moi" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("truyen-moi")}
@@ -169,7 +170,7 @@ const DefaultLayout = ({ children }) => {
 
               <Link
                 to="/danh-sach/dang-phat-hanh"
-                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
+                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide ${
                   activeTab === "dang-phat-hanh" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("dang-phat-hanh")}
@@ -180,7 +181,7 @@ const DefaultLayout = ({ children }) => {
                 Đang phát hành
               </Link>
               <div
-                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide ${
+                className={`h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide ${
                   activeTab === "Sắp ra mắt" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("Sắp ra mắt")}
@@ -198,21 +199,21 @@ const DefaultLayout = ({ children }) => {
               General -
             </div>
             <div className="w-full h-[148px]  ">
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] overflow-ellipsis whitespace-nowrap tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <SettingsIcon />
                 </span>{" "}
                 Settings
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer overflow-ellipsis whitespace-nowrap hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <EuroIcon />
                 </span>{" "}
                 Donate
               </div>
 
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer  hover:bg-black transition duration-300">
+              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-lg font-bold font-['Lato'] tracking-wide  cursor-pointer overflow-ellipsis whitespace-nowrap hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center">
                   <Face6Icon />
                 </span>{" "}

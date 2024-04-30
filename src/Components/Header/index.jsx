@@ -35,7 +35,7 @@ const Header = () => {
   const HandleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
-  const iconColor = theme === "dark" ? "black" : "white";
+
   return (
     <header
       ref={scrollRef}
@@ -81,7 +81,16 @@ const Header = () => {
             </button>
           </form>
         </div>
-
+        <div
+          className="rounded-full cursor-pointer border mx-4 border-orange-500 lg:hidden block dark:border-white"
+          onClick={HandleTheme}
+        >
+          <LightbulbIcon
+            fontSize="80px"
+            className="text-[32px] text-orange-500 dark:text-white p-2 "
+            color="orange"
+          />
+        </div>
         <button className=" w-12 p-1 lg:w-[108px] lg:h-12 h-10 text-center text-gray-50  lg:text-base text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato'] lg:mr-5 mr-2 rounded-md hover:opacity-35">
           Log in
         </button>

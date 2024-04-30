@@ -100,8 +100,8 @@ const Home = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 ">
-      <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-10">
+      <div className=" w-full min-h-screen py-6 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-5">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
@@ -175,7 +175,7 @@ const Home = () => {
           Comic
           <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
         </h2>
-        <div className="w-full my-10 px-4 ">
+        <div className="w-full my-5 px-4 ">
           <Slider className="pr-3 " {...settings}>
             {data.map((item) => (
               <Card
@@ -210,9 +210,9 @@ const Home = () => {
         </div>
         <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left my-5">
           Comic
-          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
+          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left  ml-0" />
         </h2>
-        <div className="w-full my-10 px-4 ">
+        <div className="w-full my-5 px-4 ">
           <Slider className="pr-3" {...settings}>
             {data.map((item) => (
               <Card

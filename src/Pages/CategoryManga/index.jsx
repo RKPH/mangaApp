@@ -10,7 +10,6 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Card } from "primereact/card";
 import { BreadCrumb } from "primereact/breadcrumb";
-import Skeleton from "@mui/material/Skeleton";
 
 const CategoryManga = () => {
   const dispatch = useDispatch();
@@ -63,12 +62,22 @@ const CategoryManga = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
-    console.log("có bị render lại ko");
+    let i = 0;
+    console.log("có bị render lại ko", i + 1);
   }, [page]);
   const items = [
     { label: "Danh sách", url: "/danh-sach/the-loai" },
     { label: `${type[0]?.name}`, url: `${type[0]?.slug}` },
-    { label: `${type[1]?.name}` },
+    {
+      label: `${type[1]?.name}`,
+      template: () => (
+        <li>
+          <a className="text-primary font-semibold text-orange-500">
+            {type[1]?.name}
+          </a>
+        </li>
+      ),
+    },
   ];
   const home = { label: "Trang chủ", url: "/" };
   const handleMangaClick = (manga) => {
@@ -84,7 +93,7 @@ const CategoryManga = () => {
         <BreadCrumb
           model={items}
           home={home}
-          className="p-2 shadow-md  min-w-fit max-w-fit border dark:text-white rounded-md mb-5"
+          className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
         <h1 className="text-lg lg:text-3xl font-bold text-orange-500 uppercase text-center mb-2">
           {page === 1
@@ -92,7 +101,7 @@ const CategoryManga = () => {
             : `TRUYỆN THỂ LOẠI ${slug}-TRANG ${page}`}
         </h1>
 
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-10 gap-4">
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-5 gap-4">
           {data &&
             data.map((item) => (
               <Card
@@ -126,7 +135,7 @@ const CategoryManga = () => {
             ))}
         </div>
         <Pagination
-          className="flex items-end justify-end"
+          className="flex items-end lg:justify-end justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
@@ -135,7 +144,8 @@ const CategoryManga = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`/the-loai/${slug}?page=${item.page}`}
+              className="text-white dark:text-white"
+              to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
               {...item}
             />
           )}

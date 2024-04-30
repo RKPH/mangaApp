@@ -6,6 +6,7 @@ import "./index.css";
 import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
+
 import { Card } from "primereact/card";
 const DangPhatHanh = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const DangPhatHanh = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=${page}`
+          `https://otruyenapi.com/v1/api/danh-sach/dang-phat-hanh?page=${page}`
         );
         setData(response.data.data.items);
         setTotalPages(
@@ -66,7 +67,7 @@ const DangPhatHanh = () => {
             : `TTRUYỆN ĐANG PHÁT HÀNH-TRANG ${page}`}
         </h1>
 
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-10 gap-4">
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-5 gap-4">
           {data &&
             data.map((item) => (
               <Card
@@ -100,7 +101,7 @@ const DangPhatHanh = () => {
             ))}
         </div>
         <Pagination
-          className="flex items-end justify-end"
+          className="flex items-end lg:justify-end justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
@@ -109,7 +110,8 @@ const DangPhatHanh = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              to={`/danh-sach/truyen-moi?page=${item.page}`}
+              className="text-white dark:text-white"
+              to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
               {...item}
             />
           )}
