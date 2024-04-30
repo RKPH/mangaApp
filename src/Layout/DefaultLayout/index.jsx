@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { Link, useLocation } from "react-router-dom";
-
+import axios from "axios";
 //icon
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
@@ -17,6 +17,9 @@ import Face6Icon from "@mui/icons-material/Face6";
 //compoent
 import Drawer from "@mui/material/Drawer";
 import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
+import Tippy from "@tippyjs/react/headless";
+import "tippy.js/themes/light.css";
 
 const DefaultLayout = ({ children }) => {
   const location = useLocation();
@@ -26,6 +29,7 @@ const DefaultLayout = ({ children }) => {
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
   );
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   useEffect(() => {
     const currentTab = location.pathname.split("/")[2] || "Home";
@@ -33,6 +37,22 @@ const DefaultLayout = ({ children }) => {
       setActiveTab(currentTab);
     }
   }, [location]);
+  const [domain, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://otruyenapi.com/v1/api/the-loai"
+        );
+        setCategories(response.data.data.items);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Lưu trạng thái mới của activeTab vào localStorage
   const handleTabClick = (tabName) => {
@@ -48,7 +68,7 @@ const DefaultLayout = ({ children }) => {
   };
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
-
+  let timeoutId;
   return (
     <div ref={scrollRef} className=" w-full h-full">
       <Header className="w-full   bg-white" />
@@ -62,12 +82,65 @@ const DefaultLayout = ({ children }) => {
               {" "}
               Home
             </Link>
-            <Link
-              to="/danh-sach/the-loai"
-              className="hover:bg-orange-400  p-[10px]  cursor-pointer text-lg  font-['Lato'] "
+            <Tippy
+              interactive
+              visible={isDropdownVisible}
+              arrow={true}
+              placement="bottom-end"
+              onMouseEnter={() => {
+                clearTimeout(timeoutId);
+                setDropdownVisible(true);
+              }}
+              onClickOutside={() => setDropdownVisible(false)}
+              render={(attrs) => (
+                <div
+                  onMouseEnter={() => {
+                    clearTimeout(timeoutId);
+                    setDropdownVisible(true);
+                  }}
+                  onMouseLeave={() => setDropdownVisible(false)}
+                  className="min-w-[500px] min-h-[400px] bg-[#242426]"
+                >
+                  <div className="grid grid-cols-6 gap-4  py-10 px-5 border border-white">
+                    {domain.map((category) => (
+                      <Link
+                        to={`/the-loai/${category.slug}`}
+                        key={category._id}
+                        className="hover:opacity-60"
+                      >
+                        <div>
+                          <h1
+                            onClick={() => setDropdownVisible(false)}
+                            className=" font-semibold text-base"
+                          >
+                            {category.name}
+                          </h1>
+                        </div>
+
+                        {/* Adjust the font size */}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             >
-              Category
-            </Link>
+              <Link
+                onMouseOut={() =>
+                  (timeoutId = setTimeout(() => {
+                    setDropdownVisible(false);
+                  }, 500))
+                }
+                onMouseOver={() => {
+                  clearTimeout(timeoutId);
+                  setDropdownVisible(true);
+                }}
+                to="/danh-sach/the-loai"
+                className="hover:bg-orange-400  p-[10px]  cursor-pointer text-lg  font-['Lato'] "
+              >
+                Category
+              </Link>
+            </Tippy>
+
             <Link
               to="/danh-sach/truyen-moi"
               className="hover:bg-orange-400  p-[10px]  cursor-pointer text-lg  font-['Lato'] "
@@ -111,6 +184,7 @@ const DefaultLayout = ({ children }) => {
           {children}
         </div>
       </div>
+      <Footer />
       <Drawer
         className="w-full max-h-fit fixed left-0 right-0 top-0"
         open={isDrawerOpen}

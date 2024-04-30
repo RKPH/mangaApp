@@ -64,7 +64,7 @@ const CategoryManga = () => {
     }
     let i = 0;
     console.log("có bị render lại ko", i + 1);
-  }, [page]);
+  }, [page, slug]);
   const items = [
     { label: "Danh sách", url: "/danh-sach/the-loai" },
     { label: `${type[0]?.name}`, url: `${type[0]?.slug}` },
@@ -145,7 +145,7 @@ const CategoryManga = () => {
             <PaginationItem
               component={Link}
               className="text-white dark:text-white"
-              to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
+              to={`/the-loai/${slug}?page=${item.page}`}
               {...item}
             />
           )}

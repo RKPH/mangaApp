@@ -3,36 +3,29 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./index.css";
 import { Disclosure } from "@headlessui/react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Card } from "primereact/card";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
+import Sliders from "../../Components/Slider";
 const Home = () => {
-  const scrollRef = useRef(null);
-  const [data, setData] = useState([]);
+  //fecth for histroy read
   const [data2, setData2] = useState(
     JSON.parse(localStorage.getItem("readMangas")) || []
   );
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
+
   const [domain, setDomain] = useState(
     "https://otruyenapi.com/uploads/comics/"
   );
 
-  //fecth for histroy read
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://otruyenapi.com/v1/api/danh-sach/truyen-moi?page=1`
+          "https://otruyenapi.com/v1/api/the-loai"
         );
-        setData(response.data.data.items);
+        setCategories(response.data.data.items.slice(0, 7));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -40,7 +33,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-
   const formatUpdatedAt = (timestamp) => {
     const date = new Date(timestamp);
     const year = date.getFullYear();
@@ -71,10 +63,8 @@ const Home = () => {
       {
         breakpoint: 600,
         settings: {
-          className: "center",
-          centerMode: true,
           infinite: true,
-          centerPadding: "40px",
+
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 2,
@@ -85,10 +75,8 @@ const Home = () => {
         breakpoint: 350,
         settings: {
           slidesToShow: 1,
-          className: "center",
-          centerMode: true,
+
           infinite: true,
-          centerPadding: "35px",
 
           slidesToScroll: 1,
           initialSlide: 2,
@@ -100,13 +88,13 @@ const Home = () => {
 
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 ">
-      <div className=" w-full min-h-screen py-6 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-5">
+      <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:dark:text-blue-400 text-center mb-20">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
-          <>
-            <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left mb-5">
+          <div className="my-10 w-full">
+            <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
               Nội dung bạn đã đọc
             </h2>
             <Disclosure>
@@ -169,82 +157,19 @@ const Home = () => {
                 </>
               )}
             </Disclosure>
-          </>
+          </div>
         )}
-        <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left my-5">
-          Comic
-          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left ml-0" />
-        </h2>
-        <div className="w-full my-5 px-4 ">
-          <Slider className="pr-3 " {...settings}>
-            {data.map((item) => (
-              <Card
-                key={item.name}
-                className="rounded-2xl m-1 shadow-md  border"
-              >
-                <Link to={`/truyen-tranh/${item.slug}`}>
-                  <img
-                    src={`${domain}/${item.thumb_url}`}
-                    alt={item.slug}
-                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
-                  />
-                  <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
-                      {item.name}
-                    </h5>
-                    <i
-                      className="pi pi-tag p-mr-2"
-                      style={{ color: "var(--green-500)" }}
-                    />
-                    <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
-                      Chương:{" "}
-                      {item.chaptersLatest && item.chaptersLatest[0]
-                        ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
-                    </span>
-                  </div>
-                </Link>
-              </Card>
-            ))}
-          </Slider>
-        </div>
-        <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 text-left my-5">
-          Comic
-          <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 text-left  ml-0" />
-        </h2>
-        <div className="w-full my-5 px-4 ">
-          <Slider className="pr-3" {...settings}>
-            {data.map((item) => (
-              <Card
-                key={item.name}
-                className="rounded-2xl m-1 shadow-md  border"
-              >
-                <Link to={`/truyen-tranh/${item.slug}`}>
-                  <img
-                    src={`${domain}/${item.thumb_url}`}
-                    alt={item.slug}
-                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
-                  />
-                  <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
-                      {item.name}
-                    </h5>
-                    <i
-                      className="pi pi-tag p-mr-2"
-                      style={{ color: "var(--green-500)" }}
-                    />
-                    <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
-                      Chương:{" "}
-                      {item.chaptersLatest && item.chaptersLatest[0]
-                        ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
-                    </span>
-                  </div>
-                </Link>
-              </Card>
-            ))}
-          </Slider>
-        </div>
+        {categories.map((item) => (
+          <div key={item._id} className="my-10">
+            <Link to="/the-loai/action">
+              <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
+                {item.name}
+                <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ml-0" />
+              </h2>
+            </Link>
+            <Sliders data={item.slug} />
+          </div>
+        ))}
       </div>
     </div>
   );
