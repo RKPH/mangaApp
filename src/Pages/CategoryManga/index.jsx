@@ -97,7 +97,7 @@ const CategoryManga = () => {
             : `TRUYỆN THỂ LOẠI ${slug}-TRANG ${page}`}
         </h1>
 
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 lg:gap-5 gap-4">
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 lg:gap-5 gap-4">
           {data &&
             data.map((item) => (
               <Card
