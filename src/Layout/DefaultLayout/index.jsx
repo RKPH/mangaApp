@@ -17,7 +17,7 @@ import Face6Icon from "@mui/icons-material/Face6";
 //compoent
 import Drawer from "@mui/material/Drawer";
 import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
+import FooterComponent from "../../Components/Footer";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
 
@@ -184,7 +184,7 @@ const DefaultLayout = ({ children }) => {
           {children}
         </div>
       </div>
-      <Footer />
+      <FooterComponent />
       <Drawer
         className="w-full max-h-fit fixed left-0 right-0 top-0"
         open={isDrawerOpen}
