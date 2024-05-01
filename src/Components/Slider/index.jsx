@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import Skeleton from "@mui/material/Skeleton";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -74,32 +74,44 @@ const Sliders = ({ data }) => {
   return (
     <div className="w-full px-2">
       <Slider {...settings}>
-        {datas.map((item) => (
-          <Card key={item?.name} className="rounded-2xl  m-1 shadow-md  border">
-            <Link to={`/truyen-tranh/${item?.slug}`}>
-              <img
-                src={`${domain}/${item?.thumb_url}`}
-                alt={item?.slug}
-                className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+        {datas.length === 0
+          ? [1, 1, 1, 1, 1].map(() => (
+              <Skeleton
+                key=""
+                height={400}
+                shape="rectangle"
+                animation="wave"
               />
-              <div className="p-2">
-                <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
-                  {item?.name}
-                </h5>
-                <i
-                  className="pi pi-tag p-mr-2"
-                  style={{ color: "var(--green-500)" }}
-                />
-                <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
-                  Chương:{" "}
-                  {item.chaptersLatest && item.chaptersLatest[0]
-                    ? item.chaptersLatest[0].chapter_name
-                    : "Loading..."}
-                </span>
-              </div>
-            </Link>
-          </Card>
-        ))}
+            ))
+          : datas.map((item) => (
+              <Card
+                key={item?.name}
+                className="rounded-2xl  m-1 shadow-md  border"
+              >
+                <Link to={`/truyen-tranh/${item?.slug}`}>
+                  <img
+                    src={`${domain}/${item?.thumb_url}`}
+                    alt={item?.slug}
+                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+                  />
+                  <div className="p-2">
+                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                      {item?.name}
+                    </h5>
+                    <i
+                      className="pi pi-tag p-mr-2"
+                      style={{ color: "var(--green-500)" }}
+                    />
+                    <span className="tfont-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                      Chương:{" "}
+                      {item.chaptersLatest && item.chaptersLatest[0]
+                        ? item.chaptersLatest[0].chapter_name
+                        : "Loading..."}
+                    </span>
+                  </div>
+                </Link>
+              </Card>
+            ))}
       </Slider>
     </div>
   );

@@ -15,11 +15,10 @@ const CategoryManga = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
   const [data, setData] = useState([]);
-  const [domain, setDomain] = useState(
-    "https://otruyenapi.com/uploads/comics/"
-  );
+  const domain = "https://otruyenapi.com/uploads/comics/";
+
   const [type, setType] = useState("");
-  const [isLoading, setIsloading] = useState(true);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
@@ -52,7 +51,6 @@ const CategoryManga = () => {
           )
         );
         setType(response.data.data.breadCrumb);
-        setIsloading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -87,7 +85,7 @@ const CategoryManga = () => {
       ref={scrollRef}
       className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0"
     >
-      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-2 py-2">
+      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
         <BreadCrumb
           model={items}
           home={home}

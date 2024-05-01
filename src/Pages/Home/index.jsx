@@ -42,48 +42,6 @@ const Home = () => {
     const seconds = String(date.getSeconds()).padStart(2, "0");
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   };
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 5,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          infinite: true,
-
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 2,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 350,
-        settings: {
-          slidesToShow: 1,
-
-          infinite: true,
-
-          slidesToScroll: 1,
-          initialSlide: 2,
-          dots: false,
-        },
-      },
-    ],
-  };
 
   //GET RANDOM SLUG
   const handleRandomSlug = async () => {

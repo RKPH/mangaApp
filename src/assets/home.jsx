@@ -10,6 +10,8 @@ import { Card } from "primereact/card";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
+
+import Logo from '../../src/assets/'
 const Home = () => {
   const scrollRef = useRef(null);
   const [data, setData] = useState([]);

@@ -58,7 +58,6 @@ const Truyen = () => {
                 <Skeleton
                   width="252px"
                   height="345px"
-                  color="red"
                   className="w-[252rem] h-[345rem]"
                 ></Skeleton>
               ) : (

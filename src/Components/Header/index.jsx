@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import Logo from "../../../public/Icey_Cure.png";
 import SearchIcon from "@mui/icons-material/Search";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
@@ -51,9 +51,9 @@ const Header = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row">
+          <Link to="/" className="flex flex-row items-center">
             <span className="text-slate-400 dark:text-white  lg:text-[40px] text-lg font-normal m-1">
-              Yuki
+              IceyCure
             </span>
 
             <span className="w-[27.61px]  text-black dark:text-white lg:text-[40px] text-lg flex items-center  font-extrabold ">
