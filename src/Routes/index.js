@@ -4,6 +4,7 @@ import TruyenMoi from "../Pages/TruyenMoi";
 import DangPhatHanh from "../Pages/DangPhatHanh";
 import Truyen from "../Pages/Truyen";
 import CategoryManga from "../Pages/CategoryManga";
+import HoanThanh from "../Pages/HoanThanh";
 export const publicRoutes = [
   {
     path: "/",
@@ -39,11 +40,11 @@ export const publicRoutes = [
   },
   {
     path: "/danh-sach/hoan-thanh",
-    component: DangPhatHanh, // Assuming Home is the component for displaying the list of new comics
+    component: HoanThanh, // Assuming Home is the component for displaying the list of new comics
   },
   {
     path: "/danh-sach/hoan-thanh/:page", // Define a dynamic route parameter for the page number
-    component: DangPhatHanh, // Assuming Home is the component for displaying the list of new comics
+    component: HoanThanh, // Assuming Home is the component for displaying the list of new comics
   },
   {
     path: "/truyen-tranh/:slug",

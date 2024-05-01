@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <header
       ref={scrollRef}
-      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] lg:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center "
+      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] lg:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center z-0 "
     >
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
@@ -75,7 +75,7 @@ const Header = () => {
             />
             <button
               type="submit"
-              className="absolute right-0 top-0 w-[50px] h-full rounded-r-3xl bg-blue dark:text-white hover:bg-slate-300 z-50 "
+              className="absolute right-0 top-0 z-0 w-[50px] h-full rounded-r-3xl bg-blue dark:text-white hover:bg-slate-300 "
             >
               <SearchIcon />
             </button>

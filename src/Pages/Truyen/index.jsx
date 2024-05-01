@@ -75,24 +75,7 @@ const Truyen = () => {
                   title="API truyện Thần Hổ Jangsan"
                   rel="noopener noreferrer"
                 >
-                  <svg
-                    stroke="currentColor"
-                    fill="none"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-6 h-6"
-                    height="1em"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M4 13h5"></path>
-                    <path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3"></path>
-                    <path d="M20 8v8"></path>
-                    <path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5"></path>
-                  </svg>
+                  Lưu truyện
                 </a>
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
@@ -150,7 +133,7 @@ const Truyen = () => {
             <div className="lg:flex lg:flex-row">
               <span className="font-bold  text-black dark:text-white mr-1  ">
                 Thể loại:{" "}
-              </span> 
+              </span>
               <span className="gap-1 flex flex-wrap ">
                 {Data && Data.item && Data.item.category
                   ? Data.item.category.map((item) => (

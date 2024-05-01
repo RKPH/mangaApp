@@ -99,7 +99,7 @@ const DefaultLayout = ({ children }) => {
                     setDropdownVisible(true);
                   }}
                   onMouseLeave={() => setDropdownVisible(false)}
-                  className="min-w-[500px] min-h-[400px] bg-[#242426]"
+                  className="min-w-[500px] min-h-[400px] dark:bg-[#242426] bg-orange-500"
                 >
                   <div className="grid grid-cols-6 gap-4  py-10 px-5 border border-white">
                     {domain.map((category) => (
@@ -156,7 +156,7 @@ const DefaultLayout = ({ children }) => {
               Đang phát hành
             </Link>
             <Link
-              to="/danh-sach/the-loai"
+              to="/danh-sach/hoan-thanh"
               className="hover:bg-orange-400  p-[10px]  cursor-pointer text-lg  font-['Lato'] "
             >
               Hoàn thành

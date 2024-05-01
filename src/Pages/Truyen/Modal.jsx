@@ -37,14 +37,14 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-white dark:bg-[#18191A] "
+          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 mt-10 bg-white dark:bg-[#18191A] "
           onClose={handleClose}
         >
           <div className="max-h-screen max-w-full m-auto lg:px-20 text-center">
-            <Dialog.Overlay className="fixed  right-0 overflow-hidden  inset-0 bg-black opacity-100" />
+            <Dialog.Overlay className="fixed  right-0 overflow-hidden  inset-0 dark:bg-black bg-white  opacity-100 z-[99999px]" />
             <div className=" inline-block  w-full my-8 overflow-hidden text-left align-middle transition-all transform bg-white dark:bg-[#242526] shadow-xl rounded-2xl">
               <div className="p-4 bg-gray-100 dark:bg-[#18191A] flex justify-between items-center sticky top-0  z-10">
-                <h2 className="hidden lg:inline text-2xl font-bold">
+                <h2 className="hidden lg:inline text-2xl font-bold dark:text-white">
                   {chapter?.comic_name}
                 </h2>
                 <div className="dark:bg-white">
