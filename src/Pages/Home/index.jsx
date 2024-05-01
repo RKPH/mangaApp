@@ -1,21 +1,20 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { Disclosure } from "@headlessui/react";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
+import ArrowRightTwoToneIcon from "@mui/icons-material/ArrowRightTwoTone";
 import Sliders from "../../Components/Slider";
 const Home = () => {
+  const navigate = useNavigate();
   //fecth for histroy read
   const [data2, setData2] = useState(
     JSON.parse(localStorage.getItem("readMangas")) || []
   );
-
-  const [domain, setDomain] = useState(
-    "https://otruyenapi.com/uploads/comics/"
-  );
+  const domain = "https://otruyenapi.com/uploads/comics/";
 
   const [categories, setCategories] = useState([]);
 
@@ -86,14 +85,60 @@ const Home = () => {
     ],
   };
 
+  //GET RANDOM SLUG
+  const handleRandomSlug = async () => {
+    try {
+      const response = await axios.get(
+        "https://otruyenapi.com/v1/api/the-loai"
+      );
+      const items = response.data.data.items;
+      const randomIndex = Math.floor(Math.random() * items.length);
+      const randomSlug = items[randomIndex].slug;
+      return randomSlug;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const fetchDataRandom = async (slugRandom) => {
+    try {
+      // Fetch data from the first page
+      const firstPageResponse = await axios.get(
+        `https://otruyenapi.com/v1/api/the-loai/${slugRandom}?page=1`
+      );
+
+      // Get the total number of pages
+      const totalPages =
+        firstPageResponse.data.data.params.pagination.totalItems /
+        firstPageResponse.data.data.params.pagination.totalItemsPerPage;
+
+      // Choose a random page
+      const randomPage = Math.floor(Math.random() * totalPages) + 1;
+
+      // Fetch data from the random page
+      const randomPageResponse = await axios.get(
+        `https://otruyenapi.com/v1/api/the-loai/${slugRandom}?page=${randomPage}`
+      );
+
+      // Get the items from the random page
+      const items = randomPageResponse.data.data.items;
+
+      // Choose a random item
+      const randomIndex = Math.floor(Math.random() * items.length);
+      const randomManga = items[randomIndex];
+
+      return randomManga.slug;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 ">
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:dark:text-blue-400 text-center mb-20">
+        <h1 className="ttext-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
-          <div className="my-10 w-full">
+          <div className="mt-5 mb-10 w-full">
             <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
               Nội dung bạn đã đọc
             </h2>
@@ -170,6 +215,24 @@ const Home = () => {
             <Sliders data={item.slug} />
           </div>
         ))}
+        <div className=" my-10 min-h-fit w-fit flex flex-col border-black dark:border-white border p-2 rounded-md ">
+          <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
+            Hôm nay nên đọc gì
+          </h2>
+          <div className="flex flex-wrap overflow-ellipsis whitespace-normal p-1 w-fit font-[helvetica] dark:text-white hover:opacity-70">
+            Bạn vẫn chưa biết nên xem gì ? Hãy để chúng tôi chọn giúp bạn
+          </div>
+          <button
+            onClick={async () => {
+              const randomSlug = await handleRandomSlug();
+              const randomManga = await fetchDataRandom(randomSlug);
+              navigate(`/truyen-tranh/${randomManga}`);
+            }}
+            className="px-2 py-4 w-fit my-1 bg-red-500 rounded-md dark:text-white hover:opacity-70 flex items-center"
+          >
+            <ArrowRightTwoToneIcon /> Xem manga ngẫu nhiên
+          </button>
+        </div>
       </div>
     </div>
   );

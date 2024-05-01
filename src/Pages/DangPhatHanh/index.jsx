@@ -91,7 +91,7 @@ const DangPhatHanh = () => {
               <Card
                 key={item.name}
                 className="rounded-2xl shadow-md hover:scale-105 border"
-                onClick={handleMangaClick}
+                onClick={() => handleMangaClick(item)}
               >
                 <Link to={`/truyen-tranh/${item.slug}`}>
                   <img

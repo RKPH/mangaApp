@@ -13,11 +13,11 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
   }, [api]);
 
   useEffect(() => {
-    let isMounted = true; // add this line
     const fetchData = async () => {
       try {
         const response = await axios.get(apiData);
-        const { item, domain_cdn } = response.data.data;
+        const item = response.data.data?.item;
+        const domain_cdn = response.data.data?.domain_cdn;
 
         // check if component is still mounted
         setChapter(item);
@@ -37,7 +37,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 mt-10 bg-white dark:bg-[#18191A] "
+          className="fixed inset-0 top-0 right-0 left-0 bottom-0 z-10 bg-white dark:bg-[#18191A] "
           onClose={handleClose}
         >
           <div className="max-h-screen max-w-full m-auto lg:px-20 text-center">
@@ -59,7 +59,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                       leaveTo="opacity-0"
                     >
                       <Listbox.Options className="absolute w-64 py-1 mt-1 overflow-auto text-base bg-white dark:bg-white  rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                        {Data.item?.chapters?.map((chapter) =>
+                        {Data.map((chapter) =>
                           chapter.server_data.map((item) => (
                             <Listbox.Option
                               key={item?.chapter_name}
@@ -73,7 +73,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
                               }
                               value={item.chapter_api_data}
                             >
-                              {({ selected, active }) => (
+                              {({ selected }) => (
                                 <>
                                   <span
                                     className={`${
@@ -97,7 +97,7 @@ const Modal = ({ handleClose, isOpen, Data, api }) => {
               </div>
               <div className="flex overflow-y-auto max-h-[calc(100vh-10rem)]">
                 <div className="hidden lg:block lg:w-1/5 p-4 overflow-y-auto  border-r border-gray-200 ">
-                  {Data.item?.chapters?.map((chapters) =>
+                  {Data.map((chapters) =>
                     chapters.server_data.map((item) => (
                       <div
                         className="border-b border-solid py-[5px] hover:grayscale cursor-pointer"

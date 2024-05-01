@@ -11,7 +11,7 @@ const Header = () => {
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
   );
-  const scrollRef = useRef(null);
+
   useEffect(() => {
     const currentTab = location.pathname.split("/")[2] || "Home";
     if (currentTab !== activeTab) {
@@ -35,10 +35,17 @@ const Header = () => {
   const HandleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   return (
     <header
-      ref={scrollRef}
+      ref={headerRef}
       className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] lg:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center z-0 "
     >
       {/* // This is the left side of the header */}

@@ -42,8 +42,12 @@ const Truyen = () => {
     };
 
     fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    console.log(Data);
+  }, []);
   return (
     <div className="w-full  bg-white py-4  dark:bg-[#18191A] ">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
@@ -139,7 +143,7 @@ const Truyen = () => {
                   ? Data.item.category.map((item) => (
                       <Link
                         to={`/the-loai/${item.slug}`}
-                        key={item._id}
+                        key={item.slug}
                         className="px-2 lg:ml-1 text-white font-semibold text-sm rounded-full bg-gradient-to-l from-sky-300 via-ophim-border to-sky-500 hover:grayscale cursor-pointer whitespace-nowrap"
                       >
                         {item.name}
@@ -166,7 +170,7 @@ const Truyen = () => {
           </h3>
           <div className="p-4 min-h-[400px] max-h-[500px] overflow-y-auto w-full mt-2 border rounded-xl">
             <div>
-              {Data.item?.chapters?.map((chapter) =>
+              {chapters.map((chapter) =>
                 chapter.server_data.map((item) => (
                   <div
                     className="border-b border-solid py-[5px] hover:grayscale cursor-pointer  "
@@ -186,9 +190,10 @@ const Truyen = () => {
           </div>
         </div>
       </div>
+
       <Modal
         isOpen={open}
-        Data={Data}
+        Data={chapters}
         api={selectedChapter}
         handleClose={handleClose}
       />

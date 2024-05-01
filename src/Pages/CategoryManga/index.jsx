@@ -71,11 +71,9 @@ const CategoryManga = () => {
     {
       label: `${type[1]?.name}`,
       template: () => (
-        <li>
-          <a className="text-primary font-semibold text-orange-500">
-            {type[1]?.name}
-          </a>
-        </li>
+        <a className="text-primary font-semibold text-orange-500">
+          {type[1]?.name}
+        </a>
       ),
     },
   ];

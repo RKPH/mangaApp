@@ -23,20 +23,21 @@ import "tippy.js/themes/light.css";
 
 const DefaultLayout = ({ children }) => {
   const location = useLocation();
-  const scrollRef = useRef(null);
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   // Khởi tạo activeTab từ URL
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
   );
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const currentTab = location.pathname.split("/")[2] || "Home";
     if (currentTab !== activeTab) {
       setActiveTab(currentTab);
     }
-  }, [location]);
+  }, [location, activeTab]);
   const [domain, setCategories] = useState([]);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const DefaultLayout = ({ children }) => {
     };
 
     fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
   // Lưu trạng thái mới của activeTab vào localStorage
@@ -70,7 +72,7 @@ const DefaultLayout = ({ children }) => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   let timeoutId;
   return (
-    <div ref={scrollRef} className=" w-full h-full">
+    <div ref={headerRef} className=" w-full h-full">
       <Header className="w-full   bg-white" />
       <div className="w-full h-12 lg:px-32 px-4 bg-orange-500 dark:bg-[#242526] lg:block flex items-center justify-start">
         <nav className="w-full h-full lg:flex  items-center hidden  ">
