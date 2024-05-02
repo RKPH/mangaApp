@@ -6,10 +6,11 @@ import Truyen from "../Pages/Truyen";
 import CategoryManga from "../Pages/CategoryManga";
 import HoanThanh from "../Pages/HoanThanh";
 import ResultPage from "../Pages/ResultPage";
+import LoginForm from "../Pages/LoginPage";
 export const publicRoutes = [
   {
     path: "/",
-    component: Home,
+    component: LoginForm,
   },
   {
     path: "/Home",
@@ -54,5 +55,9 @@ export const publicRoutes = [
   {
     path: "/result",
     component: ResultPage,
+  },
+  {
+    path: "/login",
+    component: LoginForm,
   },
 ];

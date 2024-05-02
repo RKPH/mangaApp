@@ -112,9 +112,11 @@ const Header = () => {
             color="orange"
           />
         </div>
-        <button className=" w-12 p-1 lg:w-[108px] lg:h-12 h-10 text-center text-gray-50  lg:text-base text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato'] lg:mr-5 mr-2 rounded-md hover:opacity-35">
-          Log in
-        </button>
+        <Link to="/login">
+          <button className=" w-12 p-1 lg:w-[108px] lg:h-12 h-10 text-center text-gray-50  lg:text-base text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato'] lg:mr-5 mr-2 rounded-md hover:opacity-35">
+            Log in
+          </button>
+        </Link>
         <button className="w-12 p-1 lg:w-[108px] border dark:border-none lg:h-12 h-10 text-center text-stone-900 dark:text-white lg:text-base text-[10px]  font-semibold dark:bg-[#3F94D5] font-['Lato']   rounded-md hover:border-2 hover:border-black dark:hover:opacity-35">
           Sign up
         </button>
