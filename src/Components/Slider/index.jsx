@@ -84,10 +84,7 @@ const Sliders = ({ data }) => {
               />
             ))
           : datas.map((item) => (
-              <Card
-                key={item?.name}
-                className="rounded-2xl  m-1 shadow-md  border"
-              >
+              <Card key={item?.name} className="rounded-2xl  shadow-md  border">
                 <Link to={`/truyen-tranh/${item?.slug}`}>
                   <img
                     src={`${domain}/${item?.thumb_url}`}

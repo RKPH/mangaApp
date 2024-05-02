@@ -24,7 +24,7 @@ const Home = () => {
         const response = await axios.get(
           "https://otruyenapi.com/v1/api/the-loai"
         );
-        setCategories(response.data.data.items.slice(0, 7));
+        setCategories(response.data.data.items.slice(0, 12));
       } catch (error) {
         console.error("Error fetching data:", error);
       }

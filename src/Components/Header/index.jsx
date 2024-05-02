@@ -1,16 +1,23 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import Logo from "../../../public/Icey_Cure.png";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+
 import SearchIcon from "@mui/icons-material/Search";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
 const Header = () => {
   const location = useLocation();
-
   // Khởi tạo activeTab từ URL
+  const [inputValue, setInputValue] = useState("");
+  const initialTheme = localStorage.getItem("theme") || "light";
+  const [theme, setTheme] = useState(initialTheme);
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
   );
+  const navigate = useNavigate();
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
+  };
 
   useEffect(() => {
     const currentTab = location.pathname.split("/")[2] || "Home";
@@ -18,8 +25,6 @@ const Header = () => {
       setActiveTab(currentTab);
     }
   }, [location, activeTab]);
-  const initialTheme = localStorage.getItem("theme") || "light";
-  const [theme, setTheme] = useState(initialTheme);
   // Lưu trạng thái theme vào localStorage
   useEffect(() => {
     // Save theme to local storage
@@ -51,12 +56,12 @@ const Header = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row items-center">
-            <span className="text-slate-400 dark:text-white  lg:text-[40px] text-lg font-normal m-1">
+          <Link to="/" className="flex flex-row items-center justify-between">
+            <span className="text-slate-400 dark:text-white  lg:text-[30px] text-lg font-normal m-2">
               IceyCure
             </span>
 
-            <span className="w-[27.61px]  text-black dark:text-white lg:text-[40px] text-lg flex items-center  font-extrabold ">
+            <span className="w-[27.61px]  text-black dark:text-white lg:text-[30px] text-lg flex items-center  font-extrabold ">
               雪
             </span>
           </Link>
@@ -74,8 +79,17 @@ const Header = () => {
               color="orange"
             />
           </div>
-          <form className="w-[390px] h-full relative ">
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              navigate(`/result?q=${inputValue}`);
+              setInputValue("");
+            }}
+            className="w-[390px] h-full relative "
+          >
             <input
+              value={inputValue}
+              onChange={handleInputChange}
               type="text"
               className="w-full  h-full pl-8 pr-14 py-3  rounded-3xl  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
               placeholder="Search..."
@@ -101,7 +115,7 @@ const Header = () => {
         <button className=" w-12 p-1 lg:w-[108px] lg:h-12 h-10 text-center text-gray-50  lg:text-base text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato'] lg:mr-5 mr-2 rounded-md hover:opacity-35">
           Log in
         </button>
-        <button className="w-12 p-1 lg:w-[108px] border dark:border-none lg:h-12 h-10 text-center text-stone-900 dark:text-white lg:text-base text-[10px]  font-semibold dark:bg-[#3F94D5] font-['Lato']   rounded-md hover:border-2 hover:border-black">
+        <button className="w-12 p-1 lg:w-[108px] border dark:border-none lg:h-12 h-10 text-center text-stone-900 dark:text-white lg:text-base text-[10px]  font-semibold dark:bg-[#3F94D5] font-['Lato']   rounded-md hover:border-2 hover:border-black dark:hover:opacity-35">
           Sign up
         </button>
       </div>

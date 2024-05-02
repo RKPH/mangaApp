@@ -5,6 +5,7 @@ import DangPhatHanh from "../Pages/DangPhatHanh";
 import Truyen from "../Pages/Truyen";
 import CategoryManga from "../Pages/CategoryManga";
 import HoanThanh from "../Pages/HoanThanh";
+import ResultPage from "../Pages/ResultPage";
 export const publicRoutes = [
   {
     path: "/",
@@ -49,5 +50,9 @@ export const publicRoutes = [
   {
     path: "/truyen-tranh/:slug",
     component: Truyen,
+  },
+  {
+    path: "/result",
+    component: ResultPage,
   },
 ];

@@ -5,13 +5,13 @@ import { addManga } from "../../Redux/MangaSlice"; // Import the action creator 
 
 import "./index.css";
 
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Card } from "primereact/card";
 import { BreadCrumb } from "primereact/breadcrumb";
 
-const CategoryManga = () => {
+const ResultPage = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
   const [data, setData] = useState([]);
@@ -22,6 +22,7 @@ const CategoryManga = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
+  let searchQuery = query.get("q"); // 'q' is the query parameter
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -33,7 +34,6 @@ const CategoryManga = () => {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  let { slug } = useParams();
 
   useEffect(() => {
     setCurrentPage(page);
@@ -41,7 +41,7 @@ const CategoryManga = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://otruyenapi.com/v1/api/the-loai/${slug}?page=${page}`
+          `https://otruyenapi.com/v1/api/tim-kiem?keyword=${searchQuery}&page=${page}`
         );
         setData(response.data.data.items);
         setTotalPages(
@@ -58,7 +58,7 @@ const CategoryManga = () => {
 
     fetchData();
     window.scrollTo(0, 0);
-  }, [page, slug]);
+  }, [page, searchQuery]);
   const [sortingOrder, setSortingOrder] = useState("moi-nhat");
   const handleFilterChange = (event) => {
     setSortingOrder(event.target.value);
@@ -72,18 +72,7 @@ const CategoryManga = () => {
       return new Date(a.updatedAt) - new Date(b.updatedAt);
     }
   });
-  const items = [
-    { label: "Danh sách", url: "/danh-sach/the-loai" },
-    { label: `${type[0]?.name}`, url: `${type[0]?.slug}` },
-    {
-      label: `${type[1]?.name}`,
-      template: () => (
-        <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
-          {type[1]?.name}
-        </a>
-      ),
-    },
-  ];
+  const items = [{ label: "Danh sách", url: "/danh-sach/the-loai" }];
   const home = { label: "Trang chủ", url: "/" };
   const handleMangaClick = (manga) => {
     dispatch(addManga(manga));
@@ -100,11 +89,12 @@ const CategoryManga = () => {
           home={home}
           className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 uppercase text-center mb-2">
-          {page === 1
-            ? `TRUYỆN THỂ LOẠI ${slug} `
-            : `TRUYỆN THỂ LOẠI ${slug}-TRANG ${page}`}
-        </h1>
+        <h2 className="text-lg lg:text-xl font-bold text-orange-500 dark:text-blue-400 uppercase text-left mb-1">
+          {`Tìm kiếm truyện với từ khóa: ${searchQuery}`}
+        </h2>
+        <h5 className=" font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left mb-2">
+          {`${data.length} kết quả tìm thấy `}
+        </h5>
         <select
           className=" p-2 border right-0 border-black"
           value={sortingOrder}
@@ -135,11 +125,17 @@ const CategoryManga = () => {
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
-                      Chương:{" "}
-                      {item.chaptersLatest && item.chaptersLatest[0]
-                        ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
+                    <span
+                      className={`font-semibold rounded-lg text-sm px-1 dark:text-white ${
+                        !item.score || item.score === 0
+                          ? "bg-red-500 text-white"
+                          : item.score < 1
+                          ? "bg-yellow-500 text-black"
+                          : "bg-gradient-to-br from-lime-500 to-green-600 text-white"
+                      }`}
+                    >
+                      score:{" "}
+                      {item.score ? parseFloat(item.score).toFixed(2) : "0.0"}
                     </span>
                   </div>
                 </Link>
@@ -157,7 +153,7 @@ const CategoryManga = () => {
             <PaginationItem
               component={Link}
               className="text-white dark:text-white"
-              to={`/the-loai/${slug}?page=${item.page}`}
+              to={`/result?q=${searchQuery}&page=${item.page}`}
               {...item}
             />
           )}
@@ -167,4 +163,4 @@ const CategoryManga = () => {
   );
 };
 
-export default CategoryManga;
+export default ResultPage;

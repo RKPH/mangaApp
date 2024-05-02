@@ -10,9 +10,9 @@ import {
 const FooterComponent = () => {
   return (
     <Footer bgDark>
-      <div className="w-full bg-orange-500 dark:bg-[#18191A] text-white border-t border-white">
-        <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
-          <div className="text-white">
+      <div className="w-full  bg-orange-500 dark:bg-[#18191A] text-white border-t border-white">
+        <div className="grid items-center justify-center w-full grid-cols-2 gap-4 px-6 py-8 md:grid-cols-4">
+          <div className="flex   text-justify flex-col">
             <Footer.Title className="text-white" title="Company" />
             <Footer.LinkGroup col>
               <Footer.Link className="text-white" href="#">
@@ -29,7 +29,7 @@ const FooterComponent = () => {
               </Footer.Link>
             </Footer.LinkGroup>
           </div>
-          <div>
+          <div className="flex   text-justify flex-col">
             <Footer.Title className="text-white" title="help center" />
             <Footer.LinkGroup className="text-white" col>
               <Footer.Link href="#">Discord Server</Footer.Link>
@@ -38,7 +38,7 @@ const FooterComponent = () => {
               <Footer.Link href="#">Contact Us</Footer.Link>
             </Footer.LinkGroup>
           </div>
-          <div>
+          <div className="flex   text-justify flex-col">
             <Footer.Title className="text-white" title="legal" />
             <Footer.LinkGroup className="text-white" col>
               <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -46,7 +46,7 @@ const FooterComponent = () => {
               <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
             </Footer.LinkGroup>
           </div>
-          <div>
+          <div className="flex   text-justify flex-col">
             <Footer.Title className="text-white" title="download" />
             <Footer.LinkGroup className="text-white" col>
               <Footer.Link href="#">iOS</Footer.Link>

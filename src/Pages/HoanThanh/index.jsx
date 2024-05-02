@@ -72,7 +72,7 @@ const HoanThanh = () => {
   return (
     <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN ĐÃ HOÀN THÀNH"
             : `TRUYỆN ĐÃ HOÀN THÀNH-TRANG ${page}`}
@@ -107,7 +107,7 @@ const HoanThanh = () => {
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="text-black dark:text-white">
+                    <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
@@ -129,7 +129,7 @@ const HoanThanh = () => {
             <PaginationItem
               component={Link}
               className="text-white dark:text-white text-xs  "
-              to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
+              to={`/danh-sach/hoan-thanh?page=${item.page}`}
               {...item}
             />
           )}

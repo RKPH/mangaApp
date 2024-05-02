@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Card } from "primereact/card";
+import { BreadCrumb } from "primereact/breadcrumb";
 const TruyenMoi = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
@@ -62,11 +63,19 @@ const TruyenMoi = () => {
     };
 
     fetchData();
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    window.scrollTo(0, 0);
   }, [page]);
-
+  const items = [
+    {
+      label: "Đang phát hành",
+      template: () => (
+        <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
+          Đang phát hành
+        </a>
+      ),
+    },
+  ];
+  const home = { label: "Trang chủ", url: "/" };
   const handleMangaClick = (manga) => {
     dispatch(addManga(manga));
   };
@@ -74,6 +83,11 @@ const TruyenMoi = () => {
   return (
     <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
+        <BreadCrumb
+          model={items}
+          home={home}
+          className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
+        />
         <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
@@ -112,7 +126,7 @@ const TruyenMoi = () => {
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="text-black dark:text-white">
+                    <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
@@ -134,7 +148,7 @@ const TruyenMoi = () => {
             <PaginationItem
               component={Link}
               className="text-white dark:text-white"
-              to={`/danh-sach/dang-phat-hanh?page=${item.page}`}
+              to={`/danh-sach/truyen-moi?page=${item.page}`}
               {...item}
             />
           )}
