@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+
 function LoginForm() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://localhost:7037/api/Regions?currentPage=1&totalItemsPerPage=2"
+        );
+        console.log("data: ", response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="w-full   flex flex-col  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className="h-screen w-full flex justify-center lg:px-10 px-4 py-2 bg-custom-image bg-cover bg-center bg-no-repeat">
