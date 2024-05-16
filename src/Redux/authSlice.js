@@ -34,13 +34,16 @@ export const { loginSuccess, logoutSuccess, registerSuccess } =
   authSlice.actions;
 export const loginUser = (email, password) => async (dispatch) => {
   try {
-    const response = await fetch("https://localhost:7040/api/Auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ UserEmail: email, password: password }),
-    });
+    const response = await fetch(
+      "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ UserEmail: email, password: password }),
+      }
+    );
 
     if (!response.ok) {
       const errorData = await response.text();
@@ -141,7 +144,7 @@ export const registerUser = (username, email, password) => async (dispatch) => {
 export const registerUserWithGoogle = (tokenId) => async (dispatch) => {
   try {
     const response = await fetch(
-      `http://127.0.0.1:8080/api/Auth/Register/google?idToken=${tokenId}`,
+      `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Auth/Register/google?idToken=${tokenId}`,
       {
         method: "POST",
         headers: {
