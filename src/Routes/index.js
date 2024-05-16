@@ -7,10 +7,16 @@ import CategoryManga from "../Pages/CategoryManga";
 import HoanThanh from "../Pages/HoanThanh";
 import ResultPage from "../Pages/ResultPage";
 import LoginForm from "../Pages/LoginPage";
+import SignUpForm from "../Pages/SignInPage";
+import UserLibrary from "../Pages/UserLibrary";
 export const publicRoutes = [
   {
     path: "/",
     component: LoginForm,
+  },
+  {
+    path: "/Signin",
+    component: SignUpForm,
   },
   {
     path: "/Home",
@@ -59,5 +65,9 @@ export const publicRoutes = [
   {
     path: "/login",
     component: LoginForm,
+  },
+  {
+    path: "/library",
+    component: UserLibrary,
   },
 ];

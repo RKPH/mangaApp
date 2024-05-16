@@ -88,7 +88,7 @@ const TruyenMoi = () => {
           home={home}
           className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-3xl  text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
             : `TRUYỆN TRANH MỚI-TRANG ${page}`}
@@ -104,7 +104,7 @@ const TruyenMoi = () => {
         </select>
 
         {/* row of cards */}
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 lg:gap-5 gap-4">
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
           {sortedData &&
             sortedData.map((item) => (
               <Card
@@ -116,17 +116,17 @@ const TruyenMoi = () => {
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
-                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+                    className="h-[150px] 2xl:h-[200px]  w-full rounded-t-2xl"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                    <span className="font-normal uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name

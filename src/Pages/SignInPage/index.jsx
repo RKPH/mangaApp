@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { GoogleLogin } from "@react-oauth/google";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser, loginUserWithGoogle } from "../../Redux/authSlice"; // Import loginUser
-import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { registerUser, registerUserWithGoogle } from "../../Redux/authSlice";
+import { GoogleLogin } from "@react-oauth/google";
 
-function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(""); // New state for email error message
-  const [showPassword, setShowPassword] = useState(false); // New state for password visibility
-  const [passwordError, setPasswordError] = useState(""); // New state for password error message
-  const [error, setError] = useState("");
+import { useGoogleLogin } from "@react-oauth/google";
+function SignUpForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailError, setEmailError] = useState(""); // New state for email error message
+
+  const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   useEffect(() => {
     if (auth.isAuthenticated) {
@@ -24,7 +26,7 @@ function LoginForm() {
   const responseGoogle = async (response) => {
     const tokenId = response.credential;
     console.log("token: ", tokenId);
-    const result = await dispatch(loginUserWithGoogle(tokenId)); // Dispatch the new action
+    const result = await dispatch(registerUserWithGoogle(tokenId)); // Dispatch the new action
 
     if (result.error) {
       setError(result.error);
@@ -38,18 +40,16 @@ function LoginForm() {
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
     setEmailError("");
-    setPasswordError("");
 
     // Check if fields are empty and set the corresponding error messages
     if (!email) setEmailError("Email cannot be empty");
-    if (!password) setPasswordError("Password cannot be empty");
+
     setTimeout(() => {
       setEmailError("");
-      setPasswordError("");
     }, 5000);
     if (email && password) {
       // Dispatch loginUser action with email and password
-      const result = await dispatch(loginUser(email, password));
+      const result = await dispatch(registerUser(name, email, password));
 
       if (result.error) {
         setError(result.error);
@@ -61,16 +61,39 @@ function LoginForm() {
       }
     }
   };
-
+  const register = useGoogleLogin({
+    onSuccess: (CodeResponse) => console.log(CodeResponse),
+    flow: "implicit",
+  });
   return (
-    <div className="w-full   flex flex-col  bg-white dark:bg-[#18191A] py-4 z-0">
+    <div className="w-full   flex flex-col justify-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className="h-screen w-full flex justify-center lg:px-10 px-4 py-2 bg-custom-image bg-cover bg-center bg-no-repeat">
+        {/* Your content here */}
+
         <form
           onSubmit={handleSubmit}
-          className="form bg-white p-8 rounded-xl lg:w-[500px] w-full h-fit mt-10  "
+          className="form bg-white p-8 rounded-xl lg:w-[500px]  w-full h-fit lg:mt-10  "
         >
-          {error && <p className="text-red-500 text-center">{error}</p>}{" "}
-          <div className="flex flex-col mb-4">
+          {error && <span className="text-red-500 text-base">{error}</span>}
+          <div className="flex flex-col r  mb-2">
+            <label htmlFor="name" className="text-black font-semibold">
+              Username
+            </label>
+            <div className="inputForm px-2 border border-gray-300 rounded-lg flex items-center transition duration-200 focus-within:border-blue-500">
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                id="name"
+                className="input p-2 placeholder-gray-400 outline-none focus:placeholder-opacity-0 flex-1"
+                placeholder="Enter your username"
+              />
+            </div>
+            {emailError && (
+              <span className="text-red-500 text-base">{emailError}</span>
+            )}
+          </div>
+          <div className="flex flex-col  mb-2">
             <label htmlFor="email" className="text-black font-semibold">
               Email
             </label>
@@ -88,7 +111,7 @@ function LoginForm() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="input p-2  placeholder-gray-400 outline-none  flex-1"
+                className="input p-2 placeholder-gray-400 outline-none focus:placeholder-opacity-0 flex-1"
                 placeholder="Enter your Email"
               />
             </div>
@@ -96,8 +119,8 @@ function LoginForm() {
               <span className="text-red-500 text-base">{emailError}</span>
             )}{" "}
           </div>
-          {/* Display email error message if it exists */}
-          <div className="flex flex-col mb-4">
+
+          <div className="flex flex-col  mb-2">
             <label htmlFor="password" className="text-black font-semibold">
               Password
             </label>
@@ -112,87 +135,66 @@ function LoginForm() {
                 <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
               </svg>
               <input
-                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
                 id="password"
                 className="input p-2  placeholder-gray-400 outline-none focus:placeholder-opacity-0 flex-1"
                 placeholder="Enter your Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
+              <svg
+                viewBox="0 0 576 512"
+                height="1em"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                {showPassword ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M2 2L22 22"
-                      stroke="#000000"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M6.71277 6.7226C3.66479 8.79527 2 12 2 12C2 12 5.63636 19 12 19C14.0503 19 15.8174 18.2734 17.2711 17.2884M11 5.05822C11.3254 5.02013 11.6588 5 12 5C18.3636 5 22 12 22 12C22 12 21.3082 13.3317 20 14.8335"
-                      stroke="#000000"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M14 14.2362C13.4692 14.7112 12.7684 15.0001 12 15.0001C10.3431 15.0001 9 13.657 9 12.0001C9 11.1764 9.33193 10.4303 9.86932 9.88818"
-                      stroke="#000000"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    viewBox="0 0 576 512"
-                    height="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path>
-                  </svg>
-                )}
-              </button>
+                <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path>
+              </svg>
             </div>
-            {passwordError && (
-              <span className="text-red-500 text-base">{passwordError}</span>
-            )}{" "}
-            {/* Display password error message if it exists */}
+            {emailError && (
+              <span className="text-red-500 text-base">{emailError}</span>
+            )}
           </div>
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex items-center">
-              <input type="checkbox" id="remember" className="mr-2" />
-              <label htmlFor="remember" className="text-black">
-                Remember me
-              </label>
+
+          <div className="flex flex-col  mb-2">
+            <label htmlFor="password" className="text-black font-semibold">
+              Confirm password
+            </label>
+            <div className="inputForm border px-2 border-gray-300 rounded-lg flex items-center transition duration-200 focus-within:border-blue-500">
+              <svg
+                height="20"
+                viewBox="-64 0 512 512"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
+                <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
+              </svg>
+              <input
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                type="password"
+                id="password"
+                className="input p-2  placeholder-gray-400 outline-none focus:placeholder-opacity-0 flex-1"
+                placeholder="Enter your Password"
+              />
+              <svg
+                viewBox="0 0 576 512"
+                height="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path>
+              </svg>
             </div>
-            <span className="text-blue-500 cursor-pointer">
-              Forgot password?
-            </span>
           </div>
           <button
             type="submit"
             className="button-submit bg-black text-white font-semibold py-2   w-full rounded-lg mt-6 hover:bg-gray-400 transition duration-200"
           >
-            Sign In
+            Sign up
           </button>
-          <p className="text-center text-black text-sm my-6">
-            Do not have an account?{" "}
-            <Link to="/Signin" className="text-blue-500 cursor-pointer">
-              Sign Up
-            </Link>
-          </p>
-          <p className="text-center text-black text-sm my-6">Or With</p>
-          <div className="flex gap-4 my-6">
+          <p className="text-center text-black text-sm my-3">Or Sign Up With</p>
+
+          <div className="flex gap-4 my-3">
             <GoogleLogin
               onSuccess={(tokenResponse) => {
                 responseGoogle(tokenResponse);
@@ -201,7 +203,7 @@ function LoginForm() {
               width={150}
               height={70}
               size="large"
-              text="signin_with"
+              text="signup_with"
               onError={() => {
                 console.log("Login Failed");
               }}
@@ -220,7 +222,9 @@ function LoginForm() {
                 </button>
               )}
             />
-
+            {/* <MyCustomButton onClick={() => register()}>
+              Login with Google
+            </MyCustomButton> */}
             <button className="btn apple w-full p-3 gap-3 bg-white border border-gray-300 rounded-lg flex items-center justify-center font-semibold">
               <svg
                 version="1.1"
@@ -246,10 +250,16 @@ function LoginForm() {
               Apple
             </button>
           </div>
+          <Link to="/login">
+            <p className="text-center text-black text-sm my-3">
+              Already have an account?{" "}
+              <span className="text-blue-500 cursor-pointer">Login</span>
+            </p>
+          </Link>
         </form>
       </div>
     </div>
   );
 }
 
-export default LoginForm;
+export default SignUpForm;

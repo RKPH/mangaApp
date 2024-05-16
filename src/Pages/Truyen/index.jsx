@@ -1,6 +1,6 @@
 import axios from "axios";
 import LazyLoad from "react-lazyload"; // Import LazyLoad component
-
+import { useUser } from "../../Service/User";
 import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -14,7 +14,9 @@ const Truyen = () => {
   const [chapters, setChaptersa] = useState([]); //for managa information
   const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState("");
+  const user = useUser();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,15 +46,49 @@ const Truyen = () => {
     fetchData();
     window.scrollTo(0, 0);
   }, []);
-
   useEffect(() => {
-    console.log(Data);
-  }, []);
+    // Kiểm tra xem truyện đã được lưu chưa
+    const isMangaSaved = user?.userMangas.some(
+      (manga) => manga?.slug === Data.item?.slug
+    );
+
+    setIsSaved(isMangaSaved);
+  }, [user?.userMangas, Data.item?.slug]);
+  const handleClick = async (slug, mangaName, mangaImage) => {
+    const userId = user.userID; // replace with the actual user ID if it varies
+    console.log("id:", userId);
+    const requestBody = {
+      UserId: userId,
+      slug: slug,
+      mangaName: mangaName,
+      mangaImage: mangaImage,
+    };
+
+    console.log(requestBody);
+
+    const response = await fetch(
+      `http://127.0.0.1:8080/api/UserManga/savemanga?userId=${userId}`,
+      {
+        method: "POST", // or 'GET', 'PUT', etc.
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody), // send the requestBody as the request body
+      }
+    );
+
+    if (!response.ok) {
+      const message = `An error has occurred: ${response.status}`;
+      throw new Error(message);
+    }
+    setIsSaved(true);
+  };
+
   return (
-    <div className="w-full  bg-white py-4  dark:bg-[#18191A] ">
+    <div className="w-full bg-white py-4  dark:bg-[#18191A] ">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
-        <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row flex-col">
-          <div className="col-span-12 lg:col-span-2 relative">
+        <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row md:flex-row flex-col">
+          <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-2 relative">
             <LazyLoad height={200} once>
               {isLoading ? (
                 <Skeleton
@@ -66,20 +102,20 @@ const Truyen = () => {
                   alt={slug}
                   width={252}
                   height={345}
-                  className="w-full h-auto rounded-xl relative"
+                  className="w-full h-full rounded-xl relative"
                 />
               )}
             </LazyLoad>
-            <div className="absolute flex flex-wrap items-center justify-center gap-2 bottom-0 text-center w-full bg-black/40 bg-opacity-80 py-2 m-0 rounded-t-none rounded-lg">
+            <div className="absolute  flex md:flex-row flex-wrap items-center justify-center gap-2 bottom-0 text-center w-full bg-black/40 bg-opacity-80 py-2 m-0 rounded-t-none rounded-lg">
               <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
-                <a
-                  target="_blank"
-                  href="https://otruyenapi.com/v1/api/truyen-tranh/than-ho-jangsan"
-                  title="API truyện Thần Hổ Jangsan"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => {
+                    handleClick(Data.item.slug, Data.item.name, Image);
+                  }}
+                  className="flex justify-items-center items-center text-center gap-1"
                 >
-                  Lưu truyện
-                </a>
+                  {isSaved ? "Đã lưu" : "Lưu truyện"}
+                </button>
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
                 <button className="flex justify-items-center items-center text-center gap-1">
@@ -100,7 +136,7 @@ const Truyen = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-10 flex flex-col gap-y-2">
+          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-10 flex flex-col gap-y-2">
             <h1 className="text-center text-lg lg:text-3xl text-orange-600 uppercase font-bold">
               {" "}
               {Data && Data.item && Data.item.name

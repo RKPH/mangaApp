@@ -1,13 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import MangaSlice from './MangaSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import MangaSlice from "./MangaSlice";
+import authSlice from "./authSlice";
 
 export const store = configureStore({
   reducer: {
     readMangas: MangaSlice,
+    auth: authSlice,
   },
 });
-
-// Function to save the state to localStorage
-store.subscribe(() => {
-    localStorage.setItem('readMangas', JSON.stringify(store.getState().readMangas));
-  });

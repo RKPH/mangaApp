@@ -1,19 +1,25 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { Disclosure } from "@headlessui/react";
-
+import { useDispatch } from "react-redux";
+import { deleteManga, saveMangas } from "../../Redux/MangaSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
 import ArrowRightTwoToneIcon from "@mui/icons-material/ArrowRightTwoTone";
 import Sliders from "../../Components/Slider";
+
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   //fecth for histroy read
   const [data2, setData2] = useState(
     JSON.parse(localStorage.getItem("readMangas")) || []
   );
+  useEffect(() => {
+    setData2(JSON.parse(localStorage.getItem("readMangas")) || []);
+  }, []);
   const domain = "https://otruyenapi.com/uploads/comics/";
 
   const [categories, setCategories] = useState([]);
@@ -32,16 +38,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-  const formatUpdatedAt = (timestamp) => {
-    const date = new Date(timestamp);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-  };
 
   //GET RANDOM SLUG
   const handleRandomSlug = async () => {
@@ -92,7 +88,7 @@ const Home = () => {
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 ">
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="ttext-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
@@ -112,7 +108,7 @@ const Home = () => {
                     />
                   </Disclosure.Button>
                   <Disclosure.Panel className="px-2 pb-2 pt-4 text-sm text-gray-500 max-h-[500px] overflow-y-auto">
-                    {data2.map((item) => (
+                    {data2.map((item, index) => (
                       <Link
                         to={`/truyen-tranh/${item.slug}`}
                         key={item._id}
@@ -143,17 +139,35 @@ const Home = () => {
                             </h6>
                           </span>
                         </div>
-                        <span className="col-span-2  rounded-2xl text-right lg:block hidden">
-                          <span className="text-white bg-blue-200 p-2 rounded-lg w-40 bg-gradient-to-tr from-sky-500 to-indigo-500">
-                            Chapter:{" "}
-                            {item.chaptersLatest && item.chaptersLatest[0]
-                              ? item.chaptersLatest[0].chapter_name
-                              : "Loading..."}
-                          </span>
-                        </span>
-                        <span className="col-span-2 lg:block hidden text-base font-mono text-center  false">
-                          {formatUpdatedAt(item.updatedAt)}
-                        </span>
+
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault(); // Prevent navigation
+
+                            dispatch(deleteManga(item));
+                            dispatch(saveMangas());
+                            const updatedMangas = data2.filter(
+                              (manga) => manga._id !== item._id
+                            );
+                            setData2(updatedMangas);
+                          }}
+                          className="col-span-2 lg:col-span-4 items-start justify-end flex  h-full w-full px-3"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            className="h-6 w-6 text-black hover:text-red-500"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
                       </Link>
                     ))}
                   </Disclosure.Panel>
@@ -173,8 +187,8 @@ const Home = () => {
             <Sliders data={item.slug} />
           </div>
         ))}
-        <div className=" my-10 min-h-fit w-fit flex flex-col border-black dark:border-white border p-2 rounded-md ">
-          <h2 className="font-[helvetica] text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
+        <div className=" m-5 min-h-fit w-fit flex flex-col border-black dark:border-white border p-2 rounded-md ">
+          <h2 className="font-[helvetica] text-base lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
             Hôm nay nên đọc gì
           </h2>
           <div className="flex flex-wrap overflow-ellipsis whitespace-normal p-1 w-fit font-[helvetica] dark:text-white hover:opacity-70">

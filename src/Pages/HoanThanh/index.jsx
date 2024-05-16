@@ -72,7 +72,7 @@ const HoanThanh = () => {
   return (
     <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
-        <h1 className="text-lg lg:text-3xl font-bold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-3xl  text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN ĐÃ HOÀN THÀNH"
             : `TRUYỆN ĐÃ HOÀN THÀNH-TRANG ${page}`}
@@ -85,7 +85,7 @@ const HoanThanh = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 lg:gap-5 gap-4">
+        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
           {sortedData &&
             sortedData.map((item) => (
               <Card
@@ -97,17 +97,17 @@ const HoanThanh = () => {
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
-                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+                    className="h-[150px] 2xl:h-[200px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="font-bold uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                    <span className="font-normal uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
