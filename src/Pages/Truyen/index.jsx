@@ -67,7 +67,7 @@ const Truyen = () => {
     console.log(requestBody);
 
     const response = await fetch(
-      `http://127.0.0.1:8080/api/UserManga/savemanga?userId=${userId}`,
+      `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/UserManga/savemanga?userId=${userId}`,
       {
         method: "POST", // or 'GET', 'PUT', etc.
         headers: {
