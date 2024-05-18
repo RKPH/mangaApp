@@ -104,7 +104,7 @@ const Sliders = ({ data }) => {
                   <img
                     src={`${domain}/${item?.thumb_url}`}
                     alt={item?.slug}
-                    className="h-[150px] lg:h-[200px] xl:h-[200px] 2xl:h-[150px] 3xl:h-[200px] w-full rounded-t-2xl"
+                    className="h-[150px] lg:h-[200px] xl:h-[200px] 2xl:h-[150px] 3xl:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">

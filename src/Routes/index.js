@@ -9,6 +9,7 @@ import ResultPage from "../Pages/ResultPage";
 import LoginForm from "../Pages/LoginPage";
 import SignUpForm from "../Pages/SignInPage";
 import UserLibrary from "../Pages/UserLibrary";
+import Personalpage from "../Pages/Personal";
 export const publicRoutes = [
   {
     path: "/",
@@ -69,5 +70,9 @@ export const publicRoutes = [
   {
     path: "/library",
     component: UserLibrary,
+  },
+  {
+    path: "/me",
+    component: Personalpage,
   },
 ];

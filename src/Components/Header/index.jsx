@@ -161,7 +161,9 @@ const Header = () => {
                       className="h-[25px] w-[25px] xl:w-[30px] xl:h-[30px] rounded-full"
                       alt=""
                     />
-                    <span className="text-white">{User?.userName}</span>
+                    <Link to="/me" className="text-white">
+                      {User?.userName}
+                    </Link>
                   </div>
                   <Divider color="white" className="text-white  w-full" />
                   <div className="flex flex-row items-center gap-x-2 px-4 my-5">

@@ -254,10 +254,11 @@ const DefaultLayout = ({ children }) => {
                 Đang phát hành
               </Link>
               <Link
+                to="/danh-sach/hoan-thanh"
                 className={`h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold  overflow-ellipsis whitespace-nowrap tracking-wide ${
-                  activeTab === "Sắp ra mắt" ? "bg-black" : ""
+                  activeTab === "Hoàn thành" ? "bg-black" : ""
                 }  cursor-pointer  hover:bg-black item my-1 transition duration-300`}
-                onClick={() => handleTabClick("Sắp ra mắt")}
+                onClick={() => handleTabClick("Hoàn thành")}
               >
                 <span className="mr-2 flex items-center">
                   <NewReleasesIcon />
@@ -288,12 +289,6 @@ const DefaultLayout = ({ children }) => {
               <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-sm font-semibold  overflow-ellipsis whitespace-nowrap tracking-wide  cursor-pointer my-1 hover:bg-black transition duration-300">
                 <SvgIcon />
                 Vòng quay
-              </div>
-              <div className="h-12 w-full flex items-center  px-2 text-gray-50 text-sm font-semibold  tracking-wide  cursor-pointer overflow-ellipsis whitespace-nowrap my-1 hover:bg-black transition duration-300">
-                <span className="mr-2 flex items-center">
-                  <Face6Icon />
-                </span>{" "}
-                Sign in
               </div>
             </div>
           </div>
