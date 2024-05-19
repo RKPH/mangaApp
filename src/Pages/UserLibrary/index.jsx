@@ -39,7 +39,7 @@ const TruyenMoi = () => {
         </h1>
 
         {/* row of cards */}
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-7">
           {User?.userMangas?.map((item) => (
             <Card
               key={item.name}
@@ -50,7 +50,7 @@ const TruyenMoi = () => {
                 <img
                   src={item.mangaImage}
                   alt={item.slug}
-                  className="h-[150px] 2xl:h-[200px]  w-full rounded-t-2xl"
+                  className="h-[200px] sm:h-[200px] lg:h-[250px] 3xl:h-[200px] w-full rounded-t-2xl"
                 />
                 <div className="p-2">
                   <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">

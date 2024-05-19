@@ -64,10 +64,9 @@ function SignUpForm() {
   return (
     <div className="w-full   flex flex-col justify-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className="h-screen w-full flex justify-center lg:px-10 px-4 py-2 bg-custom-image bg-cover bg-center bg-no-repeat">
-    
         <form
           onSubmit={handleSubmit}
-          className="form bg-white p-8 rounded-xl lg:w-[500px]  w-full h-fit lg:mt-10  "
+          className="form bg-white p-8 rounded-xl lg:w-[500px]  w-full h-fit mt-10  "
         >
           {error && <span className="text-red-500 text-base">{error}</span>}
           <div className="flex flex-col r  mb-2">
@@ -189,38 +188,20 @@ function SignUpForm() {
           </button>
           <p className="text-center text-black text-sm my-3">Or Sign Up With</p>
 
-          <div className="flex gap-4 my-3">
+          <div className="w-full  flex flex-row  gap-4 my-6 items-center justify-center">
             <GoogleLogin
               onSuccess={(tokenResponse) => {
                 responseGoogle(tokenResponse);
                 console.log(tokenResponse);
               }}
-              width={150}
-              height={70}
+              type="icon"
               size="large"
-              text="signup_with"
               onError={() => {
                 console.log("Login Failed");
               }}
-              render={(renderProps) => (
-                <button
-                  style={{
-                    width: "100%",
-                    padding: "12px",
-                    baccgroundColor: "red",
-                  }}
-                  className="bg-red-400 w-full p-4 gap-3 border border-gray-300 rounded-lg flex items-center justify-center font-semibold"
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
-                  Login with Google
-                </button>
-              )}
             />
-            {/* <MyCustomButton onClick={() => register()}>
-              Login with Google
-            </MyCustomButton> */}
-            <button className="btn apple w-full p-3 gap-3 bg-white border border-gray-300 rounded-lg flex items-center justify-center font-semibold">
+
+            <button className="border p-[10px] border-white">
               <svg
                 version="1.1"
                 height="20"
@@ -242,7 +223,6 @@ function SignUpForm() {
                   </g>
                 </g>
               </svg>
-              Apple
             </button>
           </div>
           <Link to="/login">

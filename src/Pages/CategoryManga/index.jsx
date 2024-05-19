@@ -113,7 +113,7 @@ const CategoryManga = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
+        <div className="w-full my-10 grid s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
           {sortedData &&
             sortedData.map((item) => (
               <Card
@@ -125,7 +125,7 @@ const CategoryManga = () => {
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
-                    className="h-[150px] 2xl:h-[200px] w-full rounded-t-2xl"
+                    className="h-[200px] xs:h-[150px] sm:h-[200px] lg:h-[250px] 3xl:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">

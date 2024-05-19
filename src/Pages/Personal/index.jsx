@@ -1,4 +1,3 @@
-import React from "react";
 import { useUser } from "../../Service/User";
 const Personalpage = () => {
   const user = useUser();
@@ -13,22 +12,22 @@ const Personalpage = () => {
         </div>
         <div className="w-full flex lg:flex-row flex-col gap-y-5 lg:px-10">
           <div className="lg:w-1/2 w-full  xl:px-28 lg:px-24 md:px-16 ">
-            <div className=" flex flex-col  justify-center gap-y-4 border-white border p-4 shadow-lg rounded-lg py-5">
-              <span className="text-white text-lg font-semibold">
+            <div className=" flex flex-col  justify-center gap-y-4 dark:border-white border-black border p-4 shadow-lg rounded-lg py-5">
+              <span className="dark:text-white text-black text-lg font-semibold">
                 Số dư tài khoản: 0
               </span>
-              <span className="text-white text-lg font-semibold">
+              <span className="dark:text-white text-black text-lg font-semibold">
                 Số điểm: 0
               </span>
             </div>
           </div>
           <div className="lg:w-1/2 w-full  xl:px-28 lg:px-24 md:px-16 ">
-            <div className=" flex flex-col  justify-center gap-y-4 border-white border p-4 shadow-lg rounded-lg py-5">
-              <span className="text-white text-lg font-semibold">
+            <div className=" flex flex-col  justify-center gap-y-4 dark:border-white border-black border p-4 shadow-lg rounded-lg py-5">
+              <span className="dark:text-white text-black text-lg font-semibold">
                 Số truyện đã đọc: 0
               </span>
-              <span className="text-white text-lg font-semibold">
-                Số điểm: 0
+              <span className="dark:text-white text-black text-lg font-semibold">
+                Số truyện đã lưu: {user?.userMangas.length}
               </span>
             </div>
           </div>

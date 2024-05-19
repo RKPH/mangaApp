@@ -78,7 +78,7 @@ const Header = () => {
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
           <Link to="/" className="flex flex-row items-center gap-x-1">
-            <span className="text-slate-400 dark:text-white  xl:text-[30px] text-lg font-normal">
+            <span className="text-slate-400 dark:text-white  text-2xl font-bold">
               Iceycure
             </span>
             <IconWebsite />
@@ -86,7 +86,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="w-1/2 h-full    flex items-center justify-end ">
+      <div className="w-1/2 h-full    flex items-center justify-end py-2 ">
         <div className="hidden xl:flex items-center justify-evenly w-[417px]  h-12  ">
           <div
             className="rounded-full cursor-pointer border mx-4 border-orange-500 dark:border-white"
@@ -94,7 +94,7 @@ const Header = () => {
           >
             <LightbulbIcon
               fontSize="80px"
-              className="3xl:text-[38px] 2xl:text-[30px] xl:text-[30px] text-orange-500 dark:text-white p-2 "
+              className="text-[30px]  text-orange-500 dark:text-white p-1 "
               color="orange"
             />
           </div>
@@ -104,13 +104,13 @@ const Header = () => {
               navigate(`/result?q=${inputValue}`);
               setInputValue("");
             }}
-            className="w-[280px] 3xl:h-12 2xl:h-10 xl:h-[30px] relative "
+            className="w-[280px] 3xl:h-10 2xl:h-10 h-[30px] relative "
           >
             <input
               value={inputValue}
               onChange={handleInputChange}
               type="text"
-              className="w-full  h-full pl-8 pr-14 py-3  rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
+              className="w-full  h-full pl-8 pr-14   rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
               placeholder="Search..."
             />
             <button
@@ -126,20 +126,19 @@ const Header = () => {
           onClick={HandleTheme}
         >
           <LightbulbIcon
-            fontSize="80px"
-            className="h-[35px] text-[28px] text-orange-500 dark:text-white p-2 "
+            className="text-[30px]  text-orange-500 dark:text-white p-1"
             color="orange"
           />
         </div>
         {!auth.isAuthenticated ? (
           <div className="flex flex-row items-center gap-x-2 3xl:h-12 2xl:h-10  ">
             <Link to="/login">
-              <button className="p-2 w-[60px] h-full 3xl:w-[80px] text-center text-gray-50 3xl:text-base  lg:text-[10px] text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
+              <button className="p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[12px] text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
                 Log in
               </button>
             </Link>
             <Link to="/login">
-              <button className="p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-base  lg:text-[10px] text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
+              <button className="p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[10px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
                 Sign up
               </button>
             </Link>
@@ -190,13 +189,13 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[30px] 2xl:h-[30px] 3xl:h-10 3xl:w-10 h-8 w-8 rounded-full"
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[30px] 2xl:h-[30px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 h-8 w-8 rounded-full"
                 alt=""
               />
             </Tippy>
             <button
               onClick={handleLogout}
-              className="3xl:h-10 hidden xl:block 2xl:block 3xl:block py-2 p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-[14px]  text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35"
+              className=" hidden xl:block 2xl:block 3xl:block  p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[10px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35"
             >
               Sign out
             </button>
