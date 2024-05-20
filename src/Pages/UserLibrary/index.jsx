@@ -16,7 +16,7 @@ const TruyenMoi = () => {
       label: "Đang phát hành",
       template: () => (
         <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
-          Đang phát hành
+         Thư viện
         </a>
       ),
     },

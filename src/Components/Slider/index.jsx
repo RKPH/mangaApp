@@ -12,7 +12,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 6,
+  slidesToShow: 7,
   slidesToScroll: 5,
   responsive: [
     {
@@ -119,7 +119,7 @@ const Sliders = ({ data }) => {
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
+                        : "??"}
                     </span>
                   </div>
                 </Link>

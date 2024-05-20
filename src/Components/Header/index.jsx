@@ -3,10 +3,10 @@ import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutSuccess } from "../../Redux/authSlice";
-import SearchIcon from "@mui/icons-material/Search";
 //icon
+import SearchIcon from "@mui/icons-material/Search";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import IconWebsite from "./svg";
+import Logo from "../../assets/OIG4.png";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 //Components
 import Tippy from "@tippyjs/react/headless";
@@ -77,12 +77,20 @@ const Header = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row items-center gap-x-1">
-            <span className="text-slate-400 dark:text-white  text-2xl font-bold">
-              Iceycure
-            </span>
-            <IconWebsite />
-            <span className="w-[60px] h-[60px] text-3xl text-black dark:text-white  flex items-center  font-extrabold "></span>
+          <Link to="/" className="flex flex-row  gap-x-1">
+            <img
+              src={Logo}
+              alt=""
+              className="h-14 w-14 rounded-t-full border border-white"
+            />
+            <div className="flex flex-col">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-2xl font-bold">
+                Iceycure
+              </span>
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-sm font-normal">
+                Đọc mọi lúc mọi nơi
+              </span>
+            </div>
           </Link>
         </div>
       </div>
@@ -157,31 +165,53 @@ const Header = () => {
                     <img
                       onClick={() => setDropdownVisible(!isDropdownVisible)}
                       src={User?.avatar}
-                      className="h-[25px] w-[25px] xl:w-[30px] xl:h-[30px] rounded-full"
+                      className="h-[25px] w-[25px] xl:w-[34px] xl:h-[34px] rounded-full"
                       alt=""
                     />
-                    <Link to="/me" className="text-white">
-                      {User?.userName}
-                    </Link>
+                    <div className="flex flex-col">
+                      <Link
+                        to="/me"
+                        className="text-white font-semibold hover:underline"
+                      >
+                        {User?.userName}
+                      </Link>
+                      <div className="flex flex-row gap-1 text-sm text-white">
+                        <span>số dư tài khoản: 0</span>
+                        <span>số điểm: 0</span>
+                      </div>
+                    </div>
                   </div>
                   <Divider color="white" className="text-white  w-full" />
-                  <div className="flex flex-row items-center gap-x-2 px-4 my-5">
-                    <AutoStoriesIcon className="text-red-200 text-[30px] h-[50px]  rounded-full" />
+                  <div className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4">
+                    <AutoStoriesIcon className="text-[30px] text-white   rounded-full" />
                     <Link to="/library" className="text-white">
                       Thư viện của bạn
                     </Link>
                   </div>
-                  <div className="flex flex-row items-center gap-x-2 px-4 my-5">
-                    <AutoStoriesIcon className="text-white text-[30px] h-[50px]  rounded-full" />
-                    <span className="text-white">Số dư tài khoản</span>
-                  </div>
-                  <div className="flex flex-row items-center gap-x-2 px-4 my-5">
-                    <AutoStoriesIcon className="text-white text-[30px] h-[50px]  rounded-full" />
-                    <span className="text-white">Thư viện của bạn</span>
-                  </div>
-                  <div className="flex flex-row items-center gap-x-2 px-4 my-5">
-                    <AutoStoriesIcon className="text-white text-[30px] h-[50px]  rounded-full" />
-                    <span className="text-white">Thư viện của bạn</span>
+
+                  <div
+                    onClick={() => {
+                      navigate("/");
+                      dispatch(logoutSuccess());
+                    }}
+                    className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="white"
+                      className="w-7 h-7"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                      />
+                    </svg>
+
+                    <span className="text-white">Đăng xuất</span>
                   </div>
                 </div>
               )}
@@ -189,7 +219,7 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[30px] 2xl:h-[30px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 h-8 w-8 rounded-full"
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[30px] 2xl:h-[30px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-10 xs:w-10 h-8 w-8 rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>

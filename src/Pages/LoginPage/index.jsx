@@ -187,7 +187,10 @@ function LoginForm() {
           </button>
           <p className="text-center text-black text-base my-6">
             Do not have an account?{" "}
-            <Link to="/Signin" className="text-blue-500 text-base cursor-pointer">
+            <Link
+              to="/Signin"
+              className="text-blue-500 text-base cursor-pointer"
+            >
               Sign Up
             </Link>
           </p>
