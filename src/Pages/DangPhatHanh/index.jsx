@@ -104,7 +104,7 @@ const DangPhatHanh = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
           {sortedData &&
             sortedData.map((item) => (
               <Card
@@ -119,14 +119,14 @@ const DangPhatHanh = () => {
                     className="h-[200px] xs:h-[150px] sm:h-[200px] lg:h-[250px] 3xl:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden lg:text-base text-xs text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="font-normal uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                    <span className="font-normal uppercase lg:text-base text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700  px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name

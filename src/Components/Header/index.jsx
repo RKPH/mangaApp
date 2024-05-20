@@ -118,7 +118,7 @@ const Header = () => {
               value={inputValue}
               onChange={handleInputChange}
               type="text"
-              className="w-full  h-full pl-8 pr-14   rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
+              className="w-full  h-full pl-8 pr-14   p-3 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
               placeholder="Search..."
             />
             <button
@@ -170,6 +170,9 @@ const Header = () => {
                     />
                     <div className="flex flex-col">
                       <Link
+                        onClick={() => {
+                          setDropdownVisible(!isDropdownVisible);
+                        }}
                         to="/me"
                         className="text-white font-semibold hover:underline"
                       >
@@ -182,7 +185,12 @@ const Header = () => {
                     </div>
                   </div>
                   <Divider color="white" className="text-white  w-full" />
-                  <div className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4">
+                  <div
+                    onClick={() => {
+                      setDropdownVisible(!isDropdownVisible);
+                    }}
+                    className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4"
+                  >
                     <AutoStoriesIcon className="text-[30px] text-white   rounded-full" />
                     <Link to="/library" className="text-white">
                       Thư viện của bạn
@@ -192,6 +200,7 @@ const Header = () => {
                   <div
                     onClick={() => {
                       navigate("/");
+                      setDropdownVisible(false);
                       dispatch(logoutSuccess());
                     }}
                     className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4 cursor-pointer"

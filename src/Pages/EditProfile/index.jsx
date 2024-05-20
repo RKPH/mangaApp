@@ -1,9 +1,8 @@
 import { useUser } from "../../Service/User";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
-const Personalpage = () => {
+const EditProfile = () => {
   const user = useUser();
   const [formData, setFormData] = useState({
     email: "",
@@ -90,9 +89,9 @@ const Personalpage = () => {
 
   return (
     <div className="min-w-full min-h-screen flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0">
-      <div className="min-h-screen min-w-full bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-5">
+      <div className="min-h-screen min-w-full bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
         {/* avatar */}
-        <div className="w-full flex flex-col items-center mb-6">
+        <div className="w-full flex flex-col items-center mb-10">
           <div className="relative flex items-center justify-center w-36 h-36">
             <div className="absolute inset-0 border-4 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
             <div className="absolute inset-0 border-4 border-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-md"></div>
@@ -108,53 +107,74 @@ const Personalpage = () => {
               />
             )}
           </div>
-          <span className="font-bold font-mono  text-lg dark:text-white text-black">
+          <span className="font-bold text-lg dark:text-white text-black">
             {formData.userName}
           </span>
         </div>
-        <div className="w-full justify-center  items-center flex p-1 mb-6">
-          <Link
-            to="/setting"
-            className="p-2 px-10 rounded-lg bg-blue-500 hover:opacity-40"
-          >
-            Edit
-          </Link>
-        </div>
-        <div className="w-full flex items-center justify-center mb-6">
-          <div className="min-h-[300px] xl:min-w-[1000px] min-w-full flex flex-col items-center  bg-white dark:bg-[#18191A] rounded-xl p-5">
-            <div className="w-full text-center flex items-center justify-center mb-5">
-              <span className="font-mono font-semibold dark:text-white">
-                {" "}
-                Tham gia vào: 21/12/2024
-              </span>
-            </div>
-            <div className="xl:w-[65%] w-full  grid grid-cols-4 gap-2  m-2">
-              <div className="xl:col-span-2 flex col-span-4 items-center border-white border">
-                <div className="flex flex-col dark:text-white font-mono font-semibold">
-                  <span className="m-2">Tài khoản: </span>
-                  <span className="m-2">Số điểm: </span>
-                </div>
+        {/* account information */}
+
+        {/* //edit user from */}
+        <div className="w-full flex flex-col items-center lg:px-10 mt-10">
+          <div className="w-full max-w-lg bg-white dark:bg-[#242526] p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold dark:text-white text-black mb-6">
+              Update Profile
+            </h2>
+            <form onSubmit={handleSave} className="flex flex-col gap-y-4">
+              <div>
+                <label
+                  className="block dark:text-white text-black font-semibold mb-2"
+                  htmlFor="email"
+                >
+                  Email (cannot be changed)
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData?.email}
+                  disabled
+                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] bg-gray-100 dark:text-white"
+                />
               </div>
-              <div className="xl:col-span-2 flex col-span-4 items-center border-white border ">
-                <div className="flex flex-col dark:text-white font-mono font-semibold">
-                  <span className="m-2">Số sách đã đọc: </span>
-                  <span className="m-2">Số giờ online: </span>
-                </div>
+              <div>
+                <label
+                  className="block dark:text-white text-black font-semibold mb-2"
+                  htmlFor="userName"
+                >
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="userName"
+                  name="userName"
+                  value={formData.userName}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white"
+                />
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-full flex items-center justify-center">
-          <div className="min-h-[300px] xl:min-w-[1000px] min-w-full flex flex-col items-center  bg-white dark:bg-[#18191A] rounded-xl p-5">
-            <div className="w-full text-center flex items-center justify-center mb-5">
-              <span className="font-mono font-semibold dark:text-white">
-                {" "}
-                LỊCH SỬ HOẠT ĐỘNG
-              </span>
-            </div>
-            <div className="xl:w-[65%] w-full text-center font-mono uppercase dark:text-white">
-              <span> Chưa có ghi nhận</span>
-            </div>
+              <div>
+                <label
+                  className="block dark:text-white text-black font-semibold mb-2"
+                  htmlFor="avatar"
+                >
+                  Avatar
+                </label>
+                <input
+                  type="file"
+                  id="avatar"
+                  name="avatar"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold mt-4 hover:bg-blue-600 transition duration-300"
+              >
+                Save Changes
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -162,4 +182,4 @@ const Personalpage = () => {
   );
 };
 
-export default Personalpage;
+export default EditProfile;

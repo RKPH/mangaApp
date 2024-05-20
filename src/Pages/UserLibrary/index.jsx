@@ -16,7 +16,7 @@ const TruyenMoi = () => {
       label: "Đang phát hành",
       template: () => (
         <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
-         Thư viện
+          Thư viện
         </a>
       ),
     },
@@ -39,7 +39,7 @@ const TruyenMoi = () => {
         </h1>
 
         {/* row of cards */}
-        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-7">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 gap-7">
           {User?.userMangas?.map((item) => (
             <Card
               key={item.name}

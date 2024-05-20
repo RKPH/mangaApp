@@ -10,6 +10,7 @@ import LoginForm from "../Pages/LoginPage";
 import SignUpForm from "../Pages/SignInPage";
 import UserLibrary from "../Pages/UserLibrary";
 import Personalpage from "../Pages/Personal";
+import EditProfile from "../Pages/EditProfile";
 export const publicRoutes = [
   {
     path: "/",
@@ -70,6 +71,10 @@ export const publicRoutes = [
   {
     path: "/library",
     component: UserLibrary,
+  },
+  {
+    path: "/setting",
+    component: EditProfile,
   },
   {
     path: "/me",
