@@ -90,7 +90,7 @@ const Personalpage = () => {
 
   return (
     <div className="min-w-full min-h-screen flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0">
-      <div className="min-h-screen min-w-full bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-5">
+      <div className="min-h-screen min-w-full bg-custom-image2 bg-cover bg-center bg-no-repeat lg:px-10 px-4 py-5">
         {/* avatar */}
         <div className="w-full flex flex-col items-center mb-6">
           <div className="relative flex items-center justify-center w-36 h-36">
