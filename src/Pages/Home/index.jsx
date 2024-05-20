@@ -129,7 +129,7 @@ const Home = () => {
                               {item.origin_name}
                             </h5>
                             <h6 className="block lg:hidden">
-                              <span className="rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1">
+                              <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700  px-1 dark:text-white">
                                 {" "}
                                 Chapter:{" "}
                                 {item.chaptersLatest && item.chaptersLatest[0]
