@@ -103,7 +103,7 @@ const ResultPage = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2  md:grid-cols-4 lg:grid-cols-6 lg:gap-5 gap-4">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-7">
           {sortedData &&
             sortedData.map((item) => (
               <Card
@@ -115,7 +115,7 @@ const ResultPage = () => {
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
-                    className="h-[200px] lg:h-[250px] w-full rounded-t-2xl"
+                    className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full rounded-t-2xl"
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden text-left font-bold overflow-ellipsis whitespace-nowrap dark:text-white">

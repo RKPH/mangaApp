@@ -50,7 +50,7 @@ const TruyenMoi = () => {
                 <img
                   src={item.mangaImage}
                   alt={item.slug}
-                  className="h-[200px] sm:h-[200px] lg:h-[250px] 3xl:h-[200px] w-full rounded-t-2xl"
+                  className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full rounded-t-2xl"
                 />
                 <div className="p-2">
                   <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
