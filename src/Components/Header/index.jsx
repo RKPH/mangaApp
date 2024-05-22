@@ -228,7 +228,7 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[30px] 2xl:h-[30px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-10 xs:w-10 h-8 w-8 rounded-full border-2 border-white "
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-10 xs:w-10 h-8 w-8 rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>

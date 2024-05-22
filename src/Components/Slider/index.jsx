@@ -100,12 +100,12 @@ const Sliders = ({ data }) => {
               />
             ))
           : datas.map((item) => (
-              <Card key={item?.name} className="rounded-2xl  shadow-md  border">
+              <Card key={item?.name} className="shadow-md  border">
                 <Link to={`/truyen-tranh/${item?.slug}`}>
                   <img
                     src={`${domain}/${item?.thumb_url}`}
                     alt={item?.slug}
-                    className="h-[170px] lg:h-[200px] xl:h-[200px] 2xl:h-[200px]  3xl:h-[250px] w-full rounded-t-2xl"
+                    className="h-[170px] lg:h-[200px] xl:h-[200px] 2xl:h-[200px]  3xl:h-[250px] w-full "
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">

@@ -104,19 +104,19 @@ const DangPhatHanh = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-7">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-5">
           {sortedData &&
             sortedData.map((item) => (
               <Card
                 key={item.name}
-                className="rounded-2xl shadow-md hover:scale-105 border"
+                className="shadow-md hover:scale-105 border"
                 onClick={() => handleMangaClick(item)}
               >
                 <Link to={`/truyen-tranh/${item.slug}`}>
                   <img
                     src={`${domain}/${item.thumb_url}`}
                     alt={item.slug}
-                    className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full rounded-t-2xl"
+                    className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full "
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden lg:text-base text-xs text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">

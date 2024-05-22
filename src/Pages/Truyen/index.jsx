@@ -88,24 +88,13 @@ const Truyen = () => {
     <div className="w-full bg-white py-4  dark:bg-[#18191A] ">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  lg:flex-row md:flex-row flex-col">
-          <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-2 relative">
-            <LazyLoad height={200} once>
-              {isLoading ? (
-                <Skeleton
-                  width="252px"
-                  height="345px"
-                  className="w-[252rem] h-[345rem]"
-                ></Skeleton>
-              ) : (
-                <img
-                  src={Image}
-                  alt={slug}
-                  width={252}
-                  height={345}
-                  className="w-full h-full rounded-xl relative"
-                />
-              )}
-            </LazyLoad>
+          <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3 relative">
+            <img
+              src={Image}
+              alt={slug}
+              className="w-full h-full rounded-xl relative"
+            />
+
             <div className="absolute  flex md:flex-row flex-wrap items-center justify-center gap-2 bottom-0 text-center w-full bg-black/40 bg-opacity-80 py-2 m-0 rounded-t-none rounded-lg">
               <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
                 <button
@@ -136,14 +125,14 @@ const Truyen = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-10 flex flex-col gap-y-2">
-            <h1 className="text-center text-lg lg:text-3xl text-orange-600 uppercase font-bold">
+          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 flex flex-col gap-y-2">
+            <h1 className="text-center text-lg lg:text-2xl text-orange-600 uppercase font-bold">
               {" "}
               {Data && Data.item && Data.item.name
                 ? Data.item.name
                 : "Undefined"}
             </h1>
-            <h2 className="text-center text-sm lg:text-xl text-gray-400 dark:text-white uppercase font-semibold">
+            <h2 className="text-center text-sm lg:text-base text-gray-400 dark:text-white uppercase font-semibold">
               {Data && Data.item && Data.item.origin_name
                 ? Data.item.origin_name
                 : "Undefined"}
@@ -200,7 +189,7 @@ const Truyen = () => {
           </div>
         </div>
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md  ">
-          <h3 className="text-center text-lg lg:text-3xl text-black dark:text-white uppercase font-bold">
+          <h3 className="text-center text-lg lg:text-2xl text-black dark:text-white uppercase font-bold">
             Danh sách chương
           </h3>
           <div className="p-4 min-h-[400px] max-h-[500px] overflow-y-auto w-full mt-2 border rounded-xl">
