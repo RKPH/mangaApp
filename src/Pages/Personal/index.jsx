@@ -2,6 +2,7 @@ import { useUser } from "../../Service/User";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { dark } from "@mui/material/styles/createPalette";
 
 const Personalpage = () => {
   const user = useUser();
@@ -9,84 +10,23 @@ const Personalpage = () => {
     email: "",
     userName: "",
     avatar: "",
+    date: "",
   });
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const dateCreated = new Date(user?.createdAt).toLocaleDateString();
     if (user) {
       setFormData({
         email: user?.userEmail || "",
         userName: user?.userName || "",
         avatar: user?.avatar || "",
+        date: dateCreated,
       });
       setPreview(user?.avatar || "");
     }
   }, [user]);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      try {
-        setLoading(true);
-        const formsData = new FormData();
-        formsData.append("file", file);
-
-        const response = await axios.post(
-          "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Image/upload",
-          formsData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        const imageUrl = response.data.imageUrl;
-        console.log("Image URL:", imageUrl);
-        setFormData((prevData) => ({
-          ...prevData,
-          avatar: imageUrl,
-        }));
-        setPreview(imageUrl);
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
-  const handleSave = async (e) => {
-    e.preventDefault();
-    console.log("Saving user information:", formData);
-    try {
-      // Make the API call to save the user data
-      const response = await axios.put(
-        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/Update/${user?.userID}`,
-        {
-          userName: formData.userName,
-          avatar: formData.avatar,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      console.log("User information updated successfully:", response.data);
-    } catch (error) {
-      console.error("Error updating user information:", error);
-    }
-  };
 
   return (
     <div className="min-w-full min-h-screen flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0">
@@ -125,7 +65,7 @@ const Personalpage = () => {
             <div className="w-full text-center flex items-center justify-center mb-5">
               <span className="font-mono font-semibold dark:text-white">
                 {" "}
-                Tham gia vào: 21/12/2024
+                Tham gia vào: {formData.date}
               </span>
             </div>
             <div className="xl:w-[65%] w-full  grid grid-cols-4 gap-2  m-2">
