@@ -204,7 +204,7 @@ const DefaultLayout = ({ children }) => {
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className="h-full  max-h-full w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-mono">
+        <div className="h-full  w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-mono">
           {/* Menu for manga */}
           <div className="h-[280px] font-mono w-full mt-20 px-5">
             <div className="text-gray-50 text-opacity-50 text-base font-bold font-mono tracking-wide px-2">
