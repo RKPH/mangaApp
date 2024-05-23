@@ -87,15 +87,15 @@ const Truyen = () => {
   return (
     <div className="w-full bg-white py-4 dark:bg-[#18191A] font-mono">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
-        <div className="grid grid-cols-8 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
-          <div className="col-span-8 md:col-span-3 flex justify-center ">
+        <div className="grid grid-cols-10 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
+          <div className="col-span-10 md:col-span-4 lg:col-span-3 3xl:col-span-2 flex justify-center ">
             <img src={Image} alt={slug} className="rounded-xl " />
           </div>
-          <div className="col-span-8 md:col-span-5  flex flex-col gap-y-2">
-            <h1 className="text-center text-xl lg:text-3xl text-orange-600 uppercase font-bold">
+          <div className="col-span-10 md:col-span-6 lg:col-span-7 3xl:col-span-8 flex flex-col gap-y-2">
+            <h1 className="text-center text-xl lg:text-left lg:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h2 className="text-center text-base lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h2 className="text-center text-base lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
             </h2>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
