@@ -206,7 +206,7 @@ const DefaultLayout = ({ children }) => {
       >
         <div className="h-full  w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-mono">
           {/* Menu for manga */}
-          <div className="h-[280px] font-mono w-full mt-20 px-5">
+          <div className="h-fit font-mono w-full mt-5 px-5">
             <div className="text-gray-50 text-opacity-50 text-base font-bold font-mono tracking-wide px-2">
               Menu -
             </div>
@@ -283,7 +283,7 @@ const DefaultLayout = ({ children }) => {
             </div>
           </div>
           {/* Menu for setting */}
-          <div className="h-[250px] w-full mt-10 px-5">
+          <div className="h-fit w-full  px-5">
             <div className="text-gray-50 text-opacity-50 text-base font-bold tracking-wide font-mono px-2">
               General -
             </div>
