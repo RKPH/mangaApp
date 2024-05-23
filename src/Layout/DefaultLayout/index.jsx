@@ -199,6 +199,7 @@ const DefaultLayout = ({ children }) => {
       </div>
       <FooterComponent />
       <Drawer
+        anchor="top"
         className="w-full font-mono max-h-fit fixed left-0 right-0 top-0 block xl:hidden"
         open={isDrawerOpen}
         onClose={handleDrawerClose}
