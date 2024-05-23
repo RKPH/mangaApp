@@ -70,7 +70,7 @@ const TruyenMoi = () => {
       label: "Đang phát hành",
       template: () => (
         <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
-         Truyện mới
+          Truyện mới
         </a>
       ),
     },
@@ -119,7 +119,7 @@ const TruyenMoi = () => {
                     className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full"
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left lg:text-base text-xs font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i

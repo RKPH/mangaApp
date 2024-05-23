@@ -210,10 +210,10 @@ const DefaultLayout = ({ children }) => {
             <div className="text-gray-50 text-opacity-50 text-base font-bold font-mono tracking-wide px-2">
               Menu -
             </div>
-            <div className="w-full h-[280px] text-xs">
+            <div className="w-full h-[280px] text-sm">
               <Link
                 to="/Home"
-                className={`h-12 w-full flex items-center flex-wrap px-2 text-gray-50 text-xs font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
+                className={`h-12 w-full flex items-center flex-wrap px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
                   activeTab === "Home" ? "bg-black" : ""
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
@@ -221,15 +221,15 @@ const DefaultLayout = ({ children }) => {
                   handleTabClick("Home");
                 }}
               >
-                <span className="mr-2 flex items-center text-xs">
-                  <HomeIcon style={{ fontSize: "0.75rem" }} />
+                <span className="mr-2 flex items-center text-sm">
+                  <HomeIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
-                <span className="text-xs">Home</span>
+                <span className="text-sm">Home</span>
               </Link>
 
               <Link
                 to="/danh-sach/the-loai"
-                className={`h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
+                className={`h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
                   activeTab === "the-loai" ? "bg-black" : ""
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
@@ -237,36 +237,36 @@ const DefaultLayout = ({ children }) => {
                   handleTabClick("the-loai");
                 }}
               >
-                <span className="mr-2 flex items-center text-xs">
-                  <CollectionsBookmarkIcon style={{ fontSize: "0.75rem" }} />
+                <span className="mr-2 flex items-center text-sm">
+                  <CollectionsBookmarkIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
-                <span className="text-xs">Discover comics</span>
+                <span className="text-sm">Discover comics</span>
               </Link>
 
               <Link
                 to="/danh-sach/truyen-moi"
-                className={`h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
+                className={`h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
                   activeTab === "truyen-moi" ? "bg-black" : ""
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("truyen-moi")}
               >
-                <span className="mr-2 flex items-center text-xs">
-                  <MenuBookIcon style={{ fontSize: "0.75rem" }} />
+                <span className="mr-2 flex items-center text-sm">
+                  <MenuBookIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
-                <span className="text-xs">Truyen moi</span>
+                <span className="text-sm">Truyện mới</span>
               </Link>
 
               <Link
                 to="/danh-sach/dang-phat-hanh"
-                className={`h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
+                className={`h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
                   activeTab === "dang-phat-hanh" ? "bg-black" : ""
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("dang-phat-hanh")}
               >
-                <span className="mr-2 flex items-center text-xs">
-                  <WhatshotIcon style={{ fontSize: "0.75rem" }} />
+                <span className="mr-2 flex items-center text-sm">
+                  <WhatshotIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
-                Đang phát hành
+                <span className="text-sm">Đang phát hành</span>
               </Link>
               <Link
                 to="/danh-sach/hoan-thanh"
@@ -275,10 +275,10 @@ const DefaultLayout = ({ children }) => {
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => handleTabClick("Hoàn thành")}
               >
-                <span className="mr-2 flex items-center text-xs">
-                  <NewReleasesIcon style={{ fontSize: "0.75rem" }} />
+                <span className="mr-2 flex items-center text-sm">
+                  <NewReleasesIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
-                Hoàn thành
+                <span className="text-sm">Hoàn thành</span>
               </Link>
             </div>
           </div>
@@ -288,20 +288,20 @@ const DefaultLayout = ({ children }) => {
               General -
             </div>
             <div className="w-full h-[200px]">
-              <Link className="h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold overflow-ellipsis whitespace-nowrap tracking-wide font-mono cursor-pointer my-1 hover:bg-black transition duration-300">
-                <span className="mr-2 flex items-center text-xs">
-                  <SettingsIcon style={{ fontSize: "0.75rem" }} />
+              <Link className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap tracking-wide font-mono cursor-pointer my-1 hover:bg-black transition duration-300">
+                <span className="mr-2 flex items-center text-sm">
+                  <SettingsIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
                 Settings
               </Link>
 
-              <div className="h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold tracking-wide font-mono cursor-pointer overflow-ellipsis whitespace-nowrap my-1 hover:bg-black transition duration-300">
-                <span className="mr-2 flex items-center text-xs">
-                  <EuroIcon style={{ fontSize: "0.75rem" }} />
+              <div className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold tracking-wide font-mono cursor-pointer overflow-ellipsis whitespace-nowrap my-1 hover:bg-black transition duration-300">
+                <span className="mr-2 flex items-center text-sm">
+                  <EuroIcon style={{ fontSize: "0.875rem" }} />
                 </span>{" "}
                 Donate
               </div>
-              <div className="h-12 w-full flex items-center px-2 text-gray-50 text-xs font-semibold overflow-ellipsis font-mono whitespace-nowrap tracking-wide cursor-pointer my-1 hover:bg-black transition duration-300">
+              <div className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis font-mono whitespace-nowrap tracking-wide cursor-pointer my-1 hover:bg-black transition duration-300">
                 Vòng quay
               </div>
             </div>

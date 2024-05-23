@@ -100,7 +100,7 @@ const HoanThanh = () => {
                     className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full "
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left lg:text-base text-xs font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
@@ -111,7 +111,7 @@ const HoanThanh = () => {
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
+                        : "???"}
                     </span>
                   </div>
                 </Link>

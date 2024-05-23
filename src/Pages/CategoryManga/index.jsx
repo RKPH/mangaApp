@@ -128,18 +128,18 @@ const CategoryManga = () => {
                     className="h-[150px] xs:h-[150px] sm:h-[200px] lg:h-[200px] 2xl:h-[170px] 3xl:h-[250px] w-full "
                   />
                   <div className="p-2">
-                    <h5 className="overflow-hidden text-left font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
                       {item.name}
                     </h5>
                     <i
                       className="pi pi-tag p-mr-2"
                       style={{ color: "var(--green-500)" }}
                     />
-                    <span className="font-normal uppercase rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 text-sm px-1 dark:text-white">
+                    <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700  px-1 dark:text-white">
                       Chương:{" "}
                       {item.chaptersLatest && item.chaptersLatest[0]
                         ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
+                        : "???"}
                     </span>
                   </div>
                 </Link>
