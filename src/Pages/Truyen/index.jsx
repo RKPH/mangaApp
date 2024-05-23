@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BreadCrumb } from "primereact/breadcrumb";
 import Modal from "./Modal";
-
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 const Truyen = () => {
   const { slug } = useParams(); // Lấy ra tham số đằng sau 'danh-sach'
   const [Data, setData] = useState([]); // for manga information
@@ -92,7 +92,7 @@ const Truyen = () => {
             <img src={Image} alt={slug} className="rounded-xl " />
           </div>
           <div className="col-span-10 md:col-span-6 lg:col-span-7 3xl:col-span-8 flex flex-col gap-y-2">
-            <h1 className="text-center text-xl lg:text-left lg:text-3xl text-orange-600 uppercase font-bold">
+            <h1 className="text-center text-xl lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
             <h2 className="text-center text-base lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
@@ -131,7 +131,7 @@ const Truyen = () => {
                 )) ?? "Undefined"}
               </span>
             </div>
-            <div className="flex flex-row gap-2 bottom-0 text-center w-full  py-2 rounded-t-none rounded-xl">
+            <div className="flex flex-row gap-2 flex-wrap bottom-0 text-center w-full  py-2 rounded-t-none rounded-xl">
               <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
                 <button
                   onClick={() => {
@@ -145,6 +145,11 @@ const Truyen = () => {
               <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
                 <button className="flex justify-items-center items-center text-center gap-1 p-1">
                   <span className="text-base uppercase">Đọc truyện</span>
+                </button>
+              </div>
+              <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
+                <button className="flex justify-items-center items-center text-center gap-1 p-1">
+                  <span className="text-base uppercase"> <FavoriteBorderRoundedIcon/> Yêu thích</span>
                 </button>
               </div>
             </div>
