@@ -89,18 +89,18 @@ const Truyen = () => {
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
           <div className="col-span-12 md:col-span-4 lg:col-span-3 flex justify-center ">
-            <img src={Image} alt={slug} className="rounded-xl" />
+            <img src={Image} alt={slug} className="rounded-xl w-full" />
           </div>
           <div className="col-span-12 md:col-span-8 lg:col-span-9 flex flex-col gap-y-2">
             <h1 className="text-center text-xl lg:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h2 className="text-center text-sm lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h2 className="text-center text-base lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
             </h2>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
             <div>
-              <span className="font-bold text-black dark:text-white mr-1">
+              <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
                 Trạng thái:{" "}
               </span>
               <span className="px-2 text-white font-semibold rounded-full bg-gradient-to-l from-orange-300 via-ophim-border to-orange-500">
@@ -108,7 +108,7 @@ const Truyen = () => {
               </span>
             </div>
             <div>
-              <span className="font-bold text-black dark:text-white mr-1">
+              <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
                 Tác giả:{" "}
               </span>
               <span className="text-black dark:text-white mr-1">
@@ -116,7 +116,7 @@ const Truyen = () => {
               </span>
             </div>
             <div className="lg:flex lg:flex-row">
-              <span className="font-bold text-black dark:text-white mr-1">
+              <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
                 Thể loại:{" "}
               </span>
               <span className="gap-1 flex flex-wrap">
@@ -156,7 +156,7 @@ const Truyen = () => {
               <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg">
                 <article>
                   <p
-                    className="dark:text-white"
+                    className="dark:text-white font-bold text-black lg:text-base text-sm  "
                     dangerouslySetInnerHTML={{ __html: Data?.item?.content }}
                   ></p>
                 </article>
@@ -173,7 +173,7 @@ const Truyen = () => {
               {chapters.map((chapter) =>
                 chapter.server_data.map((item) => (
                   <div
-                    className="border-b border-solid py-[5px] hover:grayscale cursor-pointer"
+                    className="border-b border-solid py-[5px] hover:grayscale cursor-pointer "
                     key={item.chapter_name}
                     onClick={() => {
                       handleClickOpen();
