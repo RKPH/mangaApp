@@ -70,7 +70,7 @@ const TruyenMoi = () => {
       label: "Đang phát hành",
       template: () => (
         <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
-          Đang phát hành
+         Truyện mới
         </a>
       ),
     },
@@ -88,7 +88,7 @@ const TruyenMoi = () => {
           home={home}
           className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-3xl  text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-2xl 3xl:text-3xl text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
             : `TRUYỆN TRANH MỚI-TRANG ${page}`}

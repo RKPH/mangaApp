@@ -72,7 +72,7 @@ const HoanThanh = () => {
   return (
     <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
       <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
-        <h1 className="text-lg lg:text-3xl  text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-2xl 3xl:text-3xl text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN ĐÃ HOÀN THÀNH"
             : `TRUYỆN ĐÃ HOÀN THÀNH-TRANG ${page}`}

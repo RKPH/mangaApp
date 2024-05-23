@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center z-0 "
+      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center z-0 font-mono "
     >
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
@@ -87,7 +87,7 @@ const Header = () => {
               <span className="text-slate-400 lg:inline hidden dark:text-white  text-2xl font-bold">
                 Iceycure
               </span>
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-sm font-normal">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-sm font-momo">
                 Đọc mọi lúc mọi nơi
               </span>
             </div>
@@ -234,7 +234,7 @@ const Header = () => {
             </Tippy>
             <button
               onClick={handleLogout}
-              className=" hidden xl:block 2xl:block 3xl:block  p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[10px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35"
+              className=" hidden xl:block 2xl:block 3xl:block  p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[12px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35"
             >
               Sign out
             </button>

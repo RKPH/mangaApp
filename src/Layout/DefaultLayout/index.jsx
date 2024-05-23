@@ -72,10 +72,10 @@ const DefaultLayout = ({ children }) => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   let timeoutId;
   return (
-    <div ref={headerRef} className=" w-full h-full">
+    <div ref={headerRef} className=" w-full h-full font-mono">
       <MemoizedHeader className="w-full   bg-white" />
       <div className="w-full h-12 xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
-        <nav className="w-full h-full xl:flex  items-center hidden  ">
+        <nav className="w-full h-full xl:flex font-mono  items-center hidden  ">
           <ul className="list-none h-12  flex   items-center  gap-x-2  text-white ">
             <Link
               to="/Home"
@@ -199,11 +199,11 @@ const DefaultLayout = ({ children }) => {
       </div>
       <FooterComponent />
       <Drawer
-        className="w-full max-h-fit fixed left-0 right-0 top-0 block xl:hidden"
+        className="w-full font-mono max-h-fit fixed left-0 right-0 top-0 block xl:hidden"
         open={isDrawerOpen}
         onClose={handleDrawerClose}
       >
-        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-orange-600 dark:bg-[#242526]">
+        <div className=" h-full min-h-fit max-h-full w-full   z-[99999px]   bg-orange-600 dark:bg-[#242526] font-mono">
           {/* Menu for manga */}
           <div className=" h-[280px]  w-full mt-20  px-5">
             <div className="text-gray-50 text-opacity-50 text-[18px] font-bold  tracking-wide px-2">
