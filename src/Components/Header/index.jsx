@@ -26,7 +26,6 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  console.log("auth: ", auth);
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
   );

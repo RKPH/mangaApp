@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/system";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 //icon
 import MenuIcon from "@mui/icons-material/Menu";
@@ -13,7 +13,7 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
 import SettingsIcon from "@mui/icons-material/Settings";
 import EuroIcon from "@mui/icons-material/Euro";
-
+import SearchIcon from "@mui/icons-material/Search";
 //compoent
 import Drawer from "@mui/material/Drawer";
 import MemoizedHeader from "../../Components/Header";
@@ -25,6 +25,7 @@ const DefaultLayout = ({ children }) => {
   const location = useLocation();
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
   // Khởi tạo activeTab từ URL
   const [activeTab, setActiveTab] = useState(
     location.pathname.split("/")[2] || "Home"
@@ -67,6 +68,11 @@ const DefaultLayout = ({ children }) => {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
+  };
+  const navigate = useNavigate();
+  const handleInputChange = (event) => {
+    const newValue = event.target.value;
+    setInputValue(newValue);
   };
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
@@ -207,6 +213,31 @@ const DefaultLayout = ({ children }) => {
         <div className="h-full  w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-mono">
           {/* Menu for manga */}
           <div className="h-fit font-mono w-full mt-5 px-5">
+            <div className="w-full p-2 flex items-end justify-end dark:text-white text-black">
+              <button onClick={handleDrawerClose}>close </button>
+            </div>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                navigate(`/result?q=${inputValue}`);
+                setInputValue("");
+              }}
+              className="w-full 3xl:h-10 2xl:h-10 h-[30px] relative mb-5 "
+            >
+              <input
+                value={inputValue}
+                onChange={handleInputChange}
+                type="text"
+                className="w-full  h-full pl-8 pr-14   p-3 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
+                placeholder="Search..."
+              />
+              <button
+                type="submit"
+                className="absolute right-0 top-0 z-0 w-[50px] h-full rounded-r-md bg-blue dark:text-white hover:bg-slate-300 "
+              >
+                <SearchIcon />
+              </button>
+            </form>
             <div className="text-gray-50 text-opacity-50 text-base font-bold font-mono tracking-wide px-2">
               Menu -
             </div>
