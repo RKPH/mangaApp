@@ -13,8 +13,6 @@ import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
 import Divider from "@mui/material/Divider";
 
-
-
 const Header = () => {
   const location = useLocation();
   // Khởi tạo activeTab từ URL
@@ -159,12 +157,12 @@ const Header = () => {
               placement="bottom-end"
               arrow={true}
               render={(attrs) => (
-                <div className="w-[300px] min-h-fit bg-[#161618]  py-4 shadow-lg rounded-lg ">
+                <div className=" w-fit min-h-fit bg-[#161618]  py-4 shadow-lg rounded-lg ">
                   <div className="flex flex-row items-center gap-x-2 px-4 my-4">
                     <img
                       onClick={() => setDropdownVisible(!isDropdownVisible)}
                       src={User?.avatar}
-                      className="h-[25px] w-[25px] xl:w-[34px] xl:h-[34px] border border-white rounded-full"
+                      className="h-[30px] w-fit xl:w-[34px] xl:h-[34px] border border-white rounded-full"
                       alt=""
                     />
                     <div className="flex flex-col">
@@ -173,13 +171,15 @@ const Header = () => {
                           setDropdownVisible(!isDropdownVisible);
                         }}
                         to="/me"
-                        className="text-white font-semibold hover:underline"
+                        className="text-white lg:text-base text-sm font-semibold hover:underline"
                       >
                         {User?.userName}
                       </Link>
-                      <div className="flex flex-row gap-1 text-sm text-white">
-                        <span>số dư tài khoản: 0</span>
-                        <span>số điểm: 0</span>
+                      <div className="flex flex-row gap-1 text-xs lg:text-base  text-white">
+                        <span className="lg:text-base text-xs">
+                          số dư tài khoản: 0
+                        </span>
+                        <span className="lg:text-base text-xs">số điểm: 0</span>
                       </div>
                     </div>
                   </div>
@@ -188,10 +188,29 @@ const Header = () => {
                     onClick={() => {
                       setDropdownVisible(!isDropdownVisible);
                     }}
-                    className="flex flex-row items-center gap-x-2 px-4  hover:bg-slate-300 p-4"
+                    className="flex flex-row items-center gap-x-2 px-4 lg:text-base text-sm  hover:bg-slate-300 p-4"
                   >
-                    <AutoStoriesIcon className="text-[30px] text-white   rounded-full" />
-                    <Link to="/library" className="text-white">
+                    <span className="text-white text-base">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="lg:w-7 lg:h-7 w-5 h-5"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                        />
+                      </svg>
+                    </span>
+
+                    <Link
+                      to="/library"
+                      className="text-white lg:text-base text-sm "
+                    >
                       Thư viện của bạn
                     </Link>
                   </div>
@@ -210,7 +229,7 @@ const Header = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="white"
-                      className="w-7 h-7"
+                      className="lg:w-7 lg:h-7 w-5 h-5"
                     >
                       <path
                         strokeLinecap="round"
@@ -219,7 +238,9 @@ const Header = () => {
                       />
                     </svg>
 
-                    <span className="text-white">Đăng xuất</span>
+                    <span className="text-white lg:text-base text-sm ">
+                      Đăng xuất
+                    </span>
                   </div>
                 </div>
               )}
