@@ -58,7 +58,6 @@ const Truyen = () => {
     const userId = user.userID; // replace with the actual user ID if it varies
     console.log("id:", userId);
     const requestBody = {
-      UserId: userId,
       slug: slug,
       mangaName: mangaName,
       mangaImage: mangaImage,
@@ -66,22 +65,34 @@ const Truyen = () => {
 
     console.log(requestBody);
 
-    const response = await fetch(
-      `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/UserManga/savemanga?userId=${userId}`,
-      {
-        method: "POST", // or 'GET', 'PUT', etc.
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody), // send the requestBody as the request body
-      }
-    );
+    try {
+      const response = await fetch(
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/UserManga/savemanga?userId=${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
-    if (!response.ok) {
-      const message = `An error has occurred: ${response.status}`;
-      throw new Error(message);
+      if (!response.ok) {
+        if (response.status === 409) {
+          const message = "This manga is already saved by the user.";
+          alert(message);
+        } else {
+          const message = `An error has occurred: ${response.status}`;
+          alert(message);
+        }
+        return;
+      }
+
+      setIsSaved(true);
+    } catch (error) {
+      console.error("Error:", error);
+      alert(`Failed to save manga: ${error.message}`);
     }
-    setIsSaved(true);
   };
 
   return (
@@ -149,7 +160,10 @@ const Truyen = () => {
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
                 <button className="flex justify-items-center items-center text-center gap-1 p-1">
-                  <span className="text-base uppercase"> <FavoriteBorderRoundedIcon/> Yêu thích</span>
+                  <span className="text-base uppercase">
+                    {" "}
+                    <FavoriteBorderRoundedIcon /> Yêu thích
+                  </span>
                 </button>
               </div>
             </div>
@@ -176,10 +190,10 @@ const Truyen = () => {
           <div className="p-4 min-h-[400px] max-h-[500px] overflow-y-auto w-full mt-2 border rounded-xl">
             <div>
               {chapters.map((chapter) =>
-                chapter.server_data.map((item) => (
+                chapter.server_data.map((item, index) => (
                   <div
                     className="border-b border-solid py-[5px] hover:grayscale cursor-pointer "
-                    key={item.chapter_name}
+                    key={index}
                     onClick={() => {
                       handleClickOpen();
                       setSelectedChapter(item.chapter_api_data);

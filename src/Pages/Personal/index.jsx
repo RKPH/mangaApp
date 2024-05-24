@@ -48,7 +48,7 @@ const Personalpage = () => {
               />
             )}
           </div>
-          <span className="font-bold font-mono  text-lg dark:text-white text-black">
+          <span className="p-1 m-1 font-bold font-mono  text-lg dark:text-white dark:dark:bg-[#18191A] bg-white text-black rounded-xl">
             {formData.userName}
           </span>
         </div>

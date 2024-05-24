@@ -106,9 +106,9 @@ const TruyenMoi = () => {
         {/* row of cards */}
         <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-5">
           {sortedData &&
-            sortedData.map((item) => (
+            sortedData.map((item, index) => (
               <Card
-                key={item.name}
+                key={index}
                 className="shadow-md hover:scale-105 border"
                 onClick={() => handleMangaClick(item)}
               >
