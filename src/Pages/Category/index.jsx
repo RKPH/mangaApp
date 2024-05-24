@@ -145,7 +145,7 @@ const Category = () => {
           className="bg-gray-100 p-4 rounded-md shadow-md flex items-center justify-between hover:bg-slate-300 transition duration-300 cursor-pointer"
         >
           <div>
-            <h1 className="lg:text-lg font-semibold text-base">
+            <h1 className="lg:text-lg text-sm font-semibold ">
               {category.name}
             </h1>
           </div>

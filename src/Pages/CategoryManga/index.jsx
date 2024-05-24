@@ -98,9 +98,9 @@ const CategoryManga = () => {
         <BreadCrumb
           model={items}
           home={home}
-          className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
+          className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-xs dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-2xl 3xl:text-3xl text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-2xl 3xl:text-3xl text-orange-500 dark:text-blue-400 text-center my-5 mb-10 uppercase">
           {page === 1
             ? `TRUYỆN THỂ LOẠI ${type[0]?.name} `
             : `TRUYỆN THỂ LOẠI ${type[0]?.name}-TRANG ${page}`}
