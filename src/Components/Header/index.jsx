@@ -162,7 +162,7 @@ const Header = () => {
                     <img
                       onClick={() => setDropdownVisible(!isDropdownVisible)}
                       src={User?.avatar}
-                      className="h-[30px] w-fit xl:w-[34px] xl:h-[34px] border border-white rounded-full"
+                      className="h-[30px] w-[30px] xl:w-[34px] xl:h-[34px] border border-white rounded-full"
                       alt=""
                     />
                     <div className="flex flex-col">
