@@ -1,9 +1,19 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./Routes/index.js";
-
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "./Redux/userSlice.js";
 import DefaultLayout from "./Layout/DefaultLayout/index.jsx";
 function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated && token) {
+      dispatch(fetchUser(token));
+    }
+  }, [isAuthenticated, token, dispatch]);
   return (
     <div className="App">
       <Router>

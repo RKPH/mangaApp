@@ -1,9 +1,9 @@
-import { useUser } from "../../Service/User";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const EditProfile = () => {
-  const user = useUser();
+  const User = useSelector((state) => state.user.user);
   const [formData, setFormData] = useState({
     email: "",
     userName: "",
@@ -13,15 +13,15 @@ const EditProfile = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (user) {
+    if (User) {
       setFormData({
-        email: user?.userEmail || "",
-        userName: user?.userName || "",
-        avatar: user?.avatar || "",
+        email: User?.userEmail || "",
+        userName: User?.userName || "",
+        avatar: User?.avatar || "",
       });
-      setPreview(user?.avatar || "");
+      setPreview(User?.avatar || "");
     }
-  }, [user]);
+  }, [User]);
 
   const handleChange = (e) => {
     setFormData({
@@ -69,7 +69,7 @@ const EditProfile = () => {
     try {
       // Make the API call to save the user data
       const response = await axios.put(
-        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/Update/${user?.userID}`,
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/Update/${User?.userID}`,
         {
           userName: formData.userName,
           avatar: formData.avatar,
@@ -80,7 +80,7 @@ const EditProfile = () => {
           },
         }
       );
-
+      window.location.reload();
       console.log("User information updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating user information:", error);

@@ -13,12 +13,13 @@ import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
 import Divider from "@mui/material/Divider";
 
-//serviec
-import { useUser } from "../../Service/User";
+
 
 const Header = () => {
   const location = useLocation();
   // Khởi tạo activeTab từ URL
+  const User = useSelector((state) => state.user.user);
+  console.log("user in userSlcie: ", User);
   const [inputValue, setInputValue] = useState("");
   const initialTheme = localStorage.getItem("theme") || "light";
   const [theme, setTheme] = useState(initialTheme);
@@ -34,7 +35,6 @@ const Header = () => {
     const newValue = event.target.value;
     setInputValue(newValue);
   };
-  const User = useUser();
 
   useEffect(() => {
     const currentTab = location.pathname.split("/")[2] || "Home";
