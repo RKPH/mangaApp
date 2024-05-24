@@ -168,6 +168,7 @@ const EditProfile = () => {
                   className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white"
                 />
               </div>
+              
               <button
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold mt-4 hover:bg-blue-600 transition duration-300"

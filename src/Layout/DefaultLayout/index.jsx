@@ -241,7 +241,7 @@ const DefaultLayout = ({ children }) => {
             <div className="text-gray-50 text-opacity-50 text-base font-bold font-mono tracking-wide px-2">
               Menu -
             </div>
-            <div className="w-full h-[280px] text-sm">
+            <div className="w-full  text-sm">
               <Link
                 to="/Home"
                 className={`h-12 w-full flex items-center flex-wrap px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
@@ -318,7 +318,7 @@ const DefaultLayout = ({ children }) => {
             <div className="text-gray-50 text-opacity-50 text-base font-bold tracking-wide font-mono px-2">
               General -
             </div>
-            <div className="w-full h-[200px]">
+            <div className="w-full ">
               <Link className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap tracking-wide font-mono cursor-pointer my-1 hover:bg-black transition duration-300">
                 <span className="mr-2 flex items-center text-sm">
                   <SettingsIcon style={{ fontSize: "0.875rem" }} />
