@@ -228,7 +228,7 @@ const DefaultLayout = ({ children }) => {
                 value={inputValue}
                 onChange={handleInputChange}
                 type="text"
-                className="w-full  h-full pl-8 pr-14   p-3 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
+                className="w-full  h-full pl-8 pr-14   p-4 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
                 placeholder="Search..."
               />
               <button
