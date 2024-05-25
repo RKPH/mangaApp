@@ -100,13 +100,13 @@ const Truyen = () => {
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-10 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
           <div className="col-span-10 md:col-span-4 lg:col-span-3 3xl:col-span-2 flex justify-center ">
-            <img src={Image} alt={slug} className="rounded-xl " />
+            <img src={Image} alt={slug} className="rounded-xl w-full" />
           </div>
           <div className="col-span-10 md:col-span-6 lg:col-span-7 3xl:col-span-8 flex flex-col gap-y-2">
-            <h1 className="text-center text-xl lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
+            <h1 className=" text-justify text-base lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h2 className="text-center text-base lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h2 className="text-center text-sm lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
             </h2>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
@@ -114,7 +114,7 @@ const Truyen = () => {
               <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
                 Trạng thái:{" "}
               </span>
-              <span className="px-2 text-white font-semibold rounded-full bg-gradient-to-l from-orange-300 via-ophim-border to-orange-500">
+              <span className="px-2 dark:text-white text-black font-semibold  lg:text-base text-sm ">
                 {Data?.item?.status ?? "Undefined"}
               </span>
             </div>
@@ -135,7 +135,7 @@ const Truyen = () => {
                   <Link
                     to={`/the-loai/${item.slug}`}
                     key={item.slug}
-                    className="px-2 lg:ml-1 text-white font-semibold text-sm rounded-full bg-gradient-to-l from-sky-300 via-ophim-border to-sky-500 hover:grayscale cursor-pointer whitespace-nowrap"
+                    className="px-2 lg:ml-1 text-white font-semibold lg:text-base text-sm  border border-orange-500 hover:grayscale cursor-pointer whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
@@ -148,7 +148,7 @@ const Truyen = () => {
                   onClick={() => {
                     handleClick(Data.item.slug, Data.item.name, Image);
                   }}
-                  className="flex justify-items-center items-center text-center gap-1 p-1 uppercase"
+                  className="flex justify-items-center lg:text-base text-sm items-center text-center gap-1 p-1 uppercase"
                 >
                   {isSaved ? "Đã lưu" : "Lưu truyện"}
                 </button>
@@ -159,8 +159,8 @@ const Truyen = () => {
                 </button>
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
-                <button className="flex justify-items-center items-center text-center gap-1 p-1">
-                  <span className="text-base uppercase">
+                <button className="flex justify-items-center items-center text-center gap-1 p-1 lg:text-base text-sm">
+                  <span className="lg:text-base text-sm uppercase">
                     {" "}
                     <FavoriteBorderRoundedIcon /> Yêu thích
                   </span>
@@ -168,14 +168,14 @@ const Truyen = () => {
               </div>
             </div>
             <div className="mt-2">
-              <h3 className="text-lg font-mono dark:text-white m-1">
+              <h3 className="lg:text-base text-sm font-mono font-bold dark:text-white m-1">
                 {" "}
                 Giới thiệu
               </h3>
               <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg">
                 <article>
                   <p
-                    className="dark:text-white font-bold text-black lg:text-base text-sm  "
+                    className="dark:text-white font-normal text-black lg:text-base text-sm  "
                     dangerouslySetInnerHTML={{ __html: Data?.item?.content }}
                   ></p>
                 </article>
@@ -184,7 +184,7 @@ const Truyen = () => {
           </div>
         </div>
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
-          <h3 className="text-center text-base lg:text-2xl text-black dark:text-white uppercase font-bold">
+          <h3 className="text-center text-base lg:text-xl text-black dark:text-white uppercase font-bold">
             Danh sách chương
           </h3>
           <div className="p-4 min-h-[400px] max-h-[500px] overflow-y-auto w-full mt-2 border rounded-xl">
