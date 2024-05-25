@@ -106,13 +106,13 @@ const Truyen = () => {
             <h1 className=" text-justify text-xl lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h2 className="text-justify text-lg lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h3 className="text-justify text-lg lg:text-left lg:text-xl text-gray-400 dark:text-white uppercase font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
-            </h2>
+            </h3>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
             <div>
-              <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
-                Trạng thái:{" "}
+              <span className="font-bold text-black lg:text-base text-sm dark:text-white ">
+                Trạng thái:
               </span>
               <span className="px-2 dark:text-white text-black font-semibold  lg:text-base text-sm ">
                 {Data?.item?.status ?? "Undefined"}
@@ -154,15 +154,18 @@ const Truyen = () => {
                 </button>
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
-                <button className="flex justify-items-center items-center text-center gap-1 p-1">
-                  <span className="text-base uppercase">Đọc truyện</span>
+                <button className="flex justify-items-center items-center text-center lg:text-base text-sm gap-1 p-1">
+                  <span className="lg:text-base text-sm  uppercase">
+                    Đọc truyện
+                  </span>
                 </button>
               </div>
               <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
                 <button className="flex justify-items-center items-center text-center gap-1 p-1 lg:text-base text-sm">
                   <span className="lg:text-base text-sm uppercase">
                     {" "}
-                    <FavoriteBorderRoundedIcon /> Yêu thích
+                    <FavoriteBorderRoundedIcon className="lg:text-base text-sm " />{" "}
+                    Yêu thích
                   </span>
                 </button>
               </div>
@@ -199,7 +202,7 @@ const Truyen = () => {
                       setSelectedChapter(item.chapter_api_data);
                     }}
                   >
-                    <span className="text-sm lg:text-base text-black font-semibold dark:text-white">
+                    <span className="text-sm xl:text-base text-black font-semibold dark:text-white">
                       Chương {item.chapter_name}
                     </span>
                   </div>
