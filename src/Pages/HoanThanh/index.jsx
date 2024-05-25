@@ -85,7 +85,7 @@ const HoanThanh = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-7 gap-5">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-5">
           {sortedData &&
             sortedData.map((item) => (
               <Card
