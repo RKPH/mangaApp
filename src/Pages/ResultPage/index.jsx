@@ -89,7 +89,7 @@ const ResultPage = () => {
           home={home}
           className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h2 className="text-lg lg:text-xl font-bold text-orange-500 dark:text-blue-400 uppercase text-left mb-1">
+        <h2 className="text-xl lg:text-2xl 3xl:text-3xl font-semibold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {`Tìm kiếm truyện với từ khóa: ${searchQuery}`}
         </h2>
         <h5 className=" font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left mb-2">

@@ -100,7 +100,7 @@ const CategoryManga = () => {
           home={home}
           className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-xs dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-2xl 3xl:text-3xl text-orange-500 dark:text-blue-400 text-center my-5 mb-10 uppercase">
+        <h1 className="text-xl lg:text-2xl 3xl:text-3xl font-semibold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? `TRUYỆN THỂ LOẠI ${type[0]?.name} `
             : `TRUYỆN THỂ LOẠI ${type[0]?.name}-TRANG ${page}`}

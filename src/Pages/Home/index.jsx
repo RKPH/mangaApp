@@ -93,7 +93,7 @@ const Home = () => {
         </h1>
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full">
-            <h2 className="font-[helvetica] text-base lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
+            <h2 className="font-[helvetica] text-base lg:text-2xl font-normal text-orange-500 dark:dark:text-blue-400 text-left my-5">
               Nội dung bạn đã đọc
             </h2>
             <Disclosure>
@@ -179,7 +179,7 @@ const Home = () => {
         {categories.map((item) => (
           <div key={item._id} className="my-10">
             <Link to={`/the-loai/${item.slug}`}>
-              <h2 className="font-[helvetica] text-base lg:text-2xl font-semibold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
+              <h2 className="font-[helvetica] text-base lg:text-2xl font-normal text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
                 {item.name}
                 <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ml-0" />
               </h2>
