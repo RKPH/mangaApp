@@ -103,10 +103,10 @@ const Truyen = () => {
             <img src={Image} alt={slug} className="rounded-xl w-full" />
           </div>
           <div className="col-span-10 md:col-span-6 lg:col-span-7 3xl:col-span-8 flex flex-col gap-y-2">
-            <h1 className=" text-justify text-base lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
+            <h1 className=" text-justify text-xl lg:text-left lg:text-2xl 3xl:text-3xl text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h2 className="text-center text-sm lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h2 className="text-justify text-lg lg:text-left lg:text-lg text-gray-400 dark:text-white uppercase font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
             </h2>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
