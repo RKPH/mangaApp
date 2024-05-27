@@ -11,6 +11,7 @@ import SignUpForm from "../Pages/SignInPage";
 import UserLibrary from "../Pages/UserLibrary";
 import Personalpage from "../Pages/Personal";
 import EditProfile from "../Pages/EditProfile";
+import Chapter from "../Pages/Chapter";
 export const publicRoutes = [
   {
     path: "/",
@@ -59,6 +60,10 @@ export const publicRoutes = [
   {
     path: "/truyen-tranh/:slug",
     component: Truyen,
+  },
+  {
+    path: "/truyen-tranh/:slug/:chapter",
+    component: Chapter,
   },
   {
     path: "/result",

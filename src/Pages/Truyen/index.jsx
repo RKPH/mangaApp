@@ -5,8 +5,9 @@ import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BreadCrumb } from "primereact/breadcrumb";
-import Modal from "./Modal";
+
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+
 const Truyen = () => {
   const { slug } = useParams(); // Lấy ra tham số đằng sau 'danh-sach'
   const [Data, setData] = useState([]); // for manga information
@@ -135,7 +136,7 @@ const Truyen = () => {
                   <Link
                     to={`/the-loai/${item.slug}`}
                     key={item.slug}
-                    className="px-2 lg:ml-1 text-white font-semibold lg:text-base text-sm  border border-orange-500 hover:grayscale cursor-pointer whitespace-nowrap"
+                    className="px-2 lg:ml-1 dark:text-white text-black font-normal font-mono lg:text-base text-sm  border border-orange-500 hover:grayscale cursor-pointer whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
@@ -194,8 +195,13 @@ const Truyen = () => {
             <div>
               {chapters.map((chapter) =>
                 chapter.server_data.map((item, index) => (
-                  <div
-                    className="border-b border-solid py-[5px] hover:grayscale cursor-pointer "
+                  <Link
+                    to={`/truyen-tranh/${slug}/chap-${item.chapter_name}`}
+                    state={{
+                      chapter_api: item.chapter_api_data,
+                      data: chapters,
+                    }}
+                    className="border-b w-full inline-block border-solid py-[5px] hover:grayscale cursor-pointer "
                     key={index}
                     onClick={() => {
                       handleClickOpen();
@@ -205,20 +211,13 @@ const Truyen = () => {
                     <span className="text-sm xl:text-base text-black font-semibold dark:text-white">
                       Chương {item.chapter_name}
                     </span>
-                  </div>
+                  </Link>
                 ))
               )}
             </div>
           </div>
         </div>
       </div>
-
-      <Modal
-        isOpen={open}
-        Data={chapters}
-        api={selectedChapter}
-        handleClose={handleClose}
-      />
     </div>
   );
 };
