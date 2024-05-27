@@ -82,7 +82,7 @@ const TruyenMoi = () => {
 
   return (
     <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
-      <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
+      <div className=" bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-2 py-2">
         <BreadCrumb
           model={items}
           home={home}

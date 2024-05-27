@@ -74,7 +74,7 @@ const Chapter = () => {
       ref={scrollRef}
       className="w-full flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0"
     >
-      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 justify-center items-center py-2 lg:w-2/3 w-full">
+      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-2 justify-center items-center py-2 lg:w-2/3 w-full">
         <div className="lg:px-2 w-full">
           <div className="bg-white dark:bg-[#18191A] p-5 rounded-lg mb-5">
             <div className="m-1">
@@ -90,7 +90,7 @@ const Chapter = () => {
                     chapter_api: previousChapter.chapter_api_data,
                     data: chapters,
                   }}
-                  className="btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-sm border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
+                  className="btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
                 >
                   Previous chapter
                 </Link>
@@ -102,7 +102,7 @@ const Chapter = () => {
                     chapter_api: nextChapter.chapter_api_data,
                     data: chapters,
                   }}
-                  className="btn btn-primary dark:text-white text-black rounded-md p-2 lg:text-base text-sm border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
+                  className="btn btn-primary dark:text-white text-black rounded-md p-2 lg:text-base text-xs border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
                 >
                   Next chapter
                 </Link>
