@@ -35,6 +35,10 @@ const Chapter = () => {
 
         if (scrollRef.current) {
           scrollRef.current.scrollIntoView({ behavior: "smooth" });
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -85,7 +89,7 @@ const Chapter = () => {
             <div className=" w-full flex items-center justify-center p-2">
               {previousChapter && (
                 <Link
-                  to={`/truyen-tranh/${slug}/${previousChapter.chapter_name}`}
+                  to={`/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`}
                   state={{
                     chapter_api: previousChapter.chapter_api_data,
                     data: chapters,
@@ -97,7 +101,7 @@ const Chapter = () => {
               )}
               {nextChapter && (
                 <Link
-                  to={`/truyen-tranh/${slug}/${nextChapter.chapter_name}`}
+                  to={`/truyen-tranh/${slug}/chapter-${nextChapter.chapter_name}`}
                   state={{
                     chapter_api: nextChapter.chapter_api_data,
                     data: chapters,

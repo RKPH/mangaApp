@@ -14,18 +14,10 @@ const Truyen = () => {
   const [Image, setImage] = useState("");
   const [chapters, setChaptersa] = useState([]); // for manga information
   const [isLoading, setIsLoading] = useState(true);
-  const [open, setOpen] = useState(false);
+
   const [isSaved, setIsSaved] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState("");
+
   const user = useUser();
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   console.log("Tab name: ", slug);
   useEffect(() => {
@@ -112,10 +104,10 @@ const Truyen = () => {
             </h3>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
             <div>
-              <span className="font-bold text-black lg:text-base text-sm dark:text-white ">
+              <span className="font-bold font-mono text-black lg:text-base text-sm dark:text-white ">
                 Trạng thái:
               </span>
-              <span className="px-2 dark:text-white text-black font-semibold  lg:text-base text-sm ">
+              <span className="px-2 dark:text-white text-black font-normal  lg:text-base text-sm ">
                 {Data?.item?.status ?? "Undefined"}
               </span>
             </div>
@@ -123,7 +115,7 @@ const Truyen = () => {
               <span className="font-bold text-black lg:text-base text-sm dark:text-white mr-1">
                 Tác giả:{" "}
               </span>
-              <span className="text-black dark:text-white mr-1">
+              <span className="text-black lg:text-base text-sm font-mono dark:text-white mr-1">
                 {Data?.item?.author ?? "Undefined"}
               </span>
             </div>
@@ -196,17 +188,13 @@ const Truyen = () => {
               {chapters.map((chapter) =>
                 chapter.server_data.map((item, index) => (
                   <Link
-                    to={`/truyen-tranh/${slug}/chap-${item.chapter_name}`}
+                    to={`/truyen-tranh/${slug}/chapter-${item.chapter_name}`}
                     state={{
                       chapter_api: item.chapter_api_data,
                       data: chapters,
                     }}
                     className="border-b w-full inline-block border-solid py-[5px] hover:grayscale cursor-pointer "
                     key={index}
-                    onClick={() => {
-                      handleClickOpen();
-                      setSelectedChapter(item.chapter_api_data);
-                    }}
                   >
                     <span className="text-sm xl:text-base text-black font-semibold dark:text-white">
                       Chương {item.chapter_name}
