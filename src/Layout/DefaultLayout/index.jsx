@@ -199,7 +199,7 @@ const DefaultLayout = ({ children }) => {
         )}
       </div>
       <div className="w-full  flex xl:flex-row ">
-        <div className=" xl:px-32 px-2 w-full   bg-white dark:bg-[#18191A] min-h-screen  ">
+        <div className=" xl:px-32 lg:px-4  w-full   bg-white dark:bg-[#18191A] min-h-screen  ">
           {children}
         </div>
       </div>
