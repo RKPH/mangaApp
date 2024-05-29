@@ -44,8 +44,3 @@
   background-color: #f97316 !important;
 }
 /* Smaller size for screens less than 600px wide */
-@media (max-width: 600px) {
-  .pagination-small {
-    font-size: 0.75rem;
-  }
-}
