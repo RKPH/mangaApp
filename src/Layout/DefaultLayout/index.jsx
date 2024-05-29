@@ -181,7 +181,7 @@ const DefaultLayout = ({ children }) => {
               Hoàn thành
             </Link>
             <Link
-              to="/danh-sach/truyen-moi"
+              to="/gacha"
               className="hover:bg-orange-400  p-[12px]  cursor-pointer text-base uppercase "
             >
               {" "}

@@ -83,7 +83,7 @@ const CategoryManga = () => {
     {
       label: `${type[1]?.name}`,
       template: () => (
-        <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
+        <a className="text-primary font-semibold text-orange-500 dark:text-blue-400 cursor-pointer">
           {type[1]?.name}
         </a>
       ),
@@ -103,7 +103,7 @@ const CategoryManga = () => {
         <BreadCrumb
           model={items}
           home={home}
-          className="p-1  shadow-md  min-w-fit max-w-fit  lg:text-base text-sm dark:text-white rounded-md mb-5"
+          className="px-1  shadow-md  min-w-fit max-w-fit  lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
         <h1 className="text-lg lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
@@ -118,16 +118,16 @@ const CategoryManga = () => {
           <option value="moi-nhat">Mới nhất</option>
           <option value="cu-nhat">Cũ nhất</option>
         </select>
-        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 lg:gap-5 gap-5">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
           {sortedData.length === 0
             ? Array(24)
                 .fill()
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="shadow-md border rounded hover:scale-105"
+                    className="shadow-md  rounded lg:hover:scale-105"
                   >
-                    <div className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[230px] w-[200px]">
+                    <div className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[230px] w-[200px]">
                       <Skeleton
                         variant="rectangular"
                         height="100%"
@@ -144,17 +144,17 @@ const CategoryManga = () => {
             : sortedData.map((item) => (
                 <Card
                   key={item.name}
-                  className="shadow-md hover:scale-105 "
+                  className="lg:hover:scale-105 "
                   onClick={() => handleMangaClick(item)}
                 >
                   <Link to={`/truyen-tranh/${item.slug}`}>
                     <img
                       src={`${domain}/${item.thumb_url}`}
                       alt={item.slug}
-                      className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[230px] w-full rounded-md"
+                      className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                     />
-                    <div className="p-2">
-                      <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                    <div className="py-2">
+                      <h5 className="overflow-hidden text-left lg:text-base text-sm font-medium overflow-ellipsis whitespace-nowrap dark:text-white">
                         {item.name}
                       </h5>
                       <i
