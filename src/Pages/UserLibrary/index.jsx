@@ -39,18 +39,18 @@ const TruyenMoi = () => {
         </h1>
 
         {/* row of cards */}
-        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 lg:gap-5 gap-2">
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 lg:gap-5 gap-5">
           {User?.userMangas?.map((item) => (
             <Card
               key={item.name}
-              className=" shadow-md hover:scale-105 border"
+              className=" shadow-md hover:scale-105 "
               onClick={() => handleMangaClick(item)}
             >
               <Link to={`/truyen-tranh/${item.slug}`}>
                 <img
                   src={item.mangaImage}
                   alt={item.slug}
-                  className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[250px] w-full"
+                  className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[230px] w-full"
                 />
                 <div className="p-2">
                   <h5 className="overflow-hidden text-left lg:text-base text-xs font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
