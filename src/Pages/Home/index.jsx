@@ -88,12 +88,12 @@ const Home = () => {
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-mono ">
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="text-lg lg:text-2xl 3xl:text-3xl font-semibold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg font-mono lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           TRANG CHỦ
         </h1>
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full">
-            <h2 className="font-[helvetica] text-base lg:text-2xl font-normal text-orange-500 dark:dark:text-blue-400 text-left my-5">
+            <h2 className="font-mono text-base lg:text-xl font-normal text-orange-500 dark:dark:text-blue-400 text-left my-5">
               Nội dung bạn đã đọc
             </h2>
             <Disclosure>
@@ -179,9 +179,9 @@ const Home = () => {
         {categories.map((item) => (
           <div key={item._id} className="my-10">
             <Link to={`/the-loai/${item.slug}`}>
-              <h2 className="font-[helvetica] text-base lg:text-2xl font-normal text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
+              <h2 className="font-mono text-base lg:text-xl font-bold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
                 {item.name}
-                <ArrowRight className="text-lg lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ml-0" />
+                <ArrowRight className="text-base lg:text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left " />
               </h2>
             </Link>
             <Sliders data={item.slug} />

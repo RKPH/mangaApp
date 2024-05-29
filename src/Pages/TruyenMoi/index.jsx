@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Card } from "primereact/card";
+import { Skeleton } from "@mui/material";
 import { BreadCrumb } from "primereact/breadcrumb";
 const TruyenMoi = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,14 @@ const TruyenMoi = () => {
   }
   const page = Number(query.get("page")) || 1;
   const handlePageChange = (event, page) => {
+    setData([]);
     setCurrentPage(page);
 
     if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
   const [sortingOrder, setSortingOrder] = useState("moi-nhat");
@@ -43,8 +48,6 @@ const TruyenMoi = () => {
     }
   });
   useEffect(() => {
-    setCurrentPage(page);
-
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -67,9 +70,9 @@ const TruyenMoi = () => {
   }, [page]);
   const items = [
     {
-      label: "Đang phát hành",
+      label: "Truyện mới",
       template: () => (
-        <a className="text-primary font-semibold text-orange-500 dark:text-blue-400">
+        <a className="lg:text-base text-sm  font-semibold font-mono  text-orange-500 dark:text-blue-400">
           Truyện mới
         </a>
       ),
@@ -86,9 +89,9 @@ const TruyenMoi = () => {
         <BreadCrumb
           model={items}
           home={home}
-          className="p-2 shadow-md  min-w-fit max-w-fit border lg:text-base text-sm dark:text-white rounded-md mb-5"
+          className="px-2  shadow-md  min-w-fit max-w-fit  lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-xl lg:text-2xl 3xl:text-3xl font-semibold text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
+        <h1 className="text-lg lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {page === 1
             ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
             : `TRUYỆN TRANH MỚI-TRANG ${page}`}
@@ -105,37 +108,58 @@ const TruyenMoi = () => {
 
         {/* row of cards */}
         <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2  md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 lg:gap-5 gap-2">
-          {sortedData &&
-            sortedData.map((item, index) => (
-              <Card
-                key={index}
-                className="shadow-md hover:scale-105 border"
-                onClick={() => handleMangaClick(item)}
-              >
-                <Link to={`/truyen-tranh/${item.slug}`}>
-                  <img
-                    src={`${domain}/${item.thumb_url}`}
-                    alt={item.slug}
-                    className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[250px] w-full"
-                  />
-                  <div className="p-2">
-                    <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
-                      {item.name}
-                    </h5>
-                    <i
-                      className="pi pi-tag p-mr-2"
-                      style={{ color: "var(--green-500)" }}
-                    />
-                    <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700  px-1 dark:text-white">
-                      Chương:{" "}
-                      {item.chaptersLatest && item.chaptersLatest[0]
-                        ? item.chaptersLatest[0].chapter_name
-                        : "Loading..."}
-                    </span>
+          {sortedData.length === 0
+            ? Array(24)
+                .fill()
+                .map((_, index) => (
+                  <div
+                    key={index}
+                    className="shadow-md border rounded hover:scale-105"
+                  >
+                    <div className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[230px] w-full lg:w-[200px]">
+                      <Skeleton
+                        variant="rectangular"
+                        height="100%"
+                        width="100%"
+                        animation="wave"
+                      />
+                    </div>
+                    <div className="p-2">
+                      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+                      <Skeleton variant="text" sx={{ width: "60%" }} />
+                    </div>
                   </div>
-                </Link>
-              </Card>
-            ))}
+                ))
+            : sortedData.map((item) => (
+                <Card
+                  key={item.name}
+                  className="shadow-md hover:scale-105 border"
+                  onClick={() => handleMangaClick(item)}
+                >
+                  <Link to={`/truyen-tranh/${item.slug}`}>
+                    <img
+                      src={`${domain}/${item.thumb_url}`}
+                      alt={item.slug}
+                      className="h-[180px] xs:h-[200px] sm:h-[200px] lg:h-[200px] 2xl:h-[200px] 3xl:h-[230px] w-full"
+                    />
+                    <div className="p-2">
+                      <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
+                        {item.name}
+                      </h5>
+                      <i
+                        className="pi pi-tag p-mr-2"
+                        style={{ color: "var(--green-500)" }}
+                      />
+                      <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white">
+                        Chương:{" "}
+                        {item.chaptersLatest && item.chaptersLatest[0]
+                          ? item.chaptersLatest[0].chapter_name
+                          : "???"}
+                      </span>
+                    </div>
+                  </Link>
+                </Card>
+              ))}
         </div>
         <Pagination
           className="flex items-end lg:justify-end justify-center text-white"
@@ -147,7 +171,7 @@ const TruyenMoi = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              className="text-white dark:text-white"
+              className="text-white dark:text-white "
               to={`/danh-sach/truyen-moi?page=${item.page}`}
               {...item}
             />

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Skeleton from "@mui/material/Skeleton";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
@@ -88,7 +88,7 @@ const Sliders = ({ data }) => {
     fetchData();
   }, [data]);
   return (
-    <div className="w-full px-2">
+    <div className="w-full px-4">
       <Slider {...settings}>
         {datas.length === 0
           ? [1, 1, 1, 1, 1].map(() => (
@@ -105,7 +105,7 @@ const Sliders = ({ data }) => {
                   <img
                     src={`${domain}/${item?.thumb_url}`}
                     alt={item?.slug}
-                    className="h-[170px] lg:h-[200px] xl:h-[200px] 2xl:h-[200px]  3xl:h-[250px] w-full "
+                    className="h-[170px] lg:h-[200px] xl:h-[200px] 2xl:h-[200px]  3xl:h-[230px] w-full "
                   />
                   <div className="p-2">
                     <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
