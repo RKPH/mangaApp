@@ -32,8 +32,9 @@
   line-height: 1.5rem !important;
 }
 .MuiPaginationItem-text {
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  
 }
 .dark .css-41sz0k.Mui-selected {
     color: #fff;

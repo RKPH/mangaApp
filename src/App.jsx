@@ -4,7 +4,7 @@ import { publicRoutes } from "./Routes/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "./Redux/userSlice.js";
 import DefaultLayout from "./Layout/DefaultLayout/index.jsx";
-import "./Styles/app.css";
+
 function App() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
