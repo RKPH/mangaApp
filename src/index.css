@@ -3,45 +3,52 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    scale: 2;
-  }
-  
-  /* CSS file */
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  scale: 2;
+}
+
+/* CSS file */
 .pagination-small {
-  font-size: 1rem; /* default size */
-  color: red  !important;
+  font-size: 1rem;
+  /* default size */
+  color: red !important;
 }
-.lg .MuiPaginationItem-text {
-  font-size: 1rem !important;
-  line-height: 1.5rem !important;
-}
+
 .MuiPaginationItem-text {
   font-size: 0.75rem !important;
   line-height: 1rem !important;
-  
+
 }
+
 .dark .css-41sz0k.Mui-selected {
-    color: #fff;
-    background-color: #1976d2 !important;
+  color: #fff;
+  background-color: #1976d2 !important;
 }
+
 .css-41sz0k.Mui-selected {
   color: #fff;
   background-color: #f97316 !important;
 }
+
 /* Smaller size for screens less than 600px wide */
+@media (min-width: 1024px) {
+  .MuiPaginationItem-text {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+}
