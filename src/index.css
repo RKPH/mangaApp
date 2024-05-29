@@ -48,7 +48,7 @@
 /* Smaller size for screens less than 600px wide */
 @media (min-width: 1024px) {
   .MuiPaginationItem-text {
-    font-size: 1rem !important;
-    line-height: 1.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
   }
 }
