@@ -75,7 +75,6 @@ export const loginUserWithGoogle = (tokenId) => async (dispatch) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${tokenId}`,
         },
         body: JSON.stringify({ idToken: tokenId }),
       }

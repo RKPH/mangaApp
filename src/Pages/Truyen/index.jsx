@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { BreadCrumb } from "primereact/breadcrumb";
 
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Truyen = () => {
   const { slug } = useParams(); // Lấy ra tham số đằng sau 'danh-sach'
@@ -49,6 +51,10 @@ const Truyen = () => {
     setIsSaved(isMangaSaved);
   }, [user?.userMangas, Data.item?.slug]);
   const handleClick = async (slug, mangaName, mangaImage) => {
+    if (!user) {
+      toast.error("Please login to use this feature");
+      return;
+    }
     const userId = user.userID; // replace with the actual user ID if it varies
     console.log("id:", userId);
     const requestBody = {
@@ -71,18 +77,21 @@ const Truyen = () => {
           body: JSON.stringify(requestBody),
         }
       );
-
+      if (response.status === 401 || !userId) {
+        toast.error("Please login to save manga");
+      }
       if (!response.ok) {
         if (response.status === 409) {
-          const message = "This manga is already saved by the user.";
-          alert(message);
+          toast.error("already saved");
         } else {
           const message = `An error has occurred: ${response.status}`;
+          toast.error(response.status);
+
           alert(message);
         }
         return;
       }
-
+      toast.success(`Saved manga: ${mangaName} successfully`); // `Saved manga: ${mangaName} successfully
       setIsSaved(true);
     } catch (error) {
       console.error("Error:", error);

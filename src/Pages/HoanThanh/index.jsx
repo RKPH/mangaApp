@@ -119,7 +119,7 @@ const HoanThanh = () => {
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="shadow-md border rounded hover:scale-105"
+                    className="shadow-md  rounded hover:scale-105"
                   >
                     <div className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-[200px]">
                       <Skeleton

@@ -20,7 +20,7 @@ import MemoizedHeader from "../../Components/Header";
 import FooterComponent from "../../Components/Footer";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
-
+import { ToastContainer } from "react-toastify"; // Import the ToastContainer
 const DefaultLayout = ({ children }) => {
   const location = useLocation();
 
@@ -80,6 +80,12 @@ const DefaultLayout = ({ children }) => {
   return (
     <div ref={headerRef} className=" w-full h-full font-mono">
       <MemoizedHeader className="w-full   bg-white" />
+      <ToastContainer
+        autoClose={1000}
+        closeOnClick={true}
+        pauseOnHover={false}
+        position="top-center"
+      />
       <div className="w-full h-12 xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
         <nav className="w-full h-full xl:flex font-mono font-semibold items-center hidden  ">
           <ul className="list-none h-12  flex  font-semibold items-center  gap-x-2  text-white ">
