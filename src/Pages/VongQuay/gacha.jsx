@@ -1,16 +1,5 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Container,
-  Box,
-  Paper,
-} from "@mui/material";
-import { styled } from "@mui/system";
-
+import { useState } from "react";
+import { Card } from "primereact/card";
 const gachaItems = [
   {
     id: 1,
@@ -94,45 +83,6 @@ export const getGachaItem = () => {
   return item;
 };
 
-const Title = styled(Typography)(({ theme }) => ({
-  fontSize: 24,
-  marginBottom: 16,
-  textAlign: "center",
-  color: "#ff5722",
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  margin: "10px",
-  backgroundColor: "#ff5722",
-  color: "#fff",
-  "&:hover": {
-    backgroundColor: "#e64a19",
-  },
-}));
-
-const ResultContainer = styled(Box)(({ theme }) => ({
-  marginTop: 20,
-}));
-
-const StyledCard = styled(Card)(({ theme, bgcolor, textcolor }) => ({
-  margin: "10px",
-  backgroundColor: bgcolor,
-  color: textcolor, // Set text color dynamically
-}));
-
-const CardContentCentered = styled(CardContent)(({ theme }) => ({
-  textAlign: "center",
-}));
-
-const ResultsBox = styled(Paper)(({ theme }) => ({
-  padding: "20px",
-  borderRadius: "15px",
-  backgroundColor: "#fff",
-  marginTop: "20px",
-  maxWidth: "600px",
-  margin: "20px auto",
-}));
-
 const Gacha = () => {
   const [gachaResult, setGachaResult] = useState(null);
   const [totalPoint, setTotalPoint] = useState(0);
@@ -155,62 +105,63 @@ const Gacha = () => {
   };
 
   return (
-    <Container>
-      <Title>Gacha Pull</Title>
-      <Grid container justifyContent="center">
-        <StyledButton onClick={gachaPull}>Pull Once</StyledButton>
-        <StyledButton onClick={gachaPullTotal}>Pull 10 Times</StyledButton>
-      </Grid>
-      <ResultContainer>
+    <div className="container mx-auto font-mono">
+      <h2 className="text-2xl mb-4 text-center text-orange-500">Gacha Pull</h2>
+      <div className="flex justify-center">
+        <button
+          onClick={gachaPull}
+          className="m-2 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Pull Once
+        </button>
+        <button
+          onClick={gachaPullTotal}
+          className="m-2 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Pull 10 Times
+        </button>
+      </div>
+      <div className="mt-5">
         {Array.isArray(gachaResult) ? (
-          <ResultsBox elevation={3}>
-            <Typography variant="h5" align="center">
-              Results of 10 pulls:
-            </Typography>
-            <Typography variant="h6" align="center">
-              Total Point: {totalPoint}
-            </Typography>
-            <Grid container justifyContent="center">
+          <div className="text-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
+            <h4 className="text-lg mb-2">Results of 10 pulls:</h4>
+            <p className="text-base font-mono">Total Point: {totalPoint}</p>
+            <div className="grid grid-cols-2 gap-4">
               {gachaResult.map((result, index) => (
-                <StyledCard
+                <Card
                   key={index}
-                  bgcolor={result.backgroundColor}
-                  textcolor={result.textColor}
+                  className="p-2 rounded-md"
+                  style={{
+                    backgroundColor: result.backgroundColor,
+                    color: result.textColor,
+                  }}
                 >
-                  <CardContentCentered>
-                    <Typography variant="h6">Index: {index + 1}</Typography>
-                    <Typography variant="h5">You got: {result.name}</Typography>
-                    <Typography>
-                      Rarity: {result.rarity} - {result.rate}%
-                    </Typography>
-                    <Typography>Point: {result.point}</Typography>
-                  </CardContentCentered>
-                </StyledCard>
+                  <p className="font-bold">Point: {result.point}</p>
+                  <p>You got: {result.name}</p>
+                </Card>
               ))}
-            </Grid>
-          </ResultsBox>
+            </div>
+          </div>
         ) : (
           gachaResult && (
-            <ResultsBox elevation={3}>
-              <StyledCard
-                bgcolor={gachaResult.backgroundColor}
-                textcolor={gachaResult.textColor}
+            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
+              <Card
+                style={{
+                  backgroundColor: gachaResult.backgroundColor,
+                  color: gachaResult.textColor,
+                }}
               >
-                <CardContentCentered>
-                  <Typography variant="h5">
-                    You got: {gachaResult.name}
-                  </Typography>
-                  <Typography>
-                    Rarity: {gachaResult.rarity} - {gachaResult.rate}%
-                  </Typography>
-                  <Typography>Point: {gachaResult.point}</Typography>
-                </CardContentCentered>
-              </StyledCard>
-            </ResultsBox>
+                <h5 className="font-bold">You got: {gachaResult.name}</h5>
+                <p>
+                  Rarity: {gachaResult.rarity} - {gachaResult.rate}%
+                </p>
+                <p>Point: {gachaResult.point}</p>
+              </Card>
+            </div>
           )
         )}
-      </ResultContainer>
-    </Container>
+      </div>
+    </div>
   );
 };
 

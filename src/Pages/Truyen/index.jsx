@@ -4,6 +4,7 @@ import { useUser } from "../../Service/User";
 import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { BreadCrumb } from "primereact/breadcrumb";
 
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
@@ -14,7 +15,7 @@ const Truyen = () => {
   const [Image, setImage] = useState("");
   const [chapters, setChaptersa] = useState([]); // for manga information
   const [isLoading, setIsLoading] = useState(true);
-
+  const token = useSelector((state) => state.auth.token);
   const [isSaved, setIsSaved] = useState(false);
 
   const user = useUser();
@@ -65,6 +66,7 @@ const Truyen = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(requestBody),
         }
@@ -93,11 +95,7 @@ const Truyen = () => {
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
           <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-2 flex justify-center">
-            <img
-              src={Image}
-              alt={slug}
-              className="rounded-xl lg:w-fit w-3/4"
-            />
+            <img src={Image} alt={slug} className="rounded-xl lg:w-fit w-3/4" />
           </div>
           <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-10 flex flex-col gap-y-2">
             <h1 className=" text-justify text-lg lg:text-left lg:text-xl 3xl:text-2xl text-orange-600 uppercase font-bold">
