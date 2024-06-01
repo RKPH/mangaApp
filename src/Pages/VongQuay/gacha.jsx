@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Gacha.css";
+import "./gacha.css";
 
 const gachaItems = [
   { id: 1, name: "Blue orb", rarity: "N", rate: 60, point: 10 },
