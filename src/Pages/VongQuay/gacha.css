@@ -1,0 +1,47 @@
+.gacha-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: whitesmoke;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.gacha-container h1 {
+    margin: 0 auto;
+}
+
+
+.gacha-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    border: 2px solid orange;
+    padding: 2%;
+}
+
+.gacha-btn {
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+    width: 25%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.gacha-btn button {
+    height: inherit;
+    width: 35%;
+    color: white;
+    background-color: orange;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.gacha-btn button:active {
+    background-color: white;
+    color: orange;
+}

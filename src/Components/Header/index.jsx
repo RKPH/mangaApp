@@ -184,7 +184,8 @@ const Header = () => {
                     </div>
                   </div>
                   <Divider color="white" className="text-white  w-full" />
-                  <div
+                  <Link
+                    to="/library"
                     onClick={() => {
                       setDropdownVisible(!isDropdownVisible);
                     }}
@@ -207,13 +208,10 @@ const Header = () => {
                       </svg>
                     </span>
 
-                    <Link
-                      to="/library"
-                      className="text-white lg:text-base text-sm "
-                    >
+                    <span className="text-white lg:text-base text-sm ">
                       Thư viện của bạn
-                    </Link>
-                  </div>
+                    </span>
+                  </Link>
 
                   <div
                     onClick={() => {
