@@ -74,11 +74,11 @@ const Header = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row  gap-x-1">
+          <Link to="/" className="flex flex-row  gap-x-1 items-center">
             <img
               src={Logo}
               alt=""
-              className="h-14 w-14 rounded-t-full border border-white"
+              className="h-12 w-12 rounded-t-3xl border border-white"
             />
             <div className="flex flex-col">
               <span className="text-slate-400 lg:inline hidden dark:text-white  text-2xl font-bold">
@@ -91,7 +91,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <div className="w-1/2 h-full    flex items-center justify-end py-2 ">
+      <div className="w-1/2 h-full    flex items-center justify-end ">
         <div className="hidden xl:flex items-center justify-evenly w-[417px]  h-12  ">
           <div
             className="rounded-full cursor-pointer border mx-4 border-orange-500 dark:border-white"
@@ -246,7 +246,7 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-10 xs:w-10 h-8 w-8 rounded-full border-2 border-white "
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-12 xs:w-12 h-12 w-12 rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>

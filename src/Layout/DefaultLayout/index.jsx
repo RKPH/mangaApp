@@ -254,7 +254,6 @@ const DefaultLayout = ({ children }) => {
                   activeTab === "Home" ? "bg-black" : ""
                 } cursor-pointer hover:bg-black item my-1 transition duration-300`}
                 onClick={() => {
-                  localStorage.removeItem("currentPage");
                   handleTabClick("Home");
                 }}
               >
