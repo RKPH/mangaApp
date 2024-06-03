@@ -155,7 +155,7 @@ const GachaItems = () => {
           ))}
         </div>
 
-        <div className="flex w-full justify-center gap-x-2  m-5">
+        <div className="flex w-full justify-center gap-x-2 ">
           <button
             className="button p-2 border border-orange-500 m-1 text-base bg-orange-500 rounded-md"
             onClick={() => pull(1)}
