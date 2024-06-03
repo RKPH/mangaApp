@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./gacha.css";
 
 const gachaItems = [
@@ -72,6 +72,7 @@ const placeholderImg =
   "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQznaKdID5D6d23ldHSwKOmZeyEz21XvZZ12LzE9t6nigbgqkplNjihJIaLMlhpF1ZeR5c/256fx256f";
 
 const GachaItems = () => {
+  const scrollRef = useRef(null);
   const [countItems, setCountItems] = useState(
     gachaItems.map((item) => ({
       ...item,
@@ -99,6 +100,7 @@ const GachaItems = () => {
                 count: itemCount.count + 1,
               };
             }
+            window.scrollTo({ top: 0, behavior: "smooth" });
             return itemCount;
           });
           break;
@@ -111,32 +113,62 @@ const GachaItems = () => {
   };
 
   return (
-    <div className="gacha-container">
-      <h1>Gacha Result</h1>
-      <div className="gacha-items">
-        {countItems.map((countItem) => (
-          <div
-            key={countItem.id}
-            className={`gacha-item ${countItem.rarity.toLowerCase()}`}
+    <div className="w-full  flex flex-col items-center  bg-white dark:bg-[#18191A] py-4 z-0">
+      <div className=" bg-[whitesmoke] dark:bg-[#242526] min-w-full min-h-screen lg:px-10 px-4 py-2">
+        <h1 className="lg:text-lg text-base dark:text-white text-black text-center ">
+          NƠI THỎA SỨC CHO CƠN NGHẸO CỦA BẠN
+        </h1>
+        <div className="p-3 shadow-sm my-5 border w-fit rounded-md">
+          <span className="lg:text-base text-sm dark:text-white text-black text-center">
+            Gacha Result : {totalPoints}
+          </span>
+        </div>
+        <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
+          {countItems.map((countItem) => (
+            <div
+              key={countItem.id}
+              className={`shadow-md rounded hover:scale-105 gacha-item ${
+                countItem.count > 0 ? countItem.rarity.toLowerCase() : ""
+              }`}
+            >
+              <div className="lg:h-[120px] h-[100px] w-full">
+                <img
+                  src={countItem.count === 0 ? placeholderImg : countItem.img}
+                  alt={countItem.name}
+                  className="h-full w-full rounded-md border border-black "
+                />
+              </div>
+              <div className="p-2 ">
+                <h3
+                  className={`overflow-hidden uppercase mb-4 lg:text-base text-sm font-medium overflow-ellipsis text-center whitespace-nowrap `}
+                >
+                  {countItem.count === 0 ? "?" : countItem.name}
+                </h3>
+                <p className="dark:text-white text-black lg:text-base text-sm">
+                  Points: {countItem.count === 0 ? "?" : countItem.point}
+                </p>
+                <p className="dark:text-white text-black lg:text-base text-sm">
+                  you got: {countItem.count}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex w-full justify-center gap-x-2  m-5">
+          <button
+            className="button p-2 border border-orange-500 m-1 text-base bg-orange-500 rounded-md"
+            onClick={() => pull(1)}
           >
-            <img
-              src={countItem.count === 0 ? placeholderImg : countItem.img}
-              alt={countItem.name}
-            />
-            <h3>{countItem.count === 0 ? "?" : countItem.name}</h3>
-            <p>Points: {countItem.count === 0 ? "?" : countItem.point}</p>
-            <p>Count: {countItem.count}</p>
-          </div>
-        ))}
-      </div>
-      <h1>Total Points: {totalPoints}</h1>
-      <div className="gacha-btn">
-        <button className="button" onClick={() => pull(1)}>
-          Pull x1
-        </button>
-        <button className="button" onClick={() => pull(10)}>
-          Pull x10
-        </button>
+            Pull x1
+          </button>
+          <button
+            className="button p-2 border border-orange-500 m-1 text-base bg-orange-500 rounded-md"
+            onClick={() => pull(10)}
+          >
+            Pull x10
+          </button>
+        </div>
       </div>
     </div>
   );

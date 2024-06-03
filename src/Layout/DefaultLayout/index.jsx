@@ -337,7 +337,16 @@ const DefaultLayout = ({ children }) => {
                 </span>{" "}
                 Donate
               </div>
-              <Link to="/gacha" className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis font-mono whitespace-nowrap tracking-wide cursor-pointer my-1 hover:bg-black transition duration-300">
+              <Link
+                to="/gacha"
+                className={`h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-mono tracking-wide ${
+                  activeTab === "gacha" ? "bg-black" : ""
+                } cursor-pointer hover:bg-black item my-1 transition duration-300`}
+                onClick={() => {
+                  localStorage.removeItem("currentPage");
+                  handleTabClick("gacha");
+                }}
+              >
                 Vòng quay
               </Link>
             </div>
