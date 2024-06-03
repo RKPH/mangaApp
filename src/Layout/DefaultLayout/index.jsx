@@ -337,9 +337,9 @@ const DefaultLayout = ({ children }) => {
                 </span>{" "}
                 Donate
               </div>
-              <div className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis font-mono whitespace-nowrap tracking-wide cursor-pointer my-1 hover:bg-black transition duration-300">
+              <Link to="/gacha" className="h-12 w-full flex items-center px-2 text-gray-50 text-sm font-semibold overflow-ellipsis font-mono whitespace-nowrap tracking-wide cursor-pointer my-1 hover:bg-black transition duration-300">
                 Vòng quay
-              </div>
+              </Link>
             </div>
           </div>
         </div>
