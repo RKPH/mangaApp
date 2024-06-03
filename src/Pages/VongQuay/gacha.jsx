@@ -62,7 +62,7 @@ const gachaItems = [
     id: 8,
     name: "Legend orb",
     rarity: "Legend",
-    rate: 0.05,
+    rate: 1.0,
     point: 1000000,
     img: "https://c4.wallpaperflare.com/wallpaper/79/233/219/arcaea-lowiro-music-game-hd-wallpaper-preview.jpg",
   },
@@ -72,7 +72,6 @@ const placeholderImg =
   "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQznaKdID5D6d23ldHSwKOmZeyEz21XvZZ12LzE9t6nigbgqkplNjihJIaLMlhpF1ZeR5c/256fx256f";
 
 const GachaItems = () => {
-  const scrollRef = useRef(null);
   const [countItems, setCountItems] = useState(
     gachaItems.map((item) => ({
       ...item,
@@ -80,6 +79,32 @@ const GachaItems = () => {
     }))
   );
   const [totalPoints, setTotalPoints] = useState(0);
+
+  const updatePointsApi = async (points) => {
+    try {
+      const response = await fetch(
+        "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Users/updatePoint/7be892ce-ef69-440b-b0fd-912983d79881",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(points), // Sending plain number
+        }
+      );
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `Failed to update points: ${response.status} ${response.statusText} - ${errorText}`
+        );
+      }
+
+      console.log("Points updated successfully");
+    } catch (error) {
+      console.error("Error updating points:", error);
+    }
+  };
 
   const pull = (rollTimes) => {
     let total = 0;
@@ -110,6 +135,8 @@ const GachaItems = () => {
 
     setCountItems(updatedCountItems);
     setTotalPoints(total);
+    console.log("Total points:", total);
+    updatePointsApi(total);
   };
 
   return (

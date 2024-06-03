@@ -10,6 +10,7 @@ const Personalpage = () => {
     email: "",
     userName: "",
     avatar: "",
+    point: "",
     date: "",
   });
   const [preview, setPreview] = useState("");
@@ -22,6 +23,7 @@ const Personalpage = () => {
         email: user?.userEmail || "",
         userName: user?.userName || "",
         avatar: user?.avatar || "",
+        point: user?.point || "",
         date: dateCreated,
       });
       setPreview(user?.avatar || "");
@@ -72,7 +74,7 @@ const Personalpage = () => {
               <div className="xl:col-span-2 flex col-span-4 items-center border-white border">
                 <div className="flex flex-col dark:text-white font-mono font-semibold">
                   <span className="m-2">Tài khoản: </span>
-                  <span className="m-2">Số điểm: </span>
+                  <span className="m-2">Số điểm: {formData?.point} </span>
                 </div>
               </div>
               <div className="xl:col-span-2 flex col-span-4 items-center border-white border ">
