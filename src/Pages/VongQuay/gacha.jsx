@@ -142,7 +142,7 @@ const GachaItems = () => {
       setCountItems(updatedCountItems);
       setTotalPoints(total);
       console.log("Total points:", total);
-      // updatePointsApi(total);
+      updatePointsApi(total);
       setIsRolling(false);
     }, 3400);
 
@@ -169,7 +169,11 @@ const GachaItems = () => {
         </div>
         {isRolling && displayedItem ? (
           <div className="w-full p-4 flex items-center justify-center">
-            <img src={GahcaEffect} alt="Gacha effect" className="w-[600px] h-[300px] rounded-md backdrop-filter" />
+            <img
+              src={GahcaEffect}
+              alt="Gacha effect"
+              className="w-[600px] h-[300px] rounded-md backdrop-filter"
+            />
           </div>
         ) : (
           <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
