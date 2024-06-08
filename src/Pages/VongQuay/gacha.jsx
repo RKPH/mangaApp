@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./gacha.css";
 import { Card } from "primereact/card";
 import GahcaEffect from "../../assets/gacha.gif";
-
+import { useSelector } from "react-redux";
 const gachaItems = [
   {
     id: 1,
@@ -74,6 +74,8 @@ const placeholderImg =
   "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQznaKdID5D6d23ldHSwKOmZeyEz21XvZZ12LzE9t6nigbgqkplNjihJIaLMlhpF1ZeR5c/256fx256f";
 
 const GachaItems = () => {
+  const User = useSelector((state) => state.user.user);
+  console.log("usser at gacha", User);
   const [countItems, setCountItems] = useState(
     gachaItems.map((item) => ({
       ...item,
@@ -87,7 +89,7 @@ const GachaItems = () => {
   const updatePointsApi = async (points) => {
     try {
       const response = await fetch(
-        "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Users/updatePoint/7be892ce-ef69-440b-b0fd-912983d79881",
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Users/updatePoint/${User?.userID}`,
         {
           method: "POST",
           headers: {
@@ -143,6 +145,7 @@ const GachaItems = () => {
       setTotalPoints(total);
       console.log("Total points:", total);
       updatePointsApi(total);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setIsRolling(false);
     }, 3400);
 
