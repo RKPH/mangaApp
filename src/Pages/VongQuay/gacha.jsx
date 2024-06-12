@@ -212,13 +212,13 @@ const GachaItems = () => {
             draggable={false}
             blockScroll={true}
             visible={visible}
-            className="dark:bg-[#18191A] w-3/4 min-h-fit shadow-lg rounded-md dark:text-white p-5 bg-white text-black"
+            className="dark:bg-[#18191A] w-3/4  h-[400px] shadow-lg rounded-md dark:text-white p-5 bg-white text-black"
             onHide={() => {
               if (!visible) return;
               setVisible(false);
             }}
           >
-            <div className="m-1 mt-5">
+            <div className="m-1 mt-5 boder border-white border flex  p-2  ">
               <div className="grid lg:grid-cols-10 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2">
                 {pulledItems.map((item) => (
                   <Card
