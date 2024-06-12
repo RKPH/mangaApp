@@ -89,7 +89,7 @@ const Sliders = ({ data }) => {
   }, [data]);
   return (
     <div className="w-full px-4">
-      <Slider {...settings}>
+      <Slider className="dark:text-white" {...settings}>
         {datas.length === 0
           ? [1, 1, 1, 1, 1].map(() => (
               <Skeleton
@@ -100,7 +100,7 @@ const Sliders = ({ data }) => {
               />
             ))
           : datas.map((item) => (
-              <Card key={item?.name} className="shadow-md  border w-full">
+              <Card key={item?.name} className="shadow-md  w-full">
                 <Link to={`/truyen-tranh/${item?.slug}`}>
                   <img
                     src={`${domain}/${item?.thumb_url}`}

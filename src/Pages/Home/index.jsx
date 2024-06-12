@@ -18,16 +18,16 @@ const Home = () => {
       caption: "TRANG CHỦ",
     },
     {
-      src: "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpe",
+      src: "https://ss-images.saostar.vn/w800/2020/01/03/6750639/page1.jpg",
       caption: "ANOTHER SLIDE",
     },
     // Add more items as needed
   ];
   const carouselItemTemplate = (item) => {
     return (
-      <div className="relative flex flex-col items-center justify-center lg:h-[550px] h-[300px]">
+      <div className=" flex items-center justify-center w-full dark:bg-[#18191A] shadow-lg rounded-3xl lg:h-[550px] h-[300px]">
         <img
-          className="w-full h-full object-cover rounded-2xl shadow-md"
+          className="h-full  rounded-3xl shadow-md m-1"
           src={item.src}
           alt={item.caption}
         />
@@ -112,7 +112,7 @@ const Home = () => {
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-mono ">
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
         <Carousel
-          className="dark:text-white"
+          className="dark:text-white w-full shadow-md flex justify-center items-center "
           value={carouselData}
           itemTemplate={carouselItemTemplate}
           numVisible={1}
@@ -210,7 +210,7 @@ const Home = () => {
         {categories.map((item) => (
           <div key={item._id} className="my-10 pr-2">
             <Link to={`/the-loai/${item.slug}`}>
-              <h2 className="font-mono text-base lg:text-xl font-bold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
+              <h2 className="font-mono text-base uppercase lg:text-xl font-bold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
                 {item.name}
                 <ArrowRight className="text-base lg:text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left " />
               </h2>
