@@ -9,8 +9,31 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
 import ArrowRightTwoToneIcon from "@mui/icons-material/ArrowRightTwoTone";
 import Sliders from "../../Components/Slider";
+import { Carousel } from "primereact/carousel";
 
 const Home = () => {
+  const carouselData = [
+    {
+      src: "https://img.freepik.com/free-photo/mythical-dragon-beast-anime-style_23-2151112842.jpg?size=626&ext=jpg&ga=GA1.2.1911711112.1708163071&semt=ais_user",
+      caption: "TRANG CHỦ",
+    },
+    {
+      src: "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpe",
+      caption: "ANOTHER SLIDE",
+    },
+    // Add more items as needed
+  ];
+  const carouselItemTemplate = (item) => {
+    return (
+      <div className="relative flex flex-col items-center justify-center lg:h-[550px] h-[300px]">
+        <img
+          className="w-full h-full object-cover rounded-2xl shadow-md"
+          src={item.src}
+          alt={item.caption}
+        />
+      </div>
+    );
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   //fecth for histroy read
@@ -87,10 +110,18 @@ const Home = () => {
   };
   return (
     <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-mono ">
-      <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 pr-7">
-        <h1 className="text-lg font-mono lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
-          TRANG CHỦ
-        </h1>
+      <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
+        <Carousel
+          className="dark:text-white"
+          value={carouselData}
+          itemTemplate={carouselItemTemplate}
+          numVisible={1}
+          numScroll={1}
+          circular={true}
+          showIndicators={true}
+          autoplayInterval={3000}
+        />
+
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full">
             <h2 className="font-mono text-base lg:text-xl font-normal text-orange-500 dark:dark:text-blue-400 text-left my-5">
@@ -177,7 +208,7 @@ const Home = () => {
           </div>
         )}
         {categories.map((item) => (
-          <div key={item._id} className="my-10">
+          <div key={item._id} className="my-10 pr-2">
             <Link to={`/the-loai/${item.slug}`}>
               <h2 className="font-mono text-base lg:text-xl font-bold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
                 {item.name}
