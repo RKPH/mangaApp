@@ -162,7 +162,7 @@ const Header = () => {
                     <img
                       onClick={() => setDropdownVisible(!isDropdownVisible)}
                       src={User?.avatar}
-                      className="h-[30px] w-[30px] xl:w-[34px] xl:h-[34px] border border-white rounded-full"
+                      className="h-[30px] w-[30px] lg:w-[34px] lg:h-[34px] border border-white rounded-full"
                       alt=""
                     />
                     <div className="flex flex-col">
@@ -246,7 +246,7 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-12 xs:w-12 h-12 w-12 rounded-full border-2 border-white "
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-8 xs:w-8 h-12 w-12 rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>

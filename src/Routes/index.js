@@ -13,6 +13,7 @@ import Personalpage from "../Pages/Personal";
 import EditProfile from "../Pages/EditProfile";
 import Gacha from "../Pages/VongQuay/gacha";
 import Chapter from "../Pages/Chapter";
+import GachaLayout from  "../Layout/GachaLayout";
 export const publicRoutes = [
   {
     path: "/",
@@ -69,6 +70,7 @@ export const publicRoutes = [
   {
     path: "/gacha",
     component: Gacha,
+    layout: GachaLayout,
   },
 
   {

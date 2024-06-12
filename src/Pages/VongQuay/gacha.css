@@ -1,10 +1,29 @@
 /* gacha-styles.css */
+::-webkit-scrollbar {
+    width: 0px !important;
+    
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    scale: 2;
+}
 /* Base styles for gacha item */
 
 /* Specific rarity styles */
-.n {
-    border: 2px solid #0000ff;
+.N {
+   
     /* Blue border */
     color: #0000ff !important;
     /* Blue text */
@@ -57,4 +76,13 @@
     /* Gold border */
     color: #ffd700;
     /* Gold text */
+}
+.star {
+    color: gold;
+    font-size: 1.2rem;
+}
+
+/* Hide the original rarity text */
+.gacha-item .rarity {
+    display: none;
 }
