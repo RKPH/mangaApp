@@ -81,11 +81,8 @@ const Header = () => {
               className="h-12 w-12 rounded-md border border-white"
             />
             <div className="flex flex-col">
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-3xl font-bold">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-bold mx-2">
                 Iceycure
-              </span>
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-sm font-momo">
-                Đọc mọi lúc mọi nơi
               </span>
             </div>
           </Link>

@@ -92,14 +92,13 @@ const TruyenMoi = () => {
           className="px-1  shadow-md  min-w-fit max-w-fit  lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
         <div className="w-full flex justify-between">
-          <h1 className="lg:text-2xl text-xl uppercase font-bold   text-black dark:text-white text-left my-5 mb-10">
-            {page === 1
-              ? "TRUYỆN TRANH MỚI "
-              : `TRUYỆN TRANH MỚI-TRANG ${page}`}
+          <h1 className="lg:text-2xl text-xl  uppercase font-bold   text-black dark:text-white text-left my-5 mb-10">
+            TRUYỆN TRANH MỚI 
+            
           </h1>
-          <span className="lg:text-2xl text-xl uppercase font-bold  text-black dark:text-white text-left my-5 mb-10">
+          <span className=" text-xl  font-bold  text-black dark:text-white text-left my-5 mb-10">
             {" "}
-            trang {page}
+            Trang {page}
           </span>
         </div>
 

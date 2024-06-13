@@ -53,6 +53,7 @@ const Home = () => {
       try {
         const response = await axios.get("https://otruyenapi.com/v1/api/home");
         setData(response.data.data.items);
+        window.scrollTo({ top: 0, behavior: "smooth" });
         console.log(response.data.data.items);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -206,9 +207,7 @@ const Home = () => {
           </div>
         )}
         <div className="min-h-screen p-1 my-10 dark:text-white text-black">
-          <h2 className="lg:text-xl text-lg uppercase font-bold ">
-            Truyện mới cập nhật
-          </h2>
+          <h2 className="text-xl  uppercase font-bold ">Truyện mới cập nhật</h2>
           <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
             {data.length === 0
               ? Array(24)

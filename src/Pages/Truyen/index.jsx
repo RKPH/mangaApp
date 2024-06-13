@@ -131,7 +131,7 @@ const Truyen = () => {
             />
           </div>
           <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
-            <h1 className=" text-justify text-xl lg:text-left lg:text-2xl dark:text-blue-600 text-orange-600 uppercase font-bold">
+            <h1 className=" text-justify  lg:text-left text-2xl dark:text-blue-600 text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
             <h3 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white uppercase font-semibold">
@@ -211,7 +211,7 @@ const Truyen = () => {
           </div>
         </div>
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl  shadow-md">
-          <h3 className="text-left  text-lg lg:text-xl text-black dark:text-white uppercase font-bold">
+          <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold">
             Danh sách chương
           </h3>
           <div className=" overflow-y-auto w-full mt-2 ">
@@ -224,10 +224,10 @@ const Truyen = () => {
                       chapter_api: item.chapter_api_data,
                       data: chapters,
                     }}
-                    className="flex items-center justify-center p-2 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer"
+                    className="flex items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer"
                     key={`${item.chapter_name}-${index}`}
                   >
-                    <span className="text-base font-semibold">
+                    <span className="text-base font-normal">
                       Chương {item.chapter_name}
                     </span>
                   </Link>
@@ -237,7 +237,7 @@ const Truyen = () => {
           </div>
         </div>
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl  shadow-md">
-          <h3 className="text-left  text-lg lg:text-xl text-black dark:text-white uppercase font-bold">
+          <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold">
             Truyện tương tự
           </h3>
           <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
@@ -269,6 +269,7 @@ const Truyen = () => {
                       <img
                         onClick={() => {
                           setData([]);
+                          setImage("");
                         }}
                         src={`${domain}/${item.thumb_url}`}
                         alt={item.slug}

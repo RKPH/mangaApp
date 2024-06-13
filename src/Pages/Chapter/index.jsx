@@ -146,7 +146,7 @@ const Chapter = () => {
             {chapter?.chapter_image.map((image, index) => (
               <img
                 key={index}
-                className="w-full h-full object-contain"
+                className="w-full  object-contain"
                 src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
                 alt={`page ${image.image_page}`}
               />
