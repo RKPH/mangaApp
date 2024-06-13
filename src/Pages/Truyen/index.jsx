@@ -154,12 +154,12 @@ const Truyen = () => {
                 {Data?.item?.author ?? "Undefined"}
               </span>
             </div>
-            <div className="flex flex-row">
-              <span className="font-semibold  flex flex-row text-xl dark:text-blue-600 text-orange-600  mr-2">
+            <div className="lg:flex lg:flex-row">
+              <h5 className="font-semibold   text-xl dark:text-blue-600 text-orange-600  mr-2">
                 Thể loại:{" "}
-              </span>
+              </h5>
 
-              <span className="gap-1 flex flex-wrap mt-1">
+              <div className="gap-1 flex flex-wrap mt-1">
                 {Data?.item?.category?.map((item) => (
                   <Link
                     to={`/the-loai/${item.slug}`}
@@ -169,7 +169,7 @@ const Truyen = () => {
                     {item.name}
                   </Link>
                 )) ?? "Undefined"}
-              </span>
+              </div>
             </div>
             <div className="flex flex-row gap-2 flex-wrap bottom-0 text-center w-full  py-2 rounded-t-none rounded-xl">
               <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
