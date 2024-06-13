@@ -241,7 +241,7 @@ const Home = () => {
                         className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                       />
                       <div className="py-2">
-                        <h5 className="overflow-hidden text-left  lg:text-lg text-base font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                        <h5 className="overflow-hidden text-left  text-lg  font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                           {item.name}
                         </h5>
                         <i

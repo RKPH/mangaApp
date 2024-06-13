@@ -142,7 +142,7 @@ const Truyen = () => {
               <span className="font-semibold font-['Oswald']] text-xl dark:text-blue-600 text-orange-600  ">
                 Trạng thái:
               </span>
-              <span className="px-2 dark:text-white text-black font-normal font-['Oswald']]  text-xl ">
+              <span className="px-2 dark:text-white text-black font-normal font-['Oswald']]  text-lg">
                 {Data?.item?.status ?? "Undefined"}
               </span>
             </div>
@@ -150,20 +150,21 @@ const Truyen = () => {
               <span className="font-semibold  text-xl  dark:text-blue-600 text-orange-600  mr-1">
                 Tác giả:{" "}
               </span>
-              <span className="text-black  text-xl font-normal font-['Oswald']] dark:text-white mr-1">
+              <span className="text-black  text-lg font-normal font-['Oswald']] dark:text-white mr-1">
                 {Data?.item?.author ?? "Undefined"}
               </span>
             </div>
-            <div className="lg:flex lg:flex-row">
-              <span className="font-semibold   text-xl dark:text-blue-600 text-orange-600  mr-1">
+            <div className="flex flex-row">
+              <span className="font-semibold  flex flex-row text-xl dark:text-blue-600 text-orange-600  mr-2">
                 Thể loại:{" "}
               </span>
+
               <span className="gap-1 flex flex-wrap mt-1">
                 {Data?.item?.category?.map((item) => (
                   <Link
                     to={`/the-loai/${item.slug}`}
                     key={item.slug}
-                    className="px-2 lg:ml-1 dark:text-white text-black font-normal font-['Oswald']]  text-xl   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap"
+                    className="px-2  dark:text-white text-black font-normal font-['Oswald']]  text-lg   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
                   >
                     {item.name}
                   </Link>
@@ -194,7 +195,7 @@ const Truyen = () => {
               </div>
             </div>
             <div className="mt-2">
-              <h3 className="l text-xl font-['Oswald'] font-medium dark:text-white m-1">
+              <h3 className="text-xl font-['Oswald'] font-semibold dark:text-white m-1">
                 {" "}
                 Giới thiệu
               </h3>
@@ -274,7 +275,7 @@ const Truyen = () => {
                         className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                       />
                       <div className="py-2">
-                        <h5 className="overflow-hidden text-left lg:text-lg text-base font-normal overflow-ellipsis whitespace-nowrap dark:text-white">
+                        <h5 className="overflow-hidden text-left  text-lg  font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                           {item.name}
                         </h5>
                         <i
