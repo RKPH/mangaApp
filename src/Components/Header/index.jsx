@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center z-0 font-mono "
+      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center  font-font-['Oswald'] sticky top-0   z-20"
     >
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
@@ -78,10 +78,10 @@ const Header = () => {
             <img
               src={Logo}
               alt=""
-              className="h-12 w-12 rounded-t-3xl border border-white"
+              className="h-12 w-12 rounded-md border border-white"
             />
             <div className="flex flex-col">
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-2xl font-bold">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-3xl font-bold">
                 Iceycure
               </span>
               <span className="text-slate-400 lg:inline hidden dark:text-white  text-sm font-momo">
@@ -157,7 +157,7 @@ const Header = () => {
               placement="bottom-end"
               arrow={true}
               render={(attrs) => (
-                <div className=" w-fit min-h-fit bg-[#161618]  py-4 shadow-lg rounded-lg ">
+                <div className=" w-fit min-h-fit bg-[#181515c7]  py-4 shadow-lg rounded-lg z-50 relative">
                   <div className="flex flex-row items-center gap-x-2 px-4 my-4">
                     <img
                       onClick={() => setDropdownVisible(!isDropdownVisible)}
@@ -246,7 +246,7 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-12 md:w-12 xs:h-8 xs:w-8 h-12 w-12 rounded-full border-2 border-white "
+                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-8 md:w-8 xs:h-8 xs:w-8 h-12 w-12 rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>

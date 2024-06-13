@@ -1,5 +1,23 @@
-.slick-slide >div {
-    
-    margin: 0 8px;
-    
+
+/* Custom CSS for Carousel Indicators */
+.p-carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.p-carousel-indicator {
+    background-color: #fff;
+    /* Change color as needed */
+    border: 1px solid #000;
+    /* Change border color as needed */
+}
+
+.dark .p-carousel-indicator {
+    background-color: #242526;
+    /* Change color for dark mode */
+    border: 1px solid #fff;
+    /* Change border color for dark mode */
 }

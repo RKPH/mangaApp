@@ -8,9 +8,10 @@ import { deleteManga, saveMangas } from "../../Redux/MangaSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ArrowRight } from "@mui/icons-material";
 import ArrowRightTwoToneIcon from "@mui/icons-material/ArrowRightTwoTone";
-import Sliders from "../../Components/Slider";
-import { Carousel } from "primereact/carousel";
 
+import { Carousel } from "primereact/carousel";
+import { Card } from "primereact/card";
+import { Skeleton } from "@mui/material";
 const Home = () => {
   const carouselData = [
     {
@@ -25,7 +26,7 @@ const Home = () => {
   ];
   const carouselItemTemplate = (item) => {
     return (
-      <div className=" flex items-center justify-center w-full dark:bg-[#18191A] shadow-lg rounded-3xl lg:h-[550px] h-[300px]">
+      <div className=" flex items-center justify-center w-full dark:bg-[#18191A]  rounded-3xl lg:h-[550px] h-[300px] z-0">
         <img
           className="h-full  rounded-3xl shadow-md m-1"
           src={item.src}
@@ -45,15 +46,14 @@ const Home = () => {
   }, []);
   const domain = "https://otruyenapi.com/uploads/comics/";
 
-  const [categories, setCategories] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://otruyenapi.com/v1/api/the-loai"
-        );
-        setCategories(response.data.data.items.slice(0, 12));
+        const response = await axios.get("https://otruyenapi.com/v1/api/home");
+        setData(response.data.data.items);
+        console.log(response.data.data.items);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -61,7 +61,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-
   //GET RANDOM SLUG
   const handleRandomSlug = async () => {
     try {
@@ -109,22 +108,21 @@ const Home = () => {
     }
   };
   return (
-    <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-mono ">
+    <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-font-['Oswald'] ">
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
         <Carousel
-          className="dark:text-white w-full shadow-md flex justify-center items-center "
+          className="dark:text-white w-full  flex justify-center items-center z-0"
           value={carouselData}
           itemTemplate={carouselItemTemplate}
           numVisible={1}
           numScroll={1}
           circular={true}
-          showIndicators={true}
           autoplayInterval={3000}
         />
 
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full">
-            <h2 className="font-mono text-base lg:text-xl font-normal text-orange-500 dark:dark:text-blue-400 text-left my-5">
+            <h2 className="font-font-['Oswald'] lg:text-xl text-lg uppercase font-bold  text-orange-500 dark:dark:text-blue-400 text-left my-5">
               Nội dung bạn đã đọc
             </h2>
             <Disclosure>
@@ -207,17 +205,61 @@ const Home = () => {
             </Disclosure>
           </div>
         )}
-        {categories.map((item) => (
-          <div key={item._id} className="my-10 pr-2">
-            <Link to={`/the-loai/${item.slug}`}>
-              <h2 className="font-mono text-base uppercase lg:text-xl font-bold text-orange-500 dark:text-blue-400 text-left my-5 hover:underline">
-                {item.name}
-                <ArrowRight className="text-base lg:text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left " />
-              </h2>
-            </Link>
-            <Sliders data={item.slug} />
+        <div className="min-h-screen p-1 my-10 dark:text-white text-black">
+          <h2 className="lg:text-xl text-lg uppercase font-bold ">
+            Truyện mới cập nhật
+          </h2>
+          <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
+            {data.length === 0
+              ? Array(24)
+                  .fill()
+                  .map((_, index) => (
+                    <div
+                      key={index}
+                      className="shadow-md rounded hover:scale-105"
+                    >
+                      <div className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-[200px]">
+                        <Skeleton
+                          variant="rectangular"
+                          height="100%"
+                          width="100%"
+                          animation="wave"
+                        />
+                      </div>
+                      <div className="p-2">
+                        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+                        <Skeleton variant="text" sx={{ width: "60%" }} />
+                      </div>
+                    </div>
+                  ))
+              : data.map((item) => (
+                  <Card key={item.name} className=" lg:hover:scale-110   ">
+                    <Link to={`/truyen-tranh/${item.slug}`}>
+                      <img
+                        src={`${domain}/${item.thumb_url}`}
+                        alt={item.slug}
+                        className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
+                      />
+                      <div className="py-2">
+                        <h5 className="overflow-hidden text-left  lg:text-lg text-base font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
+                          {item.name}
+                        </h5>
+                        <i
+                          className="pi pi-tag p-mr-2"
+                          style={{ color: "var(--green-500)" }}
+                        />
+                        <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white">
+                          Chương:{" "}
+                          {item.chaptersLatest && item.chaptersLatest[0]
+                            ? item.chaptersLatest[0].chapter_name
+                            : "???"}
+                        </span>
+                      </div>
+                    </Link>
+                  </Card>
+                ))}
           </div>
-        ))}
+        </div>
         <div className=" m-5 min-h-fit w-fit flex flex-col border-black dark:border-white border p-2 rounded-md ">
           <h2 className="font-[helvetica] text-base lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
             Hôm nay nên đọc gì

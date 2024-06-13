@@ -86,34 +86,8 @@ const Chapter = () => {
                 {chapter?.comic_name} - Chapter: {chapter?.chapter_name}
               </h1>
             </div>
-            <div className=" w-full flex items-center justify-center p-2">
-              {previousChapter && (
-                <Link
-                  to={`/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`}
-                  state={{
-                    chapter_api: previousChapter.chapter_api_data,
-                    data: chapters,
-                  }}
-                  className="btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
-                >
-                  Previous chapter
-                </Link>
-              )}
-              {nextChapter && (
-                <Link
-                  to={`/truyen-tranh/${slug}/chapter-${nextChapter.chapter_name}`}
-                  state={{
-                    chapter_api: nextChapter.chapter_api_data,
-                    data: chapters,
-                  }}
-                  className="btn btn-primary dark:text-white text-black rounded-md p-2 lg:text-base text-xs border dark:bg-[#3F94D5]  dark:border-white border-black m-1 hover:bg-gray-500"
-                >
-                  Next chapter
-                </Link>
-              )}
-            </div>
-            {/* //Listbox */}
-            <div className="lg:text-base text-sm flex dark:text-white text-black justify-center ">
+            {/* Listbox */}
+            <div className="lg:text-base text-sm flex dark:text-white text-black justify-center">
               <Listbox value={apiData} onChange={setApiData}>
                 <Listbox.Button
                   className="border-2 border-gray-300 rounded-md p-2 m-2"
@@ -138,7 +112,7 @@ const Chapter = () => {
                               active
                                 ? "text-amber-900 bg-amber-100"
                                 : "text-gray-900"
-                            } cursor-default select-none relative p-2 `
+                            } cursor-default select-none relative p-2`
                           }
                           value={item.chapter_api_data}
                         >
@@ -154,7 +128,7 @@ const Chapter = () => {
                                 selected
                                   ? "font-extrabold text-black"
                                   : "font-normal"
-                              } block truncate lg:text-base text-sm `}
+                              } block truncate lg:text-base text-sm`}
                             >
                               Chương {item?.chapter_name}
                             </Link>
@@ -172,14 +146,14 @@ const Chapter = () => {
             {chapter?.chapter_image.map((image, index) => (
               <img
                 key={index}
-                className="w-full"
+                className="w-full h-full object-contain"
                 src={`${domain}/${chapter.chapter_path}/${image.image_file}`}
                 alt={`page ${image.image_page}`}
               />
             ))}
           </div>
 
-          <div className="lg:text-base text-sm flex dark:text-white text-black justify-center ">
+          <div className="lg:text-base text-sm flex dark:text-white text-black justify-center">
             <Listbox value={apiData} onChange={setApiData}>
               <Listbox.Button
                 className="border-2 border-gray-300 rounded-md lg:p-2 p-1 m-2"
@@ -204,7 +178,7 @@ const Chapter = () => {
                             active
                               ? "text-amber-900 bg-amber-100"
                               : "text-gray-900"
-                          } cursor-default select-none relative p-2 `
+                          } cursor-default select-none relative p-2`
                         }
                         value={item.chapter_api_data}
                       >
@@ -220,7 +194,7 @@ const Chapter = () => {
                               selected
                                 ? "font-extrabold text-black"
                                 : "font-normal"
-                            } block truncate lg:text-base text-sm `}
+                            } block truncate lg:text-base text-sm`}
                           >
                             Chương {item?.chapter_name}
                           </Link>
@@ -233,6 +207,34 @@ const Chapter = () => {
             </Listbox>
           </div>
         </div>
+      </div>
+
+      {/* Fixed Footer */}
+      <div className="fixed bottom-0 left-0 right-0 flex items-center justify-center p-2 bg-white dark:bg-[#18191A] z-50 border-t border-gray-200 dark:border-gray-700">
+        {previousChapter && (
+          <Link
+            to={`/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`}
+            state={{
+              chapter_api: previousChapter.chapter_api_data,
+              data: chapters,
+            }}
+            className="btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500"
+          >
+            Previous chapter
+          </Link>
+        )}
+        {nextChapter && (
+          <Link
+            to={`/truyen-tranh/${slug}/chapter-${nextChapter.chapter_name}`}
+            state={{
+              chapter_api: nextChapter.chapter_api_data,
+              data: chapters,
+            }}
+            className="btn btn-primary dark:text-white text-black rounded-md p-2 lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500"
+          >
+            Next chapter
+          </Link>
+        )}
       </div>
     </div>
   );

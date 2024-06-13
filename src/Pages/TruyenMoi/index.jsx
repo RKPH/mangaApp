@@ -91,11 +91,17 @@ const TruyenMoi = () => {
           home={home}
           className="px-1  shadow-md  min-w-fit max-w-fit  lg:text-base text-sm dark:text-white rounded-md mb-5"
         />
-        <h1 className="text-lg lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
-          {page === 1
-            ? "TRUYỆN TRANH MỚI CẬP NHẬT MỖI NGÀY"
-            : `TRUYỆN TRANH MỚI-TRANG ${page}`}
-        </h1>
+        <div className="w-full flex justify-between">
+          <h1 className="lg:text-2xl text-xl uppercase font-bold   text-black dark:text-white text-left my-5 mb-10">
+            {page === 1
+              ? "TRUYỆN TRANH MỚI "
+              : `TRUYỆN TRANH MỚI-TRANG ${page}`}
+          </h1>
+          <span className="lg:text-2xl text-xl uppercase font-bold  text-black dark:text-white text-left my-5 mb-10">
+            {" "}
+            trang {page}
+          </span>
+        </div>
 
         <select
           className=" p-2 border right-0 border-black"
@@ -143,7 +149,7 @@ const TruyenMoi = () => {
                       className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                     />
                     <div className="py-2">
-                      <h5 className="overflow-hidden text-left lg:text-base text-sm font-medium overflow-ellipsis whitespace-nowrap dark:text-white">
+                      <h5 className="overflow-hidden text-left lg:text-base text-sm font-bold overflow-ellipsis whitespace-nowrap dark:text-white">
                         {item.name}
                       </h5>
                       <i
@@ -162,7 +168,7 @@ const TruyenMoi = () => {
               ))}
         </div>
         <Pagination
-          className="flex items-end lg:justify-end justify-center text-white"
+          className="flex items-center justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
