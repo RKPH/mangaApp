@@ -108,37 +108,44 @@ const Home = () => {
           src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
         />
         <div className="absolute  w-5/6 h-full p-2 bg-[#18191a5e]">
-          <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
-            <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 lg:flex justify-center hidden">
+          <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg   relative lg:top-28">
+            <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 md:flex hidden justify-center items-center">
               <img
                 src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
-                className="rounded-xl lg:w-[340px] w-full border bg-cover"
+                className="rounded-xl w-full border bg-cover"
               />
             </div>
             <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
-              <h1 className=" text-justify  lg:text-left text-lg dark:text-blue-600 text-orange-600 uppercase overflow-hidden overflow-ellipsis font-bold">
-                {item?.name ?? "Undefined"}
-              </h1>
-
+              <span className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+                <h1 className=" md:text-left text-2xl text-center  dark:text-blue-600 text-orange-600 uppercase font-bold">
+                  {item?.name ?? "Undefined"}
+                </h1>
+              </span>
+              <span className="font-normal  text-base w-fit rounded-lg text-black bg-gradient-to-br from-sky-400 to-blue-700 px-2 dark:text-white">
+                Chapter:{" "}
+                {item.chaptersLatest && item.chaptersLatest[0]
+                  ? item.chaptersLatest[0].chapter_name
+                  : "Loading..."}{" "}
+              </span>
               <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
               <div>
-                <span className="font-semibold font-['Oswald'] text-xl dark:text-blue-600 text-orange-600  ">
+                <span className="font-semibold text-lg dark:text-blue-600 text-orange-600  ">
                   Trạng thái:
                 </span>
-                <span className="px-2 dark:text-white text-black font-normal font-['Oswald']  text-lg">
+                <span className="px-2 dark:text-white text-black font-medium  text-base">
                   {item?.status ?? "Undefined"}
                 </span>
               </div>
               <div>
-                <span className="font-semibold  text-xl  dark:text-blue-600 text-orange-600  mr-1">
+                <span className="font-semibold  text-lg  dark:text-blue-600 text-orange-600  mr-1">
                   Tác giả:{" "}
                 </span>
-                <span className="text-black  text-lg font-normal font-['Oswald'] dark:text-white mr-1">
+                <span className="text-black  text-base font-medium  dark:text-white mr-1">
                   {item?.author ?? "Undefined"}
                 </span>
               </div>
               <div className="lg:flex lg:flex-row">
-                <h5 className="font-semibold   text-xl dark:text-blue-600 text-orange-600  mr-2">
+                <h5 className="font-semibold   text-lg dark:text-blue-600 text-orange-600  mr-2">
                   Thể loại:{" "}
                 </h5>
 
@@ -147,26 +154,11 @@ const Home = () => {
                     <Link
                       to={`/the-loai/${item.slug}`}
                       key={item.slug}
-                      className="px-2  dark:text-white text-black font-normal font-['Oswald']  text-lg   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
+                      className="px-2  dark:text-white text-black font-medium  text-base   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
                     >
                       {item.name}
                     </Link>
                   )) ?? "Undefined"}
-                </div>
-              </div>
-
-              <div className="mt-2">
-                <h3 className="text-xl font-['Oswald'] font-semibold dark:text-white m-1">
-                  {" "}
-                  Giới thiệu
-                </h3>
-                <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg">
-                  <article>
-                    <p
-                      className="dark:text-white font-normal text-black  text-lg  "
-                      dangerouslySetInnerHTML={{ __html: item?.content }}
-                    ></p>
-                  </article>
                 </div>
               </div>
             </div>
