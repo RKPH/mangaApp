@@ -12,12 +12,63 @@
     background-color: #fff;
     /* Change color as needed */
     border: 1px solid #000;
+    width: 20px;
+    height: 10px;
     /* Change border color as needed */
 }
-
+.p-carousel-indicator.p-highlight {
+    background-color: #ccc !important;
+    /* Change color as needed */
+    border: 1px solid #000;
+    width: 20px;
+    height: 10px;
+    /* Change border color as needed */
+}
 .dark .p-carousel-indicator {
     background-color: #242526;
     /* Change color for dark mode */
     border: 1px solid #fff;
     /* Change border color for dark mode */
+}
+/* Add this CSS to your stylesheet */
+
+.carousel-container {
+    position: relative;
+}
+
+.p-carousel-prev,
+.p-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Optional: to make buttons more visible */
+    color: white;
+    /* Optional: for better visibility */
+    border: none;
+    /* Optional: remove default border */
+    border-radius: 50%;
+    /* Optional: for rounded buttons */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.p-carousel-prev:hover,
+.p-carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Optional: change color on hover */
+}
+
+.p-carousel-prev {
+    left: 10px;
+    /* Adjust this value to your preference */
+}
+
+.p-carousel-next {
+    right: 10px;
+    /* Adjust this value to your preference */
 }

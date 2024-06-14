@@ -78,10 +78,10 @@ const Header = () => {
             <img
               src={Logo}
               alt=""
-              className="h-12 w-12 rounded-md border border-white"
+              className="h-12 w-12 rounded-xl border border-white"
             />
             <div className="flex flex-col">
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-bold mx-2">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-medium mx-2">
                 Iceycure
               </span>
             </div>
@@ -127,6 +127,7 @@ const Header = () => {
           className="rounded-full cursor-pointer border mx-4 border-orange-500 xl:hidden block dark:border-white"
           onClick={HandleTheme}
         >
+          <i className="fa-solid fa-circle-half-stroke "></i>
           <LightbulbIcon
             className="text-[30px]  text-orange-500 dark:text-white p-1"
             color="orange"

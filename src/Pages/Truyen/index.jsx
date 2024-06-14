@@ -120,7 +120,7 @@ const Truyen = () => {
   };
   const flattenedSuggestions = Object.values(suggesttion).flat();
   return (
-    <div className="w-full bg-white py-4 dark:bg-[#18191A] font-['Oswald']]">
+    <div className="w-full bg-white py-4 dark:bg-[#18191A] font-['Oswald']">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
           <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 flex justify-center">
@@ -134,15 +134,15 @@ const Truyen = () => {
             <h1 className=" text-justify  lg:text-left text-2xl dark:text-blue-600 text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>
-            <h3 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white uppercase font-semibold">
+            <h3 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white font-semibold">
               {Data?.item?.origin_name ?? "Undefined"}
             </h3>
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
             <div>
-              <span className="font-semibold font-['Oswald']] text-xl dark:text-blue-600 text-orange-600  ">
+              <span className="font-semibold font-['Oswald'] text-xl dark:text-blue-600 text-orange-600  ">
                 Trạng thái:
               </span>
-              <span className="px-2 dark:text-white text-black font-normal font-['Oswald']]  text-lg">
+              <span className="px-2 dark:text-white text-black font-normal font-['Oswald']  text-lg">
                 {Data?.item?.status ?? "Undefined"}
               </span>
             </div>
@@ -150,7 +150,7 @@ const Truyen = () => {
               <span className="font-semibold  text-xl  dark:text-blue-600 text-orange-600  mr-1">
                 Tác giả:{" "}
               </span>
-              <span className="text-black  text-lg font-normal font-['Oswald']] dark:text-white mr-1">
+              <span className="text-black  text-lg font-normal font-['Oswald'] dark:text-white mr-1">
                 {Data?.item?.author ?? "Undefined"}
               </span>
             </div>
@@ -164,7 +164,7 @@ const Truyen = () => {
                   <Link
                     to={`/the-loai/${item.slug}`}
                     key={item.slug}
-                    className="px-2  dark:text-white text-black font-normal font-['Oswald']]  text-lg   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
+                    className="px-2  dark:text-white text-black font-normal font-['Oswald']  text-lg   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
                   >
                     {item.name}
                   </Link>

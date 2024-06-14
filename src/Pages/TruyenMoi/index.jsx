@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { addManga } from "../../Redux/MangaSlice"; // Import the action creator from your slice
+import { addManga,saveMangas } from "../../Redux/MangaSlice"; // Import the action creator from your slice
 import "./index.css";
 import { Link, useLocation } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
@@ -81,6 +81,7 @@ const TruyenMoi = () => {
   const home = { label: "Trang chủ", url: "/" };
   const handleMangaClick = (manga) => {
     dispatch(addManga(manga));
+    dispatch(saveMangas());
   };
 
   return (
@@ -93,8 +94,7 @@ const TruyenMoi = () => {
         />
         <div className="w-full flex justify-between">
           <h1 className="lg:text-2xl text-xl  uppercase font-bold   text-black dark:text-white text-left my-5 mb-10">
-            TRUYỆN TRANH MỚI 
-            
+            TRUYỆN TRANH MỚI
           </h1>
           <span className=" text-xl  font-bold  text-black dark:text-white text-left my-5 mb-10">
             {" "}

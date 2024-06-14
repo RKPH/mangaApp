@@ -189,7 +189,7 @@ const GachaItems = () => {
         </div>
         <div className="relative  lg:h-[550px] h-[400px] w-full flex items-center justify-center justify-items-center mt-10 ">
           {isRolling ? (
-            <img src={GachaEffect} alt="" className="lg:w-3/4 w-full h-full" />
+            <img src={GachaEffect} alt="" className="lg:w-full w-full h-full" />
           ) : (
             <img src={GahcaEffect} alt="" className="lg:w-3/4 w-full h-full" />
           )}
@@ -212,36 +212,34 @@ const GachaItems = () => {
             draggable={false}
             blockScroll={true}
             visible={visible}
-            className="dark:bg-[#18191A] w-3/4  h-[400px] shadow-lg rounded-md dark:text-white p-5 bg-white text-black"
+            className="dark:bg-[#18191A] w-3/4   h-[600px] shadow-lg rounded-md dark:text-white p-5 bg-white text-black"
             onHide={() => {
               if (!visible) return;
               setVisible(false);
             }}
           >
-            <div className="m-1 mt-5 boder border-white border flex  p-2  ">
-              <div className="grid lg:grid-cols-10 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2">
-                {pulledItems.map((item) => (
-                  <Card
-                    key={item.id}
-                    className=" m-2 flex flex-col items-center justify-center dark:bg-[#18191A] bg-white border rounded-md relative"
-                  >
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      className="w-full  lg:h-[250px] h-[200px] rounded-md"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = placeholderImg;
-                      }}
-                    />
-                    <div className="absolute bottom-0 bg-slate-600 p-1 m-1">
-                      <span className={`font-semibold ${item.rarity}`}>
-                        {getStars(item.rarity)}
-                      </span>
-                    </div>
-                  </Card>
-                ))}
-              </div>
+            <div className="grid lg:grid-cols-10 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2 items-center justify-center w-full h-full p-2  ">
+              {pulledItems.map((item) => (
+                <Card
+                  key={item.id}
+                  className=" m-2 flex h-fu  items-center justify-center dark:bg-[#18191A] bg-white border rounded-md relative"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full  lg:h-[350px] h-[200px] rounded-md"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = placeholderImg;
+                    }}
+                  />
+                  <div className="absolute bottom-0 bg-slate-600 p-1 m-1">
+                    <span className={`font-semibold ${item.rarity}`}>
+                      {getStars(item.rarity)}
+                    </span>
+                  </div>
+                </Card>
+              ))}
             </div>
           </Dialog>
         </div>

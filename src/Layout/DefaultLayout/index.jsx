@@ -78,7 +78,7 @@ const DefaultLayout = ({ children }) => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   let timeoutId;
   return (
-    <div ref={headerRef} className=" w-full h-full font-font-['Oswald']">
+    <div ref={headerRef} className=" w-full h-full font-[helvetica]">
       <MemoizedHeader className="w-full sticky top-0  left-0 z-10  bg-white" />
       <ToastContainer
         autoClose={1000}
@@ -86,21 +86,21 @@ const DefaultLayout = ({ children }) => {
         pauseOnHover={false}
         position="top-center"
       />
-      <div className="w-full h-12 sticky top-20  z-10  xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
-        <nav className="w-full h-full xl:flex font-font-['Oswald'] font-semibold items-center hidden   text-base">
+      <div className="w-full h-12 sticky top-20  z-10 shadow-xl  xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
+        <nav className="w-full h-full xl:flex font-[helvetica] font-semibold items-center hidden   text-base">
           <ul className="list-none h-12  flex  font-semibold items-center  gap-x-2  text-white ">
             <Link
               to="/Home"
-              className="dark:hover:bg-blue-500 hover:bg-orange-400 p-[12px] cursor-pointer  text-base flex items-center gap-1  uppercase "
+              className="dark:hover:bg-blue-500 hover:bg-orange-400 p-[12px] cursor-pointer  text-base flex items-center justify-center gap-1  uppercase "
             >
               {" "}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth={1.5}
+                strokeWidth={3.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-5 h-5 font-bold "
               >
                 <path
                   strokeLinecap="round"
@@ -113,7 +113,6 @@ const DefaultLayout = ({ children }) => {
             <Tippy
               interactive
               visible={isDropdownVisible}
-              arrow={true}
               placement="bottom-end"
               onMouseEnter={() => {
                 clearTimeout(timeoutId);
@@ -127,10 +126,9 @@ const DefaultLayout = ({ children }) => {
                     setDropdownVisible(true);
                   }}
                   onMouseLeave={() => setDropdownVisible(false)}
-                  className="min-w-[400px] h-[500px] overflow-auto dark:bg-[#242426] bg-orange-500 border-white rounded-md shadow-md"
-
+                  className="min-w-[400px] h-[500px] overflow-auto dark:bg-[#242426] bg-orange-500  rounded-3xl border border-white shadow-md top-0"
                 >
-                  <div className="grid grid-cols-3 gap-2 p-5 border ">
+                  <div className="grid grid-cols-3 gap-2 p-5  ">
                     {domain.map((category) => (
                       <Link
                         to={`/the-loai/${category.slug}`}
