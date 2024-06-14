@@ -102,22 +102,22 @@ const Home = () => {
   };
   const carouselItemTemplate = (item) => {
     return (
-      <div className=" flex items-center justify-center  dark:bg-[#18191A]  rounded-3xl lg:h-[550px] h-[350px] z-0 relative">
+      <div className=" flex items-center justify-center  dark:bg-[#18191A]  rounded-3xl lg:h-[550px] h-[350px] z-0 relative font-[helvetica]">
         <img
           className="h-full w-full rounded-3xl shadow-md "
           src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
         />
-        <div className="absolute  w-5/6 h-full p-2 bg-[#18191a5e]">
+        <div className="absolute  w-10/11 h-full p-2 bg-[#18191a5e]">
           <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg   relative lg:top-28">
             <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 md:flex hidden justify-center items-center">
               <img
                 src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
-                className="rounded-xl w-full border bg-cover"
+                className="rounded-xl w-full h-full border bg-cover"
               />
             </div>
             <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
-              <span className="overflow-hidden overflow-ellipsis whitespace-nowrap">
-                <h1 className=" md:text-left text-2xl text-center  dark:text-blue-600 text-orange-600 uppercase font-bold">
+              <span className="flex-wrap flex">
+                <h1 className=" md:text-left md:text-2xl text-lg text-left   dark:text-blue-600 text-orange-600 uppercase font-bold">
                   {item?.name ?? "Undefined"}
                 </h1>
               </span>
