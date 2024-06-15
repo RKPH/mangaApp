@@ -33,9 +33,9 @@ const RowOfCard = ({ data }) => {
                 </div>
               </div>
             ))
-        : data.map((item) => (
+        : data.map((item, index) => (
             <Card
-              key={item.name}
+              key={index}
               className=" lg:hover:scale-110 transition duration-300  "
               onClick={() => handleMangaClick(item)}
             >

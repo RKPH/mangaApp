@@ -113,7 +113,9 @@ const Home = () => {
               {({ open }) => (
                 <>
                   <Disclosure.Button className="flex w-full justify-between rounded-lg  bg-[whitesmoke] px-4 py-2 text-left text-sm font-medium text-black hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
-                    <span className="text-lg" >Danh sách tiếp tục xem ({data2.length})</span>
+                    <span className="text-lg">
+                      Danh sách tiếp tục xem ({data2.length})
+                    </span>
                     <KeyboardArrowDownIcon
                       className={`${
                         open ? "rotate-180 transform" : ""
@@ -125,7 +127,7 @@ const Home = () => {
                       <Link
                         to={`/truyen-tranh/${item.slug}`}
                         key={index}
-                        className="w-full h-[100px] p-1 bg-[whitesmoke] border-2  rounded-md cursor-pointer grid grid-cols-12  mb-4 items-center hover:shadow-xl hover:bg-slate-300 transition duration-300"
+                        className="w-full h-[100px] p-1 bg-[whitesmoke] border-2  rounded-md cursor-pointer grid grid-cols-12  mb-4 items-center hover:shadow-xl hover:bg-slate-300  transition duration-300 "
                       >
                         <div className="col-span-10 lg:col-span-8  gap-4 ml-1 flex ">
                           <img
@@ -183,12 +185,12 @@ const Home = () => {
 
         <div className="p-1 my-2 dark:text-white text-black">
           <div className="flex flex-row justify-between items-center">
-            <h2 className="text-xl  font-[helvetica]  uppercase font-bold ">
+            <h2 className="md:text-xl text-lg font-[helvetica]  uppercase font-bold ">
               Truyện mới cập nhật
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-md border md:text-lg text-base p-2 dark:text-white text-black dark:bg-blue-500 dark:hover:bg-blue-600"
+              className="rounded-2xl  md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>
@@ -197,12 +199,12 @@ const Home = () => {
         </div>
         <div className="p-1 my-2 dark:text-white text-black">
           <div className="flex flex-row justify-between items-center">
-            <h2 className="lg:text-xl text-lg font-[helvetica]  uppercase font-bold ">
+            <h2 className="md:text-xl text-lg font-[helvetica]  uppercase font-bold ">
               Truyện sắp ra mắt
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-md border p-2 dark:text-white text-black dark:bg-blue-500 dark:hover:bg-blue-600"
+              className="rounded-2xl  md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>
