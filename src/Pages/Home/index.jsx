@@ -107,15 +107,15 @@ const Home = () => {
           className="h-full w-full rounded-3xl shadow-md "
           src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
         />
-        <div className="absolute  w-10/11 h-full p-2 bg-[#18191a5e]">
-          <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg   relative lg:top-28">
-            <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 md:flex hidden justify-center items-center">
+        <div className="absolute  w-11/12 h-full p-2 bg-[#18191a5e]">
+          <div className="grid grid-cols-12  p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg   relative ">
+            <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 md:flex hidden justify-center items-center ">
               <img
                 src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
-                className="rounded-xl w-full h-full border bg-cover"
+                className="rounded-xl w-[200px] h-[300px] border bg-cover"
               />
             </div>
-            <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
+            <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2 dark:bg-[#18191abb] p-2">
               <span className="flex-wrap flex">
                 <h1 className=" md:text-left md:text-2xl text-lg text-left   dark:text-blue-600 text-orange-600 uppercase font-bold">
                   {item?.name ?? "Undefined"}
@@ -132,7 +132,7 @@ const Home = () => {
                 <span className="font-semibold text-lg dark:text-blue-600 text-orange-600  ">
                   Trạng thái:
                 </span>
-                <span className="px-2 dark:text-white text-black font-medium  text-base">
+                <span className="px-2 text-white  font-medium  text-base">
                   {item?.status ?? "Undefined"}
                 </span>
               </div>
@@ -140,7 +140,7 @@ const Home = () => {
                 <span className="font-semibold  text-lg  dark:text-blue-600 text-orange-600  mr-1">
                   Tác giả:{" "}
                 </span>
-                <span className="text-black  text-base font-medium  dark:text-white mr-1">
+                <span className=" text-base font-medium  text-white mr-1">
                   {item?.author ?? "Undefined"}
                 </span>
               </div>
@@ -173,18 +173,18 @@ const Home = () => {
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
         <div className="w-full flex flex-row items-center justify-between mb-10">
           <Carousel
-            className="dark:text-white lg:w-3/4 w-full  flex  items-center z-0 relative"
+            className="dark:text-white lg:w-2/3 w-full  flex  items-center z-0 relative"
             itemTemplate={carouselItemTemplate}
             numVisible={1}
             numScroll={1}
             value={data && data.slice(0, 5)}
             showIndicators={true}
-            indicatorsContentClassName="dark:text-white bottom-0 absolute gap-1 rounded-3xl z-10 w-52 flex justify-center items-center bg-black bg-opacity-50 p-2"
+            indicatorsContentClassName="dark:text-white bottom-0 absolute gap-1 rounded-3xl z-10 w-52 flex justify-center items-center p-2"
             circular={true}
             autoplayInterval={3000}
           />
 
-          <div className="w-1/2 lg:flex flex-col hidden gap-y-4 mx-5 justify-center">
+          <div className="w-1/3 lg:flex flex-col hidden gap-y-4 mx-5 justify-center">
             <div className="h-fit w-full flex-col shadow-xl  p-4 rounded-3xl lg:flex hidden dark:bg-[#2a2a2b] bg-[#f0ecec]">
               <h2 className="font-[helvetica] text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ">
                 Hôm nay nên đọc gì
