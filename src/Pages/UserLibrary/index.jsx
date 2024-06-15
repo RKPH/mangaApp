@@ -3,16 +3,16 @@ import { addManga } from "../../Redux/MangaSlice"; // Import the action creator 
 import { useUser } from "../../Service/User";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "primereact/card";
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Tab } from "@headlessui/react";
 import Divider from "@mui/material/Divider";
+import RowOfCard from "../../Components/RowOfCard";
 const Library = () => {
-  const dispatch = useDispatch();
   const User = useUser();
   const [currentTab, setCurrentTab] = useState("Truyện đã lưu");
-
+  const [data, setData] = useState([]);
   const items = [
     {
       label: "Thư viện",
@@ -23,16 +23,15 @@ const Library = () => {
       ),
     },
   ];
-
+  useEffect(() => {
+    setData(User?.userMangas || []);
+    console.log("libarry:", User?.userMangas);
+  }, [User?.userMangas]);
   const handleClick = (tab) => {
     setCurrentTab(tab);
   };
 
   const home = { label: "Trang chủ", url: "/" };
-
-  const handleMangaClick = (manga) => {
-    dispatch(addManga(manga));
-  };
 
   return (
     <div className="w-full flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0">
@@ -73,28 +72,7 @@ const Library = () => {
           {/* row of cards */}
           <Tab.Panels>
             <Tab.Panel>
-              <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5">
-                {User?.userMangas?.map((item) => (
-                  <Card
-                    key={item.slug}
-                    className="shadow-md hover:scale-105"
-                    onClick={() => handleMangaClick(item)}
-                  >
-                    <Link to={`/truyen-tranh/${item.slug}`}>
-                      <img
-                        src={item.mangaImage}
-                        alt={item.slug}
-                        className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full"
-                      />
-                      <div className="py-2">
-                        <h5 className="overflow-hidden text-left lg:text-base text-xs font-medium overflow-ellipsis whitespace-nowrap dark:text-white">
-                          {item.mangaName}
-                        </h5>
-                      </div>
-                    </Link>
-                  </Card>
-                ))}
-              </div>
+              <RowOfCard data={data} />
             </Tab.Panel>
             <Tab.Panel>Tab2</Tab.Panel>
           </Tab.Panels>

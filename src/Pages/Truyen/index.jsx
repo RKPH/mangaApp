@@ -123,14 +123,14 @@ const Truyen = () => {
     <div className="w-full bg-white py-4 dark:bg-[#18191A] font-['Oswald']">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
-          <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 flex justify-center">
+          <div className="col-span-12   lg:col-span-4 xl:col-span-3 3xl:col-span-3 flex justify-center">
             <img
               src={Image}
               alt={slug}
-              className="rounded-xl lg:w-[340px] w-full border bg-cover"
+              className="rounded-xl lg:w-[340px] h-[450px] md:w-3/4 w-full border bg-cover"
             />
           </div>
-          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
+          <div className="col-span-12  lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2">
             <h1 className=" text-justify  lg:text-left text-2xl dark:text-blue-600 text-orange-600 uppercase font-bold">
               {Data?.item?.name ?? "Undefined"}
             </h1>

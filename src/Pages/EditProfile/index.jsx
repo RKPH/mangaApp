@@ -89,7 +89,7 @@ const EditProfile = () => {
 
   return (
     <div className="min-w-full min-h-screen flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0">
-      <div className="min-h-screen min-w-full bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-2">
+      <div className="min-h-screen min-w-full bg-[whitesmoke] dark:bg-[#242526] lg:px-10 px-4 py-5 flex flex-col items-center justify-center">
         {/* avatar */}
         <div className="w-full flex flex-col items-center mb-10">
           <div className="relative flex items-center justify-center w-36 h-36">
@@ -107,7 +107,7 @@ const EditProfile = () => {
               />
             )}
           </div>
-          <span className="font-bold text-lg dark:text-white text-black">
+          <span className="font-bold text-xl dark:text-white text-black">
             {formData.userName}
           </span>
         </div>
@@ -115,14 +115,14 @@ const EditProfile = () => {
 
         {/* //edit user from */}
         <div className="w-full flex flex-col items-center lg:px-10 mt-10">
-          <div className="w-full max-w-lg bg-white dark:bg-[#242526] p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold dark:text-white text-black mb-6">
+          <div className="w-full max-w-lg bg-white dark:bg-[#242526] p-6 rounded-lg shadow-lg ">
+            <h2 className="text-xl font-bold dark:text-white text-black mb-6">
               Update Profile
             </h2>
             <form onSubmit={handleSave} className="flex flex-col gap-y-4">
               <div>
                 <label
-                  className="block dark:text-white text-black font-semibold mb-2"
+                  className="block dark:text-white text-black font-semibold font-[helvetica] text-lg mb-2"
                   htmlFor="email"
                 >
                   Email (cannot be changed)
@@ -133,12 +133,12 @@ const EditProfile = () => {
                   name="email"
                   value={formData?.email}
                   disabled
-                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] bg-gray-100 dark:text-white"
+                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] bg-gray-100 dark:text-white font-[helvetica] text-base"
                 />
               </div>
               <div>
                 <label
-                  className="block dark:text-white text-black font-semibold mb-2"
+                  className="block dark:text-white text-black font-semibold mb-2 font-[helvetica] text-lg"
                   htmlFor="userName"
                 >
                   Username
@@ -149,12 +149,12 @@ const EditProfile = () => {
                   name="userName"
                   value={formData.userName}
                   onChange={handleChange}
-                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white"
+                  className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white font-[helvetica] text-base"
                 />
               </div>
               <div>
                 <label
-                  className="block dark:text-white text-black font-semibold mb-2"
+                  className="block dark:text-white text-black font-semibold mb-2 font-[helvetica] text-lg"
                   htmlFor="avatar"
                 >
                   Avatar
@@ -168,7 +168,7 @@ const EditProfile = () => {
                   className="w-full p-2 border rounded-lg dark:bg-[#3A3B3C] dark:text-white"
                 />
               </div>
-              
+
               <button
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold mt-4 hover:bg-blue-600 transition duration-300"
