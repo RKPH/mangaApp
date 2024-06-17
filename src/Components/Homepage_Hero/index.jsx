@@ -15,15 +15,15 @@ const carouselItemTemplate = (item) => {
       />
       <div className="absolute  md:w-11/12 w-full h-full ">
         <div className="grid grid-cols-12  p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg lg:top-28  relative ">
-          <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-3 3xl:col-span-3 md:flex hidden justify-center items-center ">
+          <div className="col-span-12  md:col-span-4 lg:col-span-4 xl:col-span-4 3xl:col-span-3 md:flex hidden justify-center items-center ">
             <img
               src={`https://img.otruyenapi.com//uploads/comics/${item?.thumb_url}`}
               className="rounded-xl w-[200px] h-[300px]  border-4 bg-cover"
             />
           </div>
-          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 3xl:col-span-9 flex flex-col gap-y-2 h-full dark:bg-[#18191abb] rounded-lg border p-2">
+          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2 h-full dark:bg-[#18191abb] rounded-lg border p-2">
             <span className="flex-wrap flex">
-              <h1 className=" md:text-left lg:text-2xl md:text-lg text-lg text-left   dark:text-blue-600 text-orange-600 uppercase font-bold">
+              <h1 className=" md:text-left lg:text-xl md:text-lg text-lg text-left   dark:text-blue-600 text-orange-600 uppercase font-bold">
                 {item?.name ?? "Undefined"}
               </h1>
             </span>
@@ -50,12 +50,12 @@ const carouselItemTemplate = (item) => {
                 {item?.author ?? "Undefined"}
               </span>
             </div>
-            <div className="lg:flex lg:flex-row">
+            <div className="lg:flex lg:flex-row flex-wrap">
               <h5 className="font-semibold   md:text-lg text-base dark:text-blue-600 text-orange-600  mr-2">
                 Thể loại:{" "}
               </h5>
 
-              <div className="gap-1 flex flex-wrap mt-1">
+              <div className="gap-1 flex  mt-1">
                 {item?.category?.map((item) => (
                   <Link
                     to={`/the-loai/${item.slug}`}

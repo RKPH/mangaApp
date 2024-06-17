@@ -6,6 +6,7 @@ import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
 import DetailMangaSection from "../../Components/DetailMangaSection";
 import ChapterList from "../../Components/ChapterList";
+import Disscussion from "../../Components/CommentSection";
 const Truyen = () => {
   const { slug } = useParams(); // Lấy ra tham số đằng sau 'danh-sach'
   const [Data, setData] = useState({}); // for manga information
@@ -86,6 +87,7 @@ const Truyen = () => {
           </h3>
           <RowOfCard data={flattenedSuggestions} />
         </div>
+        <Disscussion />
       </div>
     </div>
   );

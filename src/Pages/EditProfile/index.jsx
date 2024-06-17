@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { updateUser } from "../../Redux/userSlice"; // Adjust the path as needed
 const EditProfile = () => {
   const User = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     userName: "",
@@ -67,21 +68,9 @@ const EditProfile = () => {
     e.preventDefault();
     console.log("Saving user information:", formData);
     try {
-      // Make the API call to save the user data
-      const response = await axios.put(
-        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/Update/${User?.userID}`,
-        {
-          userName: formData.userName,
-          avatar: formData.avatar,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await dispatch(updateUser({ userID: User?.userID, userData: formData }));
       window.location.reload();
-      console.log("User information updated successfully:", response.data);
+      console.log("User information updated successfully");
     } catch (error) {
       console.error("Error updating user information:", error);
     }
@@ -114,7 +103,7 @@ const EditProfile = () => {
         {/* account information */}
 
         {/* //edit user from */}
-        <div className="w-full flex flex-col items-center lg:px-10 mt-10">
+        <div className="w-full flex flex-col items-center lg:px-10 ">
           <div className="w-full max-w-lg bg-white dark:bg-[#242526] p-6 rounded-lg shadow-lg ">
             <h2 className="text-xl font-bold dark:text-white text-black mb-6">
               Update Profile

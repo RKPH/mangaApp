@@ -1,4 +1,3 @@
-// userSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -12,6 +11,27 @@ export const fetchUser = createAsyncThunk(
         {
           headers: {
             Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// Async thunk to update user data
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async ({ userID, userData }, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/Update/${userID}`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
         }
       );
@@ -40,6 +60,17 @@ const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(fetchUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

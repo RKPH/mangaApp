@@ -78,7 +78,7 @@ const Chapter = () => {
       ref={scrollRef}
       className="w-full flex flex-col items-center bg-white dark:bg-[#18191A] py-4 z-0"
     >
-      <div className="bg-[whitesmoke] dark:bg-[#242526]  justify-center items-center py-2 lg:w-1/2 w-full">
+      <div className="bg-[whitesmoke] dark:bg-[#242526]  justify-center items-center py-2 lg:w-2/3 w-full">
         <div className="lg:px-2 w-full">
           <div className="bg-white dark:bg-[#18191A] p-5 rounded-lg mb-5">
             <div className="m-1">

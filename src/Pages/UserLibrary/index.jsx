@@ -1,10 +1,9 @@
-import { useDispatch } from "react-redux";
-import { addManga } from "../../Redux/MangaSlice"; // Import the action creator from your slice
+
 import { useUser } from "../../Service/User";
 
-import { Link } from "react-router-dom";
+
 import { useEffect, useState } from "react";
-import { Card } from "primereact/card";
+
 import { BreadCrumb } from "primereact/breadcrumb";
 import { Tab } from "@headlessui/react";
 import Divider from "@mui/material/Divider";

@@ -7,7 +7,7 @@ import { logoutSuccess } from "../../Redux/authSlice";
 import SearchIcon from "@mui/icons-material/Search";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import Logo from "../../assets/OIG4.png";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
+
 //Components
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
@@ -17,7 +17,7 @@ const Header = () => {
   const location = useLocation();
   // Khởi tạo activeTab từ URL
   const User = useSelector((state) => state.user.user);
-  console.log("user in userSlcie: ", User);
+
   const [inputValue, setInputValue] = useState("");
   const initialTheme = localStorage.getItem("theme") || "light";
   const [theme, setTheme] = useState(initialTheme);
@@ -44,14 +44,14 @@ const Header = () => {
   useEffect(() => {
     // Save theme to local storage
     localStorage.setItem("theme", theme);
-    console.log("theme change");
+
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
   }, [theme]);
-  console.log("co bi render ko: ");
+
   const HandleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
