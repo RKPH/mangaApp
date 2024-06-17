@@ -1,10 +1,7 @@
 import Home from "../Pages/Home";
 import Category from "../Pages/Category";
-import TruyenMoi from "../Pages/TruyenMoi";
-import DangPhatHanh from "../Pages/DangPhatHanh";
 import Truyen from "../Pages/Truyen";
 import CategoryManga from "../Pages/CategoryManga";
-import HoanThanh from "../Pages/HoanThanh";
 import ResultPage from "../Pages/ResultPage";
 import LoginForm from "../Pages/LoginPage";
 import SignUpForm from "../Pages/SignInPage";
@@ -13,7 +10,9 @@ import Personalpage from "../Pages/Personal";
 import EditProfile from "../Pages/EditProfile";
 import Gacha from "../Pages/VongQuay/gacha";
 import Chapter from "../Pages/Chapter";
-import GachaLayout from  "../Layout/GachaLayout";
+import GachaLayout from "../Layout/GachaLayout";
+import ComicList from "../Pages/MangaList";
+
 export const publicRoutes = [
   {
     path: "/",
@@ -36,28 +35,12 @@ export const publicRoutes = [
     component: CategoryManga,
   },
   {
-    path: "/danh-sach/truyen-moi",
-    component: TruyenMoi, // Assuming Home is the component for displaying the list of new comics
+    path: "/danh-sach/:type",
+    component: ComicList,
   },
   {
-    path: "/danh-sach/truyen-moi/:page", // Define a dynamic route parameter for the page number
-    component: TruyenMoi, // Assuming Home is the component for displaying the list of new comics
-  },
-  {
-    path: "/danh-sach/dang-phat-hanh",
-    component: DangPhatHanh, // Assuming Home is the component for displaying the list of new comics
-  },
-  {
-    path: "/danh-sach/dang-phat-hanh/:page", // Define a dynamic route parameter for the page number
-    component: DangPhatHanh, // Assuming Home is the component for displaying the list of new comics
-  },
-  {
-    path: "/danh-sach/hoan-thanh",
-    component: HoanThanh, // Assuming Home is the component for displaying the list of new comics
-  },
-  {
-    path: "/danh-sach/hoan-thanh/:page", // Define a dynamic route parameter for the page number
-    component: HoanThanh, // Assuming Home is the component for displaying the list of new comics
+    path: "/danh-sach/:type/:page",
+    component: ComicList,
   },
   {
     path: "/truyen-tranh/:slug",
@@ -72,7 +55,6 @@ export const publicRoutes = [
     component: Gacha,
     layout: GachaLayout,
   },
-
   {
     path: "/result",
     component: ResultPage,
