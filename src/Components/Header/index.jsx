@@ -154,7 +154,7 @@ const Header = () => {
               visible={isDropdownVisible}
               placement="bottom-end"
               arrow={true}
-              render={(attrs) => (
+              render={() => (
                 <div className=" w-fit min-h-fit bg-[#181515c7]  py-4 shadow-lg rounded-lg z-50 relative">
                   <div className="flex flex-row items-center gap-x-2 px-4 my-4">
                     <img

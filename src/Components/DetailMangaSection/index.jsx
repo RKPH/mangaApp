@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useUser } from "../../Service/User";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,7 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const DetailMangaSection = ({ Data, Image, slug }) => {
   const user = useSelector((state) => state.user.user);
-  console.log("check:", user);
+
   const token = useSelector((state) => state.auth.token);
   const [isSaved, setIsSaved] = useState(false);
   useEffect(() => {
@@ -21,7 +20,6 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
   }, [user?.userMangas, Data.item?.slug]);
   const userId = user?.userID; // replace with the actual user ID if it varies
   const handleClick = async (slug, mangaName, mangaImage) => {
-    console.log("handle: ", user);
     if (!user) {
       toast.error("Please login to use this feature");
       return;
@@ -73,7 +71,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         <img
           src={Image}
           alt={slug}
-          className="rounded-xl lg:w-[340px] h-[450px] md:w-3/4 w-full border bg-cover"
+          className="rounded-xl lg:w-[340px] h-[450px] md:w-3/4 w-full border-4 bg-cover"
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
@@ -130,12 +128,17 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center lg:text-base text-sm gap-1 p-1">
-              <span className="text-base  uppercase">Đọc truyện</span>
+              <span className="text-base  uppercase font-[helvetica]">
+                Đọc truyện
+              </span>
             </button>
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center gap-1 p-1 text-base">
-              <span className="text-base uppercase"> Yêu thích</span>
+              <span className="text-base uppercase font-[helvetica]">
+                {" "}
+                Yêu thích
+              </span>
             </button>
           </div>
         </div>
@@ -144,7 +147,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             {" "}
             Giới thiệu
           </h3>
-          <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg">
+          <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg font-[helvetica]">
             <article>
               <p
                 className="dark:text-white font-normal text-black text-lg  "

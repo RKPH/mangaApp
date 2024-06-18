@@ -7,7 +7,10 @@ const carouselItemTemplate = (item) => {
         className="h-full w-full rounded-3xl shadow-md"
         src={`https://img.otruyenapi.com/uploads/comics/${item?.thumb_url}`}
       />
-      <div className="absolute md:w-11/12 w-full h-full">
+      <Link
+        to={`/truyen-tranh/${item.slug}`}
+        className="absolute md:w-11/12 w-full h-full"
+      >
         <div className="grid grid-cols-12 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-lg lg:top-28 relative">
           <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-4 3xl:col-span-3 md:flex hidden justify-center items-center">
             <img
@@ -62,7 +65,7 @@ const carouselItemTemplate = (item) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

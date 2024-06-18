@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { ProgressSpinner } from "primereact/progressspinner";
+
 import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
 import DetailMangaSection from "../../Components/DetailMangaSection";
@@ -58,7 +60,7 @@ const Truyen = () => {
     {
       label: Data?.name,
       template: () => (
-        <a className="text-base   font-[helvetica] cursor-pointer text-orange-500 dark:text-blue-400">
+        <a className="text-lg   font-[helvetica] cursor-pointer text-orange-500 dark:text-blue-400">
           {Data?.name}
         </a>
       ),
@@ -69,28 +71,37 @@ const Truyen = () => {
     label: "Trang chủ",
     url: "/",
     className:
-      "text-base  font-[helvetica] cursor-pointer text-black dark:text-white",
+      "text-lg  font-[helvetica] cursor-pointer text-black dark:text-white",
   };
   const flattenedSuggestions = Object.values(suggesttion).flat();
   return (
     <div className="w-full bg-white py-4 dark:bg-[#18191A] font-['Oswald']">
-      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 pb-10">
-        <BreadCrumb
-          model={items}
-          home={home}
-          separator=">"
-          className="px-1 shadow-md min-w-fit max-w-fit text-base  dark:text-white rounded-md mb-5 font-[helvetica]"
-        />
-        <DetailMangaSection Data={Data} Image={Image} slug={slug} />
-
-        <ChapterList chapters={chapters} slug={slug} />
-        <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl  shadow-md">
-          <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold font-[helvetica]">
-            Truyện tương tự
-          </h3>
-          <RowOfCard data={flattenedSuggestions} />
-        </div>
-        <Disscussion />
+      <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 ">
+        {Data && chapters && Image ? (
+          <div>
+            <BreadCrumb
+              model={items}
+              home={home}
+              separator=">"
+              className="px-1 shadow-md min-w-fit max-w-fit text-base dark:text-white rounded-md mb-5 font-[helvetica]"
+            />
+            <DetailMangaSection Data={Data} Image={Image} slug={slug} />
+            <ChapterList chapters={chapters} slug={slug} />
+            <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
+              <h3 className="text-left text-xl text-black dark:text-white uppercase font-bold font-[helvetica]">
+                Truyện tương tự
+              </h3>
+              <RowOfCard data={flattenedSuggestions} />
+            </div>
+            <Disscussion />
+          </div>
+        ) : (
+          <ProgressSpinner
+            className="md:w-44 md:h-44 w-28 h-28 flex justify-center items-center dark:bg-[#242526]"
+            strokeWidth="4"
+            animationDuration=".5s"
+          />
+        )}
       </div>
     </div>
   );

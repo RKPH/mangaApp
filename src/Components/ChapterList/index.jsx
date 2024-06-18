@@ -12,11 +12,11 @@ const ChapterList = ({ chapters, slug }) => {
             chapter.server_data.map((item, index) => (
               <Link
                 to={`/truyen-tranh/${slug}/chapter-${item.chapter_name}`}
-                state={{ 
+                state={{
                   chapter_api: item.chapter_api_data,
                   data: chapters,
                 }}
-                className="flex items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer transition ease-in-out duration-300"
+                className="flex font-[helvetica] text-lg items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer transition ease-in-out duration-300"
                 key={`${item.chapter_name}-${index}`}
               >
                 <span className="text-base font-normal">
