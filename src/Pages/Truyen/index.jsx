@@ -58,7 +58,7 @@ const Truyen = () => {
     {
       label: Data?.name,
       template: () => (
-        <a className="lg:text-base text-sm  font-[helvetica] cursor-pointer text-orange-500 dark:text-blue-400">
+        <a className="text-base   font-[helvetica] cursor-pointer text-orange-500 dark:text-blue-400">
           {Data?.name}
         </a>
       ),
@@ -69,7 +69,7 @@ const Truyen = () => {
     label: "Trang chủ",
     url: "/",
     className:
-      "lg:text-base text-sm font-[helvetica] cursor-pointer text-black dark:text-white",
+      "text-base  font-[helvetica] cursor-pointer text-black dark:text-white",
   };
   const flattenedSuggestions = Object.values(suggesttion).flat();
   return (
@@ -79,13 +79,13 @@ const Truyen = () => {
           model={items}
           home={home}
           separator=">"
-          className="px-1 shadow-md min-w-fit max-w-fit lg:text-base text-sm dark:text-white rounded-md mb-5 font-[helvetica]"
+          className="px-1 shadow-md min-w-fit max-w-fit text-base  dark:text-white rounded-md mb-5 font-[helvetica]"
         />
         <DetailMangaSection Data={Data} Image={Image} slug={slug} />
 
         <ChapterList chapters={chapters} slug={slug} />
         <div className="mt-2 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl  shadow-md">
-          <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold">
+          <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold font-[helvetica]">
             Truyện tương tự
           </h3>
           <RowOfCard data={flattenedSuggestions} />

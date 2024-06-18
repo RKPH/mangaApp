@@ -77,12 +77,12 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h1 className=" text-justify  lg:text-left text-2xl dark:text-blue-600 text-orange-600 uppercase font-bold">
+        <h4 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold">
           {Data?.name ?? "Undefined"}
-        </h1>
-        <h3 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white font-semibold">
+        </h4>
+        <h5 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white font-semibold">
           {Data?.origin_name ?? "Undefined"}
-        </h3>
+        </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
         <div>
           <span className="font-semibold font-[helvetica] text-xl dark:text-blue-600 text-orange-600  ">
@@ -96,7 +96,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold  text-xl  font-[helvetica] dark:text-blue-600 text-orange-600  mr-1">
             Tác giả:{" "}
           </span>
-          <span className="text-black  text-lg font-normal font-[helvetica] dark:text-white mr-1">
+          <span className="px-2 dark:text-white text-black font-normal font-[helvetica]  text-lg">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
@@ -123,7 +123,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
                 ``;
                 handleClick(Data?.slug, Data?.name, Image);
               }}
-              className="flex justify-items-center text-base items-center text-center gap-1 p-1 uppercase"
+              className="flex justify-items-center text-base items-center text-center gap-1 p-1 uppercase font-[helvetica]"
             >
               {isSaved ? "Đã lưu" : "Lưu truyện"}
             </button>

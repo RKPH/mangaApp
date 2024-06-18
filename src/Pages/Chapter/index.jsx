@@ -210,7 +210,7 @@ const Chapter = () => {
       </div>
 
       {/* Fixed Footer */}
-      <div className="fixed bottom-0 left-0 right-0 flex items-center justify-center p-2 bg-white dark:bg-[#18191A] z-50 border-t border-gray-200 dark:border-gray-700">
+      <div className="fixed bottom-0 z-10 left-0 right-0 flex items-center justify-center p-2 bg-white dark:bg-[#18191A]  border-t border-gray-200 dark:border-gray-700">
         {previousChapter && (
           <Link
             to={`/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`}

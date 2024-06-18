@@ -29,14 +29,14 @@ const Discussion = () => {
       <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold">
         Bình luận
       </h3>
-      <div className="flex md:flex-row flex-col items-center gap-1 w-full">
+      <div className="flex items-center gap-1 w-full">
         <img
           className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 border-[#6E75D1FF]"
           src="https://th.bing.com/th/id/R.da2e546841da40cdcf60061743233500?rik=IeO7Sr%2fkUW54wQ&riu=http%3a%2f%2fwww.venmond.com%2fdemo%2fvendroid%2fimg%2favatar%2fbig.jpg&ehk=JihI5nQ0BOd0W%2bZVhtIWmqwac0NMyRMOV7%2bzryywg%2fg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
           alt="User avatar"
         />
         <div className="flex gap-4 w-full text-[#6E75D1FF] shadow-sm items-center px-6 py-4 rounded">
-          <div className="relative flex items-center h-fit w-3/4">
+          <div className="relative flex items-center h-fit md:w-3/4 w-full">
             <textarea
               className="w-full dark:bg-[#242526] items-center flex dark:text-white text-neutral-600 min-h-[20px] text-lg rounded-xl p-1 pl-8 border border-gray-300 focus:border-blue-500 focus:outline-none"
               placeholder="Leave a comment"
@@ -75,7 +75,7 @@ const Discussion = () => {
         </div>
       </div>
 
-      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full px-6 py-2 border rounded-md">
+      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full px-6 py-2  rounded-md">
         {comments && comments.length > 0 ? (
           comments.map((comment, index) => (
             <div key={index} className="mb-4 border rounded-md p-4">
