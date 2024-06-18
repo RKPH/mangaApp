@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
@@ -15,6 +15,7 @@ import RowOfCard from "../../Components/RowOfCard";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const ref = useRef(null);
   //fecth for histroy read
   const [data2, setData2] = useState(
     JSON.parse(localStorage.getItem("readMangas")) || []
@@ -42,13 +43,11 @@ const Home = () => {
       try {
         const response = await axios.get("https://otruyenapi.com/v1/api/home");
         setData(response.data.data.items);
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+    window.scrollTo(0, 0);
     fetchData();
     FetchDangPhatHanb();
   }, []);
@@ -100,7 +99,10 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-[helvetica]">
+    <div
+      ref={ref}
+      className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-[helvetica]"
+    >
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
         <Hero data={data} />
 

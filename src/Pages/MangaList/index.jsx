@@ -16,7 +16,12 @@ const ComicList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
   const page = Number(query.get("page")) || 1;
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -47,6 +52,10 @@ const ComicList = () => {
   });
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     const fetchData = async () => {
       try {
         let url;
@@ -77,7 +86,6 @@ const ComicList = () => {
     };
 
     fetchData();
-    window.scrollTo(0, 0);
   }, [type, page]);
 
   const formatType = (type) => {

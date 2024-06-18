@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const DetailMangaSection = ({ Data, Image, slug }) => {
-  const user = useUser();
+  const user = useSelector((state) => state.user.user);
+  console.log("check:", user);
   const token = useSelector((state) => state.auth.token);
   const [isSaved, setIsSaved] = useState(false);
   useEffect(() => {
@@ -20,6 +21,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
   }, [user?.userMangas, Data.item?.slug]);
   const userId = user?.userID; // replace with the actual user ID if it varies
   const handleClick = async (slug, mangaName, mangaImage) => {
+    console.log("handle: ", user);
     if (!user) {
       toast.error("Please login to use this feature");
       return;

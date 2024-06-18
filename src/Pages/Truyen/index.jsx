@@ -51,8 +51,9 @@ const Truyen = () => {
 
     fetchData();
 
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
+
   const items = [
     {
       label: Data?.name,
