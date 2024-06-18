@@ -29,6 +29,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
       slug: slug,
       mangaName: mangaName,
       mangaImage: mangaImage,
+      saveType: 0,
     };
 
     try {
@@ -82,34 +83,33 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         </h3>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
         <div>
-          <span className="font-semibold font-['Oswald'] text-xl dark:text-blue-600 text-orange-600  ">
+          <span className="font-semibold font-[helvetica] text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-['Oswald']  text-lg">
+          <span className="px-2 dark:text-white text-black font-normal font-[helvetica]  text-lg">
             {Data?.status ?? "Undefined"}
           </span>
         </div>
         <div>
-          <span className="font-semibold  text-xl  dark:text-blue-600 text-orange-600  mr-1">
+          <span className="font-semibold  text-xl  font-[helvetica] dark:text-blue-600 text-orange-600  mr-1">
             Tác giả:{" "}
           </span>
-          <span className="text-black  text-lg font-normal font-['Oswald'] dark:text-white mr-1">
+          <span className="text-black  text-lg font-normal font-[helvetica] dark:text-white mr-1">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
-        <div className="lg:flex lg:flex-row">
-          <h5 className="font-semibold   text-xl dark:text-blue-600 text-orange-600  mr-2">
-            Thể loại:{" "}
+        <div className="flex ">
+          <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap font-[helvetica]">
+            Thể loại:
           </h5>
-
-          <div className="gap-1 flex flex-wrap mt-1">
-            {Data?.category?.map((item) => (
+          <div className="flex gap-1 flex-wrap">
+            {Data?.category?.map((category) => (
               <Link
-                to={`/the-loai/${item.slug}`}
-                key={item.slug}
-                className="px-2  dark:text-white text-black font-normal font-['Oswald']  text-lg   bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md"
+                to={`/the-loai/${category.slug}`}
+                key={category.slug}
+                className="px-2 dark:text-white text-black font-medium text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-[helvetica]"
               >
-                {item.name}
+                {category.name}
               </Link>
             )) ?? "Undefined"}
           </div>
@@ -138,7 +138,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </div>
         </div>
         <div className="mt-2">
-          <h3 className="text-xl font-['Oswald'] font-semibold dark:text-white m-1">
+          <h3 className="text-xl font-[helvetica] font-semibold dark:text-white m-1">
             {" "}
             Giới thiệu
           </h3>

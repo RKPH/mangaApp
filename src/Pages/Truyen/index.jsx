@@ -29,6 +29,8 @@ const Truyen = () => {
   };
 
   useEffect(() => {
+    setData({}); // Reset data when component mounts
+    setImage("");
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -76,7 +78,7 @@ const Truyen = () => {
           model={items}
           home={home}
           separator=">"
-          className="px-1 shadow-md min-w-fit max-w-fit lg:text-base text-sm dark:text-white rounded-md mb-5"
+          className="px-1 shadow-md min-w-fit max-w-fit lg:text-base text-sm dark:text-white rounded-md mb-5 font-[helvetica]"
         />
         <DetailMangaSection Data={Data} Image={Image} slug={slug} />
 

@@ -218,7 +218,7 @@ const GachaItems = () => {
               setVisible(false);
             }}
           >
-            <div className="grid lg:grid-cols-10 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2 items-center justify-center w-full h-full p-2  ">
+            <div className="grid lg:grid-cols-5 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2 items-center justify-center w-full h-full p-2  ">
               {pulledItems.map((item) => (
                 <Card
                   key={item.id}
@@ -227,7 +227,7 @@ const GachaItems = () => {
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full  lg:h-[350px] h-[200px] rounded-md"
+                    className="w-[400px]  lg:h-[350px] h-[200px] rounded-md"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = placeholderImg;

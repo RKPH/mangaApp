@@ -12,7 +12,7 @@ const ChapterList = ({ chapters, slug }) => {
             chapter.server_data.map((item, index) => (
               <Link
                 to={`/truyen-tranh/${slug}/chapter-${item.chapter_name}`}
-                state={{
+                state={{ 
                   chapter_api: item.chapter_api_data,
                   data: chapters,
                 }}
