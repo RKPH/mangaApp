@@ -16,10 +16,10 @@ const ChapterList = ({ chapters, slug }) => {
                   chapter_api: item.chapter_api_data,
                   data: chapters,
                 }}
-                className="flex font-[helvetica]  items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer transition ease-in-out duration-300"
+                className="flex items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer transition ease-in-out duration-300"
                 key={`${item.chapter_name}-${index}`}
               >
-                <span className="text-lg font-[helvetica] font-thin">
+                <span className="text-base font-[helvetica] font-thin">
                   Chương {item.chapter_name}
                 </span>
               </Link>
