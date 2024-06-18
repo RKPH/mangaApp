@@ -75,10 +75,10 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h4 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold">
+        <h2 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold">
           {Data?.name ?? "Undefined"}
-        </h4>
-        <h5 className="text-justify  lg:text-left lg:text-xl text-lg text-gray-400 dark:text-white font-semibold">
+        </h2>
+        <h5 className="md:text-left text-center text-xl  text-gray-400 dark:text-white font-semibold">
           {Data?.origin_name ?? "Undefined"}
         </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
@@ -150,7 +150,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg font-[helvetica]">
             <article>
               <p
-                className="dark:text-white font-normal text-black text-lg  "
+                className="dark:text-white font-normal text-black text-lg font-[helvetica] "
                 dangerouslySetInnerHTML={{ __html: Data?.content }}
               ></p>
             </article>

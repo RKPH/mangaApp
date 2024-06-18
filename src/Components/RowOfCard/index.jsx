@@ -59,7 +59,7 @@ const RowOfCard = ({ data }) => {
                         className="pi pi-tag p-mr-2"
                         style={{ color: "var(--green-500)" }}
                       />
-                      <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white font-[helvetica]">
+                      <span className="font-thin  text-base rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-[helvetica]">
                         Chương:{" "}
                         {item.chaptersLatest[0]
                           ? item.chaptersLatest[0].chapter_name
