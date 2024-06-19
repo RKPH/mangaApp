@@ -40,7 +40,7 @@ const carouselItemTemplate = (item) => {
                 {item?.author ?? "Đang cập nhật"}
               </span>
             </div>
-            <div className="flex ">
+            <div className="flex items-end">
               <span className="font-semibold text-lg  font-sansII dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap">
                 Thể loại:
               </span>

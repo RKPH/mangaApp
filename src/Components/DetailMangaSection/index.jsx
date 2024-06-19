@@ -94,7 +94,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-xl">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
             {statusText ?? "Undefined"}
           </span>
         </div>
@@ -102,15 +102,15 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600 ">
             Tác giả:{" "}
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-xl">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
-        <div className="flex ">
+        <div className="flex items-center">
           <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap font-sansII">
             Thể loại:
           </h5>
-          <div className="flex gap-1 flex-wrap">
+          <div className="flex gap-1 flex-wrap items-center">
             {Data?.category?.map((category) => (
               <Link
                 to={`/the-loai/${category.slug}`}
