@@ -83,7 +83,7 @@ const Hero = ({ data }) => {
           <h2 className=" font-sansII text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ">
             Hôm nay nên đọc gì
           </h2>
-          <div className="flex flex-wrap overflow-ellipsis whitespace-normal  w-fit font-sansII dark:text-white ">
+          <div className="flex flex-wrap overflow-ellipsis whitespace-normal  w-fit font-sansII dark:text-white p-1">
             Bạn vẫn chưa biết nên xem gì ? Hãy để chúng tôi chọn giúp bạn
           </div>
           <button
@@ -92,12 +92,12 @@ const Hero = ({ data }) => {
               const randomManga = await fetchDataRandom(randomSlug);
               navigate(`/truyen-tranh/${randomManga}`);
             }}
-            className="p-2 w-fit my-1 bg-red-500 rounded-md dark:text-white hover:opacity-70 flex items-center"
+            className="p-2 w-fit my-1 bg-red-500 rounded-md dark:text-white hover:opacity-70 flex items-center font-sansII text-base"
           >
             <ArrowRightTwoToneIcon /> Xem manga ngẫu nhiên
           </button>
         </div>
-        <div className="  shadow-xl  rounded-3xl h-[400px] overflow-auto dark:bg-[#2a2a2b] bg-[#f0ecec]">
+        <div className=" shadow-xl  rounded-3xl h-[400px] overflow-auto dark:bg-[#2a2a2b] bg-[#f0ecec]">
           <h2 className="text-xl font-sansII font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
             Lịch sử đọc của bạn
           </h2>
@@ -120,12 +120,12 @@ const Hero = ({ data }) => {
                         alt={item.slug}
                       />
                       <span className="overflow-hidden overflow-ellipsis whitespace-nowrap">
-                        <h4 className="text-lg text-black dark:text-white font-normal">
+                        <h1 className="text-lg text-black dark:text-white font-normal">
                           {item.name}
-                        </h4>
-                        <h5 className="text-base text-gray-500 font-normal  font-sansII">
+                        </h1>
+                        <h2 className="text-base text-gray-500 font-normal  font-sansII">
                           {item.origin_name}
-                        </h5>
+                        </h2>
                         <h6 className="block lg:hidden">
                           <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-black bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white  font-sansII">
                             Chapter:{" "}

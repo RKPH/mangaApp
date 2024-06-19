@@ -81,7 +81,7 @@ const Header = () => {
               className="h-12 w-12 rounded-xl border border-white"
             />
             <div className="flex flex-col">
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-medium mx-2 font-sansII">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-3xl font-medium mx-2 font-sansII">
                 Iceycure
               </span>
             </div>
@@ -89,7 +89,7 @@ const Header = () => {
         </div>
       </div>
       <div className="w-1/2 h-full    flex items-center justify-end font-sansII">
-        <div className="hidden xl:flex items-center justify-evenly w-[417px]  h-12  ">
+        <div className="hidden xl:flex items-center justify-center gap-2 w-3/4 h-full ">
           <div
             className="rounded-full cursor-pointer border mx-4 border-orange-500 dark:border-white"
             onClick={HandleTheme}
@@ -106,7 +106,7 @@ const Header = () => {
               navigate(`/result?q=${inputValue}`);
               setInputValue("");
             }}
-            className="w-[280px] 3xl:h-10 2xl:h-10 h-[30px] relative "
+            className="w-3/4 h-1/2 relative "
           >
             <input
               value={inputValue}
@@ -134,20 +134,20 @@ const Header = () => {
           />
         </div>
         {!auth.isAuthenticated ? (
-          <div className="flex flex-row items-center gap-x-2 3xl:h-12 2xl:h-10  ">
+          <div className="flex flex-row items-center gap-x-2 h-full w-1/4  ">
             <Link to="/login">
-              <button className="p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[12px] text-[10px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
-                Log in
+              <button className="p-2 w-fit text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
+                Đăng nhập
               </button>
             </Link>
-            <Link to="/login">
-              <button className="p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[10px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35">
-                Sign up
+            <Link to="/Signin">
+              <button className="p-2 w-fit text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
+                Đăng kí
               </button>
             </Link>
           </div>
         ) : (
-          <div className="flex flex-row items-center gap-x-2  3xl:h-10 2xl:h-8 ">
+          <div className="flex flex-row items-center gap-x-2  h-full w-1/10 px-4 justify-end ">
             <Tippy
               interactive={true}
               onClickOutside={() => setDropdownVisible(!isDropdownVisible)}
@@ -244,16 +244,10 @@ const Header = () => {
               <img
                 onClick={() => setDropdownVisible(!isDropdownVisible)}
                 src={User?.avatar}
-                className="xl:h-[32px] xl:w-[32px] 2xl:w-[35px] 2xl:h-[35px] 3xl:h-10 3xl:w-10 md:h-8 md:w-8 xs:h-8 xs:w-8 h-12 w-12 rounded-full border-2 border-white "
+                className=" md:h-10 md:w-10  h-8 w-8  rounded-full border-2 border-white "
                 alt=""
               />
             </Tippy>
-            <button
-              onClick={handleLogout}
-              className=" hidden xl:block 2xl:block 3xl:block  p-2 w-[60px] 3xl:w-[80px] text-center text-gray-50 3xl:text-sm  lg:text-[12px] text-[12px] bg-orange-500 dark:bg-[#3F94D5] font-semibold font-['Lato']  rounded-md hover:opacity-35"
-            >
-              Sign out
-            </button>
           </div>
         )}
       </div>

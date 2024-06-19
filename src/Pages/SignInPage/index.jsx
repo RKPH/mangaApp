@@ -69,7 +69,7 @@ function SignUpForm() {
           className="form bg-white p-8 rounded-xl lg:w-[500px]  w-full h-fit mt-10  "
         >
           {error && <span className="text-red-500 text-base">{error}</span>}
-          <div className="flex flex-col r  mb-2">
+          <div className="flex flex-col   mb-2">
             <label htmlFor="name" className="text-black font-semibold">
               Username
             </label>

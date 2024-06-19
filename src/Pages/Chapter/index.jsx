@@ -82,15 +82,15 @@ const Chapter = () => {
         <div className="lg:px-2 w-full">
           <div className="bg-white dark:bg-[#18191A] p-5 rounded-lg mb-5">
             <div className="m-1">
-              <h1 className="lg:text-lg text-base font-bold dark:text-white">
+              <h1 className="text-xl font-sansII font-bold dark:text-white">
                 {chapter?.comic_name} - Chapter: {chapter?.chapter_name}
               </h1>
             </div>
             {/* Listbox */}
-            <div className="lg:text-base text-sm flex dark:text-white text-black justify-center">
+            <div className="text-base font-sansII flex dark:text-white text-black justify-center">
               <Listbox value={apiData} onChange={setApiData}>
                 <Listbox.Button
-                  className="border-2 border-gray-300 rounded-md p-2 m-2"
+                  className="border-2 font-sansII text-lg border-gray-300 rounded-md p-2 m-2 "
                   onClick={() => setIsListboxOpen(!isListboxOpen)}
                 >
                   chương {chapter?.chapter_name}
@@ -112,7 +112,7 @@ const Chapter = () => {
                               active
                                 ? "text-amber-900 bg-amber-100"
                                 : "text-gray-900"
-                            } cursor-default select-none relative p-2`
+                            } cursor-default select-none relative p-2 font-sansII`
                           }
                           value={item.chapter_api_data}
                         >

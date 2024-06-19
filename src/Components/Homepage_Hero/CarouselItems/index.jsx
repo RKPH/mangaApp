@@ -20,7 +20,7 @@ const carouselItemTemplate = (item) => {
           </div>
           <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2 h-full dark:bg-[#18191abb] rounded-lg border p-2">
             <span className="flex-wrap flex">
-              <h1 className="md:text-left  font-sansII text-lg text-left dark:text-blue-600 text-orange-600 uppercase font-bold">
+              <h1 className="md:text-left  font-sansII text-2xl text-left dark:text-blue-600 text-orange-600  font-medium">
                 {item?.name ?? "Undefined"}
               </h1>
             </span>
@@ -33,15 +33,15 @@ const carouselItemTemplate = (item) => {
             <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
 
             <div>
-              <span className="font-semibold text-lg  font-sansII dark:text-blue-600 text-orange-600">
+              <span className="font-semibold text-xl  font-sansII dark:text-blue-600 text-orange-600">
                 Tác giả:{" "}
               </span>
-              <span className="text-base font-sansII  font-medium text-white mr-1">
+              <span className="text-lg font-sansII  font-normal text-white mr-1">
                 {item?.author ?? "Đang cập nhật"}
               </span>
             </div>
-            <div className="flex items-end">
-              <span className="font-semibold text-lg  font-sansII dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap">
+            <div className="flex items-start">
+              <span className="font-semibold text-xl  font-sansII dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap">
                 Thể loại:
               </span>
               <div className="flex gap-1 flex-wrap">

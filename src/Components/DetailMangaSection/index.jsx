@@ -7,17 +7,16 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const DetailMangaSection = ({ Data, Image, slug }) => {
   const user = useSelector((state) => state.user.user);
-
+  console.log("user at detailmanga:", user);
   const token = useSelector((state) => state.auth.token);
   const [isSaved, setIsSaved] = useState(false);
   useEffect(() => {
-    // Kiểm tra xem truyện đã được lưu chưa
-    const isMangaSaved = user?.userMangas.some(
-      (manga) => manga?.slug === Data.item?.slug
+    const isMangaSaved = user?.userMangas?.some(
+      (manga) => manga?.slug === Data?.slug
     );
-
     setIsSaved(isMangaSaved);
-  }, [user?.userMangas, Data.item?.slug]);
+  }, [user?.userMangas, Data?.slug]);
+
   const userId = user?.userID; // replace with the actual user ID if it varies
   const handleClick = async (slug, mangaName, mangaImage) => {
     if (!user) {
@@ -75,14 +74,14 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
   }
   return (
     <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
-      <div className="col-span-12   lg:col-span-4 xl:col-span-3 2xl:col-span-4 3xl:col-span-3 flex justify-center">
+      <div className="col-span-12 xl:col-span-4  lg:col-span-4  2xl:col-span-4 3xl:col-span-3 flex justify-center">
         <img
           src={Image}
           alt={slug}
           className="rounded-xl lg:w-[340px] h-[450px] md:w-3/4 w-full border-4 bg-cover"
         />
       </div>
-      <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
+      <div className="col-span-12  lg:col-span-8 xl:col-span-8 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
         <h1 className=" text-left md:text-3xl text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
           {Data?.name ?? "Undefined"}
         </h1>
@@ -106,11 +105,11 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             {Data?.author ?? "Undefined"}
           </span>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-start">
           <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap font-sansII">
             Thể loại:
           </h5>
-          <div className="flex gap-1 flex-wrap items-center">
+          <div className="flex gap-1 flex-wrap items-start">
             {Data?.category?.map((category) => (
               <Link
                 to={`/the-loai/${category.slug}`}
@@ -124,13 +123,10 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         </div>
         <div className="flex flex-row  gap-2  flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
           <button
-            onClick={() => {
-              ``;
-              handleClick(Data?.slug, Data?.name, Image);
-            }}
-            className="bg-orange-600 hover:bg-orange-500 flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII "
+            onClick={() => handleClick(Data?.slug, Data?.name, Image)}
+            className="bg-orange-600 hover:bg-orange-500 flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII"
           >
-            <span className="text-base  font-sansII">
+            <span className="text-base font-sansII">
               {isSaved ? "Đã lưu" : "Lưu truyện"}
             </span>
           </button>
