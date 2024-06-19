@@ -75,7 +75,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h2 className=" text-left text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold font-sansII">
+        <h2 className=" text-left text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
           {Data?.name ?? "Undefined"}
         </h2>
         <h5 className="text-left  text-xl  text-gray-400 dark:text-white font-semibold font-sansII">
@@ -91,7 +91,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </span>
         </div>
         <div>
-          <span className="font-semibold  text-xl font-sansII dark:text-blue-600 text-orange-600  mr-1">
+          <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600 ">
             Tác giả:{" "}
           </span>
           <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
@@ -114,28 +114,26 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             )) ?? "Undefined"}
           </div>
         </div>
-        <div className="flex flex-row gap-2  text-center w-full  py-2 rounded-t-none rounded-xl">
-          <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
-            <button
-              onClick={() => {
-                ``;
-                handleClick(Data?.slug, Data?.name, Image);
-              }}
-              className="flex justify-items-center text-base items-center text-center gap-1 p-1 font-sansII"
-            >
+        <div className="flex flex-row  md:gap-2 gap-4 flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
+          <button
+            onClick={() => {
+              ``;
+              handleClick(Data?.slug, Data?.name, Image);
+            }}
+            className="bg-orange-600 hover:bg-orange-500 flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII "
+          >
+            <span className="text-base  font-sansII">
               {isSaved ? "Đã lưu" : "Lưu truyện"}
-            </button>
-          </div>
-          <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
-            <button className="flex justify-items-center items-center text-center lg:text-base text-sm gap-1 p-1">
-              <span className="text-base  font-sansII">Đọc truyện</span>
-            </button>
-          </div>
-          <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
-            <button className="flex justify-items-center items-center text-center gap-1 p-1 text-base">
-              <span className="text-base font-sansII"> Yêu thích</span>
-            </button>
-          </div>
+            </span>
+          </button>
+
+          <button className=" flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII">
+            <span className="text-base  font-sansII">Đọc truyện</span>
+          </button>
+
+          <button className="bg-red-600 hover:bg-red-500 flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII">
+            <span className="text-base font-sansII"> Yêu thích</span>
+          </button>
         </div>
         <div className="mt-2">
           <h3 className="text-xl font-sansII font-semibold dark:text-white m-1">

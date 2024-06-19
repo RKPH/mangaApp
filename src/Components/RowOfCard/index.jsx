@@ -50,7 +50,7 @@ const RowOfCard = ({ data }) => {
                   className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                 />
                 <div className="py-2">
-                  <h5 className="overflow-hidden text-left  text-lg  font-normal overflow-ellipsis whitespace-nowrap dark:text-white font-sansII">
+                  <h5 className="overflow-hidden text-left my-1 text-lg  font-normal overflow-ellipsis whitespace-nowrap dark:text-white font-sansII">
                     {item.name ? item.name : item.mangaName}
                   </h5>
                   {item.chaptersLatest ? (
@@ -59,7 +59,7 @@ const RowOfCard = ({ data }) => {
                         className="pi pi-tag p-mr-2"
                         style={{ color: "var(--green-500)" }}
                       />
-                      <span className="font-thin  text-sm rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-sansII">
+                      <span className="font-thin  text-base rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-sansII">
                         Chương:{" "}
                         {item.chaptersLatest[0]
                           ? item.chaptersLatest[0].chapter_name
