@@ -114,8 +114,8 @@ const Home = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full justify-between rounded-lg  bg-[whitesmoke] px-4 py-2 text-left text-sm font-medium text-black hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
-                    <span className="text-lg">
+                  <Disclosure.Button className="flex w-full justify-between rounded-lg  bg-[whitesmoke] px-4 py-2 text-left  font-medium text-black hover:bg-gray-300 focus:outline-none focus-visible:ring focus-visible:ring-purple-500/75">
+                    <span className="text-sm">
                       Danh sách tiếp tục xem ({data2.length})
                     </span>
                     <KeyboardArrowDownIcon
@@ -139,12 +139,12 @@ const Home = () => {
                             alt={item.slug}
                           />
                           <span className="overflow-hidden overflow-ellipsis whitespace-nowrap">
-                            <h4 className="text-lg  text-black font-semibold">
+                            <h1 className="text-lg font-sansII  text-black font-semibold">
                               {item.name}
-                            </h4>
-                            <h5 className="text-base text-gray-500 font-normal">
+                            </h1>
+                            <h2 className="text-base text-gray-500 font-normal">
                               {item.origin_name}
-                            </h5>
+                            </h2>
                           </span>
                         </div>
 

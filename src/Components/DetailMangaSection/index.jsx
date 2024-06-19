@@ -65,6 +65,14 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
       alert(`Failed to save manga: ${error.message}`);
     }
   };
+  let statusText;
+  if (Data?.status === "ongoing") {
+    statusText = "Đang cập nhật";
+  } else if (Data?.status === "completed") {
+    statusText = "Đã hoàn thành";
+  } else {
+    statusText = "";
+  }
   return (
     <div className="grid grid-cols-12 gap-4 p-4 bg-gradient-to-br from-ophim-dark to-ophim-onyx rounded-xl shadow-md">
       <div className="col-span-12   lg:col-span-4 xl:col-span-3 2xl:col-span-4 3xl:col-span-3 flex justify-center">
@@ -75,19 +83,19 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h2 className=" text-left md:text-3xl text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
+        <h1 className=" text-left md:text-3xl text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
           {Data?.name ?? "Undefined"}
-        </h2>
-        <h5 className="text-left  text-xl  text-gray-400 dark:text-white font-medium font-sansII">
+        </h1>
+        <h2 className="text-left  text-xl  text-gray-400 dark:text-white font-medium font-sansII">
           {Data?.origin_name ?? "Undefined"}
-        </h5>
+        </h2>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
         <div>
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
           <span className="px-2 dark:text-white text-black font-normal font-sansII  text-xl">
-            {Data?.status ?? "Undefined"}
+            {statusText ?? "Undefined"}
           </span>
         </div>
         <div>
