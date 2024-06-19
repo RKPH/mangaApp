@@ -107,7 +107,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
               <Link
                 to={`/the-loai/${category.slug}`}
                 key={category.slug}
-                className="px-2 dark:text-white text-black font-medium text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-sansII"
+                className="px-2 dark:text-white text-black font-normal text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-sansII"
               >
                 {category.name}
               </Link>
