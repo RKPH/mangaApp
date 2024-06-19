@@ -58,7 +58,7 @@ const DefaultLayout = ({ children }) => {
   }, []);
   return (
     <div className="w-full h-full font-sansII ">
-      <MemoizedHeader className="w-full sticky top-0 left-0 z-10 bg-white" />
+      <MemoizedHeader className="w-full sticky top-0   z-20   bg-red-300 " />
       <ToastContainer
         autoClose={1000}
         closeOnClick={true}

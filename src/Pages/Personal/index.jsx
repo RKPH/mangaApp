@@ -50,14 +50,14 @@ const Personalpage = () => {
               />
             )}
           </div>
-          <span className="p-1 m-1 font-bold  font-[helvetica]  text-xl dark:text-white dark:dark:bg-[#18191A] bg-white text-black rounded-xl">
+          <span className="p-1 m-1 font-bold  font-sansII  text-xl dark:text-white dark:dark:bg-[#18191A] bg-white text-black rounded-xl">
             {formData.userName}
           </span>
         </div>
         <div className="w-full justify-center  items-center flex p-1 mb-6">
           <Link
             to="/setting"
-            className="p-2 px-10 rounded-lg bg-blue-500 hover:opacity-40"
+            className="p-2 px-10 text-base rounded-lg bg-blue-500 hover:opacity-40"
           >
             Edit
           </Link>
@@ -65,20 +65,20 @@ const Personalpage = () => {
         <div className="w-full flex items-center justify-center mb-6">
           <div className="min-h-[300px] xl:min-w-[1000px] min-w-full flex flex-col items-center  bg-white dark:bg-[#18191A] rounded-xl p-5">
             <div className="w-full text-center flex items-center justify-center mb-5">
-              <span className=" font-[helvetica] text-lg font-semibold dark:text-white">
+              <span className=" font-sansII text-lg font-semibold dark:text-white">
                 {" "}
                 Tham gia vào: {formData.date}
               </span>
             </div>
             <div className="xl:w-[65%] w-full  grid grid-cols-4 gap-2  m-2">
               <div className="xl:col-span-2 flex col-span-4 items-center border-white border">
-                <div className="flex flex-col dark:text-white font-[helvetica] text-lg">
-                  <span className="m-2">Tài khoản: </span>
+                <div className="flex flex-col dark:text-white font-sansII text-lg">
+                  <span className="m-2 ">Tài khoản: </span>
                   <span className="m-2">Số điểm: {formData?.point} </span>
                 </div>
               </div>
               <div className="xl:col-span-2 flex col-span-4 items-center border-white border ">
-                <div className="flex flex-col dark:text-white font-[helvetica] text-lg">
+                <div className="flex flex-col dark:text-white font-sansII text-lg">
                   <span className="m-2">Số sách đã đọc: </span>
                   <span className="m-2">Số giờ online: </span>
                 </div>
@@ -89,12 +89,12 @@ const Personalpage = () => {
         <div className="w-full flex items-center justify-center">
           <div className="min-h-[300px] xl:min-w-[1000px] min-w-full flex flex-col items-center  bg-white dark:bg-[#18191A] rounded-xl p-5">
             <div className="w-full text-center flex items-center justify-center mb-5">
-              <span className="font-[helvetica] text-lg font-semibold dark:text-white">
+              <span className="font-sansII text-lg font-semibold dark:text-white">
                 {" "}
                 LỊCH SỬ HOẠT ĐỘNG
               </span>
             </div>
-            <div className="xl:w-[65%] w-full text-center font-[helvetica] text-base uppercase dark:text-white">
+            <div className="xl:w-[65%] w-full text-center font-sansII text-base  dark:text-white">
               <span> Chưa có ghi nhận</span>
             </div>
           </div>

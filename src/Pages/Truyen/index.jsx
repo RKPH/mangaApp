@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { ProgressSpinner } from "primereact/progressspinner";
-
+import HomeIcon from "@mui/icons-material/Home";
 import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
 import DetailMangaSection from "../../Components/DetailMangaSection";
@@ -60,7 +60,7 @@ const Truyen = () => {
     {
       label: Data?.name,
       template: () => (
-        <a className="text-lg   font-sansII cursor-pointer text-orange-500 dark:text-blue-400">
+        <a className="text-lg   font-sansII cursor-pointer text-orange-500 dark:text-blue-400 ">
           {Data?.name}
         </a>
       ),
@@ -71,11 +71,11 @@ const Truyen = () => {
     label: "Trang chủ",
     url: "/",
     className:
-      "text-lg  font-sansII cursor-pointer text-black dark:text-white",
+      "text-lg  font-sansII cursor-pointer text-black dark:text-white whitespace-nowrap",
   };
   const flattenedSuggestions = Object.values(suggesttion).flat();
   return (
-    <div className="w-full bg-white py-4 dark:bg-[#18191A] font-['Oswald']">
+    <div className="w-full bg-white py-4 dark:bg-[#18191A] font-sansII">
       <div className="bg-[whitesmoke] dark:bg-[#242526] lg:px-4 px-2 py-2 ">
         {Data && chapters && Image ? (
           <div>
@@ -83,7 +83,7 @@ const Truyen = () => {
               model={items}
               home={home}
               separator=">"
-              className="px-1 shadow-md min-w-fit max-w-fit text-base dark:text-white rounded-md mb-5 font-sansII"
+              className="px-1 shadow-md  flex flex-wrap text-base dark:text-white rounded-md mb-5 font-sansII"
             />
             <DetailMangaSection Data={Data} Image={Image} slug={slug} />
             <ChapterList chapters={chapters} slug={slug} />

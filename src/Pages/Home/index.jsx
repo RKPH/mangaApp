@@ -108,7 +108,7 @@ const Home = () => {
 
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full lg:hidden block">
-            <h2 className="text-xl  font-sansII font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
+            <h2 className="md:text-xl text-lg  font-sansII dark:text-white text-black  uppercase font-bold my-2">
               Lịch sử đọc của bạn
             </h2>
             <Disclosure>

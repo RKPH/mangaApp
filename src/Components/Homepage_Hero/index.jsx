@@ -64,7 +64,7 @@ const Hero = ({ data }) => {
   }, []);
   const domain = "https://otruyenapi.com/uploads/comics/";
   return (
-    <div className="w-full flex flex-row items-center justify-between mb-10">
+    <div className="w-full flex flex-row  justify-between mb-10">
       <Carousel
         className="dark:text-white lg:w-2/3 w-full  flex  items-center z-0 relative"
         itemTemplate={carouselItemTemplate}
