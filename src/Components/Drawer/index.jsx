@@ -25,13 +25,13 @@ const Drawers = ({
   return (
     <Drawer
       anchor="top"
-      className="w-full font-font-['Oswald'] max-h-fit fixed left-0 right-0 top-0 block xl:hidden"
+      className="w-full  font-sansII max-h-fit fixed left-0 right-0 top-0 block xl:hidden "
       open={isDrawerOpen}
       onClose={handleDrawerClose}
     >
-      <div className="h-full  w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-font-['Oswald']">
+      <div className="h-full  w-full z-[99999px] bg-orange-600 dark:bg-[#242526] font-sansII">
         {/* Menu for manga */}
-        <div className="h-fit font-font-['Oswald'] w-full mt-5 px-5">
+        <div className="h-fit  font-sansII w-full mt-5 px-5">
           <div className="w-full p-2 flex items-end justify-end dark:text-white text-black">
             <button onClick={handleDrawerClose}>close </button>
           </div>
@@ -58,13 +58,13 @@ const Drawers = ({
               <SearchIcon />
             </button>
           </form>
-          <div className="text-gray-50 text-opacity-50  font-bold font-font-['Oswald'] tracking-wide px-2   text-base">
+          <div className="text-gray-50 text-opacity-50  font-bold  font-sansII tracking-wide px-2   text-base">
             Menu -
           </div>
           <div className="w-full  text-sm">
             <Link
               to="/Home"
-              className={`h-12 w-full flex items-center flex-wrap px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center flex-wrap px-2 text-gray-50 text-sm font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "Home" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => {
@@ -79,7 +79,7 @@ const Drawers = ({
 
             <Link
               to="/danh-sach/the-loai"
-              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "the-loai" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => {
@@ -95,7 +95,7 @@ const Drawers = ({
 
             <Link
               to="/danh-sach/truyen-moi"
-              className={`h-12 w-full flex items-center px-2 text-gray-50 text-base font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center px-2 text-gray-50 text-base font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "truyen-moi" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => handleTabClick("truyen-moi")}
@@ -108,7 +108,7 @@ const Drawers = ({
 
             <Link
               to="/danh-sach/dang-phat-hanh"
-              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "dang-phat-hanh" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => handleTabClick("dang-phat-hanh")}
@@ -120,7 +120,7 @@ const Drawers = ({
             </Link>
             <Link
               to="/danh-sach/hoan-thanh"
-              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "Hoàn thành" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => handleTabClick("Hoàn thành")}
@@ -134,18 +134,18 @@ const Drawers = ({
         </div>
         {/* Menu for setting */}
         <div className="h-fit w-full  px-5">
-          <div className="text-gray-50 text-opacity-50  text-base font-bold tracking-wide font-font-['Oswald'] px-2">
+          <div className="text-gray-50 text-opacity-50  text-base font-bold tracking-wide  font-sansII px-2">
             General -
           </div>
           <div className="w-full ">
-            <Link className="h-12 w-full flex items-center px-2 text-gray-50  text-base font-semibold overflow-ellipsis whitespace-nowrap tracking-wide font-font-['Oswald'] cursor-pointer my-1 hover:bg-black transition duration-300">
+            <Link className="h-12 w-full flex items-center px-2 text-gray-50  text-base font-semibold overflow-ellipsis whitespace-nowrap tracking-wide  font-sansII cursor-pointer my-1 hover:bg-black transition duration-300">
               <span className="mr-2 flex items-center text-base">
                 <SettingsIcon style={{ fontSize: "0.875rem" }} />
               </span>{" "}
               Settings
             </Link>
 
-            <div className="h-12 w-full flex items-center px-2 text-gray-50 text-base font-semibold tracking-wide font-font-['Oswald'] cursor-pointer overflow-ellipsis whitespace-nowrap my-1 hover:bg-black transition duration-300">
+            <div className="h-12 w-full flex items-center px-2 text-gray-50 text-base font-semibold tracking-wide  font-sansII cursor-pointer overflow-ellipsis whitespace-nowrap my-1 hover:bg-black transition duration-300">
               <span className="mr-2 flex items-center   text-base">
                 <EuroIcon style={{ fontSize: "0.875rem" }} />
               </span>{" "}
@@ -153,7 +153,7 @@ const Drawers = ({
             </div>
             <Link
               to="/gacha"
-              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap font-font-['Oswald'] tracking-wide ${
+              className={`h-12 w-full flex items-center px-2 text-gray-50   text-base font-semibold overflow-ellipsis whitespace-nowrap  font-sansII tracking-wide ${
                 activeTab === "gacha" ? "bg-black" : ""
               } cursor-pointer hover:bg-black item my-1 transition duration-300`}
               onClick={() => {

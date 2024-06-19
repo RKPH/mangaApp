@@ -58,7 +58,7 @@ const Navbar = ({ handleDrawerOpen }) => {
 
   return (
     <div className="w-full h-12 sticky top-20 z-10 shadow-xl xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
-      <nav className="w-full h-full xl:flex font-[helvetica] font-semibold items-center hidden text-base">
+      <nav className="w-full h-full xl:flex  font-sansII font-semibold items-center hidden text-base">
         <ul className="list-none h-12 flex font-semibold items-center  text-white ">
           <Link
             to="/Home"
@@ -111,7 +111,7 @@ const Navbar = ({ handleDrawerOpen }) => {
                       <div>
                         <h4
                           onClick={() => setDropdownVisible(false)}
-                          className="font-semibold text-base"
+                          className="font-semibold text-base font-sansII"
                         >
                           {category.name}
                         </h4>
@@ -132,7 +132,7 @@ const Navbar = ({ handleDrawerOpen }) => {
                 clearTimeout(timeoutId);
                 setDropdownVisible(true);
               }}
-              className="dark:hover:bg-blue-500 hover:bg-orange-400 p-[12px] cursor-pointer text-base uppercase"
+              className="dark:hover:bg-blue-500 hover:bg-orange-400 p-[12px] cursor-pointer text-base uppercase font-sansII"
             >
               Category
             </li>
@@ -140,7 +140,7 @@ const Navbar = ({ handleDrawerOpen }) => {
 
           <Link
             to="/danh-sach/truyen-moi"
-            className={`dark:hover:bg-blue-500  hover:bg-orange-400 ${
+            className={`dark:hover:bg-blue-500 font-sansII  hover:bg-orange-400 ${
               activeTab == "truyen-moi" ? "dark:bg-blue-500 bg-orange-400" : ""
             } p-[12px] cursor-pointer text-base flex items-center justify-center gap-1 uppercase`}
             onClick={() => handleTabClick("truyen-moi")}
@@ -153,14 +153,14 @@ const Navbar = ({ handleDrawerOpen }) => {
               activeTab == "dang-phat-hanh"
                 ? "dark:bg-blue-500 bg-orange-400"
                 : ""
-            } p-[12px] cursor-pointer text-base flex items-center justify-center gap-1 uppercase`}
+            } p-[12px] cursor-pointer text-base flex items-center font-sansII justify-center gap-1 uppercase`}
             onClick={() => handleTabClick("dang-phat-hanh")}
           >
             Đang phát hành
           </Link>
           <Link
             to="/danh-sach/hoan-thanh"
-            className={`dark:hover:bg-blue-500  hover:bg-orange-400 ${
+            className={`dark:hover:bg-blue-500 font-sansII  hover:bg-orange-400 ${
               activeTab == "hoan-thanh" ? "dark:bg-blue-500 bg-orange-400" : ""
             } p-[12px] cursor-pointer text-base flex items-center justify-center gap-1 uppercase`}
             onClick={() => handleTabClick("hoan-thanh")}
@@ -169,7 +169,7 @@ const Navbar = ({ handleDrawerOpen }) => {
           </Link>
           <Link
             to="/gacha"
-            className={`dark:hover:bg-blue-500  hover:bg-orange-400 ${
+            className={`dark:hover:bg-blue-500 font-sansII hover:bg-orange-400 ${
               activeTab == "gacha" ? "dark:bg-blue-500 bg-orange-400" : ""
             } p-[12px] cursor-pointer text-base flex items-center justify-center gap-1 uppercase`}
             onClick={() => handleTabClick("gacha")}

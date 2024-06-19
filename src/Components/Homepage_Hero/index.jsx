@@ -80,10 +80,10 @@ const Hero = ({ data }) => {
 
       <div className="w-1/3 lg:flex flex-col hidden gap-y-4 mx-5 justify-center">
         <div className="h-fit w-full flex-col shadow-xl  p-4 rounded-3xl lg:flex hidden dark:bg-[#2a2a2b] bg-[#f0ecec]">
-          <h2 className="font-[helvetica] text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ">
+          <h2 className=" font-sansII text-xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left ">
             Hôm nay nên đọc gì
           </h2>
-          <div className="flex flex-wrap overflow-ellipsis whitespace-normal  w-fit font-[helvetica] dark:text-white ">
+          <div className="flex flex-wrap overflow-ellipsis whitespace-normal  w-fit font-sansII dark:text-white ">
             Bạn vẫn chưa biết nên xem gì ? Hãy để chúng tôi chọn giúp bạn
           </div>
           <button
@@ -98,7 +98,7 @@ const Hero = ({ data }) => {
           </button>
         </div>
         <div className="  shadow-xl  rounded-3xl h-[400px] overflow-auto dark:bg-[#2a2a2b] bg-[#f0ecec]">
-          <h2 className="text-xl font-[helvetica] font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
+          <h2 className="text-xl font-sansII font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
             Lịch sử đọc của bạn
           </h2>
           <div className="w-full p-4">
@@ -123,11 +123,11 @@ const Hero = ({ data }) => {
                         <h4 className="text-lg text-black dark:text-white font-normal">
                           {item.name}
                         </h4>
-                        <h5 className="text-base text-gray-500 font-normal">
+                        <h5 className="text-base text-gray-500 font-normal  font-sansII">
                           {item.origin_name}
                         </h5>
                         <h6 className="block lg:hidden">
-                          <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-black bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white">
+                          <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-black bg-gradient-to-br from-sky-400 to-blue-700 px-1 dark:text-white  font-sansII">
                             Chapter:{" "}
                             {item.chaptersLatest && item.chaptersLatest[0]
                               ? item.chaptersLatest[0].chapter_name

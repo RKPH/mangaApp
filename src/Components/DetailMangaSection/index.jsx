@@ -75,10 +75,10 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h2 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold">
+        <h2 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold font-sansII">
           {Data?.name ?? "Undefined"}
         </h2>
-        <h5 className="md:text-left text-center text-xl  text-gray-400 dark:text-white font-semibold">
+        <h5 className="md:text-left text-center text-xl  text-gray-400 dark:text-white font-semibold font-sansII">
           {Data?.origin_name ?? "Undefined"}
         </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
@@ -86,7 +86,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
-          <span className="px-2 dark:text-white text-black font-normalfont-sansII  text-lg">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
             {Data?.status ?? "Undefined"}
           </span>
         </div>
@@ -94,7 +94,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold  text-xl font-sansII dark:text-blue-600 text-orange-600  mr-1">
             Tác giả:{" "}
           </span>
-          <span className="px-2 dark:text-white text-black font-normalfont-sansII  text-lg">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
@@ -135,10 +135,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center gap-1 p-1 text-base">
-              <span className="text-base uppercasefont-sansII">
-                {" "}
-                Yêu thích
-              </span>
+              <span className="text-base uppercasefont-sansII"> Yêu thích</span>
             </button>
           </div>
         </div>

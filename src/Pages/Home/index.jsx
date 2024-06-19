@@ -101,14 +101,14 @@ const Home = () => {
   return (
     <div
       ref={ref}
-      className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0 font-[helvetica]"
+      className="w-full h-full flex flex-col items-center overflow-x-hidden bg-white dark:bg-[#18191A] py-4 z-0  font-sansII"
     >
       <div className=" w-full min-h-screen py-2 bg-[whitesmoke] dark:bg-[#242526] px-4 ">
         <Hero data={data} />
 
         {data2 && data2.length > 0 && (
           <div className="mt-5 mb-10 w-full lg:hidden block">
-            <h2 className="text-xl font-[helvetica] font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
+            <h2 className="text-xl  font-sansII font-semibold sticky top-0 text-orange-500 dark:text-blue-400 text-center z-10 dark:bg-[#2a2a2b] bg-[#f0ecec] p-2">
               Lịch sử đọc của bạn
             </h2>
             <Disclosure>
@@ -187,12 +187,12 @@ const Home = () => {
 
         <div className="p-1 my-2 dark:text-white text-black">
           <div className="flex flex-row justify-between items-center">
-            <h2 className="md:text-xl text-lg font-[helvetica]  uppercase font-bold ">
+            <h2 className="md:text-xl text-lg  font-sansII  uppercase font-bold ">
               Truyện mới cập nhật
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-2xl  md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
+              className="rounded-2xl  font-sansII md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>
@@ -201,12 +201,12 @@ const Home = () => {
         </div>
         <div className="p-1 my-2 dark:text-white text-black">
           <div className="flex flex-row justify-between items-center">
-            <h2 className="md:text-xl text-lg font-[helvetica]  uppercase font-bold ">
+            <h2 className="md:text-xl text-lg  font-sansII  uppercase font-bold  ">
               Truyện sắp ra mắt
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-2xl  md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
+              className="rounded-2xl  font-sansII md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>
@@ -214,10 +214,10 @@ const Home = () => {
           <RowOfCard data={dataPhatHanh} />
         </div>
         <div className=" m-5 min-h-fit w-fit flex flex-col border-black dark:border-white border p-2 rounded-md lg:hidden  ">
-          <h2 className="font-[helvetica] text-base lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
+          <h2 className=" font-sansII text-base lg:text-2xl font-semibold text-orange-500 dark:dark:text-blue-400 text-left my-5">
             Hôm nay nên đọc gì
           </h2>
-          <div className="flex flex-wrap overflow-ellipsis whitespace-normal p-1 w-fit font-[helvetica] dark:text-white hover:opacity-70">
+          <div className="flex flex-wrap overflow-ellipsis whitespace-normal p-1 w-fit  font-sansII dark:text-white hover:opacity-70">
             Bạn vẫn chưa biết nên xem gì ? Hãy để chúng tôi chọn giúp bạn
           </div>
           <button

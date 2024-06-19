@@ -19,7 +19,7 @@ const ChapterList = ({ chapters, slug }) => {
                 className="flex items-center justify-center p-1 border rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 bg-orange-500 hover:bg-orange-600 text-white cursor-pointer transition ease-in-out duration-300"
                 key={`${item.chapter_name}-${index}`}
               >
-                <span className="text-basefont-sansII font-thin">
+                <span className="text-base font-sansII font-thin">
                   Chương {item.chapter_name}
                 </span>
               </Link>
