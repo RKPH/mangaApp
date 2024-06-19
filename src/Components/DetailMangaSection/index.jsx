@@ -75,10 +75,10 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h2 className=" text-left text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
+        <h2 className=" text-left md:text-3xl text-2xl  dark:text-blue-600 text-orange-600  font-bold font-sansII">
           {Data?.name ?? "Undefined"}
         </h2>
-        <h5 className="text-left  text-xl  text-gray-400 dark:text-white font-semibold font-sansII">
+        <h5 className="text-left  text-xl  text-gray-400 dark:text-white font-medium font-sansII">
           {Data?.origin_name ?? "Undefined"}
         </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
@@ -86,7 +86,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-xl">
             {Data?.status ?? "Undefined"}
           </span>
         </div>
@@ -94,7 +94,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600 ">
             Tác giả:{" "}
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-lg">
+          <span className="px-2 dark:text-white text-black font-normal font-sansII  text-xl">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
@@ -114,7 +114,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             )) ?? "Undefined"}
           </div>
         </div>
-        <div className="flex flex-row  md:gap-2 gap-4 flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
+        <div className="flex flex-row  gap-2  flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
           <button
             onClick={() => {
               ``;
