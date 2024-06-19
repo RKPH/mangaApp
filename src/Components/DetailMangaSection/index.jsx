@@ -114,7 +114,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             )) ?? "Undefined"}
           </div>
         </div>
-        <div className="flex flex-row gap-2 flex-wrap bottom-0 text-center w-full  py-2 rounded-t-none rounded-xl">
+        <div className="flex flex-row gap-2  text-center w-full  py-2 rounded-t-none rounded-xl">
           <div className="cursor-pointer hover:bg-orange-600 bg-orange-400 inline-block px-3 rounded">
             <button
               onClick={() => {
