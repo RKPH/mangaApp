@@ -75,10 +75,10 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         />
       </div>
       <div className="col-span-12  lg:col-span-8 xl:col-span-9 2xl:col-span-8 3xl:col-span-9 flex flex-col gap-y-2">
-        <h2 className=" md:text-left text-center text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold font-sansII">
+        <h2 className=" text-left text-2xl  dark:text-blue-600 text-orange-600 uppercase font-bold font-sansII">
           {Data?.name ?? "Undefined"}
         </h2>
-        <h5 className="md:text-left text-center text-xl  text-gray-400 dark:text-white font-semibold font-sansII">
+        <h5 className="text-left  text-xl  text-gray-400 dark:text-white font-semibold font-sansII">
           {Data?.origin_name ?? "Undefined"}
         </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
@@ -99,7 +99,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </span>
         </div>
         <div className="flex ">
-          <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrapfont-sansII">
+          <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap font-sansII">
             Thể loại:
           </h5>
           <div className="flex gap-1 flex-wrap">
@@ -107,7 +107,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
               <Link
                 to={`/the-loai/${category.slug}`}
                 key={category.slug}
-                className="px-2 dark:text-white text-black font-normal text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-sansII"
+                className="px-2 dark:text-white text-black font-normal text-base bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-sansII"
               >
                 {category.name}
               </Link>
@@ -121,33 +121,31 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
                 ``;
                 handleClick(Data?.slug, Data?.name, Image);
               }}
-              className="flex justify-items-center text-base items-center text-center gap-1 p-1 uppercasefont-sansII"
+              className="flex justify-items-center text-base items-center text-center gap-1 p-1 font-sansII"
             >
               {isSaved ? "Đã lưu" : "Lưu truyện"}
             </button>
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center lg:text-base text-sm gap-1 p-1">
-              <span className="text-base  uppercasefont-sansII">
-                Đọc truyện
-              </span>
+              <span className="text-base  font-sansII">Đọc truyện</span>
             </button>
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center gap-1 p-1 text-base">
-              <span className="text-base uppercasefont-sansII"> Yêu thích</span>
+              <span className="text-base font-sansII"> Yêu thích</span>
             </button>
           </div>
         </div>
         <div className="mt-2">
-          <h3 className="text-xlfont-sansII font-semibold dark:text-white m-1">
+          <h3 className="text-xl font-sansII font-semibold dark:text-white m-1">
             {" "}
             Giới thiệu
           </h3>
           <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lgfont-sansII">
             <article>
               <p
-                className="dark:text-white font-normal text-black text-lgfont-sansII "
+                className="dark:text-white font-normal text-black text-lg font-sansII "
                 dangerouslySetInnerHTML={{ __html: Data?.content }}
               ></p>
             </article>
