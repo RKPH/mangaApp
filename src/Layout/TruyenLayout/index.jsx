@@ -4,13 +4,13 @@ import KeyboardDoubleArrowUpSharpIcon from "@mui/icons-material/KeyboardDoubleAr
 import { useLocation } from "react-router-dom";
 
 //components
-import { MemoizedFixedHeader } from "../../Components/Header";
+import { MemoizedUnFixedHeader } from "../../Components/Header";
 import FooterComponent from "../../Components/Footer";
 import { ToastContainer } from "react-toastify"; // Import the ToastContainer
-import { FixedNavbar as Navbar } from "../../Components/Navbar";
+import { UnFixedNavbar as Navbar } from "../../Components/Navbar";
 import Drawers from "../../Components/Drawer";
 
-const DefaultLayout = ({ children }) => {
+const TruyenLayout = ({ children }) => {
   const location = useLocation();
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -58,7 +58,7 @@ const DefaultLayout = ({ children }) => {
   }, []);
   return (
     <div className="w-full h-full font-sansII ">
-      <MemoizedFixedHeader className="w-full sticky top-0   z-20   bg-red-300 " />
+      <MemoizedUnFixedHeader className="w-full    bg-red-300 " />
       <ToastContainer
         autoClose={1000}
         closeOnClick={true}
@@ -93,8 +93,8 @@ const DefaultLayout = ({ children }) => {
   );
 };
 
-DefaultLayout.propTypes = {
+TruyenLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default DefaultLayout;
+export default TruyenLayout;

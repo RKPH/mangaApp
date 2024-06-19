@@ -1,2 +1,2 @@
-export { default as FixedHeader } from "./FixedHeader";
-export { default as UnfixedHeader } from "./UnfixedHeader";
+export { default as MemoizedFixedHeader } from "./FixedHeader";
+export { default as MemoizedUnFixedHeader } from "./UnfixedHeader";

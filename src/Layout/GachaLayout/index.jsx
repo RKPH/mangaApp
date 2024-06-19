@@ -5,10 +5,10 @@ import { useLocation } from "react-router-dom";
 
 //compoent
 
-import MemoizedHeader from "../../Components/Header";
+import { MemoizedFixedHeader } from "../../Components/Header";
 import FooterComponent from "../../Components/Footer";
 import { ToastContainer } from "react-toastify"; // Import the ToastContainer
-import Navbar from "../../Components/Navbar";
+import { FixedNavbar as Navbar } from "../../Components/Navbar";
 import Drawers from "../../Components/Drawer";
 const GachaLayout = ({ children }) => {
   const location = useLocation();
@@ -42,7 +42,7 @@ const GachaLayout = ({ children }) => {
 
   return (
     <div className=" w-full h-full font-[helvetica]">
-      <MemoizedHeader className="w-full sticky top-0  left-0 z-10  bg-white" />
+      <MemoizedFixedHeader className="w-full sticky top-0  left-0 z-10  bg-white" />
       <ToastContainer
         autoClose={1000}
         closeOnClick={true}

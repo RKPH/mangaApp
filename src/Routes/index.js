@@ -12,6 +12,7 @@ import Gacha from '../Pages/VongQuay/gacha'
 import Chapter from '../Pages/Chapter'
 import GachaLayout from '../Layout/GachaLayout'
 import ComicList from '../Pages/MangaList'
+import TruyenLayout from '../Layout/TruyenLayout'
 
 export const publicRoutes = [
   {
@@ -48,7 +49,8 @@ export const publicRoutes = [
   },
   {
     path: '/truyen-tranh/:slug/:chapter',
-    component: Chapter
+    component: Chapter,
+    layout: TruyenLayout
   },
   {
     path: '/gacha',

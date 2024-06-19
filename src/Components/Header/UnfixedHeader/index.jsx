@@ -2,18 +2,18 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutSuccess } from "../../Redux/authSlice";
+import { logoutSuccess } from "../../../Redux/authSlice";
 //icon
 import SearchIcon from "@mui/icons-material/Search";
 import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import Logo from "../../assets/OIG4.png";
+import Logo from "../../../assets/OIG4.png";
 
 //Components
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/themes/light.css";
 import Divider from "@mui/material/Divider";
 
-const Header = () => {
+const UnFixedHeader = () => {
   const location = useLocation();
   // Khởi tạo activeTab từ URL
   const User = useSelector((state) => state.user.user);
@@ -255,6 +255,6 @@ const Header = () => {
   );
 };
 
-const MemoizedHeader = React.memo(Header);
+const MemoizedUnFixedHeader = React.memo(UnFixedHeader);
 
-export default MemoizedHeader;
+export default MemoizedUnFixedHeader;
