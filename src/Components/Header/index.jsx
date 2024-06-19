@@ -81,14 +81,14 @@ const Header = () => {
               className="h-12 w-12 rounded-xl border border-white"
             />
             <div className="flex flex-col">
-              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-medium mx-2">
+              <span className="text-slate-400 lg:inline hidden dark:text-white  text-4xl font-medium mx-2 font-sansII">
                 Iceycure
               </span>
             </div>
           </Link>
         </div>
       </div>
-      <div className="w-1/2 h-full    flex items-center justify-end ">
+      <div className="w-1/2 h-full    flex items-center justify-end font-sansII">
         <div className="hidden xl:flex items-center justify-evenly w-[417px]  h-12  ">
           <div
             className="rounded-full cursor-pointer border mx-4 border-orange-500 dark:border-white"

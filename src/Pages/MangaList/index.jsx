@@ -104,7 +104,7 @@ const ComicList = () => {
     {
       label: formatType(type),
       template: () => (
-        <a className="lg:text-base text-sm font-semibold font-[helvetica] cursor-pointer text-orange-500 dark:text-blue-400">
+        <a className="lg:text-base text-sm font-semibold font-sansII cursor-pointer text-orange-500 dark:text-blue-400">
           {formatType(type)}
         </a>
       ),
@@ -120,7 +120,7 @@ const ComicList = () => {
           model={items}
           home={home}
           separator=">"
-          className="px-1 shadow-md min-w-fit max-w-fit lg:text-base text-sm dark:text-white rounded-md mb-5"
+          className="px-1 shadow-md min-w-fit max-w-fit lg:text-base text-sm dark:text-white rounded-md mb-5 font-sansII"
         />
         <div className="w-full flex justify-between items-center">
           <h1 className="lg:text-2xl text-xl uppercase font-bold text-black dark:text-white text-left my-5 mb-10">

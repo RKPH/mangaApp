@@ -13,7 +13,7 @@ const RowOfCard = ({ data }) => {
     dispatch(saveMangas());
   };
   return (
-    <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5 font-[helvetica]">
+    <div className="w-full my-10 grid grid-cols-2 s:grid-cols-3 xs:grid-cols-2 sm:grid-cols-4  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-8 gap-5 font-sansII">
       {data.length === 0
         ? Array(24)
             .fill()
@@ -50,7 +50,7 @@ const RowOfCard = ({ data }) => {
                   className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md"
                 />
                 <div className="py-2">
-                  <h5 className="overflow-hidden text-left  text-lg  font-normal overflow-ellipsis whitespace-nowrap dark:text-white font-[helvetica]">
+                  <h5 className="overflow-hidden text-left  text-lg  font-normal overflow-ellipsis whitespace-nowrap dark:text-white font-sansII">
                     {item.name ? item.name : item.mangaName}
                   </h5>
                   {item.chaptersLatest ? (
@@ -59,7 +59,7 @@ const RowOfCard = ({ data }) => {
                         className="pi pi-tag p-mr-2"
                         style={{ color: "var(--green-500)" }}
                       />
-                      <span className="font-thin  text-base rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-[helvetica]">
+                      <span className="font-thin  text-sm rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-sansII">
                         Chương:{" "}
                         {item.chaptersLatest[0]
                           ? item.chaptersLatest[0].chapter_name

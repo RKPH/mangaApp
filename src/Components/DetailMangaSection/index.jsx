@@ -83,23 +83,23 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
         </h5>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
         <div>
-          <span className="font-semibold font-[helvetica] text-xl dark:text-blue-600 text-orange-600  ">
+          <span className="font-semibold font-sansII text-xl dark:text-blue-600 text-orange-600  ">
             Trạng thái:
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-[helvetica]  text-lg">
+          <span className="px-2 dark:text-white text-black font-normalfont-sansII  text-lg">
             {Data?.status ?? "Undefined"}
           </span>
         </div>
         <div>
-          <span className="font-semibold  text-xl  font-[helvetica] dark:text-blue-600 text-orange-600  mr-1">
+          <span className="font-semibold  text-xl font-sansII dark:text-blue-600 text-orange-600  mr-1">
             Tác giả:{" "}
           </span>
-          <span className="px-2 dark:text-white text-black font-normal font-[helvetica]  text-lg">
+          <span className="px-2 dark:text-white text-black font-normalfont-sansII  text-lg">
             {Data?.author ?? "Undefined"}
           </span>
         </div>
         <div className="flex ">
-          <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrap font-[helvetica]">
+          <h5 className="font-semibold text-xl dark:text-blue-600 text-orange-600 mr-2 whitespace-nowrapfont-sansII">
             Thể loại:
           </h5>
           <div className="flex gap-1 flex-wrap">
@@ -107,7 +107,7 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
               <Link
                 to={`/the-loai/${category.slug}`}
                 key={category.slug}
-                className="px-2 dark:text-white text-black font-medium text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-md font-[helvetica]"
+                className="px-2 dark:text-white text-black font-medium text-lg bg-blue-500 hover:grayscale cursor-pointer whitespace-nowrap rounded-mdfont-sansII"
               >
                 {category.name}
               </Link>
@@ -121,21 +121,21 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
                 ``;
                 handleClick(Data?.slug, Data?.name, Image);
               }}
-              className="flex justify-items-center text-base items-center text-center gap-1 p-1 uppercase font-[helvetica]"
+              className="flex justify-items-center text-base items-center text-center gap-1 p-1 uppercasefont-sansII"
             >
               {isSaved ? "Đã lưu" : "Lưu truyện"}
             </button>
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-sky-400 to-blue-700 hover:from-sky-500 hover:to-blue-700 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center lg:text-base text-sm gap-1 p-1">
-              <span className="text-base  uppercase font-[helvetica]">
+              <span className="text-base  uppercasefont-sansII">
                 Đọc truyện
               </span>
             </button>
           </div>
           <div className="cursor-pointer bg-gradient-to-br from-pink-600 to-red-700 hover:from-punk-500 hover:to-red-400 inline-block px-3 rounded">
             <button className="flex justify-items-center items-center text-center gap-1 p-1 text-base">
-              <span className="text-base uppercase font-[helvetica]">
+              <span className="text-base uppercasefont-sansII">
                 {" "}
                 Yêu thích
               </span>
@@ -143,14 +143,14 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
           </div>
         </div>
         <div className="mt-2">
-          <h3 className="text-xl font-[helvetica] font-semibold dark:text-white m-1">
+          <h3 className="text-xlfont-sansII font-semibold dark:text-white m-1">
             {" "}
             Giới thiệu
           </h3>
-          <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lg font-[helvetica]">
+          <div className="max-h-28 overflow-auto bg-white dark:bg-[#242520] p-2 border rounded-lgfont-sansII">
             <article>
               <p
-                className="dark:text-white font-normal text-black text-lg font-[helvetica] "
+                className="dark:text-white font-normal text-black text-lgfont-sansII "
                 dangerouslySetInnerHTML={{ __html: Data?.content }}
               ></p>
             </article>

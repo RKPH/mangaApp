@@ -57,7 +57,7 @@ const DefaultLayout = ({ children }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="w-full h-full  font-[helvetica] ">
+    <div className="w-full h-full font-sansII ">
       <MemoizedHeader className="w-full sticky top-0 left-0 z-10 bg-white" />
       <ToastContainer
         autoClose={1000}
