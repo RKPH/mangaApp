@@ -22,18 +22,7 @@
   scale: 2;
 }
 
-/* CSS file */
-.pagination-small {
-  font-size: 1rem;
-  /* default size */
-  color: red !important;
-}
 
-.MuiPaginationItem-text {
-  font-size: 0.75rem !important;
-  line-height: 1rem !important;
-
-}
 
 .dark .css-41sz0k.Mui-selected {
   color: #fff;
@@ -46,9 +35,3 @@
 }
 
 /* Smaller size for screens less than 600px wide */
-@media (min-width: 1024px) {
-  .MuiPaginationItem-text {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-  }
-}

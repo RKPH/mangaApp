@@ -4,21 +4,6 @@
   color: black;
 }
 
-.pagination-small {
-  font-size: 1rem;
-  /* default size */
-  color: red !important;
-}
-
-.lg .MuiPaginationItem-text {
-  font-size: 1rem !important;
-  line-height: 1.5rem !important;
-}
-
-.MuiPaginationItem-text {
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
-}
 
 .dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   color: #fff;

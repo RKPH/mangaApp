@@ -1,44 +1,87 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-const Discussion = () => {
+const Discussion = ({ slug }) => {
   const [content, setContent] = useState("");
-  const [comments, setComments] = useState([]);
+  const [commentDatas, setCommentDatas] = useState([]);
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.user.user);
 
   const handleInputChange = (event) => {
     setContent(event.target.value);
   };
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/comments/${slug}`
+      );
+      setCommentDatas(response.data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
+  useEffect(() => {
+    fetchComments();
+  }, [commentDatas]);
+  useEffect(() => {
+    fetchComments();
+  }, [slug]);
 
   const handleClick = () => {
-    if (content.trim() !== "") {
-      setComments([
-        ...comments,
-        {
-          text: content,
-          name: "Lucifer",
-          time: "12:03 PM",
-          avatarUrl:
-            "https://th.bing.com/th/id/R.da2e546841da40cdcf60061743233500?rik=IeO7Sr%2fkUW54wQ&riu=http%3a%2f%2fwww.venmond.com%2fdemo%2fvendroid%2fimg%2favatar%2fbig.jpg&ehk=JihI5nQ0BOd0W%2bZVhtIWmqwac0NMyRMOV7%2bzryywg%2fg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1",
-        },
-      ]);
-      setContent("");
+    if (content.trim() === "") {
+      return; // Prevents empty comments
     }
+    const userID = user?.userID;
+
+    axios
+      .post(
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/addcomment/${slug}`,
+        {
+          userID: userID,
+          comment: content,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        console.log("Comment added:", response.data);
+        // Update comments list with the new comment
+        const newComment = {
+          ...response.data,
+          comment: content,
+          user: {
+            userName: user?.userName || "Unknown",
+            userAvatar: user?.avatar || "default-avatar.png",
+          },
+          createdAt: new Date().toLocaleString(),
+        };
+        setCommentDatas([...commentDatas, newComment]);
+        setContent(""); // Clear the textarea after successful comment
+      })
+      .catch((error) => {
+        console.error("Error adding comment:", error);
+        // Handle error (e.g., display an error message)
+      });
   };
 
   return (
     <div className="my-5 w-full shadow-md p-4">
-      <h3 className="text-left  text-xl text-black dark:text-white uppercase font-bold">
+      <h3 className="text-left text-xl text-black dark:text-white uppercase font-bold">
         Bình luận
       </h3>
       <div className="flex items-center gap-1 w-full">
         <img
-          className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 border-[#6E75D1FF]"
-          src="https://th.bing.com/th/id/R.da2e546841da40cdcf60061743233500?rik=IeO7Sr%2fkUW54wQ&riu=http%3a%2f%2fwww.venmond.com%2fdemo%2fvendroid%2fimg%2favatar%2fbig.jpg&ehk=JihI5nQ0BOd0W%2bZVhtIWmqwac0NMyRMOV7%2bzryywg%2fg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
+          className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 md:block hidden border-[#6E75D1FF]"
+          src={user?.avatar || "/default-avatar.png"}
           alt="User avatar"
         />
-        <div className="flex gap-4 w-full text-[#6E75D1FF] shadow-sm items-center px-6 py-4 rounded">
+        <div className="flex gap-4 w-full text-[#6E75D1FF] shadow-sm items-center px-2 py-4 rounded">
           <div className="relative flex items-center h-fit md:w-3/4 w-full">
             <textarea
-              className="w-full dark:bg-[#242526] items-center flex dark:text-white text-neutral-600 min-h-[20px] text-lg rounded-xl p-1 pl-8 border border-gray-300 focus:border-blue-500 focus:outline-none"
+              className="w-full dark:bg-[#242526] items-center flex justify-center dark:text-white text-neutral-600 min-h-[20px] text-lg rounded-xl p-1 pl-8 border border-gray-300 focus:border-blue-500 focus:outline-none"
               placeholder="Leave a comment"
               value={content}
               onChange={handleInputChange}
@@ -75,33 +118,37 @@ const Discussion = () => {
         </div>
       </div>
 
-      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full px-6 py-2  rounded-md">
-        {comments && comments.length > 0 ? (
-          comments.map((comment, index) => (
-            <div key={index} className="mb-4 border rounded-md p-4">
-              <div className="flex gap-2 font-sans  items-center">
+      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full px-2 py-2 rounded-md">
+        {commentDatas && commentDatas.length > 0 ? (
+          commentDatas.map((comment, index) => (
+            <div key={index} className="md:w-2/3 w-full  md:p-4">
+              <div className="flex gap-2 font-sans">
                 <img
-                  className="w-9 h-9 rounded-full"
-                  src={comment.avatarUrl}
-                  alt=""
+                  className="w-9 h-9 rounded-full border-2 border-[#6E75D1FF]"
+                  src={comment.user?.userAvatar}
+                  alt="User Avatar"
                 />
-                <span className="font-semibold dark:text-white text-neutral-600 text-base">
-                  {comment.name}
-                </span>
-                <span className="dark:text-white text-neutral-600 text-base">
-                  {comment.time}
-                </span>
-              </div>
-              <p className="p-4 dark:text-white text-neutral-600] text-base">
-                {comment.text}
-              </p>
-              <div className="flex gap-4 font-sans text-sm">
-                <span className="dark:text-white text-black bg-violet-500 p-2 font-bold rounded cursor-pointer">
-                  Like
-                </span>
-                <span className="p-2 text-purple-violet cursor-pointer">
-                  Reply
-                </span>
+                <div className="flex flex-col font-sansII">
+                  <div className="p-2 border  w-full rounded-2xl ">
+                    <span className="font-semibold dark:text-white text-neutral-600 text-lg font-sansII py-1">
+                      {comment.user?.userName}
+                    </span>
+                    <p className="dark:text-white text-black font-sansII font-normal">
+                      {comment?.comment}
+                    </p>
+                  </div>
+                  <div className="flex gap-2 p-2 font-sans text-sm items-center">
+                    <span className="dark:text-white text-black bg-violet-500 p-2 font-bold rounded cursor-pointer">
+                      Like
+                    </span>
+                    <span className="p-2 dark:text-white text-black cursor-pointer">
+                      Reply
+                    </span>
+                    <span className="dark:text-white text-neutral-600">
+                      {new Date(comment.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           ))
@@ -113,6 +160,10 @@ const Discussion = () => {
       </div>
     </div>
   );
+};
+
+Discussion.propTypes = {
+  slug: PropTypes.string.isRequired,
 };
 
 export default Discussion;

@@ -142,7 +142,7 @@ const ComicList = () => {
 
         <RowOfCard data={sortedData} />
         <Pagination
-          className="flex items-center justify-center text-white"
+          className="flex items-center  justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
@@ -151,7 +151,7 @@ const ComicList = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              className="text-white dark:text-white"
+              className="text-white dark:text-white  font-sansII "
               to={`/danh-sach/${type}?page=${item.page}`}
               {...item}
             />

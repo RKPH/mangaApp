@@ -1,23 +1,32 @@
+/* index.css */
+
+/* Default styles */
+.MuiPaginationItem-text {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+}
+ .MuiPaginationItem-icon {
+    font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+ }
+
+/* For min width 768px */
+@media (min-width: 768px) {
+    .MuiPaginationItem-text {
+        font-size: 1.125rem !important;
+        line-height: 1.75rem !important;
+    }
+    .MuiPaginationItem-icon{
+        font-size: 1.125rem !important;
+            line-height: 1.75rem !important;
+    }
+}
+
+/* Other custom styles */
 .slick-prev:before,
 .slick-next:before {
     font-size: 30px;
     color: black;
-}
-
-.pagination-small {
-    font-size: 1rem;
-    /* default size */
-    color: red !important;
-}
-
-.lg .MuiPaginationItem-text {
-    font-size: 1rem !important;
-    line-height: 1.5rem !important;
-}
-
-.MuiPaginationItem-text {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
 }
 
 .dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {

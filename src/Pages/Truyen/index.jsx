@@ -93,7 +93,7 @@ const Truyen = () => {
               </h3>
               <RowOfCard data={flattenedSuggestions} />
             </div>
-            <Disscussion />
+            <Disscussion slug={slug} />
           </div>
         ) : (
           <ProgressSpinner

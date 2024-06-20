@@ -62,14 +62,11 @@ const FixedHeader = () => {
       headerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
-  const handleLogout = () => {
-    dispatch(logoutSuccess()); // Dispatch the logoutSuccess action when the Logout button is clicked
-    navigate("/");
-  };
+
   return (
     <header
       ref={headerRef}
-      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4 shadow-lg border-b-2 border-black flex flex-row items-center font-sansII sticky top-0   z-20"
+      className="w-full  h-20 bg-[whitesmoke] dark:bg-[#18191A] xl:px-32 px-4  border-black flex flex-row items-center font-sansII fixed top-0  z-20 "
     >
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">

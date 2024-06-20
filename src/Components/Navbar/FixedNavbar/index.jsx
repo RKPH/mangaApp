@@ -57,7 +57,7 @@ const FixedNavbar = ({ handleDrawerOpen }) => {
   let timeoutId;
 
   return (
-    <div className="w-full h-12 sticky top-20 z-10 shadow-2xl xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
+    <div className="w-full h-12 fixed  top-20 z-10 shadow-2xl xl:px-32 px-4 bg-orange-500 dark:bg-[#242526] xl:block flex items-center justify-start">
       <nav className="w-full h-full xl:flex  font-sansII font-semibold items-center hidden text-base">
         <ul className="list-none h-12 flex font-semibold items-center  text-white ">
           <Link

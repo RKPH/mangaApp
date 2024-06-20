@@ -77,7 +77,7 @@ const DefaultLayout = ({ children }) => {
       )}
 
       <Navbar handleDrawerOpen={handleDrawerOpen} />
-      <div className="w-full h-full flex xl:flex-row">
+      <div className="w-full h-full flex xl:flex-row mt-32">
         <div className="xl:px-32 lg:px-4 w-full bg-white dark:bg-[#18191A] min-h-screen">
           {children}
         </div>
