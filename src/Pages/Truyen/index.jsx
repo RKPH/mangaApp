@@ -60,7 +60,7 @@ const Truyen = () => {
     {
       label: Data?.name,
       template: () => (
-        <a className="text-lg   font-sansII cursor-pointer text-orange-500 dark:text-blue-400 ">
+        <a className="md:text-lg  text-sm font-sansII cursor-pointer text-orange-500 dark:text-blue-400 ">
           {Data?.name}
         </a>
       ),
@@ -71,7 +71,7 @@ const Truyen = () => {
     label: "Trang chủ",
     url: "/",
     className:
-      "text-lg  font-sansII cursor-pointer text-black dark:text-white whitespace-nowrap",
+      "md:text-lg  text-sm font-sansII cursor-pointer text-black dark:text-white whitespace-nowrap",
   };
   const flattenedSuggestions = Object.values(suggesttion).flat();
   return (
@@ -83,7 +83,7 @@ const Truyen = () => {
               model={items}
               home={home}
               separator=">"
-              className="px-1 shadow-md  flex flex-wrap text-base dark:text-white rounded-md mb-5 font-sansII"
+              className="px-1 shadow-md  flex flex-wrap items-center text-base dark:text-white rounded-md mb-5 font-sansII"
             />
             <DetailMangaSection Data={Data} Image={Image} slug={slug} />
             <ChapterList chapters={chapters} slug={slug} />

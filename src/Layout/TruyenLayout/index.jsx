@@ -70,7 +70,7 @@ const TruyenLayout = ({ children }) => {
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="w-14 h-14 bg-blue-500 rounded-full shadow-md fixed bottom-5 left-5 z-50 flex items-center justify-center cursor-pointer"
+          className="w-14 h-14 bg-blue-500 rounded-full shadow-md fixed bottom-20 right-5 z-50 flex items-center justify-center cursor-pointer"
         >
           <KeyboardDoubleArrowUpSharpIcon className="text-white w-8 h-8 m-3" />
         </div>

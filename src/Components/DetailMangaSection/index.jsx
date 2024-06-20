@@ -128,21 +128,23 @@ const DetailMangaSection = ({ Data, Image, slug }) => {
             )) ?? "Undefined"}
           </div>
         </div>
-        <div className="flex flex-row  gap-3  flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
+        <div className="flex flex-row  lg:gap-3  gap-1 flex-wrap text-center w-full  py-2 rounded-t-none rounded-xl">
           <button
             onClick={() => handleClick(Data?.slug, Data?.name, Image)}
-            className="bg-orange-600 w-24 justify-center hover:bg-orange-500 flex justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII"
+            className="bg-orange-600 w-24 justify-center hover:bg-orange-500 flex  border rounded-md text-lg dark:text-white text-black items-center text-center  p-1 font-sansII"
           >
             <span className="text-base font-sansII ">
               {isSaved ? "Đã lưu" : "Lưu truyện"}
             </span>
           </button>
 
-          <button className=" flex  w-24 justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII">
-            <span className="text-base  font-sansII">Đọc truyện</span>
+          <button className=" w-24 flex justify-center border rounded-md text-lg dark:text-white text-black items-center text-center  p-1 font-sansII">
+            <span className="text-base font-sansII text-center">
+              Đọc truyện
+            </span>
           </button>
 
-          <button className="bg-red-600 hover:bg-red-500  w-24 flex justify-center   justify-items-center border rounded-md text-lg dark:text-white text-black items-center text-center gap-1 p-2 font-sansII">
+          <button className="bg-red-600 hover:bg-red-500  w-24 flex justify-center    border rounded-md text-lg dark:text-white text-black items-center text-center  p-1 font-sansII">
             <span className="text-base font-sansII text-center">
               {" "}
               Yêu thích

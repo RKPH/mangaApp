@@ -55,11 +55,7 @@ const RowOfCard = ({ data }) => {
                   </h5>
                   {item.chaptersLatest ? (
                     <>
-                      <i
-                        className="pi pi-tag p-mr-2"
-                        style={{ color: "var(--green-500)" }}
-                      />
-                      <span className="font-thin  text-base rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700 p-1 dark:text-white font-sansII">
+                      <span className="font-thin  text-base  text-white   dark:text-white font-sansII">
                         Chương:{" "}
                         {item.chaptersLatest[0]
                           ? item.chaptersLatest[0].chapter_name
