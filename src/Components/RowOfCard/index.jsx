@@ -55,7 +55,7 @@ const RowOfCard = ({ data }) => {
                   </h5>
                   {item.chaptersLatest ? (
                     <>
-                      <span className="font-thin  text-base  text-white   dark:text-white font-sansII">
+                      <span className="font-thin  text-base  text-black   dark:text-white font-sansII">
                         Chương:{" "}
                         {item.chaptersLatest[0]
                           ? item.chaptersLatest[0].chapter_name
