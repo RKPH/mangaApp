@@ -23,10 +23,12 @@
         line-height: 2rem !important;
     }
 }
+
 .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root {
     border: 1px solid black !important;
-   
+
 }
+
 .dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root {
     border: 1px solid #fff !important;
     /* white border for dark mode */
@@ -38,12 +40,15 @@
     background-color: #f97316 !important;
     /* orange for selected item */
 }
+
 .dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     color: #fff !important;
-    border: 2px solid #1976d2 !important;
+    background-color: #1976d2 !important;
+    
 
     /* blue for selected item */
 }
+
 .pagination-icon-bg {
     background-color: #f97316 !important;
     /* blue for icons */
@@ -58,12 +63,24 @@
     /* orange for icons */
     color: #fff !important;
 }
+
 .css-41sz0k {
     border: 1px solid black !important;
 }
+
 .dark .css-41sz0k {
     border: 1px solid #fff !important;
     /* white border for dark mode */
+}
+
+.css-41sz0k.Mui-selected {
+    color: #fff !important;
+    background-color: #f97316 !important;
+}
+
+.dark .css-41sz0k.Mui-selected {
+    color: #fff !important;
+    background-color: #1976d2 !important;
 }
 
 /* Other custom styles */
