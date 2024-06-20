@@ -12,6 +12,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import { BreadCrumb } from "primereact/breadcrumb";
 
 import RowOfCard from "../../Components/RowOfCard";
+import Paginition from "../../Components/Paginition";
 const CategoryManga = () => {
   const dispatch = useDispatch();
   const scrollRef = useRef(null);
@@ -122,21 +123,11 @@ const CategoryManga = () => {
           <option value="cu-nhat">Cũ nhất</option>
         </select>
         <RowOfCard data={sortedData} handleMangaClick={handleMangaClick} />
-        <Pagination
-          className="flex items-end lg:justify-end justify-center text-white"
-          color="primary"
-          shape="rounded"
-          onChange={handlePageChange}
-          page={currentPage}
-          count={totalPages}
-          renderItem={(item) => (
-            <PaginationItem
-              component={Link}
-              className="text-white dark:text-white"
-              to={`/the-loai/${slug}?page=${item.page}`}
-              {...item}
-            />
-          )}
+        <Paginition
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          type={`/the-loai/${slug}`}
         />
       </div>
     </div>

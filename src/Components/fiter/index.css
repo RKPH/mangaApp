@@ -1,0 +1,60 @@
+/* Filter.css */
+
+.p-dropdown {
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: white;
+    color: black;
+}
+
+.p-dropdown-label {
+    padding: 8px;
+    font-size: 16px;
+    text-align: left;
+    background-color: white;
+    color: black;
+}
+
+.p-dropdown-panel {
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.p-dropdown-item {
+    padding: 8px;
+    color: black;
+    background-color: white;
+}
+
+.p-dropdown-item:hover {
+    background-color: lightgray;
+}
+
+.p-dropdown-items-wrapper {
+    border-radius: 4px;
+}
+
+.p-dropdown-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.p-dropdown-filter-container {
+    padding: 1px;
+    border-bottom: 1px solid black;
+}
+
+.p-dropdown-filter {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.p-dropdown-item.p-highlight {
+    background-color: #007ad9;
+    color: white;
+}

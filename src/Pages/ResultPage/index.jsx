@@ -3,11 +3,12 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addManga } from "../../Redux/MangaSlice";
 import "./index.css";
-import { Link, useLocation } from "react-router-dom";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
+import { useLocation } from "react-router-dom";
+
 import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
+import Filter from "../../Components/fiter";
+// import NotFound from "../../Components/NotFound"; // Import the 404 error component
 
 const ResultPage = () => {
   const dispatch = useDispatch();
@@ -139,40 +140,23 @@ const ResultPage = () => {
         <h2 className="text-lg lg:text-xl 3xl:text-2xl font-semibold uppercase text-orange-500 dark:text-blue-400 text-center my-5 mb-10">
           {`Tìm kiếm truyện với từ khóa: ${searchQuery}`}
         </h2>
-        <h5 className="font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left mb-2">
+        <span className="p-4 font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left my-5 ">
           {`${filteredData.length} kết quả tìm thấy `}
-        </h5>
-        <div className="flex flex-col dark:bg-[#18191A] bg-white rounded-lg p-4">
-          <div className="flex items-center mb-5">
-            <span className="font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left mr-2">
-              Sắp xếp theo:{" "}
-            </span>
-            <select
-              className="p-2 border right-0 border-black"
-              value={sortingOrder}
-              onChange={handleFilterChange}
-            >
-              <option value="moi-nhat">Mới nhất</option>
-              <option value="cu-nhat">Cũ nhất</option>
-            </select>
-          </div>
-          <div className="flex items-center">
-            <span className="font-normal text-black dark:text-[whitesmoke] opacity-35 uppercase text-left mr-2">
-              Trạng thái:{" "}
-            </span>
-            <select
-              className="p-2 border right-0 border-black"
-              value={statusFilter}
-              onChange={handleFilterChange}
-            >
-              <option value="">Tất cả</option>
-              <option value="hoan-thanh">Đã hoàn thành</option>
-              <option value="dang-phat-hanh">Đang phát hành</option>
-            </select>
-          </div>
-        </div>
+        </span>
+        <Filter
+          className="my-5"
+          sortingOrder={sortingOrder}
+          handleFilterChange={handleFilterChange}
+          statusFilter={statusFilter}
+        />
         {isLoading ? (
           <p className="text-center mt-5">Loading...</p>
+        ) : filteredData.length === 0 ? (
+          <div className="flex items-center justify-center w-full md:h-[600px] h-96">
+            <span className="md:text-4xl text-2xl font-bold font-sansII dark:text-white text-black">
+              Not found
+            </span>
+          </div>
         ) : (
           <RowOfCard data={sortedData} onClick={handleMangaClick} />
         )}

@@ -2,28 +2,29 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import "./index.css";
-import { Link, useLocation, useParams } from "react-router-dom";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
+import { useLocation, useParams } from "react-router-dom";
+
 import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
+import Paginition from "../../Components/Paginition";
 
 const ComicList = () => {
   const scrollRef = useRef(null);
   const { type } = useParams();
   const query = useQuery();
   const page = Number(query.get("page")) || 1;
-
+  console.log("type:", type);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(page);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
+    setCurrentPage(page);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, []);
+  }, [type]);
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -144,25 +145,11 @@ const ComicList = () => {
         </select>
 
         <RowOfCard data={sortedData} />
-        <Pagination
-          className="flex items-center justify-center text-white"
-          color="primary"
-          shape="rounded"
-          onChange={handlePageChange}
-          page={currentPage}
-          count={totalPages}
-          renderItem={(item) => (
-            <PaginationItem
-              component={Link}
-              className={`text-white dark:text-white font-sansII ${
-                item.type === "previous" || item.type === "next"
-                  ? "pagination-icon-bg"
-                  : ""
-              }`}
-              to={`/danh-sach/${type}?page=${item.page}`}
-              {...item}
-            />
-          )}
+        <Paginition
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          type={`/danh-sach/${type}`}
         />
       </div>
     </div>
