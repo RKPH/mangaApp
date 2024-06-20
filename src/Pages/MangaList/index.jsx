@@ -16,12 +16,14 @@ const ComicList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
   const page = Number(query.get("page")) || 1;
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }, []);
+
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -142,7 +144,7 @@ const ComicList = () => {
 
         <RowOfCard data={sortedData} />
         <Pagination
-          className="flex items-center  justify-center text-white"
+          className="flex items-center justify-center text-white"
           color="primary"
           shape="rounded"
           onChange={handlePageChange}
@@ -151,7 +153,11 @@ const ComicList = () => {
           renderItem={(item) => (
             <PaginationItem
               component={Link}
-              className="text-white dark:text-white  font-sansII "
+              className={`text-white dark:text-white font-sansII ${
+                item.type === "previous" || item.type === "next"
+                  ? "pagination-icon-bg"
+                  : ""
+              }`}
               to={`/danh-sach/${type}?page=${item.page}`}
               {...item}
             />

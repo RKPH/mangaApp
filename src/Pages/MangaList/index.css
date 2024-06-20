@@ -5,10 +5,11 @@
     font-size: 0.875rem !important;
     line-height: 1.25rem !important;
 }
- .MuiPaginationItem-icon {
+
+.MuiPaginationItem-icon {
     font-size: 0.875rem !important;
-        line-height: 1.25rem !important;
- }
+    line-height: 1.25rem !important;
+}
 
 /* For min width 768px */
 @media (min-width: 768px) {
@@ -16,10 +17,38 @@
         font-size: 1.125rem !important;
         line-height: 1.75rem !important;
     }
-    .MuiPaginationItem-icon{
-        font-size: 1.125rem !important;
-            line-height: 1.75rem !important;
+
+    .MuiPaginationItem-icon {
+        font-size: 1.5rem !important;
+        line-height: 2rem !important;
     }
+}
+
+/* Light mode styles */
+.css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff !important;
+    background-color: #f97316 !important;
+    /* orange for selected item */
+}
+
+.pagination-icon-bg {
+    background-color: #f97316 !important;
+    /* blue for icons */
+    color: #fff !important;
+}
+
+/* Dark mode styles */
+.dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff !important;
+    border: 2px solid #1976d2 !important;
+  
+    /* blue for selected item */
+}
+
+.dark .pagination-icon-bg {
+    background-color: #1976d2 !important;
+    /* orange for icons */
+    color: #fff !important;
 }
 
 /* Other custom styles */
@@ -27,14 +56,4 @@
 .slick-next:before {
     font-size: 30px;
     color: black;
-}
-
-.dark .css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-    color: #fff;
-    background-color: #1976d2 !important;
-}
-
-.css-1pi9rcw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-    color: #fff;
-    background-color: #f97316 !important;
 }
