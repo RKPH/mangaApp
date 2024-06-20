@@ -58,10 +58,10 @@
     /* orange for icons */
     color: #fff !important;
 }
-.css-41sz0k-MuiButtonBase-root-MuiPaginationItem-root {
+.css-41sz0k {
     border: 1px solid black !important;
 }
-.dark .css-41sz0k-MuiButtonBase-root-MuiPaginationItem-root {
+.dark .css-41sz0k {
     border: 1px solid #fff !important;
     /* white border for dark mode */
 }
