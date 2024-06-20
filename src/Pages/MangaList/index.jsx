@@ -11,11 +11,12 @@ import RowOfCard from "../../Components/RowOfCard";
 const ComicList = () => {
   const scrollRef = useRef(null);
   const { type } = useParams();
-  const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const query = useQuery();
   const page = Number(query.get("page")) || 1;
+
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(page);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     window.scrollTo({
