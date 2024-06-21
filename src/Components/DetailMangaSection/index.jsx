@@ -107,11 +107,11 @@ const DetailMangaSection = memo(({ Data, Image, slug }) => {
           {Data?.item?.name ?? "Undefined"}
         </h1>
         <div className="w-full h-px my-2 bg-gradient-to-l from-slate-200 via-ophim-border to-yellow-200"></div>
-        <div>
-          <span className="font-semibold font-sansII text-lg dark:text-blue-600 text-orange-600 mr-[81px]">
+        <div className="flex ">
+          <span className="font-semibold font-sansII whitespace-nowrap     text-lg dark:text-blue-600 text-orange-600 mr-[81px]">
             Tên khác:
           </span>
-          <span className="px-2 dark:text-white text-black text-thin font-sansII text-lg">
+          <span className="px-2 dark:text-white text-black text-thin font-sansII text-lg flex flex-wrap">
             {Data?.item?.origin_name ?? "Undefined"}
           </span>
         </div>
@@ -157,7 +157,7 @@ const DetailMangaSection = memo(({ Data, Image, slug }) => {
         </div>
         <div className="flex flex-row lg:gap-3 gap-1 flex-wrap text-center w-full py-2 rounded-t-none rounded-xl">
           <button
-            onClick={() => handleClick(Data?.slug, Data?.name, Image)}
+            onClick={() => handleClick(Data?.item.slug, Data?.item?.name, Image)}
             className="bg-orange-600 w-24 justify-center hover:bg-orange-500 flex border rounded-md text-lg dark:text-white text-black items-center text-center p-1 font-sansII"
           >
             <span className="text-base font-sansII">
