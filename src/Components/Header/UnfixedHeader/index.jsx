@@ -62,10 +62,7 @@ const UnFixedHeader = () => {
       headerRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
-  const handleLogout = () => {
-    dispatch(logoutSuccess()); // Dispatch the logoutSuccess action when the Logout button is clicked
-    navigate("/");
-  };
+
   return (
     <header
       ref={headerRef}
@@ -74,7 +71,7 @@ const UnFixedHeader = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row  gap-x-1 items-center">
+          <Link to="/Home" className="flex flex-row  gap-x-1 items-center">
             <img
               src={Logo}
               alt=""

@@ -71,7 +71,7 @@ const FixedHeader = () => {
       {/* // This is the left side of the header */}
       <div className="w-1/2 h-full     flex items-center ">
         <div className="w-full h-full flex items-center  flex-row">
-          <Link to="/" className="flex flex-row  gap-x-1 items-center">
+          <Link to="/Home" className="flex flex-row  gap-x-1 items-center">
             <img
               src={Logo}
               alt=""

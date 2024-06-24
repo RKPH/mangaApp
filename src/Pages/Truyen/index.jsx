@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { ProgressSpinner } from "primereact/progressspinner";
-import HomeIcon from "@mui/icons-material/Home";
+
 import { BreadCrumb } from "primereact/breadcrumb";
 import RowOfCard from "../../Components/RowOfCard";
 import DetailMangaSection from "../../Components/DetailMangaSection";
@@ -99,9 +99,9 @@ const Truyen = () => {
             <Disscussion slug={slug} />
           </div>
         ) : (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-screen">
             <ProgressSpinner
-              className="md:w-44 md:h-44 w-28 h-28 dark:bg-[#242526]"
+              className=" w-28 h-28 dark:bg-[#242526]"
               strokeWidth="4"
               animationDuration=".5s"
             />

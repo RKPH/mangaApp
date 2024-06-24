@@ -69,7 +69,7 @@ const DetailMangaSection = memo(({ Data, Image, slug }) => {
         }
         return;
       }
-      toast.success(`Saved manga: ${mangaName} successfully`); // `Saved manga: ${mangaName} successfully
+      toast.success(`Saved manga successfully`); 
       setIsSaved(true);
     } catch (error) {
       console.error("Error:", error);
@@ -157,7 +157,9 @@ const DetailMangaSection = memo(({ Data, Image, slug }) => {
         </div>
         <div className="flex flex-row lg:gap-3 gap-1 flex-wrap text-center w-full py-2 rounded-t-none rounded-xl">
           <button
-            onClick={() => handleClick(Data?.item.slug, Data?.item?.name, Image)}
+            onClick={() =>
+              handleClick(Data?.item.slug, Data?.item?.name, Image)
+            }
             className="bg-orange-600 w-24 justify-center hover:bg-orange-500 flex border rounded-md text-lg dark:text-white text-black items-center text-center p-1 font-sansII"
           >
             <span className="text-base font-sansII">

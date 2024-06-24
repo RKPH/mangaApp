@@ -1,18 +1,19 @@
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Skeleton from "@mui/material/Skeleton";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import Skeleton from "@mui/material/Skeleton";
 import Slider from "react-slick";
+
+import { Card } from "primereact/card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Card } from "primereact/card";
 import "./index.css";
+
 const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 7,
+  slidesToShow: 8,
   slidesToScroll: 5,
   responsive: [
     {
@@ -45,20 +46,16 @@ const settings = {
     {
       breakpoint: 600,
       settings: {
-        infinite: true,
-
         slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 2,
         dots: false,
       },
     },
-
     {
       breakpoint: 350,
       settings: {
-        slidesToShow: 1,
-        infinite: true,
+        slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 2,
         dots: false,
@@ -69,68 +66,91 @@ const settings = {
 
 const Sliders = ({ data }) => {
   const [datas, setData] = useState([]);
-  const [domain, setDomain] = useState(
-    "https://otruyenapi.com/uploads/comics/"
-  );
+  const domain = "https://otruyenapi.com/uploads/comics/";
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://otruyenapi.com/v1/api/the-loai/${data}?page=1`
-        );
-        setData(response.data.data.items);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    if (data) {
+      setData(data);
+    }
   }, [data]);
+
   return (
-    <div className="w-full px-4">
+    <div className="w-full ">
       <Slider className="dark:text-white" {...settings}>
         {datas.length === 0
-          ? [1, 1, 1, 1, 1].map(() => (
-              <Skeleton
-                key=""
-                height={400}
-                shape="rectangle"
-                animation="wave"
-              />
-            ))
-          : datas.map((item) => (
-              <Card key={item?.name} className="shadow-md  w-full">
-                <Link to={`/truyen-tranh/${item?.slug}`}>
-                  <img
-                    src={`${domain}/${item?.thumb_url}`}
-                    alt={item?.slug}
-                    className="h-[170px] lg:h-[200px] xl:h-[200px] 2xl:h-[200px]  3xl:h-[230px] w-full "
-                  />
-                  <div className="p-2">
-                    <h5 className="overflow-hidden text-left lg:text-base text-sm font-semibold overflow-ellipsis whitespace-nowrap dark:text-white">
-                      {item?.name}
-                    </h5>
-                    <i
-                      className="pi pi-tag p-mr-2"
-                      style={{ color: "var(--green-500)" }}
+          ? Array(24)
+              .fill()
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="shadow-md rounded hover:scale-105 transition duration-300 p-2"
+                >
+                  <div className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full">
+                    <Skeleton
+                      variant="rectangular"
+                      height="100%"
+                      width="100%"
+                      animation="wave"
                     />
-                    <span className="font-normal uppercase lg:text-sm text-xs rounded-lg text-white bg-gradient-to-br from-sky-400 to-blue-700  px-1 dark:text-white">
-                      Chương:{" "}
-                      {item.chaptersLatest && item.chaptersLatest[0]
-                        ? item.chaptersLatest[0].chapter_name
-                        : "??"}
-                    </span>
                   </div>
-                </Link>
-              </Card>
+                  <div className="p-2">
+                    <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+                    <Skeleton variant="text" sx={{ width: "60%" }} />
+                  </div>
+                </div>
+              ))
+          : datas.map((item, index) => (
+              <div key={index} className="p-2">
+                <Card
+                  className=" rounded lg:hover:scale-110 transition duration-300 "
+                  onClick={() => handleMangaClick(item)}
+                >
+                  <Link to={`/truyen-tranh/${item.slug}`}>
+                    <img
+                      src={`${
+                        item?.thumb_url
+                          ? `${domain}/${item.thumb_url}`
+                          : item.mangaImage
+                      }`}
+                      alt={item.slug}
+                      className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-full rounded-md relative"
+                    />
+                    <div className="py-2">
+                      <h5 className="overflow-hidden text-left my-1 text-lg font-normal overflow-ellipsis whitespace-nowrap dark:text-white font-sansII">
+                        {item.name ? item.name : item.mangaName}
+                      </h5>
+                      {item.chaptersLatest && (
+                        <span className="font-thin text-base text-black dark:text-white font-sansII">
+                          Chương:{" "}
+                          {item.chaptersLatest[0]
+                            ? item.chaptersLatest[0].chapter_name
+                            : "???"}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                </Card>
+              </div>
             ))}
       </Slider>
     </div>
   );
 };
+
 Sliders.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      thumb_url: PropTypes.string,
+      name: PropTypes.string,
+      mangaImage: PropTypes.string,
+      chaptersLatest: PropTypes.arrayOf(
+        PropTypes.shape({
+          chapter_name: PropTypes.string,
+        })
+      ),
+    })
+  ).isRequired,
 };
 
 export default Sliders;

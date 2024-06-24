@@ -127,7 +127,7 @@ const Home = () => {
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-2xl  font-sansII md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
+              className="rounded-2xl  font-sansII md:text-lg text-sm p-2  bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>
@@ -141,7 +141,7 @@ const Home = () => {
             </h2>
             <Link
               to="/danh-sach/truyen-moi"
-              className="rounded-2xl  font-sansII md:text-lg text-base p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
+              className="rounded-2xl  font-sansII md:text-lg text-sm p-2 px-4 bg-white border-4 dark:border-blue-600 border-orange-600 text-orange-600   dark:text-blue-600 dark:hover:bg-blue-500 hover:bg-orange-500 transition duration-300"
             >
               Xem thêm
             </Link>

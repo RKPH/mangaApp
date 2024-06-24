@@ -5,11 +5,13 @@
     opacity: .75;
     color: black;
 }
+
 /* For dark theme */
 .dark .slick-dots li.slick-active button:before {
     opacity: .75;
     color: white;
 }
+
 .slick-dots li button:before {
     font-family: 'slick';
     font-size: 6px;
@@ -29,17 +31,130 @@
 
 .dark .slick-dots li button:before {
     font-family: 'slick';
-        font-size: 6px;
-        line-height: 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        content: '•';
-        text-align: center;
-        opacity: .25;
-        color: ghostwhite;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: ghostwhite;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override default slick styles */
+.slick-slider {
+    position: relative;
+    /* Ensure the slider container is relative */
+}
+
+/* Position the prev/next buttons */
+.slick-prev,
+.slick-next {
+    position: absolute !important;
+    top: 40%;
+    transform: translateY(-40%);
+    z-index: 1 !important;
+    /* Ensure buttons are above slides */
+    width: 40px !important;
+    /* Adjust width as needed */
+    height: 40px !important;
+    /* Adjust height as needed */
+    background-color: rgba(240, 228, 228, 0.5) !important;
+    /* Example background color */
+    border-radius: 6px !important;
+    /* Rounded corners for square shape */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dark .slick-prev,
+.dark .slick-next {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+    z-index: 1;
+    /* Ensure buttons are above slides */
+    width: 40px;
+    /* Adjust width as needed */
+    height: 40px;
+    /* Adjust height as needed */
+    background-color: rgba(240, 228, 228, 0.5);
+    /* Example background color */
+    border-radius: 6px;
+    /* Rounded corners for square shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    /* Example darker background on hover */
+}
+
+.slick-prev {
+    left: 10px;
+
+    /* Adjust left position as needed */
+}
+
+.slick-next {
+    right: 10px;
+    /* Adjust right position as needed */
+}
+
+.slick-prev:before {
+    background-color: rgba(240, 228, 228, 0.0) !important;
+    font-size: 20px !important;
+    content: "❮" !important;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+}
+
+.slick-next:before {
+    background-color: rgba(240, 228, 228, 0.0) !important;
+    font-size: 20px !important;
+    content: '❯';
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+}
+
+.dark .slick-prev:before {
+    background-color: rgba(240, 228, 228, 0.0) !important;
+    font-size: 20px !important;
+    content: "❮" !important;
+    opacity: 1;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black !important;
+}
+
+.dark .slick-next:before {
+    background-color: rgba(240, 228, 228, 0.0) !important;
+    font-size: 20px !important;
+    content: '❯';
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black !important;
 }
