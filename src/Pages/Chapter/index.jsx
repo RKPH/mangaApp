@@ -3,6 +3,8 @@ import { Fragment, useEffect, useState, useRef } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { Listbox, Transition } from "@headlessui/react";
 import HomeIcon from "@mui/icons-material/Home";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Chapter = () => {
   const location = useLocation();
   const { slug } = useParams();
@@ -72,7 +74,18 @@ const Chapter = () => {
     chapterIndex < chapters[chapterGroupIndex]?.server_data.length - 1
       ? chapters[chapterGroupIndex]?.server_data[chapterIndex + 1]
       : null;
-
+  const handleDisabledClick = (event) => {
+    event.preventDefault();
+    toast.info("Hết chương rồi!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   return (
     <div
       ref={scrollRef}
@@ -210,31 +223,42 @@ const Chapter = () => {
       </div>
 
       {/* Fixed Footer */}
-      <div className="fixed bottom-0 z-10 left-0 right-0 flex items-center justify-center p-2 bg-white dark:bg-[#18191A]  border-t border-gray-200 dark:border-gray-700">
-        {previousChapter && (
-          <Link
-            to={`/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`}
-            state={{
-              chapter_api: previousChapter.chapter_api_data,
-              data: chapters,
-            }}
-            className="btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500"
-          >
-            chương trước
-          </Link>
-        )}
-        {nextChapter && (
-          <Link
-            to={`/truyen-tranh/${slug}/chapter-${nextChapter.chapter_name}`}
-            state={{
-              chapter_api: nextChapter.chapter_api_data,
-              data: chapters,
-            }}
-            className="btn btn-primary dark:text-white text-black rounded-md p-2 lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500"
-          >
-            Chương sau
-          </Link>
-        )}
+      <div className="fixed bottom-0 z-10 left-0 right-0 flex items-center justify-center p-2 bg-white dark:bg-[#18191A] border-t border-gray-200 dark:border-gray-700">
+        <Link
+          to={
+            previousChapter
+              ? `/truyen-tranh/${slug}/chapter-${previousChapter.chapter_name}`
+              : "#"
+          }
+          state={{
+            chapter_api: previousChapter?.chapter_api_data,
+            data: chapters,
+          }}
+          onClick={!previousChapter ? handleDisabledClick : undefined}
+          className={`btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500 ${
+            !previousChapter ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Chương trước
+        </Link>
+
+        <Link
+          to={
+            nextChapter
+              ? `/truyen-tranh/${slug}/chapter-${nextChapter.chapter_name}`
+              : "#"
+          }
+          state={{
+            chapter_api: nextChapter?.chapter_api_data,
+            data: chapters,
+          }}
+          onClick={!nextChapter ? handleDisabledClick : undefined}
+          className={`btn btn-primary dark:text-white text-black p-2 rounded-md lg:text-base text-xs border dark:bg-[#3F94D5] dark:border-white border-black m-1 hover:bg-gray-500 ${
+            !nextChapter ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Chương sau
+        </Link>
       </div>
     </div>
   );

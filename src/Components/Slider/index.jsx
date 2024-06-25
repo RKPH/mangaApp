@@ -13,6 +13,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
+
   slidesToShow: 8,
   slidesToScroll: 5,
   responsive: [
@@ -76,7 +77,7 @@ const Sliders = ({ data }) => {
 
   return (
     <div className="w-full ">
-      <Slider className="dark:text-white" {...settings}>
+      <Slider autoplay={true} className="dark:text-white" {...settings}>
         {datas.length === 0
           ? Array(24)
               .fill()
@@ -120,7 +121,7 @@ const Sliders = ({ data }) => {
                         {item.name ? item.name : item.mangaName}
                       </h5>
                       {item.chaptersLatest && (
-                        <span className="font-thin text-base text-black dark:text-white font-sansII">
+                        <span className="font-thin text-base text-red-600 font-sansII">
                           Chương:{" "}
                           {item.chaptersLatest[0]
                             ? item.chaptersLatest[0].chapter_name

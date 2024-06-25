@@ -79,7 +79,7 @@ const Discussion = ({ slug }) => {
           alt="User avatar"
         />
         <div className="flex gap-4 w-full text-[#6E75D1FF] shadow-sm items-center px-2 py-4 rounded">
-          <div className="relative flex items-center h-fit md:w-3/4 w-full">
+          <div className="relative flex items-center h-fit  w-full">
             <textarea
               className="w-full dark:bg-[#242526] items-center flex justify-center dark:text-white text-neutral-600 min-h-[20px] text-lg rounded-xl p-1 pl-8 border border-gray-300 focus:border-blue-500 focus:outline-none"
               placeholder="Leave a comment"
@@ -118,14 +118,14 @@ const Discussion = ({ slug }) => {
         </div>
       </div>
 
-      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full px-2 py-2 rounded-md">
+      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 px-12  rounded-md">
         {commentDatas && commentDatas.length > 0 ? (
           commentDatas.map((comment, index) => (
-            <div key={index} className="md:w-2/3 w-full  md:p-4">
+            <div key={index} className=" w-full p-4">
               <div className="flex gap-2 font-sans">
                 <img
-                  className="w-9 h-9 rounded-full border-2 border-[#6E75D1FF]"
-                  src={comment.user?.userAvatar}
+                  className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 border-[#6E75D1FF]"
+                  src={comment.user?.avatar || "/default-avatar.png"}
                   alt="User Avatar"
                 />
                 <div className="flex flex-col font-sansII">

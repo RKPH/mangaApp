@@ -20,14 +20,23 @@ const formatTimestamp = (timestamp) => {
 const DetailMangaSection = memo(({ Data, Image, slug }) => {
   const user = useSelector((state) => state.user.user);
   const token = useSelector((state) => state.auth.token);
-  const [isSaved, setIsSaved] = React.useState(false);
-
+  const isMangaSaved = user?.userMangas?.some(
+    (manga) => manga?.slug === Data?.item?.slug
+  );
+  const [isSaved, setIsSaved] = React.useState(isMangaSaved);
   useEffect(() => {
     const isMangaSaved = user?.userMangas?.some(
-      (manga) => manga?.slug === Data?.slug
+      (manga) => manga?.slug === Data?.item?.slug
+    );
+    console.log(slug, isMangaSaved);
+    setIsSaved(isMangaSaved);
+  }, [Data?.item?.slug]);
+  useEffect(() => {
+    const isMangaSaved = user?.userMangas?.some(
+      (manga) => manga?.slug === Data?.item?.slug
     );
     setIsSaved(isMangaSaved);
-  }, [user?.userMangas, Data?.slug]);
+  }, [user?.userMangas, Data?.item?.slug]);
 
   const userId = user?.userID; // replace with the actual user ID if it varies
   const handleClick = async (slug, mangaName, mangaImage) => {
@@ -69,7 +78,7 @@ const DetailMangaSection = memo(({ Data, Image, slug }) => {
         }
         return;
       }
-      toast.success(`Saved manga successfully`); 
+      toast.success(`Saved manga successfully`);
       setIsSaved(true);
     } catch (error) {
       console.error("Error:", error);
