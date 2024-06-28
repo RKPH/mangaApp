@@ -60,7 +60,7 @@ function LoginForm() {
     const result = await dispatch(loginUser({ email, password }));
 
     if (result.error) {
-      setError(result.error);
+      setError("Invalid email or password");
       setTimeout(() => {
         setError("");
       }, 5000);
