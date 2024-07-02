@@ -12,12 +12,12 @@ const FooterComponent = () => {
   return (
     <Footer bgDark>
       <div className="w-full bg-orange-500 dark:bg-[#18191A] text-white border-t border-white">
-        <div className="flex flex-col items-center px-6 py-8 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center px-2 py-8 md:flex-row md:justify-between">
           <div className=" w-full flex flex-col items-center">
             <span className="text-2xl font-extrabold text-center font-sansII">
               About us
             </span>
-            <p className="mt-4 text-justify  text-lg font-sansII px-14">
+            <p className="mt-4 text-justify  text-lg font-sansII md:px-14 px-5">
               Welcome to IceyCure, your ultimate destination for captivating
               stories and immersive reading experiences. Dive into a world of
               imagination and creativity, where every story takes you on a new

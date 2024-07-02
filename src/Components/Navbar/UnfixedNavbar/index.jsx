@@ -176,6 +176,15 @@ const UnFixedNavbar = ({ handleDrawerOpen }) => {
           >
             Vòng quay
           </Link>
+          <Link
+            to="/Shop"
+            className={`dark:hover:bg-blue-500 font-sansII  hover:bg-orange-400 ${
+              activeTab == "Shop" ? "dark:bg-blue-500 bg-orange-400" : ""
+            } p-[12px] cursor-pointer text-base flex items-center justify-center gap-1 uppercase`}
+            onClick={() => handleTabClick("Shop")}
+          >
+            Cửa hàng
+          </Link>
         </ul>
       </nav>
       {!isLargeScreen && (

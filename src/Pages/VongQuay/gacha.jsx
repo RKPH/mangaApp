@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./gacha.css";
 import { Card } from "primereact/card";
 import { Dialog } from "primereact/dialog";
 import { useSelector } from "react-redux";
-import gachaItemsList from "./gachaItems";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-const gachaItems = gachaItemsList;
 
 const placeholderImg =
   "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXU5A1PIYQNqhpOSV-fRPasw8rsUFJ5KBFZv668FFQznaKdID5D6d23ldHSwKOmZeyEz21XvZZ12LzE9t6nigbgqkplNjihJIaLMlhpF1ZeR5c/256fx256f";
 
 const GachaItems = () => {
+  const [gachaItems, setGachaItems] = useState([]);
   const User = useSelector((state) => state.user.user);
-
-  const [countItems, setCountItems] = useState(
-    gachaItems.map((item) => ({
-      ...item,
-      count: 0,
-    }))
-  );
+  const [countItems, setCountItems] = useState([]);
   const [userPoint, setUserPoint] = useState(User?.point);
   const [pulledItems, setPulledItems] = useState([]);
   const [totalPoints, setTotalPoints] = useState(0);
@@ -28,6 +21,20 @@ const GachaItems = () => {
   const [displayedItem, setDisplayedItem] = useState(null);
   const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    axios
+      .get(
+        "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Gacha/getgachaItems"
+      )
+      .then((res) => {
+        setGachaItems(res.data);
+        setCountItems(res.data.map((item) => ({ ...item, count: 0 })));
+      })
+      .catch((error) => {
+        console.error("Error fetching gacha items:", error);
+      });
+  }, []);
+  console.log(gachaItems);
   const updatePointsApi = async (points) => {
     try {
       const response = await fetch(
@@ -72,6 +79,8 @@ const GachaItems = () => {
       return;
     }
 
+    // Deduct points immediately
+    setUserPoint((prevUserPoint) => prevUserPoint - totalCost);
     setIsRolling(true);
 
     setTimeout(() => {
@@ -94,7 +103,7 @@ const GachaItems = () => {
 
       setPulledItems(updatedPulledItems);
       setTotalPoints(total);
-      setUserPoint((prevUserPoint) => prevUserPoint - totalCost + total);
+      setUserPoint((prevUserPoint) => prevUserPoint + total);
       console.log("Total points:", total);
       updatePointsApi({ point: total, pointNeeded: totalCost });
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -118,9 +127,7 @@ const GachaItems = () => {
       R: 2,
       SR: 3,
       SSR: 4,
-      UR: 5,
-      SUR: 6,
-      Rainbow: 7,
+      SSSR: 5,
       Legend: 8,
     };
 
@@ -135,6 +142,10 @@ const GachaItems = () => {
     return stars;
   };
 
+  const Rounded = (num) => {
+    return Math.floor(num);
+  };
+
   return (
     <div className="w-full h-full flex flex-col items-center bg-white dark:bg-[#18191A] p-4 z-0">
       <div className="bg-custom-image3 bg-cover bg-center bg-no-repeat min-w-full h-[800px] py-2 relative">
@@ -146,7 +157,7 @@ const GachaItems = () => {
           </div>
           <div className="p-3 shadow-sm my-5 border w-fit rounded-md">
             <span className="text-lg dark:text-white text-black text-center">
-              Your point: {userPoint}
+              Số lượt quay: {Rounded(userPoint / 10)}
             </span>
           </div>
         </div>
@@ -181,27 +192,26 @@ const GachaItems = () => {
           <h2 className="md:text-xl text-lg font-sansII text-center uppercase font-bold my-5">
             Chúc mừng bạn đã nhận được
           </h2>
-          <div className="grid lg:grid-cols-5 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2 items-center justify-center w-full h-full p-2">
+          <div className="grid lg:grid-cols-5 2xl:grid-cols-10 md:grid-cols-4 grid-cols-2 items-center justify-center w-full h-fit p-2 b">
             {pulledItems.map((item, index) => (
               <Card
                 key={index}
-                className="flex m-2 items-center justify-center dark:bg-[#18191A] bg-white border rounded-md relative"
+                className={`flex m-2 items-center justify-center ${item.bgColor} border rounded-md relative `}
               >
                 <img
-                  src={item.img}
-                  alt={item.name}
-                  className="h-[200px] xs:h-[200px] sm:h-[200px] lg:h-[220px] 2xl:h-[220px] 3xl:h-[220px] w-[400px] rounded-md"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = placeholderImg;
-                  }}
+                  src={item.thumb_url}
+                  className="h-[150px] w-[400px] rounded-md"
                 />
-                <div className="absolute bottom-0 bg-slate-600 p-1 m-1">
+                <h4 className=" p-2 text-center">{item.name}</h4>
+                <div className="absolute top-0 px-1">
                   {getStars(item.rarity)}
                 </div>
               </Card>
             ))}
           </div>
+          <h2 className="md:text-xl text-lg font-sansII text-left  font-bold my-5">
+            Tổng giá trị: {totalPoints} điểm
+          </h2>
         </Dialog>
       </div>
     </div>

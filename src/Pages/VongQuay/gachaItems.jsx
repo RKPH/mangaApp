@@ -4,7 +4,7 @@ const gachaItems = [
     name: "Blue orb",
     rarity: "N",
     rate: 60,
-    point: 10,
+    point: 1,
     img: "https://i.pinimg.com/originals/79/9a/eb/799aeb4038a89b85afa4411c7e4c668c.jpg",
   },
   {
@@ -12,7 +12,7 @@ const gachaItems = [
     name: "Orange orb",
     rarity: "R",
     rate: 20,
-    point: 20,
+    point: 2,
     img: "https://static.wikia.nocookie.net/gensin-impact/images/7/7f/Xiao_Card.png/revision/latest?cb=20220725205230",
   },
   {
@@ -20,7 +20,7 @@ const gachaItems = [
     name: "Purple orb",
     rarity: "SR",
     rate: 10,
-    point: 40,
+    point: 4,
     img: "https://i.pinimg.com/originals/4a/52/26/4a522651758aab0f934e665d7353c1f6.jpg",
   },
   {
@@ -28,7 +28,7 @@ const gachaItems = [
     name: "Yellow orb",
     rarity: "SSR",
     rate: 6,
-    point: 60,
+    point: 6,
     img: "https://i.pinimg.com/originals/c3/94/7e/c3947eb2503d077171709c4f7e73d263.jpg",
   },
   {
@@ -36,7 +36,7 @@ const gachaItems = [
     name: "Red orb",
     rarity: "UR",
     rate: 2,
-    point: 100,
+    point: 10,
     img: "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/blistivilu6xt703ehin.jpg",
   },
   {
@@ -44,7 +44,7 @@ const gachaItems = [
     name: "Pure orb",
     rarity: "SUR",
     rate: 1,
-    point: 200,
+    point: 20,
     img: "https://i.ytimg.com/vi/rcf1TWbFtQU/maxresdefault.jpg",
   },
   {
@@ -52,7 +52,7 @@ const gachaItems = [
     name: "Rainbow orb",
     rarity: "Rainbow",
     rate: 0.55,
-    point: 500,
+    point: 50,
     img: "https://assets1.ignimgs.com/thumbs/userUploaded/2019/4/26/cytusthumb-1556284920483.jpg",
   },
   {
@@ -60,7 +60,7 @@ const gachaItems = [
     name: "Legend orb",
     rarity: "Legend",
     rate: 0.05,
-    point: 1000000,
+    point: 100,
     img: "https://c4.wallpaperflare.com/wallpaper/79/233/219/arcaea-lowiro-music-game-hd-wallpaper-preview.jpg",
   },
 ];

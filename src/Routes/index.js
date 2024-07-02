@@ -13,6 +13,7 @@ import Chapter from '../Pages/Chapter'
 import GachaLayout from '../Layout/GachaLayout'
 import ComicList from '../Pages/MangaList'
 import TruyenLayout from '../Layout/TruyenLayout'
+import Shop from '../Pages/Shop'
 
 export const publicRoutes = [
   {
@@ -76,5 +77,9 @@ export const publicRoutes = [
   {
     path: '/me',
     component: Personalpage
+  },
+  {
+    path: '/Shop',
+    component: Shop
   }
 ]
