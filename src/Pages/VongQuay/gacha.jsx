@@ -196,7 +196,7 @@ const GachaItems = () => {
             {pulledItems.map((item, index) => (
               <Card
                 key={index}
-                className={`flex m-2 items-center justify-center ${item.bgColor} border rounded-md relative `}
+                className={`m-2  ${item.bgColor} border rounded-md relative `}
               >
                 <img
                   src={item.thumb_url}
