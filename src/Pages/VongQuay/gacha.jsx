@@ -34,7 +34,7 @@ const GachaItems = () => {
         console.error("Error fetching gacha items:", error);
       });
   }, []);
-  console.log(gachaItems);
+
   const updatePointsApi = async (points) => {
     try {
       const response = await fetch(
