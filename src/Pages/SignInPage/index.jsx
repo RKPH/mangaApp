@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { registerUser, registerUserWithGoogle } from '../../Redux/authSlice'
-import GoogleSignUp from './GoogleSignUp'
+// import GoogleSignUp from './GoogleSignUp'
 import FormInput from './FormInput'
 import AuthLinks from './AuthLinks'
-
+import GoogleSignUp from './GoogleSignUp'
 function SignUpForm() {
   const dispatch = useDispatch()
   const navigate = useNavigate()

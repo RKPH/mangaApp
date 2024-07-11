@@ -27,6 +27,7 @@ const GachaItems = () => {
         "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Gacha/getgachaItems"
       )
       .then((res) => {
+        console.log("Gacha items fetched", res.data);
         setGachaItems(res.data);
         setCountItems(res.data.map((item) => ({ ...item, count: 0 })));
       })
@@ -212,6 +213,22 @@ const GachaItems = () => {
           <h2 className="md:text-xl text-lg font-sansII text-left  font-bold my-5">
             Tổng giá trị: {totalPoints} điểm
           </h2>
+          <div className="absolute p-2 bg-[#18191ace] bottom-0 flex w-full justify-center items-center gap-x-2 mb-4">
+            <button
+              className="button p-2 px-4 border text-lg font-mono font-medium border-orange-500 m-1 hover:bg-orange-600 bg-orange-400 rounded-md"
+              onClick={() => pull(1)}
+              disabled={isRolling}
+            >
+              Pull x1
+            </button>
+            <button
+              className="button p-2 px-4 border border-orange-500 m-1 text-lg font-mono font-medium hover:bg-orange-600 bg-orange-400 rounded-md"
+              onClick={() => pull(10)}
+              disabled={isRolling}
+            >
+              Pull x10
+            </button>
+          </div>
         </Dialog>
       </div>
     </div>

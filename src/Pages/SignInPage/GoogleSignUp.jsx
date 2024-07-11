@@ -10,6 +10,9 @@ function GoogleSignUp({ responseGoogle }) {
         }}
         type="icon"
         size="large"
+        flow="auth-code"
+        ux_mode="redirect"
+        redirect_uri="https://manga-app-steel.vercel.app/Signin"
         onError={() => {
           console.log("Login Failed");
         }}
