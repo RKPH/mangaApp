@@ -25,6 +25,7 @@ function SignUpForm() {
   }, [auth.isAuthenticated, navigate]);
 
   const responseGoogle = async (response) => {
+    console.log("iss called ??");
     const tokenId = response.code; // Ensure 'response.code' is correct
     console.log("Token ID:", tokenId);
 
