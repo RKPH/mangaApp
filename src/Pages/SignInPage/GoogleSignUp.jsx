@@ -3,7 +3,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "./authSlice"; // Adjust the path as per your project structure
+import { loginSuccess } from "../../Redux/authSlice";
 
 function GoogleSignUp({ responseGoogle }) {
   const dispatch = useDispatch();
