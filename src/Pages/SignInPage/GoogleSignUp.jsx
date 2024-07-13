@@ -8,6 +8,8 @@ function GoogleSignUp({ responseGoogle }) {
         onSuccess={(tokenResponse) => {
           responseGoogle(tokenResponse);
         }}
+        ux_mode="redirect"
+        redirect_uri="https://manga-app-steel.vercel.app/Signin"
         type="icon"
         size="large"
         onError={() => {
