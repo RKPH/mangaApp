@@ -1,15 +1,40 @@
 import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import PropTypes from "prop-types";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "./authSlice"; // Adjust the path as per your project structure
 
 function GoogleSignUp({ responseGoogle }) {
+  const dispatch = useDispatch();
+
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => {
-      responseGoogle(codeResponse);
+    onSuccess: async (codeResponse) => {
       console.log("Login Success:", codeResponse);
+
+      // Exchange code for tokens on your backend
+      try {
+        const response = await axios.post(
+          "https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Auth/Login/google",
+          {
+            idToken: codeResponse.id_token, // Adjust this based on your token response
+          }
+        );
+
+        if (response.data.token) {
+          dispatch(loginSuccess({ token: response.data.token }));
+          responseGoogle(codeResponse); // Optional: Notify parent component
+        } else {
+          console.error("Failed to obtain token from backend");
+        }
+      } catch (error) {
+        console.error("Error exchanging code for tokens:", error);
+        // Handle error appropriately
+      }
     },
-    onError: () => {
-      console.log("Login Failed");
+    onError: (errorResponse) => {
+      console.log("Login Failed:", errorResponse);
+      // Handle error appropriately
     },
     flow: "auth-code",
     ux_mode: "redirect",
