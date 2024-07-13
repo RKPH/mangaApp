@@ -1,28 +1,21 @@
 import React from "react";
-import { useGoogleLogin } from "@react-oauth/google";
-import PropTypes from "prop-types";
+import { GoogleLogin } from "@react-oauth/google";
 
 function GoogleSignUp({ responseGoogle }) {
-  const googleLogin = useGoogleLogin({
-    flow: "auth-code",
-    ux_mode: "redirect",
-    onSuccess: (codeResponse) => {
-      console.log("Google login success:", codeResponse);
-    },
-    onError: (errorResponse) => {
-      console.error("Google login error:", errorResponse);
-    },
-  });
-
   return (
-    <div>
-      <button onClick={googleLogin}>Sign in with Google</button>
+    <div className="w-full flex flex-row gap-4 my-6 items-center justify-center">
+      <GoogleLogin
+        onSuccess={(tokenResponse) => {
+          responseGoogle(tokenResponse);
+        }}
+        type="icon"
+        size="large"
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
     </div>
   );
 }
-
-GoogleSignUp.propTypes = {
-  responseGoogle: PropTypes.func.isRequired,
-};
 
 export default GoogleSignUp;
