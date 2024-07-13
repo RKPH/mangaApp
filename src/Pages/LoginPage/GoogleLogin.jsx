@@ -11,7 +11,7 @@ function GoogleLoginn({ responseGoogle }) {
     },
     flow: "auth-code",
     ux_mode: "redirect",
-    redirect_uri: "http://localhost:5173", // Replace with your actual redirect URI
+    redirect_uri: "http://localhost:5173/login", // Replace with your actual redirect URI
   });
 
   return (
@@ -30,4 +30,4 @@ function GoogleLoginn({ responseGoogle }) {
 GoogleLoginn.propTypes = {
   responseGoogle: PropTypes.func,
 };
-export default GoogleLogin;
+export default GoogleLoginn;

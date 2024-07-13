@@ -115,7 +115,7 @@ export const registerUser = (username, email, password) => async (dispatch) => {
           UserName: username,
           UserEmail: email,
           password: password
-        }),
+        })
       }
     )
 

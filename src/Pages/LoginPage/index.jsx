@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { GoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin } from "@react-oauth/google";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, loginUserWithGoogle } from "../../Redux/authSlice";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-
+import GoogleLoginn from "./GoogleLogin";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -210,7 +210,8 @@ function LoginForm() {
           </p>
           <p className="text-center text-black text-base my-6">Or With</p>
           <div className="w-full flex flex-row gap-4 my-6 items-center justify-center">
-            <GoogleLogin
+            <GoogleLoginn
+              ux_mode="redirect"
               onSuccess={(tokenResponse) => {
                 responseGoogle(tokenResponse);
                 console.log(tokenResponse);
