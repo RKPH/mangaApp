@@ -211,7 +211,6 @@ function LoginForm() {
           <p className="text-center text-black text-base my-6">Or With</p>
           <div className="w-full flex flex-row gap-4 my-6 items-center justify-center">
             <GoogleLogin
-              ux_mode="redirect"
               onSuccess={(tokenResponse) => {
                 responseGoogle(tokenResponse);
                 console.log(tokenResponse);
