@@ -6,14 +6,18 @@ function GoogleSignUp({ responseGoogle }) {
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
       console.log("Login Success:", codeResponse);
-      responseGoogle(codeResponse.code); // Pass the token directly
+      if (codeResponse.code) {
+        responseGoogle(codeResponse.code); // Pass the token directly
+      } else {
+        console.error("Google login response missing code:", codeResponse);
+      }
     },
-    onError: () => {
-      console.log("Login Failed");
+    onError: (error) => {
+      console.error("Login Failed:", error);
     },
     flow: "auth-code",
     ux_mode: "redirect",
-    redirect_uri: "https://manga-app-steel.vercel.app/Signin", // Ensure this matches your Google API Console redirect URI
+    redirect_uri: "https://manga-app-steel.vercel.app/Signidadad", // Ensure this matches your Google API Console redirect URI
   });
 
   return (
