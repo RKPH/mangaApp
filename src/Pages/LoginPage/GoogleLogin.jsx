@@ -11,7 +11,7 @@ function GoogleLoginn({ responseGoogle }) {
     },
     flow: "auth-code",
     ux_mode: "redirect",
-    redirect_uri: "http://localhost:5173/login", // Replace with your actual redirect URI
+    redirect_uri: "hhttps://manga-app-steel.vercel.app/login", // Replace with your actual redirect URI
   });
 
   return (
