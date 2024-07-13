@@ -6,6 +6,7 @@ function GoogleSignUp({ responseGoogle }) {
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
       responseGoogle(codeResponse);
+      console.log("Login Success:", codeResponse);
     },
     onError: () => {
       console.log("Login Failed");
