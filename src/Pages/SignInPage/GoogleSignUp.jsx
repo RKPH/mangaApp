@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 function GoogleSignUp({ responseGoogle }) {
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
+      console.log("Login Success:", codeResponse);
       responseGoogle(codeResponse);
     },
     onError: () => {
@@ -17,7 +18,13 @@ function GoogleSignUp({ responseGoogle }) {
 
   return (
     <div className="w-full flex flex-row gap-4 my-6 items-center justify-center">
-      <button onClick={() => login()} className="google-login-button">
+      <button
+        onClick={() => {
+          console.log("Google Sign Up");
+          login();
+        }}
+        className="flex items-center justify-center bg-white dark:bg-[#18191A] border border-gray-300 rounded-lg p-2 text-black dark:text-white cursor-pointer"
+      >
         <img
           src="https://developers.google.com/identity/images/g-logo.png"
           alt="Google Logo"
