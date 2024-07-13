@@ -17,7 +17,7 @@ function GoogleSignUp({ responseGoogle }) {
     },
     flow: "auth-code",
     ux_mode: "redirect",
-    redirect_uri: "https://manga-app-steel.vercel.app/Signidadad", // Ensure this matches your Google API Console redirect URI
+    redirect_uri: "https://manga-app-steel.vercel.app/Signin", // Ensure this matches your Google API Console redirect URI
   });
 
   return (
