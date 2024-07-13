@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 
 function GoogleSignUp({ responseGoogle }) {
   const googleLogin = useGoogleLogin({
