@@ -25,8 +25,9 @@ function SignUpForm() {
   }, [auth.isAuthenticated, navigate]);
 
   const responseGoogle = async (response) => {
-    const tokenId = response.code.id_token;
-    console.log("log here: ?", tokenId);
+    const tokenId = response.code; // Ensure 'response.code' is correct
+    console.log("Token ID:", tokenId);
+
     const result = await dispatch(registerUserWithGoogle(tokenId));
     if (result.error) {
       setError(result.error);

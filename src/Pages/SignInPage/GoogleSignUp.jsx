@@ -6,7 +6,7 @@ function GoogleSignUp({ responseGoogle }) {
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
       console.log("Login Success:", codeResponse);
-      responseGoogle(codeResponse);
+      responseGoogle(codeResponse.code); // Pass the token directly
     },
     onError: () => {
       console.log("Login Failed");
@@ -20,7 +20,7 @@ function GoogleSignUp({ responseGoogle }) {
     <div className="w-full flex flex-row gap-4 my-6 items-center justify-center">
       <button
         onClick={() => {
-          console.log("Google Sign Up");
+          console.log("Google Sign Up clicked");
           login();
         }}
         className="flex items-center justify-center bg-white dark:bg-[#18191A] border border-gray-300 rounded-lg p-2 text-black dark:text-white cursor-pointer"
