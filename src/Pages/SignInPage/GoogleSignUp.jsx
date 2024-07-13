@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 function GoogleSignUp({ responseGoogle }) {
   const googleLogin = useGoogleLogin({
     flow: "auth-code",
-    onSuccess: async (codeResponse) => {
+    ux_mode: "redirect",
+    onSuccess: (codeResponse) => {
       console.log("Google login success:", codeResponse);
     },
     onError: (errorResponse) => {
