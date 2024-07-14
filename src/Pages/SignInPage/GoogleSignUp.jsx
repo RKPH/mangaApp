@@ -4,10 +4,17 @@ import { useGoogleLogin } from "@react-oauth/google";
 function GoogleSignUp({ responseGoogle }) {
   const googleLogin = useGoogleLogin({
     flow: "auth-code",
+    onNonOAuthError: (error) => {
+      console.error("Google login error:", error);
+    },
     onSuccess: async (codeResponse) => {
       console.log("Google login success:", codeResponse);
-
-      console.log("Tokens:", response.data);
+      try {
+        const response = await responseGoogle(codeResponse);
+        console.log("Tokens:", response.data);
+      } catch (error) {
+        console.error("Error processing Google response:", error);
+      }
     },
     onError: (errorResponse) => {
       console.error("Google login error:", errorResponse);
@@ -23,9 +30,7 @@ function GoogleSignUp({ responseGoogle }) {
 
   return (
     <div>
-      <button onClick={() => handleGoogleLoginClick}>
-        Sign in with Google
-      </button>
+      <button onClick={handleGoogleLoginClick}>Sign in with Google</button>
     </div>
   );
 }
