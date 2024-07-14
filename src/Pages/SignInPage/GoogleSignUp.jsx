@@ -23,7 +23,9 @@ function GoogleSignUp({ responseGoogle }) {
 
   return (
     <div>
-      <button onClick={handleGoogleLoginClick}>Sign in with Google</button>
+      <button onClick={() => handleGoogleLoginClick}>
+        Sign in with Google
+      </button>
     </div>
   );
 }
