@@ -8,7 +8,7 @@ function GoogleSignUp({ responseGoogle }) {
       console.log("Google login error:", error);
     },
     onSuccess: async (codeResponse) => {
-      console.log("Google login success:", codeResponse);
+      console.log("Google login success:", codeResponse.code);
       try {
         const response = await responseGoogle(codeResponse);
         console.log("Tokens:", response.data);

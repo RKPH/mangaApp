@@ -18,6 +18,7 @@ function SigninGoogle() {
   }, [location.search]);
 
   const handleGoogleResponse = async (code) => {
+    console.log("Handling Google Sign-in...", code);
     try {
       console.log("Google login success:", code);
       const result = await dispatch(registerUserWithGoogle({ code }));
