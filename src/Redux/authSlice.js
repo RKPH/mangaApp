@@ -72,6 +72,7 @@ export const loginUserWithGoogle = (tokenId) => async (dispatch) => {
     const response = await fetch(
       `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Auth/Login/google?idToken=${tokenId}`,
       {
+        mode: 'no-cors',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
