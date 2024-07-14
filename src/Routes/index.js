@@ -14,6 +14,7 @@ import GachaLayout from '../Layout/GachaLayout'
 import ComicList from '../Pages/MangaList'
 import TruyenLayout from '../Layout/TruyenLayout'
 import Shop from '../Pages/Shop'
+import SigninGoogle from '../Pages/SignInPage/GoogleRedirect'
 
 export const publicRoutes = [
   {
@@ -23,6 +24,10 @@ export const publicRoutes = [
   {
     path: '/Signin',
     component: SignUpForm
+  },
+  {
+    path: '/SigninGoogle',
+    component: SigninGoogle
   },
   {
     path: '/Home',

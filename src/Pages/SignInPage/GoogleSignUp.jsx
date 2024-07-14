@@ -20,7 +20,7 @@ function GoogleSignUp({ responseGoogle }) {
       console.error("Google login error:", errorResponse);
     },
     ux_mode: "redirect", // Ensure this matches your setup in Google Developer Console
-    redirect_uri: "https://manga-app-steel.vercel.app/Signin", // Ensure this matches your Google API Console redirect URI
+    redirect_uri: "https://manga-app-steel.vercel.app/SigninGoogle", // Ensure this matches your Google API Console redirect URI
   });
 
   return (
