@@ -5,7 +5,7 @@ function GoogleSignUp({ responseGoogle }) {
   const googleLogin = useGoogleLogin({
     flow: "auth-code",
     onNonOAuthError: (error) => {
-      console.error("Google login error:", error);
+      console.log("Google login error:", error);
     },
     onSuccess: async (codeResponse) => {
       console.log("Google login success:", codeResponse);
@@ -13,7 +13,7 @@ function GoogleSignUp({ responseGoogle }) {
         const response = await responseGoogle(codeResponse);
         console.log("Tokens:", response.data);
       } catch (error) {
-        console.error("Error processing Google response:", error);
+        console.log("Error processing Google response:", error);
       }
     },
     onError: (errorResponse) => {
