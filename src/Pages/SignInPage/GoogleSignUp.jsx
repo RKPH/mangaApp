@@ -23,14 +23,15 @@ function GoogleSignUp({ responseGoogle }) {
     redirect_uri: "https://manga-app-steel.vercel.app/Signin", // Ensure this matches your Google API Console redirect URI
   });
 
-  const handleGoogleLoginClick = () => {
-    console.log("Google login button clicked");
-    googleLogin(); // Trigger Google OAuth flow
-  };
-
   return (
     <div>
-      <button onClick={handleGoogleLoginClick}>Sign in with Google</button>
+      <button
+        onClick={() => {
+          googleLogin();
+        }}
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 }
