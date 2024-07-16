@@ -109,7 +109,7 @@ const Shop = () => {
       );
 
       setItems(updatedItems);
-      setUser({ ...user, money: user.point - price });
+      setUser({ ...user, money: user.money - price });
     } else {
       alert("Not enough money to purchase this item.");
     }
@@ -128,7 +128,7 @@ const Shop = () => {
         </p>
         <h5 className=" text-right text-lg font-sansII w-full">
           {" "}
-          Tài khoản của bạn: {User.point}
+          Tài khoản của bạn: {User?.point}
         </h5>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-8 gap-5">
