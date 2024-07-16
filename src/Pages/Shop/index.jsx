@@ -109,7 +109,7 @@ const Shop = () => {
       );
 
       setItems(updatedItems);
-      setUser({ ...user, money: user.money - price });
+      setUser({ ...user, money: user.point - price });
     } else {
       alert("Not enough money to purchase this item.");
     }
