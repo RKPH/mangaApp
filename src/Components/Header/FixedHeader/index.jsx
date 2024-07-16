@@ -103,18 +103,18 @@ const FixedHeader = () => {
               navigate(`/result?q=${inputValue}`);
               setInputValue("");
             }}
-            className="w-3/4 h-1/2 relative "
+            className="w-3/4 h-1/2"
           >
             <input
               value={inputValue}
               onChange={handleInputChange}
               type="text"
-              className="w-full  h-full pl-8 pr-14   p-3 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
+              className="w-4/5  h-full pl-8 pr-14   p-3 rounded-md  border border-black dark:text-white dark:bg-[#3A3B3C] focus:outline-none focus:border-black"
               placeholder="Search..."
             />
             <button
               type="submit"
-              className="absolute right-0 top-0 z-0 w-[50px] h-full rounded-r-md bg-blue dark:text-white hover:bg-slate-300 "
+              className="z-0 w-[50px] h-full rounded-r-md bg-blue dark:text-white hover:bg-slate-300 "
             >
               <SearchIcon />
             </button>
@@ -133,12 +133,12 @@ const FixedHeader = () => {
         {!auth.isAuthenticated ? (
           <div className="flex flex-row items-center gap-x-2 h-full w-1/4  ">
             <Link to="/login">
-              <button className="p-2 w-fit text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
+              <button className="p-2 w-[100px] text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
                 Đăng nhập
               </button>
             </Link>
             <Link to="/Signin">
-              <button className="p-2 w-fit text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
+              <button className="p-2 w-[100px] text-center text-gray-50 text-sm bg-orange-500 dark:bg-[#3F94D5] font-semibold font-sansII  rounded-md hover:opacity-35">
                 Đăng kí
               </button>
             </Link>
