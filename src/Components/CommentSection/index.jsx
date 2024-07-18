@@ -8,7 +8,7 @@ const Discussion = ({ slug }) => {
   const [commentDatas, setCommentDatas] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
-
+  const [like, setLike] = useState(0);
   const handleInputChange = (event) => {
     setContent(event.target.value);
   };
@@ -138,8 +138,11 @@ const Discussion = ({ slug }) => {
                     </p>
                   </div>
                   <div className="flex gap-2 p-2 font-sans text-sm items-center">
-                    <span className="dark:text-white text-black bg-violet-500 p-2 font-bold rounded cursor-pointer">
-                      Like
+                    <span
+                      onClick={() => setLike(like + 1)}
+                      className="dark:text-white text-black bg-violet-500 p-2 font-bold rounded cursor-pointer"
+                    >
+                      Like {like}
                     </span>
                     <span className="p-2 dark:text-white text-black cursor-pointer">
                       Reply
