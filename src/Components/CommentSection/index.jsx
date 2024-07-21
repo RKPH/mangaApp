@@ -22,9 +22,7 @@ const Discussion = ({ slug }) => {
       console.error("Error fetching comments:", error);
     }
   };
-  useEffect(() => {
-    fetchComments();
-  }, [commentDatas]);
+ 
   useEffect(() => {
     fetchComments();
   }, [slug]);
