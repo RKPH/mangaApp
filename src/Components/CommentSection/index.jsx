@@ -57,7 +57,7 @@ const Discussion = ({ slug }) => {
           },
           createdAt: new Date().toLocaleString(),
         };
-        setCommentDatas([...commentDatas, newComment]);
+        setCommentDatas([newComment, ...commentDatas]);
         setContent(""); // Clear the textarea after successful comment
       })
       .catch((error) => {
