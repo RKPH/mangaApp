@@ -40,6 +40,7 @@ const Discussion = ({ slug }) => {
         {
           userID: userID,
           comment: content,
+          slug: slug,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
