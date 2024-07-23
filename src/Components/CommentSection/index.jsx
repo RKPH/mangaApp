@@ -9,7 +9,7 @@ const Discussion = ({ slug }) => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
   const [like, setLike] = useState(0);
-
+  console.log("User:", user);
   // Handle input change for the comment textarea
   const handleInputChange = (event) => {
     setContent(event.target.value);
