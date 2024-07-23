@@ -9,68 +9,60 @@ const Discussion = ({ slug }) => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
   const [like, setLike] = useState(0);
-  console.log("User:", user);
-  // Handle input change for the comment textarea
   const handleInputChange = (event) => {
     setContent(event.target.value);
   };
-
-  // Fetch comments for the given slug
   const fetchComments = async () => {
     try {
       const response = await axios.get(
         `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/comments/${slug}`
       );
-      const comments = response.data.$values || [];
-      console.log("Comments fetched:", comments);
-      setCommentDatas(comments);
+      setCommentDatas(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
-
-  // Fetch comments when the component mounts or when the slug changes
+ 
   useEffect(() => {
     fetchComments();
   }, [slug]);
 
-  // Handle adding a new comment
-  const handleClick = async () => {
+  const handleClick = () => {
     if (content.trim() === "") {
-      return; // Prevent empty comments
+      return; // Prevents empty comments
     }
-    const userID = user?.userId; // Ensure correct property name
+    const userID = user?.userID;
 
-    try {
-      const response = await axios.post(
+    axios
+      .post(
         `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/addcomment/${slug}`,
         {
           userID: userID,
           comment: content,
-          slug: slug, // Ensure slug is included in the request body
         },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
-      );
-
-      console.log("Comment added:", response.data);
-
-      // Update comments list with the new comment
-      const newComment = {
-        ...response.data,
-        user: {
-          userName: user?.userName || "Unknown",
-          avatar: user?.avatar || "/default-avatar.png",
-        },
-        createdAt: new Date().toISOString(),
-      };
-      setCommentDatas([newComment, ...commentDatas]);
-      setContent(""); // Clear the textarea after successful comment
-    } catch (error) {
-      console.error("Error adding comment:", error);
-      // Handle error (e.g., display an error message)
-    }
+      )
+      .then((response) => {
+        console.log("Comment added:", response.data);
+        // Update comments list with the new comment
+        const newComment = {
+          ...response.data,
+          comment: content,
+          user: {
+            userName: user?.userName || "Unknown",
+            userAvatar: user?.avatar || "default-avatar.png",
+          },
+          createdAt: new Date().toLocaleString(),
+        };
+        setCommentDatas([...commentDatas, newComment]);
+        setContent(""); // Clear the textarea after successful comment
+      })
+      .catch((error) => {
+        console.error("Error adding comment:", error);
+        // Handle error (e.g., display an error message)
+      });
   };
 
   return (
@@ -85,7 +77,7 @@ const Discussion = ({ slug }) => {
           alt="User avatar"
         />
         <div className="flex gap-4 w-full text-[#6E75D1FF] shadow-sm items-center px-2 py-4 rounded">
-          <div className="relative flex items-center h-fit w-full">
+          <div className="relative flex items-center h-fit  w-full">
             <textarea
               className="w-full dark:bg-[#242526] items-center flex justify-center dark:text-white text-neutral-600 min-h-[20px] text-lg rounded-xl p-1 pl-8 border border-gray-300 focus:border-blue-500 focus:outline-none"
               placeholder="Leave a comment"
@@ -124,29 +116,23 @@ const Discussion = ({ slug }) => {
         </div>
       </div>
 
-      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 px-12 rounded-md">
-        {commentDatas &&
-        Array.isArray(commentDatas) &&
-        commentDatas.length > 0 ? (
+      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 px-12  rounded-md">
+        {commentDatas && commentDatas.length > 0 ? (
           commentDatas.map((comment, index) => (
-            <div key={index} className="w-full p-4">
+            <div key={index} className=" w-full p-4">
               <div className="flex gap-2 font-sans">
                 <img
-                  className="md:w-10 md:h-10 h-8 w-8 rounded-full border-2 border-[#6E75D1FF]"
-                  src={
-                    comment.user?.avatar ||
-                    user?.avatar ||
-                    "/default-avatar.png"
-                  }
+                  className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 border-[#6E75D1FF]"
+                  src={comment.user?.avatar || "/default-avatar.png"}
                   alt="User Avatar"
                 />
                 <div className="flex flex-col font-sansII">
-                  <div className="p-2 border w-full rounded-2xl">
-                    <span className="font-semibold dark:text-white text-neutral-600 text-base font-sansII py-1">
-                      {comment.user?.userName || "Unknown"}
+                  <div className="p-2 border  w-full rounded-2xl ">
+                    <span className="font-semibold dark:text-white text-neutral-600 text-lg font-sansII py-1">
+                      {comment.user?.userName}
                     </span>
                     <p className="dark:text-white text-black font-sansII font-normal">
-                      {comment.comment}
+                      {comment?.comment}
                     </p>
                   </div>
                   <div className="flex gap-2 p-2 font-sans text-sm items-center">
