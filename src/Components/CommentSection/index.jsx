@@ -23,7 +23,7 @@ const Discussion = ({ slug }) => {
       console.error("Error fetching comments:", error);
     }
   };
- 
+
   useEffect(() => {
     fetchComments();
   }, [slug]);
@@ -124,12 +124,16 @@ const Discussion = ({ slug }) => {
               <div className="flex gap-2 font-sans">
                 <img
                   className="md:w-10 md:h-10 h-8 w-8 rounded-full border-2 border-[#6E75D1FF]"
-                  src={comment.user?.avatar || "/default-avatar.png"}
+                  src={
+                    comment.user?.avatar ||
+                    user?.avatar ||
+                    "/default-avatar.png"
+                  }
                   alt="User Avatar"
                 />
                 <div className="flex flex-col font-sansII">
                   <div className="p-2 border  w-full rounded-2xl ">
-                    <span className="font-semibold dark:text-white text-neutral-600 text-lg font-sansII py-1">
+                    <span className="font-semibold dark:text-white text-neutral-600 text-base font-sansII py-1">
                       {comment.user?.userName}
                     </span>
                     <p className="dark:text-white text-black font-sansII font-normal">
