@@ -16,21 +16,21 @@ const Discussion = ({ slug }) => {
   };
 
   // Fetch comments for the given slug
-  const fetchComments = async () => {
-    try {
-      const response = await axios.get(
-        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/comments/${slug}`
-      );
-      setCommentDatas(response.data);
-    } catch (error) {
-      console.error("Error fetching comments:", error);
-    }
-  };
+  // const fetchComments = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/comments/${slug}`
+  //     );
+  //     setCommentDatas(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching comments:", error);
+  //   }
+  // };
 
-  // Fetch comments when the component mounts or when the slug changes
-  useEffect(() => {
-    fetchComments();
-  }, [slug]);
+  // // Fetch comments when the component mounts or when the slug changes
+  // useEffect(() => {
+  //   fetchComments();
+  // }, [slug]);
 
   // Handle adding a new comment
   const handleClick = async () => {
