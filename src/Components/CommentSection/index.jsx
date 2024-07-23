@@ -73,7 +73,7 @@ const Discussion = ({ slug }) => {
       </h3>
       <div className="flex items-center gap-1 w-full">
         <img
-          className="md:w-10 md:h-10 h-8 w-8 rounded-full border-2 md:block hidden border-[#6E75D1FF]"
+          className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 md:block hidden border-[#6E75D1FF]"
           src={user?.avatar || "/default-avatar.png"}
           alt="User avatar"
         />
@@ -123,7 +123,7 @@ const Discussion = ({ slug }) => {
             <div key={index} className=" w-full p-4">
               <div className="flex gap-2 font-sans">
                 <img
-                  className="md:w-12 md:h-12 h-10 w-10 rounded-full border-2 border-[#6E75D1FF]"
+                  className="md:w-10 md:h-10 h-8 w-8 rounded-full border-2 border-[#6E75D1FF]"
                   src={
                     comment.user?.avatar ||
                     user?.avatar ||
