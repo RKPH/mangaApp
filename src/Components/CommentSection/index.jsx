@@ -8,10 +8,11 @@ const Discussion = ({ slug }) => {
   const [commentDatas, setCommentDatas] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
-  const [like, setLike] = useState(0);
+
   const handleInputChange = (event) => {
     setContent(event.target.value);
   };
+
   const fetchComments = async () => {
     try {
       const response = await axios.get(
@@ -64,6 +65,32 @@ const Discussion = ({ slug }) => {
         console.error("Error adding comment:", error);
         // Handle error (e.g., display an error message)
       });
+  };
+
+  const handleLike = async (commentId) => {
+    const userID = user?.userID;
+    try {
+      await axios.post(
+        `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/likecomment`,
+        {
+          commentId: commentId,
+          userId: userID,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setCommentDatas((prevCommentDatas) =>
+        prevCommentDatas.map((comment) =>
+          comment.commentId === commentId
+            ? { ...comment, like: comment.like + 1 }
+            : comment
+        )
+      );
+    } catch (error) {
+      console.error("Error liking comment:", error);
+      // Handle error (e.g., display an error message)
+    }
   };
 
   return (
@@ -142,10 +169,10 @@ const Discussion = ({ slug }) => {
                   </div>
                   <div className="flex gap-2 p-2 font-sans text-sm items-center">
                     <span
-                      onClick={() => setLike(like + 1)}
+                      onClick={() => handleLike(comment.commentId)}
                       className="dark:text-white text-black bg-violet-500 p-2 font-bold rounded cursor-pointer"
                     >
-                      Like {like}
+                      Like {comment.like}
                     </span>
                     <span className="p-2 dark:text-white text-black cursor-pointer">
                       Reply
