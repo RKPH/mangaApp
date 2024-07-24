@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import PropTypes from "prop-types";
+import { assignRef } from "@coreui/react-pro/dist/esm/hooks/useForkedRef";
 
 const Discussion = ({ slug }) => {
   const [content, setContent] = useState("");
@@ -31,14 +32,14 @@ const Discussion = ({ slug }) => {
     fetchComments();
   }, [slug]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (content.trim() === "") {
       return; // Prevents empty comments
     }
     const userID = user?.userID;
 
-    axios
-      .post(
+    try {
+      await axios.post(
         `https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Comments/addcomment/${slug}`,
         {
           userID: userID,
@@ -48,27 +49,15 @@ const Discussion = ({ slug }) => {
         {
           headers: { Authorization: `Bearer ${token}` },
         }
-      )
-      .then((response) => {
-        console.log("Comment added:", response.data);
-        // Update comments list with the new comment
-        const newComment = {
-          ...response.data,
-          comment: content,
-          like: 0,
-          user: {
-            userName: user?.userName || "Unknown",
-            userAvatar: user?.avatar || "default-avatar.png",
-          },
-          createdAt: new Date().toLocaleString(),
-        };
-        setCommentDatas([newComment, ...commentDatas]);
-        setContent(""); // Clear the textarea after successful comment
-      })
-      .catch((error) => {
-        console.error("Error adding comment:", error);
-        // Handle error (e.g., display an error message)
-      });
+      );
+
+      setContent(""); // Clear the textarea after successful comment
+      // Fetch comments again to get the updated list
+      await fetchComments();
+    } catch (error) {
+      console.error("Error adding comment:", error);
+      // Handle error (e.g., display an error message)
+    }
   };
 
   const handleLike = async (commentId) => {
