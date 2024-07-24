@@ -52,6 +52,7 @@ const Discussion = ({ slug }) => {
         const newComment = {
           ...response.data,
           comment: content,
+          like: 0,
           user: {
             userName: user?.userName || "Unknown",
             userAvatar: user?.avatar || "default-avatar.png",
@@ -147,7 +148,7 @@ const Discussion = ({ slug }) => {
       <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 px-12  rounded-md">
         {commentDatas && commentDatas.length > 0 ? (
           commentDatas.map((comment, index) => (
-            <div key={index} className=" w-full p-4">
+            <div key={comment.commentId} className=" w-full p-4">
               <div className="flex gap-2 font-sans">
                 <img
                   className="md:w-10 md:h-10 h-8 w-8 rounded-full border-2 border-[#6E75D1FF]"
