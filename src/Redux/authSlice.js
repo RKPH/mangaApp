@@ -32,7 +32,7 @@ export const authSlice = createSlice({
 })
 export const { loginSuccess, logoutSuccess, registerSuccess } =
   authSlice.actions
-export const loginUser = (email, password) => async (dispatch) => {
+export const loginUser = (email, Password) => async (dispatch) => {
   try {
     const response = await fetch(
       'https://itec-mangaapp-ef4733c4d23d.herokuapp.com/api/Auth/login',
@@ -41,7 +41,7 @@ export const loginUser = (email, password) => async (dispatch) => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ UserEmail: email, password: password })
+        body: JSON.stringify({ UserEmail: email, password: Password })
       }
     )
 

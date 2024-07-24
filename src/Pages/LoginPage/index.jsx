@@ -57,7 +57,7 @@ function LoginForm() {
     }
 
     setIsAuthenticating(true);
-    const result = await dispatch(loginUser({ email, password }));
+    const result = await dispatch(loginUser(email, password ));
 
     if (result.error) {
       setError("Invalid email or password");
