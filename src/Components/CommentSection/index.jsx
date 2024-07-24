@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import PropTypes from "prop-types";
 
 const Discussion = ({ slug }) => {
@@ -90,6 +93,7 @@ const Discussion = ({ slug }) => {
       );
     } catch (error) {
       console.error("Error liking comment:", error.response.data);
+      toast.error(error.response.data);
       // Handle error (e.g., display an error message)
     }
   };
