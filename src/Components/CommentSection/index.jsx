@@ -88,7 +88,7 @@ const Discussion = ({ slug }) => {
         )
       );
     } catch (error) {
-      console.error("Error liking comment:", error);
+      console.error("Error liking comment:", error.response.data);
       // Handle error (e.g., display an error message)
     }
   };
