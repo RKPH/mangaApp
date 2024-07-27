@@ -3,15 +3,15 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import PropTypes from "prop-types";
-import { assignRef } from "@coreui/react-pro/dist/esm/hooks/useForkedRef";
+import * as signalR from "@microsoft/signalr";
 
 const Discussion = ({ slug }) => {
   const [content, setContent] = useState("");
   const [commentDatas, setCommentDatas] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
+  const [hubConnection, setHubConnection] = useState(null);
 
   const handleInputChange = (event) => {
     setContent(event.target.value);
@@ -30,6 +30,42 @@ const Discussion = ({ slug }) => {
 
   useEffect(() => {
     fetchComments();
+
+    const newHubConnection = new signalR.HubConnectionBuilder()
+      .withUrl("https://itec-mangaapp-ef4733c4d23d.herokuapp.com/signalr")
+      .withAutomaticReconnect()
+      .build();
+
+    setHubConnection(newHubConnection);
+
+    newHubConnection
+      .start()
+      .then(() => {
+        console.log("SignalR Connected.");
+
+        newHubConnection.on("ReceiveComment", (comment) => {
+          setCommentDatas((prevCommentDatas) => [...prevCommentDatas, comment]);
+        });
+
+        newHubConnection.on("ReceiveLike", (likeCommentRequestDto) => {
+          setCommentDatas((prevCommentDatas) =>
+            prevCommentDatas.map((comment) =>
+              comment.commentId === likeCommentRequestDto.commentId
+                ? { ...comment, like: comment.like + 1 }
+                : comment
+            )
+          );
+        });
+      })
+      .catch((error) => console.error("Error connecting to SignalR:", error));
+
+    return () => {
+      if (newHubConnection) {
+        newHubConnection
+          .stop()
+          .then(() => console.log("SignalR Disconnected."));
+      }
+    };
   }, [slug]);
 
   const handleClick = async () => {
