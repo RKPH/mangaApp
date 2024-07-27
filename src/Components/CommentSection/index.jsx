@@ -3,8 +3,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import PropTypes from "prop-types";
-import * as signalR from "@microsoft/signalr";
+import { assignRef } from "@coreui/react-pro/dist/esm/hooks/useForkedRef";
 
 const Discussion = ({ slug }) => {
   const [content, setContent] = useState("");
@@ -12,34 +13,9 @@ const Discussion = ({ slug }) => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
 
-  useEffect(() => {
-    fetchComments();
-
-    // Initialize SignalR connection
-    const connection = new signalR.HubConnectionBuilder()
-      .withUrl("https://itec-mangaapp-ef4733c4d23d.herokuapp.com/signalr")
-      .build();
-
-    connection.on("ReceiveComment", (comment) => {
-      setCommentDatas((prevComments) => [comment, ...prevComments]);
-    });
-
-    connection.on("ReceiveLike", (like) => {
-      setCommentDatas((prevComments) =>
-        prevComments.map((comment) =>
-          comment.commentId === like.commentId
-            ? { ...comment, like: comment.like + 1 }
-            : comment
-        )
-      );
-    });
-
-    connection.start().catch((err) => console.error(err.toString()));
-
-    return () => {
-      connection.stop();
-    };
-  }, [slug]);
+  const handleInputChange = (event) => {
+    setContent(event.target.value);
+  };
 
   const fetchComments = async () => {
     try {
@@ -52,9 +28,9 @@ const Discussion = ({ slug }) => {
     }
   };
 
-  const handleInputChange = (event) => {
-    setContent(event.target.value);
-  };
+  useEffect(() => {
+    fetchComments();
+  }, [slug]);
 
   const handleClick = async () => {
     if (content.trim() === "") {
@@ -76,6 +52,8 @@ const Discussion = ({ slug }) => {
       );
 
       setContent(""); // Clear the textarea after successful comment
+      // Fetch comments again to get the updated list
+      await fetchComments();
     } catch (error) {
       console.error("Error adding comment:", error);
       // Handle error (e.g., display an error message)
@@ -94,6 +72,13 @@ const Discussion = ({ slug }) => {
         {
           headers: { Authorization: `Bearer ${token}` },
         }
+      );
+      setCommentDatas((prevCommentDatas) =>
+        prevCommentDatas.map((comment) =>
+          comment.commentId === commentId
+            ? { ...comment, like: comment.like + 1 }
+            : comment
+        )
       );
     } catch (error) {
       console.error("Error liking comment:", error.response.data);
