@@ -11,11 +11,36 @@ const Discussion = ({ slug }) => {
   const [commentDatas, setCommentDatas] = useState([]);
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.user.user);
-  const [hubConnection, setHubConnection] = useState(null);
 
-  const handleInputChange = (event) => {
-    setContent(event.target.value);
-  };
+  useEffect(() => {
+    fetchComments();
+
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("https://itec-mangaapp-ef4733c4d23d.herokuapp.com/signalr", {
+        withCredentials: true, // Add this option
+      })
+      .build();
+
+    connection.on("ReceiveComment", (comment) => {
+      setCommentDatas((prevComments) => [comment, ...prevComments]);
+    });
+
+    connection.on("ReceiveLike", (like) => {
+      setCommentDatas((prevComments) =>
+        prevComments.map((comment) =>
+          comment.commentId === like.commentId
+            ? { ...comment, like: comment.like + 1 }
+            : comment
+        )
+      );
+    });
+
+    connection.start().catch((err) => console.error(err.toString()));
+
+    return () => {
+      connection.stop();
+    };
+  }, [slug]);
 
   const fetchComments = async () => {
     try {
@@ -28,45 +53,9 @@ const Discussion = ({ slug }) => {
     }
   };
 
-  useEffect(() => {
-    fetchComments();
-
-    const newHubConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://itec-mangaapp-ef4733c4d23d.herokuapp.com/signalr")
-      .withAutomaticReconnect()
-      .build();
-
-    setHubConnection(newHubConnection);
-
-    newHubConnection
-      .start()
-      .then(() => {
-        console.log("SignalR Connected.");
-
-        newHubConnection.on("ReceiveComment", (comment) => {
-          setCommentDatas((prevCommentDatas) => [...prevCommentDatas, comment]);
-        });
-
-        newHubConnection.on("ReceiveLike", (likeCommentRequestDto) => {
-          setCommentDatas((prevCommentDatas) =>
-            prevCommentDatas.map((comment) =>
-              comment.commentId === likeCommentRequestDto.commentId
-                ? { ...comment, like: comment.like + 1 }
-                : comment
-            )
-          );
-        });
-      })
-      .catch((error) => console.error("Error connecting to SignalR:", error));
-
-    return () => {
-      if (newHubConnection) {
-        newHubConnection
-          .stop()
-          .then(() => console.log("SignalR Disconnected."));
-      }
-    };
-  }, [slug]);
+  const handleInputChange = (event) => {
+    setContent(event.target.value);
+  };
 
   const handleClick = async () => {
     if (content.trim() === "") {
@@ -88,8 +77,6 @@ const Discussion = ({ slug }) => {
       );
 
       setContent(""); // Clear the textarea after successful comment
-      // Fetch comments again to get the updated list
-      await fetchComments();
     } catch (error) {
       console.error("Error adding comment:", error);
       // Handle error (e.g., display an error message)
@@ -108,13 +95,6 @@ const Discussion = ({ slug }) => {
         {
           headers: { Authorization: `Bearer ${token}` },
         }
-      );
-      setCommentDatas((prevCommentDatas) =>
-        prevCommentDatas.map((comment) =>
-          comment.commentId === commentId
-            ? { ...commentId}
-            : comment
-        )
       );
     } catch (error) {
       console.error("Error liking comment:", error.response.data);
