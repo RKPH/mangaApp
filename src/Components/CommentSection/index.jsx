@@ -112,7 +112,7 @@ const Discussion = ({ slug }) => {
       setCommentDatas((prevCommentDatas) =>
         prevCommentDatas.map((comment) =>
           comment.commentId === commentId
-            ? { ...comment, like: comment.like + 1 }
+            ? { ...commentId}
             : comment
         )
       );
