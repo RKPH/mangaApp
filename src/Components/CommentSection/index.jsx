@@ -22,6 +22,7 @@ const Discussion = ({ slug }) => {
       .build();
 
     connection.on("ReceiveComment", (comment) => {
+z
       setCommentDatas((prevComments) => [comment, ...prevComments]);
     });
 
@@ -73,6 +74,7 @@ const Discussion = ({ slug }) => {
         },
         {
           headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
         }
       );
 
@@ -104,7 +106,7 @@ const Discussion = ({ slug }) => {
   };
 
   return (
-    <div className="my-5 w-full shadow-md p-4">
+    <div className="my-5 w-full shadow-md md:p-4">
       <h3 className="text-left text-xl text-black dark:text-white uppercase font-bold">
         Bình luận
       </h3>
@@ -154,7 +156,7 @@ const Discussion = ({ slug }) => {
         </div>
       </div>
 
-      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 px-12  rounded-md">
+      <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 md:px-12  rounded-md">
         {commentDatas && commentDatas.length > 0 ? (
           commentDatas.map((comment, index) => (
             <div key={comment.commentId} className=" w-full p-4">
