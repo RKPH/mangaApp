@@ -74,7 +74,6 @@ z
         },
         {
           headers: { Authorization: `Bearer ${token}` },
-          withCredentials: true,
         }
       );
 
