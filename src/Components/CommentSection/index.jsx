@@ -22,11 +22,12 @@ const Discussion = ({ slug }) => {
       .build();
 
     connection.on("ReceiveComment", (comment) => {
-z
+      console.log("Received comment:", comment); // Debug log
       setCommentDatas((prevComments) => [comment, ...prevComments]);
     });
 
     connection.on("ReceiveLike", (like) => {
+      console.log("Received like:", like); // Debug log
       setCommentDatas((prevComments) =>
         prevComments.map((comment) =>
           comment.commentId === like.commentId
@@ -36,7 +37,12 @@ z
       );
     });
 
-    connection.start().catch((err) => console.error(err.toString()));
+    connection
+      .start()
+      .then(() => console.log("SignalR connection established")) // Debug log
+      .catch((err) =>
+        console.error("SignalR connection error:", err.toString())
+      ); // Debug log
 
     return () => {
       connection.stop();
@@ -77,10 +83,11 @@ z
         }
       );
 
+      console.log("Comment posted successfully"); // Debug log
       setContent(""); // Clear the textarea after successful comment
     } catch (error) {
       console.error("Error adding comment:", error);
-      // Handle error (e.g., display an error message)
+      toast.error("Error adding comment.");
     }
   };
 
@@ -99,8 +106,7 @@ z
       );
     } catch (error) {
       console.error("Error liking comment:", error.response.data);
-      toast.error(error.response.data);
-      // Handle error (e.g., display an error message)
+      toast.error("Error liking comment.");
     }
   };
 
@@ -157,7 +163,7 @@ z
 
       <div className="dark:bg-[#242526] bg-gray-50 mt-2 w-full p-4 md:px-12  rounded-md">
         {commentDatas && commentDatas.length > 0 ? (
-          commentDatas.map((comment, index) => (
+          commentDatas.map((comment) => (
             <div key={comment.commentId} className=" w-full p-4">
               <div className="flex gap-2 font-sans">
                 <img
