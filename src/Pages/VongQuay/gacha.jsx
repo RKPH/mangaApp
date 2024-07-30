@@ -91,14 +91,23 @@ const GachaItems = () => {
       for (let i = 0; i < rollTimes; i++) {
         const randomNumber = Math.random() * 100;
         let accumulatedRate = 0;
+        let selectedItem = null;
 
         for (const item of gachaItems) {
           accumulatedRate += item.rate;
           if (randomNumber <= accumulatedRate) {
+            selectedItem = item;
             total += item.point;
             updatedPulledItems.push(item);
             break;
           }
+        }
+
+        // Ensure an item is always pulled
+        if (!selectedItem && gachaItems.length > 0) {
+          selectedItem = gachaItems[gachaItems.length - 1];
+          total += selectedItem.point;
+          updatedPulledItems.push(selectedItem);
         }
       }
 
